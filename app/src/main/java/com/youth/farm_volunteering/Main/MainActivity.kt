@@ -8,21 +8,61 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.*
 import com.youth.farm_volunteering.Bookmark.LikeFragment
+import com.youth.farm_volunteering.Home.FarmRecyAdapter
+import com.youth.farm_volunteering.Home.FarmRecyData
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.SignUp.SignupActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_recycle_list.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    var toolbar : android.support.v7.widget.Toolbar? = null
+    lateinit var recycleItems: ArrayList<FarmRecyData>
+    lateinit var recycleAdapter: FarmRecyAdapter
+
+    //가로 조정
+    private var linearLayoutManager : LinearLayoutManager? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_recycle_list)
+
+        recycleItems = ArrayList()
+        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+
+        recycleAdapter = FarmRecyAdapter(recycleItems)
+        recycleAdapter.setOnItemClickListener(this)
+
+        recycleView.layoutManager = LinearLayoutManager(this)
+        recycleView.adapter = recycleAdapter
+        linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+        recycleView!!.setLayoutManager(linearLayoutManager)
+
+    }
+    override fun onClick(v: View?) {
+        //val idx : Int = recycleView.getChildAdapterPosition(v)
+        //val name : String = recycleItems[idx].farmtitle
+        //val profile : Int = recycleItems[idx].farmprofile
+        val intent : Intent = Intent(applicationContext, FarmDetailActivity::class.java)
+        startActivity(intent)
+    }
+}
+
+/*
+var toolbar : android.support.v7.widget.Toolbar? = null
     var homeTab : View? = null
     var likeTab : View? = null
     var mypageTab : View? = null
@@ -46,14 +86,14 @@ class MainActivity : AppCompatActivity() {
         undefinedTab = LayoutInflater.from(this).inflate(R.layout.tab_undefined,null,false)
 
         tabImage_Array = arrayListOf(homeTab!!, likeTab!!, mypageTab!!, undefinedTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
-        fragment_Array = arrayListOf(HomeFragment(), LikeFragment(), MypageFragment(), UndefinedFragment())
+       // fragment_Array = arrayListOf(HomeFragment(), LikeFragment(), MypageFragment(), UndefinedFragment()) //grid대신 recycle를 써서 생략함(07/01)
 
 
         for(i in 0..fragment_Array!!.size-1) {
             activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성
         }
 
-        supportFragmentManager.beginTransaction().add(R.id.activity_main_container, HomeFragment()).commit()        //첫 화면의 container를 HomeFragment()로 설정
+       // supportFragmentManager.beginTransaction().add(R.id.activity_main_container, HomeFragment()).commit()        //첫 화면의 container를 HomeFragment()로 설정,grid 생략(07/01)
 
         for(i in 0..tabImage_Array!!.size-1) {
             tabAdapter.addFragment(tabImage_Array!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
@@ -121,4 +161,4 @@ class MainActivity : AppCompatActivity() {
             tabPosition -> ReplaceFragment(fragment_Array!![tabPosition])
         }
     }
-}
+    */

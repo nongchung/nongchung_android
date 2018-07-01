@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/farm_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/farm_date"
+            android:layout_width="72dp"
+            android:layout_height="54dp"
+            android:text="일정"
+            android:textColor="#000000"
+            android:textSize="30dp" />
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/farm_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="농활명"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/farm_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="주소" />
+
+        <TextView
+            android:id="@+id/farm_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가격" />
+    </LinearLayout>
+
+</RelativeLayout>
