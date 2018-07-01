@@ -1,0 +1,257 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.youth.farm_volunteering.FarmDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#F2F2F2"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="28dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:scrimVisibleHeightTrigger="100dp"
+            app:titleEnabled="false">
+
+            <ImageView
+                android:id="@+id/toolbarImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_1"
+                app:layout_collapseMode="pin" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title=" " />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detail_location_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/detail_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/detail_price_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/detail_days_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="사과농장"
+                android:textSize="28sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/farm_introduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:padding="@dimen/activity_search_toolbar_left_padding"
+                    android:text="농장소개"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/farm_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:padding="@dimen/activity_search_toolbar_left_padding"
+
+                    android:text="농장위치"
+                    android:textAlignment="center" />
+
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                />
+
+
+                <TextView
+                    android:id="@+id/farm_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="1"
+                    android:padding="@dimen/activity_search_toolbar_left_padding"
+                    android:text="농장후기"
+
+                    android:textAlignment="center" />
+
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                />
+
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/detail_frame"
+                android:layout_width="match_parent"
+
+                android:layout_height="250dp"
+
+
+                android:padding="@dimen/activity_search_toolbar_left_padding">
+
+
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="스캐줄"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/detail_apply_rv"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_above="@id/detail_apply_btn"
+            android:background="#ffffff"
+            android:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/detail_apply_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:text="신청 하기" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.youth.farm_volunteering.Main.MainActivity">
+
+    <item
+        android:id="@+id/menu_search_icon"
+        android:icon="@drawable/search"
+        android:title="검색"
+        app:showAsAction="ifRoom" />
+
+</menu>

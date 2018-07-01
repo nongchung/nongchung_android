@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fragment_main_viewpager_dot_right_margin">8dp</dimen>
+    <dimen name="fragment_home_adsize">150dp</dimen>
+    <dimen name="activity_main_toolbarTitle_left_margin">20dp</dimen>
+    <dimen name="fragment_home_grid_padding_Left">15dp</dimen>
+    <dimen name="fragment_home_grid_padding_Right">15dp</dimen>
+    <dimen name="fragment_home_deadline_bottom_margin">8dp</dimen>
+    <dimen name="fragment_home_gridHotFarm_top_margin">15dp</dimen>
+    <dimen name="fragment_home_gridHotFarm_bottom_margin">8dp</dimen>
+    <dimen name="fragment_home_gridImage_padding">8dp</dimen>
+    <dimen name="fargment_home_gridImage_Height">120dp</dimen>
+    <dimen name="activity_search_toolbar_Height">40dp</dimen>
+    <dimen name="activity_search_toolbar_left_padding">10dp</dimen>
+    <dimen name="activity_search_button_width">45dp</dimen>
+    <dimen name="textsize_toolbar">22sp</dimen>
+    <dimen name="margin_basemargin">8dp</dimen>
+    <dimen name="padding_basepadding">8dp</dimen>
+    <dimen name="margin_doublebasemargin">16dp</dimen>
+    <dimen name="padding_doublebasepadding">16dp</dimen>
+</resources>

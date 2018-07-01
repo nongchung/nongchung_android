@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.asksira.loopingviewpager.LoopingViewPager
+        android:id="@+id/fragment_home_adViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:isInfinite="true"
+        app:autoScroll="true"
+        app:scrollInterval="4000"
+        app:wrap_content="true"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/fragment_home_hotFarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/fragment_home_grid_padding_Left"
+        android:paddingEnd="@dimen/fragment_home_grid_padding_Right"
+        android:orientation="vertical"
+        android:layout_below="@+id/fragment_home_adViewPager">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragment_home_gridHotFarm_top_margin"
+            android:layout_marginBottom="@dimen/fragment_home_gridHotFarm_bottom_margin"
+            android:text="인기순"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+        <GridView
+            android:id="@+id/fragment_home_weekendHotFarm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:layout_below="@+id/fragment_home_hotFarm">
+
+        </GridView>
+    </LinearLayout>
+
+
+</RelativeLayout>
