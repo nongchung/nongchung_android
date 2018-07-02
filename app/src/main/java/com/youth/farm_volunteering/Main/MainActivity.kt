@@ -43,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 //        supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
 
+
+
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home,null,false)
         likeTab = LayoutInflater.from(this).inflate(R.layout.tab_like,null,false)
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage,null,false)

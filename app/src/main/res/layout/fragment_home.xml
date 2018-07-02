@@ -37,14 +37,13 @@
             android:text="인기순"
             android:textStyle="bold"
             android:textSize="17sp"/>
-        <GridView
-            android:id="@+id/fragment_home_weekendHotFarm"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:numColumns="1"
-            android:layout_below="@+id/fragment_home_hotFarm">
 
-        </GridView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
     </LinearLayout>
 
 
