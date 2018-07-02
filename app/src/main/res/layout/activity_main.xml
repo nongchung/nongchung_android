@@ -12,6 +12,8 @@
         android:id="@+id/activity_main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="#ffffff"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:logo="@android:drawable/btn_star_big_on"
