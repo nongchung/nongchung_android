@@ -1,26 +1,39 @@
 package com.youth.farm_volunteering
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 
-import com.youth.farm_volunteering.Home.FarmDetailLocation
-import com.youth.farm_volunteering.Home.FarmDetailReview
-import com.youth.farm_volunteering.Home.FarmDetailintroduce
-
 import android.widget.Toast
-import com.youth.farm_volunteering.R.id.*
+import com.youth.farm_volunteering.Home.*
+import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
+import java.util.ArrayList
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     var toolbar : android.support.v7.widget.Toolbar? = null
+
+
+    lateinit var scheduleitems: ArrayList<ScheduleData>
+    lateinit var scheduleAdapter : ScheduleAdapter
+
+
+
+//
+//    lateinit var recycleItems: ArrayList<FarmRecyData>
+//    lateinit var recycleAdapter: FarmRecyAdapter
+
+
 
     override fun onClick(v: View?) {
         when(v){
@@ -39,7 +52,13 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
                 farm_review.isSelected = true
                 replaceFragment(FarmDetailReview())
             }
+
+
         }
+
+        //따로 스캐줄에서 더 화면을 구성한다면!!!
+//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
+//        startActivity(intent)
 
 
     }
@@ -47,6 +66,30 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farm_detail)
+//            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
+
+        scheduleitems = ArrayList()
+        scheduleitems.add(ScheduleData("서울","경기","인천"))
+        scheduleitems.add(ScheduleData("서울","경기","인천"))
+        scheduleitems.add(ScheduleData("서울","경기","인천"))
+
+        scheduleAdapter = ScheduleAdapter(scheduleitems)
+        scheduleAdapter.setOnItemClickListener(this)
+
+        scheduleView.layoutManager = LinearLayoutManager(this)
+        scheduleView.adapter = scheduleAdapter
+
+
+//
+//        recycleItems = ArrayList()
+//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
+//
+//        recycleAdapter = FarmRecyAdapter(recycleItems)
+//        recycleAdapter.setOnItemClickListener(this)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -62,6 +105,10 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
         detail_days_tv.setText(intent.getStringExtra("farm_days"))
 
 
+
+
+
+
         addFragment(FarmDetailintroduce())
         farm_introduce.isSelected = true
         farm_introduce.setOnClickListener(this)
@@ -70,9 +117,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
         detail_apply_btn.setOnClickListener{
             Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
             if(detail_apply_rv.visibility == View.GONE){
-            detail_apply_rv.visibility = View.VISIBLE}
+                detail_apply_rv.visibility = View.VISIBLE}
             else if(detail_apply_rv.visibility == View.VISIBLE){
-            detail_apply_rv.visibility = View.GONE}
+                detail_apply_rv.visibility = View.GONE}
 
         }
 

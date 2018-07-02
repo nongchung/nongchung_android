@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     var undefinedTab : View? = null
     var tabImage_Array : ArrayList<View>? = null
     var fragment_Array : ArrayList<Fragment>? = null
+
+    private var linearLayoutManager : LinearLayoutManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

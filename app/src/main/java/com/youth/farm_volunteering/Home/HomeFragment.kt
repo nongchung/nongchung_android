@@ -18,9 +18,9 @@ class HomeFragment : Fragment() {
 
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
-//    var adViewPagerAdapter: AdViewPagerAdapter? = null
+    //    var adViewPagerAdapter: AdViewPagerAdapter? = null
     var farmList : ArrayList<FarmGridData>? = null
-//    var adViewPager : ViewPager? = null
+    //    var adViewPager : ViewPager? = null
     var farmGridAdapter : FarmGridAdapter? = null
     var slideImages : ArrayList<Int> = arrayListOf(R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4)
 

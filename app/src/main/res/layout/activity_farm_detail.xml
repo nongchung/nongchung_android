@@ -177,14 +177,8 @@
                     android:layout_centerInParent="true"
                     android:layout_weight="1"
                     android:padding="@dimen/activity_search_toolbar_left_padding"
-
                     android:text="농장위치"
                     android:textAlignment="center" />
-
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                />
-
 
                 <TextView
                     android:id="@+id/farm_review"
@@ -194,12 +188,7 @@
                     android:layout_weight="1"
                     android:padding="@dimen/activity_search_toolbar_left_padding"
                     android:text="농장후기"
-
                     android:textAlignment="center" />
-
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                />
 
 
             </LinearLayout>
@@ -207,15 +196,21 @@
             <FrameLayout
                 android:id="@+id/detail_frame"
                 android:layout_width="match_parent"
-
                 android:layout_height="250dp"
-
-
                 android:padding="@dimen/activity_search_toolbar_left_padding">
 
 
 
             </FrameLayout>
+
+            <Button
+                android:id="@+id/detail_profile_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#e891ef"
+                android:text="프로필 확인"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -223,6 +218,17 @@
                 android:text="스캐줄"
                 android:padding="@dimen/activity_search_toolbar_left_padding"
                 />
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/scheduleView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                >
+            </android.support.v7.widget.RecyclerView>
+
 
         </LinearLayout>
 
