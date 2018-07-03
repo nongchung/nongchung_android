@@ -32,9 +32,9 @@ class HomeFragment : Fragment() {
 
 //        tabAdapter = this.activity_main_tabViewPager.adapter
 
-//        adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
-//        adViewPagerAdapter = AdViewPagerAdapter(this.context)
-//        adViewPager!!.adapter = adViewPagerAdapter
+        adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
+        vpAdapter = DemoInfiniteAdapter(this.context, slideImages, true)
+        adViewPager!!.adapter = vpAdapter
 
 
 //        timer.schedule(adTimerTask, 2000)
