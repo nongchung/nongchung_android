@@ -13,6 +13,8 @@
 
     SHA-1 certificate fingerprint:
     F0:20:5C:B7:36:13:DF:49:83:D0:C5:BA:10:23:39:56:9D:EC:97:1E
+    SHA-2 certificate fingerprint:
+    29:05:8C:06:FB:11:EB:66:AF:83:DE:6C:3D:F4:A6:8C:CA:70:8E:FF
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key
