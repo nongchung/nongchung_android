@@ -13,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 
 import android.widget.Toast
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -27,8 +28,10 @@ import java.util.ArrayList
 import com.youth.farm_volunteering.Main.MainActivity
 
 
-class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
+class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyCallback {
 
+    private lateinit var mMap: GoogleMap
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
 
 
@@ -92,6 +95,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
         scheduleView.adapter = scheduleAdapter
 
 
+        val mapFragment = supportFragmentManager
+                .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 //
 //        recycleItems = ArrayList()
 //        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
@@ -145,6 +151,16 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         }
 
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val myPlace = LatLng(37.498728, 127.028814)
+        mMap.addMarker(MarkerOptions().position(myPlace).title("농활 장소"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 15.0f))
+        mMap.uiSettings.isZoomControlsEnabled = true
     }
 
     // 뒤로가기 함수
