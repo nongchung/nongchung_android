@@ -20,7 +20,6 @@ class FarmDetailLocation : Fragment(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.activity_maps, container, false)      //일단 지도만 여기 생성하게 만듬
         //activity!!.supportFragmentManager.beginTransaction().add()
@@ -41,5 +40,6 @@ class FarmDetailLocation : Fragment(), OnMapReadyCallback {
         val myPlace = LatLng(37.528677, 126.965186)
         mMap.addMarker(MarkerOptions().position(myPlace).title("sopt장소"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 15.0f))
+        mMap.uiSettings.isZoomControlsEnabled = true
     }
 }
