@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
@@ -26,9 +27,11 @@ import junit.framework.Test
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import java.util.ArrayList
 import com.youth.farm_volunteering.Main.MainActivity
+import com.youth.farm_volunteering.R.id.*
 
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyCallback {
+
 
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
