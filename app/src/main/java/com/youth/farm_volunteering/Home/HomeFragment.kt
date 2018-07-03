@@ -24,6 +24,8 @@ class HomeFragment : Fragment() {
     var farmGridAdapter : FarmGridAdapter? = null
     var slideImages : ArrayList<Int> = arrayListOf(R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4)
 
+
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
 

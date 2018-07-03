@@ -15,35 +15,35 @@ import android.view.View;
 
 public class LoopingViewPager extends ViewPager {
 
-    protected boolean isInfinite = true;
-    protected boolean isAutoScroll = false;
-    protected boolean wrapContent = true;
-    protected float aspectRatio;
+     protected boolean isInfinite = true;
+     protected boolean isAutoScroll = false;
+     protected boolean wrapContent = true;
+     protected float aspectRatio;
 
-    //AutoScroll
-    private int interval = 5000;
-    private int previousPosition = 0;
-    private int currentPagePosition = 0;
-    private Handler autoScrollHandler = new Handler();
-    private Runnable autoScrollRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (getAdapter() == null || !isAutoScroll || getAdapter().getCount() < 2) return;
-            if (!isInfinite && getAdapter().getCount() - 1 == currentPagePosition) {
-                currentPagePosition = 0;
-            } else {
-                currentPagePosition++;
-            }
-            setCurrentItem(currentPagePosition, true);
-        }
+     //AutoScroll
+     private int interval = 5000;
+     private int previousPosition = 0;
+     private int currentPagePosition = 0;
+     private Handler autoScrollHandler = new Handler();
+     private Runnable autoScrollRunnable = new Runnable() {
+    @Override
+    public void run() {
+    if (getAdapter() == null || !isAutoScroll || getAdapter().getCount() < 2) return;
+    if (!isInfinite && getAdapter().getCount() - 1 == currentPagePosition) {
+    currentPagePosition = 0;
+    } else {
+    currentPagePosition++;
+    }
+    setCurrentItem(currentPagePosition, true);
+    }
     };
 
-    //For Indicator
-    private IndicatorPageChangeListener indicatorPageChangeListener;
-    private int previousScrollState = SCROLL_STATE_IDLE;
-    private int scrollState = SCROLL_STATE_IDLE;
-    private boolean isToTheRight = true;
-    /**
+     //For Indicator
+     private IndicatorPageChangeListener indicatorPageChangeListener;
+     private int previousScrollState = SCROLL_STATE_IDLE;
+     private int scrollState = SCROLL_STATE_IDLE;
+     private boolean isToTheRight = true;
+     /**
      * This boolean indicates whether LoopingViewPager needs to continuously tell the indicator about
      * the progress of the scroll, even after onIndicatorPageChange().
      * If indicator is smart, it should be able to finish the animation by itself after we told it that a position has been selected.
