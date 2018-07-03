@@ -1,99 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:layout_editor_absoluteY="81dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    >
 
-    <ImageView
-        android:id="@+id/item_farmPicture"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/fargment_home_gridImage_Height" />
+        android:layout_height="120dp">
 
-    <ImageView
-        android:id="@+id/item_farmBookmark"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/todays_pick"
-        app:layout_constraintEnd_toEndOf="@+id/item_farmPicture"
-        app:layout_constraintTop_toTopOf="@+id/item_farmPicture" />
+        <ImageView
+            android:id="@+id/farm_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@color/colorAccent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="32dp"
-        app:civ_border_width="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/farm_date"
+            android:layout_width="72dp"
+            android:layout_height="54dp"
+            android:text="일정"
+            android:textColor="#000000"
+            android:textSize="30dp" />
 
-    <TextView
-        android:id="@+id/item_farmLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="농활지역"
-        android:textSize="11sp"
-        app:layout_constraintTop_toBottomOf="@+id/item_farmPicture" />
 
-    <TextView
-        android:id="@+id/item_farmPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="(가격, "
-        android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/item_farmNumPeople"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/item_farmName"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/item_farmName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="농장명"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/item_farmLocation" />
+    </RelativeLayout>
 
-    <RatingBar
-        android:id="@+id/item_farmRating"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="81dp"
-        android:layout_height="17dp"
-        android:numStars="5"
-        android:stepSize="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/item_farmNumPeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="평점"
-        android:textSize="11sp"
-        app:layout_constraintStart_toEndOf="@+id/item_farmRating"
-        app:layout_constraintTop_toBottomOf="@+id/item_farmDays" />
+        <TextView
+            android:id="@+id/farm_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="농활명"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="추가정보"
-        android:textSize="11sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_farmName" />
+        <TextView
+            android:id="@+id/farm_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="주소" />
 
-    <TextView
-        android:id="@+id/item_farmDays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="박)"
-        android:textSize="11sp"
-        app:layout_constraintStart_toEndOf="@+id/item_farmPrice"
-        app:layout_constraintTop_toBottomOf="@+id/item_farmName" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/farm_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가격" />
+    </LinearLayout>
+
+</RelativeLayout>
