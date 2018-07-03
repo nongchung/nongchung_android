@@ -49,12 +49,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
             farm_location -> {
                 clearSelected()
                 farm_location.isSelected = true
-                replaceFragment(FarmDetailLocation())
+                replaceFragment(FarmDetailLocation())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
             }
             farm_review -> {
                 clearSelected()
                 farm_review.isSelected = true
-                replaceFragment(FarmDetailReview())     //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
+                replaceFragment(FarmDetailReview())
             }
 
 
