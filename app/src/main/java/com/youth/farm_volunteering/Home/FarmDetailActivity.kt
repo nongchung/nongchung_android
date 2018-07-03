@@ -18,6 +18,9 @@ import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import java.util.ArrayList
+import com.youth.farm_volunteering.Main.MainActivity
+
+
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -92,8 +95,17 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 //        recycleAdapter.setOnItemClickListener(this)
 
         toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)    //뒤로가기버튼생성
+
+
+     supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+
+
+
+
+
+
 
         toolbar!!.setTitleTextColor(0xFF000000.toInt())
         toolbar!!.title = " "
@@ -123,6 +135,13 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         }
 
+    }
+
+    // 뒤로가기 함수
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
