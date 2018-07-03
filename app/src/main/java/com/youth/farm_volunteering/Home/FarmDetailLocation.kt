@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.maps.SupportMapFragment
 import com.youth.farm_volunteering.R
 
 class FarmDetailLocation : Fragment() {
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.activity_farm_detail_location, container, false)
+        val v = inflater.inflate(R.layout.activity_maps, container, false)      //일단 지도만 여기 생성하게 만듬
         //activity!!.supportFragmentManager.beginTransaction().add()
         return v
     }

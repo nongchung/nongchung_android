@@ -22,6 +22,7 @@ import com.youth.farm_volunteering.Main.MainActivity
 
 
 
+
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     var toolbar : android.support.v7.widget.Toolbar? = null
@@ -53,7 +54,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
             farm_review -> {
                 clearSelected()
                 farm_review.isSelected = true
-                replaceFragment(FarmDetailReview())
+                replaceFragment(FarmDetailReview())     //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
             }
 
 
@@ -140,7 +141,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
     // 뒤로가기 함수
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        finish()
         return true
     }
 

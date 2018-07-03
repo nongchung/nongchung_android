@@ -21,6 +21,15 @@
         app:layout_constraintEnd_toEndOf="@+id/item_farmPicture"
         app:layout_constraintTop_toTopOf="@+id/item_farmPicture" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        app:civ_border_width="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/item_farmLocation"
         android:layout_width="wrap_content"
