@@ -10,6 +10,7 @@ import java.util.*
 
 class DemoInfiniteAdapter(context: Context, itemList: ArrayList<Int>, isInfinite: Boolean) : LoopingPagerAdapter<Int>(context, itemList, isInfinite) {
 
+
     override fun getItemViewType(listPosition: Int): Int {
         return VIEW_TYPE_NORMAL
     }

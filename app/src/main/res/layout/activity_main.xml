@@ -32,6 +32,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/activity_main_toolbar"
         android:layout_above="@id/activity_main_bottomTabLayout"
+
         android:visibility="gone">
 
     </android.support.v4.view.ViewPager>

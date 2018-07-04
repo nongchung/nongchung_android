@@ -8,13 +8,17 @@
         android:id="@+id/fragment_home_adViewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
         app:isInfinite="true"
         app:autoScroll="true"
-        app:scrollInterval="4000"
-        app:wrap_content="true"/>
+        app:scrollInterval="5000"
+        app:wrap_content="true"
+
+        />
 
 
 
@@ -45,7 +49,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_home_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
