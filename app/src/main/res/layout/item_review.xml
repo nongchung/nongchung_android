@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="250dp"
     android:orientation="vertical"
     >
 
     <RelativeLayout
+        android:id="@+id/review_box"
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_alignParentStart="true"
@@ -61,5 +62,14 @@
 
     </RelativeLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reviewView"
+        android:layout_below="@id/review_box"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+
+        >
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
