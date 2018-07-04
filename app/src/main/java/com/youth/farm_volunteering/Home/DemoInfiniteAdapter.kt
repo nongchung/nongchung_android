@@ -21,7 +21,7 @@ class DemoInfiniteAdapter(context: Context, itemList: ArrayList<Int>, isInfinite
     }
 
     override fun bindView(convertView: View, listPosition: Int, viewType: Int) {
-        convertView.findViewById<ImageView>(R.id.item_slideImage).setImageResource(itemList[listPosition])
+        convertView.findViewById<ImageView>(R.id.item_slideImage).setBackgroundResource(itemList[listPosition])
     }
 
 
