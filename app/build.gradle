@@ -40,7 +40,18 @@ dependencies {
     implementation 'com.asksira.android:loopingviewpager:1.1.0'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // retrofit 설정
+    implementation 'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+
+
+    //implementation 'rebus:bottom-dialog:0.0.5' dialog 오류발생.....
+
+
 }
