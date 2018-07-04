@@ -63,7 +63,7 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/reviewView"
+        android:id="@+id/reviewimageView"
         android:layout_below="@id/review_box"
         android:layout_width="match_parent"
         android:layout_height="300dp"
