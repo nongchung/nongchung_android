@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Button 눌렀을 때 -->
+    <item
+    android:drawable="@drawable/ic_up"
+    android:state_pressed="true">
+</item>
+    <!-- Button 이벤트 없을 때 -->
+    <item
+        android:drawable="@drawable/ic_down"
+        android:state_pressed="false">
+
+    </item>
+</selector>

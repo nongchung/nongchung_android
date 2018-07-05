@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Expanded
 
 import android.content.Context
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import android.widget.ExpandableListView
 import android.widget.TextView
 import android.widget.Toast
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.tv_title
+import kotlinx.android.synthetic.main.layout_group.view.*
 
 class ExpandAdapter(var context : Context,var expandedView : ExpandableListView,var header : MutableList<String>, var body : MutableList<MutableList<String>>) : BaseExpandableListAdapter()  {
     override fun getGroup(groupPosition: Int): String {
@@ -32,11 +35,29 @@ class ExpandAdapter(var context : Context,var expandedView : ExpandableListView,
         val title = convertView!!.findViewById<TextView>(R.id.tv_title)
         title.text = getGroup(groupPosition)
         title?.setOnClickListener {
-            if(expandedView.isGroupExpanded(groupPosition))
+            if(expandedView.isGroupExpanded(groupPosition)) {
                 expandedView.collapseGroup(groupPosition)
-            else
+               // convertView!!.imageView.isSelected = false
+            }
+            else {
+
                 expandedView.expandGroup(groupPosition)
+               // convertView!!.imageView.isSelected = true
+
+            }
             Toast.makeText(context,getGroup(groupPosition),Toast.LENGTH_SHORT).show()
+        }
+        if (isExpanded) {
+            title.setTypeface(null, Typeface.BOLD);
+            convertView.imageView.isSelected = true
+
+        } else {
+            // If group is not expanded then change the text back into normal
+            // and change the icon
+
+            convertView.imageView.isSelected = false
+           title.setTypeface(null, Typeface.NORMAL);
+
         }
         return convertView
     }
