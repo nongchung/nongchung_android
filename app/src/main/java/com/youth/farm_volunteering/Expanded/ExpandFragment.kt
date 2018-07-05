@@ -47,7 +47,7 @@ class ExpandFragment : Fragment(){
         body.add(season1)
         body.add(season2)
 
-        v.expandedView.setAdapter(ExpandAdapter(this.activity,expendedView,header,body))
+        v.expandedView.setAdapter(ExpandAdapter(this.activity!!,expendedView,header,body))
 
         return  v
     }

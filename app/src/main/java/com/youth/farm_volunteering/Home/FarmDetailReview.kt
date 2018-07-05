@@ -41,7 +41,7 @@ class FarmDetailReview : Fragment(){
         reviewAdapter = ReviewAdapter(reviewitems)
 //        reviewAdapter.setOnItemClickListener(this.activity)
 
-        v.reviewView.layoutManager = LinearLayoutManager(this.activity.applicationContext)
+        v.reviewView.layoutManager = LinearLayoutManager(this.activity!!.applicationContext)
         v.reviewView.adapter = reviewAdapter
 
 
