@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.youth.farm_volunteering.Network.NetworkService
 import com.youth.farm_volunteering.PersistentCookieStore
+import com.youth.farm_volunteering.data.NonghwalData
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
