@@ -144,6 +144,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
         farm_introduce.setOnClickListener(this)
         farm_location.setOnClickListener(this)
         farm_review.setOnClickListener(this)
+
+
         detail_apply_btn.setOnClickListener {
             Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
             if (detail_apply_rv.visibility == View.GONE) {
