@@ -8,8 +8,8 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.youth.farm_volunteering.Network.NetworkService
 import com.youth.farm_volunteering.PersistentCookieStore
 import com.youth.farm_volunteering.data.NonghwalData
-import okhttp3.JavaNetCookieJar
-import okhttp3.OkHttpClient
+import com.youth.farm_volunteering.login.LoginToken
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.CookieManager
@@ -42,7 +42,18 @@ class ApplicationController : Application() {
         val retrofit = builder
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(OkHttpClient().newBuilder() .connectTimeout(10, TimeUnit.SECONDS) .writeTimeout(10, TimeUnit.SECONDS) .readTimeout(10, TimeUnit.SECONDS) .cookieJar(JavaNetCookieJar(cookieManager)) .build())
+                .client(OkHttpClient().newBuilder().addInterceptor(object : Interceptor {
+                    override fun intercept(chain: Interceptor.Chain): Response {
+                        var original = chain.request();
+
+                        var request = original.newBuilder()
+                                .header("token", LoginToken.token)
+                                .method(original.method(), original.body())
+                                .build();
+
+                        return chain.proceed(request);
+                    }
+                }).connectTimeout(10, TimeUnit.SECONDS).writeTimeout(10, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS).cookieJar(JavaNetCookieJar(cookieManager)).build())
                 .build()
 
         networkService = retrofit.create(NetworkService::class.java)

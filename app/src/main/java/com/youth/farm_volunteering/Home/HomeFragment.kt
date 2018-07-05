@@ -16,7 +16,7 @@ import com.asksira.loopingviewpagerdemo.DemoInfiniteAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 import com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_XY
-import com.youth.farm_volunteering.data.HomeData
+import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.NonghwalData
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,12 +60,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
         var homeCall = ApplicationController.instance!!.networkService!!.home();
-        homeCall.enqueue(object : Callback<HomeData> {
-            override fun onFailure(call: Call<HomeData>, t: Throwable?) {
-                Toast.makeText(activity,"home request fail",Toast.LENGTH_SHORT).show()
+        homeCall.enqueue(object : Callback<HomeResponseData> {
+            override fun onFailure(call: Call<HomeResponseData>, t: Throwable?) {
+                Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: Call<HomeData>, response: Response<HomeData>) {
+            override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
 
                 popularNonghwalList = response.body().populNh
 
@@ -90,7 +90,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
 //        timer.schedule(adTimerTask, 2000)
-
 
 
 //        v.fragment_home_weekendHotFarm.setOnItemClickListener(object : AdapterView.OnItemClickListener{
