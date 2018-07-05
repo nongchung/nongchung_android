@@ -177,7 +177,7 @@
                     android:layout_centerInParent="true"
                     android:layout_weight="1"
                     android:padding="@dimen/activity_search_toolbar_left_padding"
-                    android:text="농장위치"
+                    android:text="농장질문"
                     android:textAlignment="center" />
 
                 <TextView
