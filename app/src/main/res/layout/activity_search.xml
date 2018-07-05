@@ -150,7 +150,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="내 주변 농장 보기"
+                android:text="지역별 농장보기"
                 android:layout_weight="9.2"/>
             <ImageView
                 android:layout_width="0dp"
