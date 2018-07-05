@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -27,7 +28,7 @@ import com.youth.farm_volunteering.Question.QuestionFragment
 import com.youth.farm_volunteering.R.id.*
 
 
-class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyCallback {
+class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback {
 
 
     private lateinit var mMap: GoogleMap
@@ -91,10 +92,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
         toolbar!!.setTitleTextColor(0xFF000000.toInt())
         toolbar!!.title = " "
 
-        toolbarImage.setImageResource(intent.getIntExtra("farm_img", 0))
+        Glide.with(toolbarImage.context)
+                .load(intent.getStringExtra("farm_img"))
+                .into(toolbarImage);
         detail_location_tv.setText(intent.getStringExtra("farm_location"))
         detail_name_tv.setText(intent.getStringExtra("farm_name"))
-        detail_price_tv.setText(intent.getStringExtra("farm_price"))
+        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
         detail_days_tv.setText(intent.getStringExtra("farm_days"))
 
 
@@ -135,7 +138,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
                 replaceFragment(ExpandFragment())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmDetailLocation() ;
-        //        replaceFragment(FarmDetailLocation())
+                //        replaceFragment(FarmDetailLocation())
 //                mapFragment.getMapAsync(this)
 
             }
@@ -154,7 +157,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
 
 
     }
-
 
 
     override fun onMapReady(googleMap: GoogleMap) {

@@ -12,6 +12,7 @@ import java.util.ArrayList
 import kotlinx.android.synthetic.main.fragment_like.*
 
 class LikeFragment : Fragment() {
+<<<<<<< HEAD
 
     lateinit var likeList: ArrayList<LikeData>
     lateinit var likeAdapter: LikeAdapter
@@ -30,6 +31,9 @@ class LikeFragment : Fragment() {
 
         likeAdapter = LikeAdapter(likeList!!)
 
+=======
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+>>>>>>> a16925a88fcaa577c53468d53401e3698a889df2
         val v = inflater!!.inflate(R.layout.fragment_like, container, false)
 
         return v

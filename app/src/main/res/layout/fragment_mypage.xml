@@ -29,6 +29,7 @@
             android:layout_height="0dp"
             android:layout_weight="30">
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageview_mypage_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/user1_temp"
@@ -38,6 +39,7 @@
                 android:paddingBottom="@dimen/padding_basepadding"/>
         </FrameLayout>
         <TextView
+            android:id="@+id/textview_mypage_nickname"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
@@ -47,6 +49,7 @@
             android:textStyle="bold"
             android:gravity="center_horizontal"/>
         <TextView
+            android:id="@+id/textview_mypage_email"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
