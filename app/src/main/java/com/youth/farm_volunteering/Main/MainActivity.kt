@@ -13,11 +13,9 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import com.youth.farm_volunteering.*
-import com.youth.farm_volunteering.Bookmark.LikeFragment
+import com.youth.farm_volunteering.Bookmark.*
 import com.youth.farm_volunteering.MyPage.MypageFragment
-import com.youth.farm_volunteering.Main.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
