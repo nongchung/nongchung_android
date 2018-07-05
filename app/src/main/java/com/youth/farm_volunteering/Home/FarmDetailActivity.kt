@@ -1,14 +1,11 @@
 package com.youth.farm_volunteering
 
-import android.app.Activity
-import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,12 +19,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.*
-import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import java.util.ArrayList
-import com.youth.farm_volunteering.Main.MainActivity
-import com.youth.farm_volunteering.R.id.*
+import com.youth.farm_volunteering.Question.QuestionFragment
 
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyCallback {
@@ -46,40 +41,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
 //    lateinit var recycleAdapter: FarmRecyAdapter
 
-
-    override fun onClick(v: View?) {
-        when (v) {
-            farm_introduce -> {
-                clearSelected()
-                farm_introduce.isSelected = true
-                replaceFragment(FarmDetailintroduce())
-            }
-            farm_location -> {
-                clearSelected()
-                farm_location.isSelected = true
-
-                replaceFragment(FarmDetailLocation())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
-
-//                var mapFragment = FarmDetailLocation() ;
-                replaceFragment(FarmDetailLocation())
-//                mapFragment.getMapAsync(this)
-
-            }
-            farm_review -> {
-                clearSelected()
-                farm_review.isSelected = true
-                replaceFragment(FarmDetailReview())
-            }
-
-
-        }
-
-        //따로 스캐줄에서 더 화면을 구성한다면!!!
-//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
-//        startActivity(intent)
-
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -157,6 +118,42 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
         }
 
     }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            farm_introduce -> {
+                clearSelected()
+                farm_introduce.isSelected = true
+                replaceFragment(FarmDetailintroduce())
+            }
+            farm_location -> {
+                clearSelected()
+                farm_location.isSelected = true
+
+                replaceFragment(QuestionFragment())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
+
+//                var mapFragment = FarmDetailLocation() ;
+        //        replaceFragment(FarmDetailLocation())
+//                mapFragment.getMapAsync(this)
+
+            }
+            farm_review -> {
+                clearSelected()
+                farm_review.isSelected = true
+                replaceFragment(FarmDetailReview())
+            }
+
+
+        }
+
+        //따로 스캐줄에서 더 화면을 구성한다면!!!
+//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
+//        startActivity(intent)
+
+
+    }
+
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap

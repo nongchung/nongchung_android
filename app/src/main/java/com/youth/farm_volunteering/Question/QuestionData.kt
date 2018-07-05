@@ -1,7 +1,7 @@
 package com.youth.farm_volunteering.Question
 
 data class QuestionData (
-    var questionbutton : Int,
+//    var questionButton : Int,
     var questionText : String
 )
 

@@ -30,7 +30,13 @@ class QuestionAdapter(private var Questionitems : ArrayList<QuestionData>) : Rec
     }
 
     override fun onBindViewHolder(holder: QuestionVIewHolder?, position: Int) {
-        holder!!.QuestionButton.button.question_btn
+
+//        holder!!.QuestionButton.setOnClickListener{
+//            //여기서 버튼을 통한 text 설정을 원함
+//            Questionitems[position].questionButton
+//
+//
+//        }
         holder!!.QuestionText.text = Questionitems[position].questionText
     }
 }
