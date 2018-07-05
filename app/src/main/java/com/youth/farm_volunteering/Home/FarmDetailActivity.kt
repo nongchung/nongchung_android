@@ -18,11 +18,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import java.util.ArrayList
 import com.youth.farm_volunteering.Question.QuestionFragment
+import com.youth.farm_volunteering.R.id.*
 
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyCallback {
@@ -130,7 +132,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
                 clearSelected()
                 farm_location.isSelected = true
 
-                replaceFragment(QuestionFragment())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
+                replaceFragment(ExpandFragment())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmDetailLocation() ;
         //        replaceFragment(FarmDetailLocation())
