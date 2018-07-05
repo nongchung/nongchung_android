@@ -13,10 +13,11 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.youth.farm_volunteering.*
 import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
-import com.youth.farm_volunteering.SignUp.SignupActivity
+import com.youth.farm_volunteering.Main.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId){
             R.id.menu_search_icon -> {
-                val intent = Intent(applicationContext, SignupActivity::class.java)
+                val intent = Intent(applicationContext, SearchActivity::class.java)
                 startActivity(intent)
             }
         }
