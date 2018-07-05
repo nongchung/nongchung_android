@@ -24,6 +24,7 @@ class FarmDetailReview : Fragment(){
 
     lateinit var reviewimgitems: ArrayList<ReviewImageData>
     lateinit var reviewimgAdapter : ReviewImageAdapter
+
     private  var linearLayoutManager : LinearLayoutManager? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
