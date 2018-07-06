@@ -3,7 +3,9 @@ package com.youth.farm_volunteering.Main
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -13,9 +15,11 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.youth.farm_volunteering.*
-import com.youth.farm_volunteering.Bookmark.*
+import com.youth.farm_volunteering.Bookmark.LikeFragment
+import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
+import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.UndefinedFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
@@ -50,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         tabImage_Array = arrayListOf(homeTab!!, likeTab!!, mypageTab!!, undefinedTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
         fragment_Array = arrayListOf(HomeFragment(), LikeFragment(), MypageFragment(), UndefinedFragment())
 
-
         for(i in 0..fragment_Array!!.size-1) {
             activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성
         }
@@ -78,12 +81,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
-
-
-
     }
 
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         var menuInflater = getMenuInflater()

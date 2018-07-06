@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".Main.SearchActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".FarmDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -56,7 +56,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8884fed7c2b02e76182b39833d2c6a92e44e68fc
     </application>
 
 </manifest>
