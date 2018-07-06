@@ -43,12 +43,14 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
                 expandedView.expandGroup(groupPosition)
                 //convertView!!.imageView.isPressed = true
             }
-            Toast.makeText(context, getGroup(groupPosition), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getGroup(groupPosition), Toast.LENGTH_SHORT).show() // 여기 클릭인식은 Season1과 Season2에서만 toast를 인식...
         }
         if (isExpanded) {
-            convertView.imageView.isPressed = true
+            //title?.setCompoundDrawablesWithIntrinsicBounds(0, 0,R.drawable.ic_up, 0);
+            convertView.imageView.isPressed = true  // 버튼클릭시 이미지 UP으로 변경
         } else {
-            convertView.imageView.isPressed = false
+            //title?.setCompoundDrawablesWithIntrinsicBounds(0, 0,R.drawable.ic_down, 0);
+            convertView.imageView.isPressed = false // 버튼다시클릭시 이미지 Down으로  변경
         }
         return convertView
     }
