@@ -5,8 +5,11 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
+         레트로핏을 하기위해서
+          <uses-permission android:name="android.permission.INTERNET"/>  이거사용
     -->
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -34,7 +37,7 @@
         </activity>
         <activity
             android:name=".Main.SearchActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".FarmDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -56,7 +59,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity android:name=".SignUp.SignupActivity1" />
         <activity android:name=".SignUp.SignupActivity2" />
         <activity android:name=".Login.LoginActivity" />
@@ -64,6 +66,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan"
             android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

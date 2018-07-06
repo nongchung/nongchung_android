@@ -177,7 +177,7 @@
                     android:layout_centerInParent="true"
                     android:layout_weight="1"
                     android:padding="@dimen/activity_search_toolbar_left_padding"
-                    android:text="농장위치"
+                    android:text="농장질문"
                     android:textAlignment="center" />
 
                 <TextView
@@ -202,6 +202,15 @@
 
 
             </FrameLayout>
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:context=".FarmDetailActivity" />
 
             <Button
                 android:id="@+id/detail_profile_btn"

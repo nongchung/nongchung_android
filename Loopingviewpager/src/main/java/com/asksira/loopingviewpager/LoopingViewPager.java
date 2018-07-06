@@ -7,6 +7,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * A ViewPager that auto-scrolls, and supports infinite scroll.
@@ -53,6 +54,7 @@ public class LoopingViewPager extends ViewPager {
     private boolean isIndicatorSmart = false;
 
     public LoopingViewPager(Context context) {
+
         super(context);
         init();
     }
@@ -61,6 +63,8 @@ public class LoopingViewPager extends ViewPager {
         super(context, attrs);
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LoopingViewPager, 0, 0);
         try {
+
+
             isInfinite = a.getBoolean(R.styleable.LoopingViewPager_isInfinite, false);
             isAutoScroll = a.getBoolean(R.styleable.LoopingViewPager_autoScroll, false);
             wrapContent = a.getBoolean(R.styleable.LoopingViewPager_wrap_content, true);
@@ -84,7 +88,7 @@ public class LoopingViewPager extends ViewPager {
             //https://stackoverflow.com/a/24666987/7870874
             if (wrapContent) {
                 int mode = MeasureSpec.getMode(heightMeasureSpec);
-                // Unspecified means that the ViewPager is in a ScrollView WRAP_CONTENT.
+                // Unspecified means that the ViewPager is in a ScrollView WRAP_COtabViewPagerNTENT.
                 // At Most means that the ViewPager is not in a ScrollView WRAP_CONTENT.
                 if (mode == MeasureSpec.UNSPECIFIED || mode == MeasureSpec.AT_MOST) {
                     // super has to be called in the beginning so the child views can be initialized.
@@ -104,6 +108,8 @@ public class LoopingViewPager extends ViewPager {
     }
 
     protected void init() {
+
+
         addOnPageChangeListener(new OnPageChangeListener() {
             float currentPosition;
 

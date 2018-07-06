@@ -5,6 +5,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.FarmAdapter
 import com.youth.farm_volunteering.R
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import android.content.Intent
@@ -14,9 +19,12 @@ import android.graphics.Bitmap
 import android.app.Activity
 import android.util.Log
 import android.provider.MediaStore.Images
-import android.widget.ImageView
-import android.widget.Toast
+import com.youth.farm_volunteering.data.MyPageData
+import com.youth.farm_volunteering.data.MyPageResponseData
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.FileNotFoundException
 import java.io.IOException
 
@@ -24,13 +32,30 @@ import java.io.IOException
 class MypageFragment : Fragment() {
     private var REQ_CODE_SELECT_IMAGE = 100
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    var myPageData: MyPageData? = null
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_mypage, container, false)
+
+
+        var mypageCall = ApplicationController.instance!!.networkService!!.mypage();
+        mypageCall.enqueue(object : Callback<MyPageResponseData> {
+            override fun onFailure(call: Call<MyPageResponseData>, t: Throwable?) {
+                Toast.makeText(activity!!, "home request fail", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
+
+                myPageData = response.body().data!!.get(0)
+                invalidate()
+            }
+        })
         //내 정보 프레그먼트 밑에 있는 계정, 설정, 지원 전부 다 ImageView로 박은다음에 토글 키가 있는 설정은 RelativeLayout으로 두고 match_parent를 가지는
         //ImageView의 background를 '푸시알림'으로 두고 토글키를 오른쪽 끝에다가 alignRight해주자
 
         //프로필 사진 변경
-        v.mypage_profile_image.setOnClickListener(View.OnClickListener {
+        v.imageview_mypage_profile.setOnClickListener(View.OnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
             intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -51,7 +76,7 @@ class MypageFragment : Fragment() {
             if (resultCode == Activity.RESULT_OK) {
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(this.activity.contentResolver, data!!.data)
-                    mypage_profile_image.setImageBitmap(bitmap)
+                    imageview_mypage_profile.setImageBitmap(bitmap)
                 } catch (e: Exception) {
                     Log.e("test", e.message)
                 }
@@ -61,4 +86,13 @@ class MypageFragment : Fragment() {
 
 
 
+    fun invalidate() {
+        Glide.with(activity)
+                .load(myPageData!!.img)
+                .into(imageview_mypage_profile);
+        textview_mypage_email.setText(myPageData!!.mail)
+        textview_mypage_nickname.setText(myPageData!!.name)
+
+
+    }
 }

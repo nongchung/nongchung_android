@@ -1,18 +1,18 @@
 package com.youth.farm_volunteering
 
-import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -24,57 +24,21 @@ import com.youth.farm_volunteering.Home.QandA.qandaFragment
 import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
-import java.util.ArrayList
-import com.youth.farm_volunteering.Main.MainActivity
+import java.util.*
 
 
-class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
+class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback {
 
+
+    private lateinit var mMap: GoogleMap
+//    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
-
-
     lateinit var scheduleitems: ArrayList<ScheduleData>
     lateinit var scheduleAdapter: ScheduleAdapter
-
 
 //
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
 //    lateinit var recycleAdapter: FarmRecyAdapter
-
-
-    override fun onClick(v: View?) {
-        when (v) {
-            farm_introduce -> {
-                clearSelected()
-                farm_introduce.isSelected = true
-                replaceFragment(FarmDetailintroduce())
-            }
-            farm_location -> {
-                clearSelected()
-                farm_location.isSelected = true
-
-                replaceFragment(FarmDetailLocation())    //MapsActivity()로 바꿔서 띄우고 싶은데 잘안됩니다...
-
-//                var mapFragment = FarmDetailLocation() ;
-                replaceFragment(FarmDetailLocation())
-//                mapFragment.getMapAsync(this)
-
-            }
-            farm_review -> {
-                clearSelected()
-                farm_review.isSelected = true
-                replaceFragment(qandaFragment())
-            }
-
-
-        }
-
-        //따로 스캐줄에서 더 화면을 구성한다면!!!
-//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
-//        startActivity(intent)
-
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +57,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
         scheduleView.adapter = scheduleAdapter
 
 
+        val mapFragment = supportFragmentManager
+                .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 //
 //        recycleItems = ArrayList()
 //        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
@@ -110,32 +77,24 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-
-
-
-
-
-
-
         toolbar!!.setTitleTextColor(0xFF000000.toInt())
         toolbar!!.title = " "
 
-        toolbarImage.setImageResource(intent.getIntExtra("farm_img", 0))
+        Glide.with(toolbarImage.context)
+                .load(intent.getStringExtra("farm_img"))
+                .into(toolbarImage);
         detail_location_tv.setText(intent.getStringExtra("farm_location"))
         detail_name_tv.setText(intent.getStringExtra("farm_name"))
-        detail_price_tv.setText(intent.getStringExtra("farm_price"))
+        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
         detail_days_tv.setText(intent.getStringExtra("farm_days"))
 
-
-
-
-
-
-        addFragment(FarmDetailintroduce())
+        addFragment(FarmIntroFragment())
         farm_introduce.isSelected = true
         farm_introduce.setOnClickListener(this)
         farm_location.setOnClickListener(this)
         farm_review.setOnClickListener(this)
+
+
         detail_apply_btn.setOnClickListener {
             Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
             if (detail_apply_rv.visibility == View.GONE) {
@@ -148,6 +107,48 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    override fun onClick(v: View?) {
+        when (v) {
+            farm_introduce -> {
+                clearSelected()
+                farm_introduce.isSelected = true
+                replaceFragment(FarmIntroFragment())
+            }
+            farm_location -> {
+                clearSelected()
+                farm_location.isSelected = true
+
+                replaceFragment(FarmFAQFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
+
+//                var mapFragment = FarmFAQFragment() ;
+                replaceFragment(FarmFAQFragment())
+//                mapFragment.getMapAsync(this)
+
+            }
+            farm_review -> {
+                clearSelected()
+                farm_review.isSelected = true
+                replaceFragment(FarmReviewFragment())
+            }
+        }
+
+        //따로 스캐줄에서 더 화면을 구성한다면!!!
+//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
+//        startActivity(intent)
+
+    }
+
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val myPlace = LatLng(37.498728, 127.028814)
+        mMap.addMarker(MarkerOptions().position(myPlace).title("농활 장소"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 15.0f))
+        mMap.uiSettings.isZoomControlsEnabled = true
+    }
+
     // 뒤로가기 함수
 
     override fun onSupportNavigateUp(): Boolean {
@@ -155,6 +156,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         var menuInflater = getMenuInflater()
@@ -196,7 +198,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
 
     fun clearSelected() {
         farm_introduce.isSelected = false
