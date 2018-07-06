@@ -19,8 +19,10 @@ import android.graphics.Bitmap
 import android.app.Activity
 import android.util.Log
 import android.provider.MediaStore.Images
+import com.youth.farm_volunteering.Login.LoginActivity
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
+import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,19 +40,24 @@ class MypageFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_mypage, container, false)
 
+        if (LoginToken.logined) {
 
-        var mypageCall = ApplicationController.instance!!.networkService!!.mypage();
-        mypageCall.enqueue(object : Callback<MyPageResponseData> {
-            override fun onFailure(call: Call<MyPageResponseData>, t: Throwable?) {
-                Toast.makeText(activity!!, "home request fail", Toast.LENGTH_SHORT).show()
-            }
+            var mypageCall = ApplicationController.instance!!.networkService!!.mypage();
+            mypageCall.enqueue(object : Callback<MyPageResponseData> {
+                override fun onFailure(call: Call<MyPageResponseData>, t: Throwable?) {
+                    Toast.makeText(activity!!, "home request fail", Toast.LENGTH_SHORT).show()
+                }
 
-            override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
+                override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
 
-                myPageData = response.body().data!!.get(0)
-                invalidate()
-            }
-        })
+                    myPageData = response.body().data!!.get(0)
+                    invalidate()
+                }
+            })
+        } else {
+            var i = Intent(activity, LoginActivity::class.java)
+            startActivity(i)
+        }
         //내 정보 프레그먼트 밑에 있는 계정, 설정, 지원 전부 다 ImageView로 박은다음에 토글 키가 있는 설정은 RelativeLayout으로 두고 match_parent를 가지는
         //ImageView의 background를 '푸시알림'으로 두고 토글키를 오른쪽 끝에다가 alignRight해주자
 
@@ -71,7 +78,7 @@ class MypageFragment : Fragment() {
         return v
     }
 
-     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
                 try {
@@ -83,7 +90,6 @@ class MypageFragment : Fragment() {
             }
         }
     }
-
 
 
     fun invalidate() {

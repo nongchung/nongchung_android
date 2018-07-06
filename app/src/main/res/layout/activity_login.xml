@@ -10,8 +10,7 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="  ">
-    </android.support.v7.widget.Toolbar>
+        app:title="  "></android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView19"
@@ -26,13 +25,13 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <EditText
-        android:id="@+id/editText16"
+        android:id="@+id/edittext_login_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="이메일을 입력하세요"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -47,31 +46,31 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/editText16" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_login_email" />
 
     <EditText
-        android:id="@+id/editText17"
+        android:id="@+id/edittext_login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="비밀번호를 입력하세요"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/button_login_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:text="Button"
+        android:text="로그인"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText17" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_login_password" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -97,7 +96,7 @@
         android:text="계정이 없나요? 회훤가입 하기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        app:layout_constraintTop_toBottomOf="@+id/button_login_login" />
 
     <TextView
         android:id="@+id/textView24"
