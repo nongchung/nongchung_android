@@ -1,20 +1,15 @@
 package com.youth.farm_volunteering
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ImageView
-import android.widget.Toast
 import com.asksira.loopingviewpager.LoopingViewPager
 import com.asksira.loopingviewpagerdemo.DemoInfiniteAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
-import com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_XY
 
 
 
@@ -53,10 +48,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
-
-
-
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
 
 //        tabAdapter = this.activity_main_tabViewPager.adapter
@@ -65,9 +56,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         vpAdapter = DemoInfiniteAdapter(this.context, slideImages, true)
         adViewPager!!.adapter = vpAdapter
-
-
-
 
 //        timer.schedule(adTimerTask, 2000)
 
