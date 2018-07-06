@@ -3,7 +3,9 @@ package com.youth.farm_volunteering.Main
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -17,7 +19,6 @@ import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.SignUp.SignupActivity
 import com.youth.farm_volunteering.UndefinedFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         var menuInflater = getMenuInflater()
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId){
             R.id.menu_search_icon -> {
-                val intent = Intent(applicationContext, SignupActivity::class.java)
+                val intent = Intent(applicationContext, SearchActivity::class.java)
                 startActivity(intent)
             }
         }

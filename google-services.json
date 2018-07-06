@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "478903766167",
+    "firebase_url": "https://nonghwal-f1fae.firebaseio.com",
+    "project_id": "nonghwal-f1fae",
+    "storage_bucket": "nonghwal-f1fae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478903766167:android:fe370ddb5ff05fcc",
+        "android_client_info": {
+          "package_name": "com.youth.farm_volunteering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478903766167-k21fkm8qfiindrpsuvafgote1m2ocuf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_jJKSdDMwZAaf2QfLvVLwxd8YPtEPGUg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

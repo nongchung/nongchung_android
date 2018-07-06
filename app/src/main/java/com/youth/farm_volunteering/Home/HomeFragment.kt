@@ -6,16 +6,22 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.asksira.loopingviewpager.LoopingViewPager
+import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.asksira.loopingviewpagerdemo.DemoInfiniteAdapter
+import com.youth.farm_volunteering.data.HomeResponseData
+import com.youth.farm_volunteering.data.NonghwalData
 import kotlinx.android.synthetic.main.fragment_home.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
-
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
-        when(v){
+        when (v) {
             fragment_home_weeklyHotFarm_showAll_txt -> {
                 replaceFragment(ShowAllFragment())
             }
@@ -35,18 +41,39 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
     //    var adViewPagerAdapter: AdViewPagerAdapter? = null
-    var farmList : ArrayList<FarmData>? = null
+    var popularNonghwalList: List<NonghwalData>? = null
     //    var adViewPager : ViewPager? = null
-    var slideImages : ArrayList<Int> = arrayListOf(R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4)
+    var slideImages: ArrayList<Int> = arrayListOf(R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4)
 
 
-    private var weeklyHotFarm_linearLayoutManager : LinearLayoutManager? = null
-    private var newFarm_linearLayoutManager : LinearLayoutManager? = null
-    private var themeFarm_linearLayoutManager : LinearLayoutManager? = null
-    private var hotFarm_linearLayoutManager : LinearLayoutManager? = null
+    private var weeklyHotFarm_linearLayoutManager: LinearLayoutManager? = null
+    private var newFarm_linearLayoutManager: LinearLayoutManager? = null
+    private var themeFarm_linearLayoutManager: LinearLayoutManager? = null
+    private var hotFarm_linearLayoutManager: LinearLayoutManager? = null
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+
+        var homeCall = ApplicationController.instance!!.networkService!!.home();
+        homeCall.enqueue(object : Callback<HomeResponseData> {
+            override fun onFailure(call: Call<HomeResponseData>, t: Throwable?) {
+                Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
+
+                popularNonghwalList = response.body().populNh
+
+
+                farmAdapter = FarmAdapter(popularNonghwalList!!)
+
+                fragment_home_weeklyHotFarm_rv.adapter = farmAdapter
+                fragment_home_newFarm_rv.adapter = farmAdapter
+                fragment_home_themeFarm_rv.adapter = farmAdapter
+                fragment_home_hotFarm_rv.adapter = farmAdapter
+            }
+        })
 
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
 
@@ -54,28 +81,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
 
-        vpAdapter = DemoInfiniteAdapter(this.context, slideImages, true)
+        vpAdapter = DemoInfiniteAdapter(this.context!!, slideImages, true)
         adViewPager!!.adapter = vpAdapter
 
+
 //        timer.schedule(adTimerTask, 2000)
-
-        farmList = ArrayList()
-
-        farmList!!.add(FarmData(R.drawable.image_1, R.drawable.todays_pick, "1서울 회기","("+"14000"+"원, ","1박"+")","딸기농장"
-                , 142.toString()))
-        farmList!!.add(FarmData(R.drawable.image_2, R.drawable.todays_pick, "2서울 합정","("+"14000"+"원, ","1박"+")","사과농장"
-                , 142.toString()))
-        farmList!!.add(FarmData(R.drawable.image_3, R.drawable.todays_pick, "3서울 홍대","("+"14000"+"원, ","1박"+")","배농장"
-                , 142.toString()))
-        farmList!!.add(FarmData(R.drawable.image_4, R.drawable.todays_pick, "4서울 신촌","("+"14000"+"원, ","1박"+")","감귤농장"
-                , 142.toString()))
-        farmList!!.add(FarmData(R.drawable.image_5, R.drawable.todays_pick, "5서울 노원","("+"14000"+"원, ","1박"+")","메론농장"
-                , 142.toString()))
-        farmList!!.add(FarmData(R.drawable.image_6, R.drawable.todays_pick, "6서울 강남","("+"14000"+"원, ","1박"+")","레몬농장"
-                , 142.toString()))
-
-        farmAdapter = FarmAdapter(farmList!!)
-
 
 
 //        v.fragment_home_weekendHotFarm.setOnItemClickListener(object : AdapterView.OnItemClickListener{
@@ -112,15 +122,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
         fragment_home_themeFarm_rv.layoutManager = LinearLayoutManager(context)
         fragment_home_hotFarm_rv.layoutManager = LinearLayoutManager(context)
 
-        fragment_home_weeklyHotFarm_rv.adapter = farmAdapter
-        fragment_home_newFarm_rv.adapter = farmAdapter
-        fragment_home_themeFarm_rv.adapter = farmAdapter
-        fragment_home_hotFarm_rv.adapter = farmAdapter
 
-        weeklyHotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        newFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        themeFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        hotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        weeklyHotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        newFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        themeFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        hotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         fragment_home_weeklyHotFarm_rv!!.setLayoutManager(weeklyHotFarm_linearLayoutManager)
         fragment_home_newFarm_rv!!.setLayoutManager(newFarm_linearLayoutManager)

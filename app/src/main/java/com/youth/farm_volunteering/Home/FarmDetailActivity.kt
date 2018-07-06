@@ -2,7 +2,9 @@ package com.youth.farm_volunteering
 
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -10,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_farm_detail.*
 import java.util.*
 
 
-class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyCallback {
+class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback {
 
 
     private lateinit var mMap: GoogleMap
@@ -35,36 +38,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
 //    lateinit var recycleAdapter: FarmRecyAdapter
 
-    override fun onClick(v: View?) {
-        when (v) {
-            farm_introduce -> {
-                clearSelected()
-                farm_introduce.isSelected = true
-                replaceFragment(FarmIntroFragment())
-            }
-            farm_location -> {
-                clearSelected()
-                farm_location.isSelected = true
-
-                replaceFragment(FarmFAQFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
-
-//                var mapFragment = FarmFAQFragment() ;
-                replaceFragment(FarmFAQFragment())
-//                mapFragment.getMapAsync(this)
-
-            }
-            farm_review -> {
-                clearSelected()
-                farm_review.isSelected = true
-                replaceFragment(FarmReviewFragment())
-            }
-        }
-
-        //따로 스캐줄에서 더 화면을 구성한다면!!!
-//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
-//        startActivity(intent)
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,10 +79,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
         toolbar!!.setTitleTextColor(0xFF000000.toInt())
         toolbar!!.title = " "
 
-        toolbarImage.setImageResource(intent.getIntExtra("farm_img", 0))
+        Glide.with(toolbarImage.context)
+                .load(intent.getStringExtra("farm_img"))
+                .into(toolbarImage);
         detail_location_tv.setText(intent.getStringExtra("farm_location"))
         detail_name_tv.setText(intent.getStringExtra("farm_name"))
-        detail_price_tv.setText(intent.getStringExtra("farm_price"))
+        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
         detail_days_tv.setText(intent.getStringExtra("farm_days"))
 
         addFragment(FarmIntroFragment())
@@ -131,6 +106,38 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
 
     }
 
+    override fun onClick(v: View?) {
+        when (v) {
+            farm_introduce -> {
+                clearSelected()
+                farm_introduce.isSelected = true
+                replaceFragment(FarmIntroFragment())
+            }
+            farm_location -> {
+                clearSelected()
+                farm_location.isSelected = true
+
+                replaceFragment(FarmFAQFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
+
+//                var mapFragment = FarmFAQFragment() ;
+                replaceFragment(FarmFAQFragment())
+//                mapFragment.getMapAsync(this)
+
+            }
+            farm_review -> {
+                clearSelected()
+                farm_review.isSelected = true
+                replaceFragment(FarmReviewFragment())
+            }
+        }
+
+        //따로 스캐줄에서 더 화면을 구성한다면!!!
+//        val intent : Intent = Intent(applicationContext,TestActivity::class.java)
+//        startActivity(intent)
+
+    }
+
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -148,6 +155,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener,OnMapReadyC
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         var menuInflater = getMenuInflater()

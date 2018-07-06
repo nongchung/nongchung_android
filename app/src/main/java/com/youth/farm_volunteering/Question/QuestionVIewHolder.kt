@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.youth.farm_volunteering.R
 
 class QuestionVIewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-    var QuestionButton : Button = itemView!!.findViewById(R.id.question_btn)
+//    var QuestionButton : Button = itemView!!.findViewById(R.id.question_btn)
     var QuestionText : TextView = itemView!!.findViewById(R.id.question_txt)
 }
 //
