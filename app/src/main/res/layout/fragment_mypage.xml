@@ -82,10 +82,12 @@
             android:gravity="center_vertical"
             android:paddingStart="15dp"
             android:padding="3dp"/>
+
         <ImageView
+            android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6.5"/>
+            android:layout_weight="6.5" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"

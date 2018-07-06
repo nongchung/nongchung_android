@@ -1,30 +1,27 @@
 package com.youth.farm_volunteering
 
 import android.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-//class MapsActivity : AppCompatActivity(), OnMapReadyCallback 원래 기존클래스
+//class MapsFragment : AppCompatActivity(), OnMapReadyCallback 원래 기존클래스
 
-class MapsActivity : Fragment(),OnMapReadyCallback {
+class MapsFragment : Fragment(),OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //
-//        setContentView(R.layout.activity_maps)
+//        setContentView(R.layout.fragment_maps)
 //
 //        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //
@@ -33,7 +30,7 @@ class MapsActivity : Fragment(),OnMapReadyCallback {
 //        mapFragment.getMapAsync(this)
 //    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.activity_maps, container, false)
+        val v = inflater.inflate(R.layout.fragment_maps, container, false)
         //activity!!.supportFragmentManager.beginTransaction().add()
 
         return v
@@ -43,7 +40,7 @@ class MapsActivity : Fragment(),OnMapReadyCallback {
     //기존 소스
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_maps)
+//        setContentView(R.layout.fragment_maps)
 //        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val mapFragment = supportFragmentManager
 //                .findFragmentById(R.id.map) as SupportMapFragment

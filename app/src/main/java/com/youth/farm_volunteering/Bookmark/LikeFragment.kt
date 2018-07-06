@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.youth.farm_volunteering.Bookmark.LikeAdapter
+import com.youth.farm_volunteering.Bookmark.LikeData
 import com.youth.farm_volunteering.R
 import java.util.ArrayList
 import kotlinx.android.synthetic.main.fragment_like.*

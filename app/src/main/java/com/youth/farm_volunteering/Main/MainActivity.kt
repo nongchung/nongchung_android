@@ -3,19 +3,25 @@ package com.youth.farm_volunteering.Main
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.youth.farm_volunteering.*
-import com.youth.farm_volunteering.Bookmark.*
+import com.youth.farm_volunteering.Bookmark.LikeFragment
+import com.youth.farm_volunteering.Home.SearchFragment
+import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
+import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.UndefinedFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
@@ -27,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     var likeTab : View? = null
     var mypageTab : View? = null
     var undefinedTab : View? = null
+    var searchTab : View? = null
     var tabImage_Array : ArrayList<View>? = null
     var fragment_Array : ArrayList<Fragment>? = null
 
@@ -37,19 +44,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var tabAdapter = TabAdapter(supportFragmentManager)
 
+        activity_main_tabViewPager.adapter = tabAdapter
+        activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
+
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-//        supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
+ //       supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
 
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home,null,false)
         likeTab = LayoutInflater.from(this).inflate(R.layout.tab_like,null,false)
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage,null,false)
         undefinedTab = LayoutInflater.from(this).inflate(R.layout.tab_undefined,null,false)
+        searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search,null,false)
 
-        tabImage_Array = arrayListOf(homeTab!!, likeTab!!, mypageTab!!, undefinedTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
-        fragment_Array = arrayListOf(HomeFragment(), LikeFragment(), MypageFragment(), UndefinedFragment())
 
+        tabImage_Array = arrayListOf(homeTab!!, likeTab!!, mypageTab!!, undefinedTab!!,searchTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
+        fragment_Array = arrayListOf(HomeFragment(), LikeFragment(), MypageFragment(), UndefinedFragment(),SearchFragment())
 
         for(i in 0..fragment_Array!!.size-1) {
             activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성
@@ -62,6 +73,24 @@ class MainActivity : AppCompatActivity() {
         }
         for(i in 0..tabAdapter.count-1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
         activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
+
+
+        activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
+
+        activity_main_tabViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+
+            }
+
+        })
 
         activity_main_bottomTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -78,12 +107,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
-
-
-
     }
 
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         var menuInflater = getMenuInflater()
@@ -98,6 +124,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId){
             R.id.menu_search_icon -> {
+
                 val intent = Intent(applicationContext, SearchActivity::class.java)
                 startActivity(intent)
             }

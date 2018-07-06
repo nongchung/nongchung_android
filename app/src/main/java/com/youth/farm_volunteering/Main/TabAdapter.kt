@@ -24,5 +24,4 @@ class TabAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
 
     override fun getCount(): Int = tabDataList!!.size
 
-
 }
