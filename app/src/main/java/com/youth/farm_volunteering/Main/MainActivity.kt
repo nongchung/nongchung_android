@@ -19,8 +19,12 @@ import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
+import com.youth.farm_volunteering.Login.LoginActivity
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.SignUp.SignupActivity
+import com.youth.farm_volunteering.SignUp.SignupActivity1
+import com.youth.farm_volunteering.StartActivity
 import com.youth.farm_volunteering.UndefinedFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
@@ -125,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         when(item!!.itemId){
             R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, SearchActivity::class.java)
+                val intent = Intent(applicationContext, StartActivity::class.java)
                 startActivity(intent)
             }
         }
