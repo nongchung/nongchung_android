@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.*
+import com.youth.farm_volunteering.Home.QandA.qandaFragment
 import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
@@ -62,7 +63,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener {
             farm_review -> {
                 clearSelected()
                 farm_review.isSelected = true
-                replaceFragment(FarmDetailReview())
+                replaceFragment(qandaFragment())
             }
 
 

@@ -12,4 +12,9 @@
         <item name="android:src">@drawable/side_menu</item>
     </style>
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#BDBDBD</item>
+        <item name="colorControlActivated">#FAD118</item>
+    </style>
+
 </resources>
