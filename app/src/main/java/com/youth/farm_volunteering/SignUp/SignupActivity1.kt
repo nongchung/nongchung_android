@@ -14,7 +14,7 @@ class SignupActivity1 : AppCompatActivity() {
         setContentView(R.layout.activity_signup1)
 
         nextbutton.setOnClickListener {
-            var signup2 = Intent(this, qandaFragment::class.java)
+            var signup2 = Intent(this, SignupActivity2::class.java)
             startActivity(signup2)
         }
     }
