@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.*
 import com.youth.farm_volunteering.Home.QandA.qandaFragment
+import com.youth.farm_volunteering.R.id.detail_nsv
 import com.youth.farm_volunteering.data.ApplyRvData
 import junit.framework.Test
 
@@ -48,8 +49,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farm_detail)
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
-        
-        detail_nsv.setNestedScrollingEnabled(false)
+
 
         scheduleitems = ArrayList()
         scheduleitems.add(ScheduleData("서울", "경기", "인천"))

@@ -67,11 +67,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
-<<<<<<< HEAD
-        <activity android:name=".ShowAll.ShowAllActivity"></activity>
-=======
+
         <activity android:name=".StartActivity"></activity>
->>>>>>> a61fcd4828ffe597afca752e42a5d3230b91a750
+
     </application>
 
 </manifest>
