@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -37,7 +38,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 //    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
 
-    lateinit var scheduleitems: ArrayList<ScheduleData>
     lateinit var applyitems: ArrayList<ApplyRvData>
     lateinit var scheduleAdapter: ScheduleAdapter
     lateinit var applyAdapter: ApplyRvAdapter
