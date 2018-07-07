@@ -36,8 +36,8 @@ class FarmReviewFragment : Fragment(){
         reviewAdapter = ReviewAdapter(reviewitems)
 //        reviewAdapter.setOnItemClickListener(this.activity)
 
-        v.reviewView.layoutManager = LinearLayoutManager(this.activity!!.applicationContext)
-        v.reviewView.adapter = reviewAdapter
+        v.review_rv.layoutManager = LinearLayoutManager(this.activity!!.applicationContext)
+        v.review_rv.adapter = reviewAdapter
 
 
 
@@ -52,8 +52,8 @@ class FarmReviewFragment : Fragment(){
         linearLayoutManager = LinearLayoutManager(activity , LinearLayoutManager.HORIZONTAL,false) // 괄호안에 activity도 변경 필요
 
         reviewimgAdapter = ReviewImageAdapter(reviewimgitems)
-        a.reviewimageView.layoutManager = linearLayoutManager // 이걸바꾸자....
-        a.reviewimageView.adapter = reviewimgAdapter
+        //a.reviewimageView.layoutManager = linearLayoutManager // 이걸바꾸자....
+        //a.reviewimageView.adapter = reviewimgAdapter
 
         return v
 

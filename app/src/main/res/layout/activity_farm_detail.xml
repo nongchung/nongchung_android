@@ -1,10 +1,12 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_cd"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.youth.farm_volunteering.FarmDetailActivity">
+
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -44,6 +46,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/detail_nsv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -164,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:padding="@dimen/activity_search_toolbar_left_padding"
                     android:text="농장소개"
@@ -198,6 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_search_toolbar_left_padding">
+
             </FrameLayout>
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -216,7 +220,21 @@
                 android:layout_alignParentBottom="true"
                 android:background="#e891ef"
                 android:text="프로필 확인"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"
+                android:text="스캐줄" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/scheduleView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:padding="@dimen/activity_search_toolbar_left_padding"></android.support.v7.widget.RecyclerView>
 
 
         </LinearLayout>
@@ -233,19 +251,56 @@
             android:id="@+id/detail_apply_rv"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_above="@id/detail_apply_btn"
+            android:layout_above="@id/detail_footer"
             android:background="#ffffff"
             android:visibility="gone">
 
+
         </android.support.v7.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/detail_apply_btn"
+        <View
+            android:id="@+id/detail_black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/detail_apply_rv"
+            android:background="#64000000"
+            android:visibility="gone" />
+
+
+        <RelativeLayout
+            android:id="@+id/detail_footer"
+            android:layout_width="match_parent"
+            android:layout_height="60.92dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorAccent"
-            android:text="신청 하기" />
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/detail_date_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="225.05dp"
+                    android:layout_height="45.07dp"
+                    android:layout_marginRight="6.04dp"
+                    android:background="@drawable/button_shape_date"
+                    android:text="2018년 6월 29일 ~ 30일" />
+
+                <Button
+                    android:id="@+id/detail_apply_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="114.11dp"
+                    android:layout_height="45.07dp"
+                    android:background="@drawable/button_shape_apply"
+                    android:text="신청하기" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

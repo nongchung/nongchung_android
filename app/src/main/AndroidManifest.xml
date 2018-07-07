@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".Main.SearchActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".FarmDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -62,11 +62,16 @@
         <activity android:name=".SignUp.SignupActivity1" />
         <activity android:name=".SignUp.SignupActivity2" />
         <activity android:name=".Login.LoginActivity" />
-        <activity android:name=".ReviewWriteActivity"
+        <activity
+            android:name=".ReviewWriteActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustResize|adjustPan"
-            android:screenOrientation="portrait"/>
-
+            android:windowSoftInputMode="adjustResize|adjustPan" />
+<<<<<<< HEAD
+        <activity android:name=".ShowAll.ShowAllActivity"></activity>
+=======
+        <activity android:name=".StartActivity"></activity>
+>>>>>>> a61fcd4828ffe597afca752e42a5d3230b91a750
     </application>
 
 </manifest>
