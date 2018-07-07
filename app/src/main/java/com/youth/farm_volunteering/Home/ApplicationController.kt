@@ -37,6 +37,8 @@ class ApplicationController : Application() {
 
         val cookieStore = PersistentCookieStore(instance)
         val cookieManager = CookieManager(cookieStore, CookiePolicy.ACCEPT_ALL)
+        var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+        LoginToken.token = sharedPreference.getString(LoginToken.PREF_KEY, null);
 
         val builder = Retrofit.Builder()
         val retrofit = builder
@@ -47,7 +49,7 @@ class ApplicationController : Application() {
                         var original = chain.request();
 
                         var request = original.newBuilder()
-                                .header("token", LoginToken.token)
+                                .header("token", if (LoginToken.token == null) "" else LoginToken.token)
                                 .method(original.method(), original.body())
                                 .build();
 
