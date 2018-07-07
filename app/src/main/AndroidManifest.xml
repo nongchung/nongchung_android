@@ -68,7 +68,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
         <!--<activity android:name=".ShowAll.ShowAllActivity"></activity>-->
+
         <activity android:name=".StartActivity"></activity>
+
     </application>
 
 </manifest>

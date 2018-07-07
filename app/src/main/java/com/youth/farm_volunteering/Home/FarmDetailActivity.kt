@@ -24,6 +24,7 @@ import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
 
 import com.youth.farm_volunteering.Home.QandA.qandaFragment
+import com.youth.farm_volunteering.R.id.detail_nsv
 import com.youth.farm_volunteering.data.ApplyRvData
 import junit.framework.Test
 
@@ -50,8 +51,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farm_detail)
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
-        
-        detail_nsv.setNestedScrollingEnabled(false)
+
 
 
 
