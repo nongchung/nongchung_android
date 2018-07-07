@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.*
 import com.youth.farm_volunteering.Home.QandA.qandaFragment
+import com.youth.farm_volunteering.R.id.*
 import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
@@ -83,10 +84,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         Glide.with(toolbarImage.context)
                 .load(intent.getStringExtra("farm_img"))
                 .into(toolbarImage);
-        detail_location_tv.setText(intent.getStringExtra("farm_location"))
-        detail_name_tv.setText(intent.getStringExtra("farm_name"))
-        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
-        detail_days_tv.setText(intent.getStringExtra("farm_days"))
+//        detail_location_tv.setText(intent.getStringExtra("farm_location"))
+//        detail_name_tv.setText(intent.getStringExtra("farm_name"))
+//        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
+//        detail_days_tv.setText(intent.getStringExtra("farm_days"))
+
+
 
         addFragment(FarmIntroFragment())
         farm_introduce.isSelected = true

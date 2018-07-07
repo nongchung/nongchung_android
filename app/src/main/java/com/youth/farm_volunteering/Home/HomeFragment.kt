@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.asksira.loopingviewpager.LoopingViewPager
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.asksira.loopingviewpagerdemo.DemoInfiniteAdapter
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.NonghwalData
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -55,7 +56,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
 
-        var homeCall = ApplicationController.instance!!.networkService!!.home();
+        var homeCall = ApplicationController.instance!!.networkService!!.home(); // 서버에서 데이터 가져오는거!!
         homeCall.enqueue(object : Callback<HomeResponseData> {
             override fun onFailure(call: Call<HomeResponseData>, t: Throwable?) {
                 Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
