@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
-    android:layout_height="250dp"
+    android:layout_height="51dp"
     android:orientation="vertical"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp">
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <ImageView
-            android:id="@+id/schedule_0"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:id="@+id/schedule_img"
+            android:layout_width="24dp"
+            android:layout_height="22dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="18dp"
+            android:src="@color/colorAccent" />
+
+        <ImageView
+            android:id="@+id/schedule_img2"
+            android:layout_width="5dp"
+            android:layout_height="33dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/schedule_time"
+            android:layout_marginStart="27dp"
             android:src="@color/colorAccent" />
 
         <TextView
-            android:id="@+id/schedule_1"
+            android:id="@+id/schedule_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="18dp"
-            android:text="스캐줄1" />
+            android:layout_marginStart="59dp"
+            android:text="시간" />
 
         <TextView
-            android:id="@+id/schedule_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-
-
-            android:layout_alignStart="@+id/schedule_1"
-            android:layout_marginBottom="27dp"
-            android:text="스캐줄2" />
-
-        <TextView
-            android:id="@+id/schedule_3"
+            android:id="@+id/schedule_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/schedule_2"
-            android:text="스캐줄3" />
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="85dp"
+            android:text="시간활동" />
+
+        />
 
 
     </RelativeLayout>

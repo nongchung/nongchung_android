@@ -15,6 +15,15 @@
     <!---->
 
 
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="8dp"
+        android:padding="@dimen/activity_search_toolbar_left_padding"
+        android:text="농장관련정보"
+        android:textSize="28sp" />
+
 
 
     <TextView
@@ -56,6 +65,8 @@
         <!--android:text="사과농장"-->
         <!--android:textSize="28sp" />-->
 
+
+
     <TextView
         android:id="@+id/detail_introduce_description"
         android:layout_width="match_parent"
@@ -84,6 +95,10 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="참석인원"
 
@@ -95,6 +110,11 @@
 
 
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -129,4 +149,81 @@
         android:padding="@dimen/activity_search_toolbar_left_padding"
 
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+
+    <Button
+        android:id="@+id/detail_profile_watch_btn"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="프로필보기"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/scheduleView_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="준비물"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="옷, 간식"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="집결지"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="환불규정"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="환불규정 설명"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="연락처"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="연락처관련설명"/>
+
 </LinearLayout>

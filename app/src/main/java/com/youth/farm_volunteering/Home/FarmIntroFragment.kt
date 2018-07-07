@@ -11,10 +11,7 @@ import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
-import com.youth.farm_volunteering.data.DetailNonghwalResponseData
-import com.youth.farm_volunteering.data.FarmInfoData
-import com.youth.farm_volunteering.data.FriendInfoData
-import com.youth.farm_volunteering.data.NhInfoData
+import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
 import kotlinx.android.synthetic.main.layout_group.view.*
@@ -24,11 +21,13 @@ import retrofit2.Response
 
 class FarmIntroFragment : Fragment() {
 
-    lateinit var friendinfoAdaoter: FriendInfoAdapter
+    lateinit var friendinfoAdapter: FriendInfoAdapter
+    lateinit var scheduleAdapter: ScheduleAdapter
 
     var DetailNonghwalList:NhInfoData? = null
     var DetailFriendInfoList: List<FriendInfoData>? = null
     var DetailFarmInfoList: FarmInfoData? = null
+    var DetailScheduleList: List<DetailSchData>? = null
 
 
     private var introduceImage_linearLayoutManager: LinearLayoutManager? = null
@@ -50,6 +49,7 @@ class FarmIntroFragment : Fragment() {
                 DetailNonghwalList = response.body().nhInfo
                 DetailFriendInfoList = response.body().friendsInfo
                 DetailFarmInfoList = response.body().farmerInfo
+                DetailScheduleList = response.body().schedule
 
                 detail_introduce_addr.setText(DetailNonghwalList!!.addr.toString())
                 detail_introduce_name.setText(DetailNonghwalList!!.name.toString())
@@ -59,10 +59,10 @@ class FarmIntroFragment : Fragment() {
                 detail_introduce_price.setText(DetailNonghwalList!!.price.toString())
                 detail_introduce_period.setText(DetailNonghwalList!!.period.toString())
 
-                friendinfoAdaoter =FriendInfoAdapter(DetailFriendInfoList!!)
+                friendinfoAdapter =FriendInfoAdapter(DetailFriendInfoList!!)
 
                 v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
-                v.friendinfoView_rv.adapter = friendinfoAdaoter
+                v.friendinfoView_rv.adapter = friendinfoAdapter
 
                 introduceImage_linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
@@ -71,8 +71,10 @@ class FarmIntroFragment : Fragment() {
                 farminfo_name.setText(DetailFarmInfoList!!.name.toString())
                 farminfo_comment.setText(DetailFarmInfoList!!.comment.toString())
 
-//                farminfo_image.setImageResource(DetailFarmInfoList!!.img!!.toInt())
+                scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
+                v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
+                v.scheduleView_rv.adapter = scheduleAdapter
 
             }
         })

@@ -218,23 +218,6 @@
                 android:text="프로필 확인"
                 android:textColor="#ffffff"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="스캐줄"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                />
-
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/scheduleView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                >
-            </android.support.v7.widget.RecyclerView>
-
 
         </LinearLayout>
 

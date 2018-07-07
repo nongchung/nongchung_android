@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,10 +18,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
-import com.youth.farm_volunteering.Home.QandA.qandaFragment
-import com.youth.farm_volunteering.R.id.*
-import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import java.util.*
@@ -34,8 +31,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     private lateinit var mMap: GoogleMap
 //    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
-    lateinit var scheduleitems: ArrayList<ScheduleData>
-    lateinit var scheduleAdapter: ScheduleAdapter
+
 
 //
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
@@ -45,17 +41,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farm_detail)
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
-
-        scheduleitems = ArrayList()
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-
-        scheduleAdapter = ScheduleAdapter(scheduleitems)
-        scheduleAdapter.setOnItemClickListener(this)
-
-        scheduleView.layoutManager = LinearLayoutManager(this)
-        scheduleView.adapter = scheduleAdapter
 
 
         val mapFragment = supportFragmentManager
@@ -121,10 +106,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 clearSelected()
                 farm_location.isSelected = true
 
-                replaceFragment(FarmFAQFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
+                replaceFragment(ExpandFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmFAQFragment() ;
-                replaceFragment(FarmFAQFragment())
 //                mapFragment.getMapAsync(this)
 
             }
