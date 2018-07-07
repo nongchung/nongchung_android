@@ -56,105 +56,105 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/detail_location_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/detail_location_tv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:id="@+id/detail_name_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/detail_name_tv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:id="@+id/detail_price_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/detail_price_tv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:id="@+id/detail_days_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/detail_days_tv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"
-                android:text="사과농장"
-                android:textSize="28sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:lineSpacingExtra="8dp"-->
+                <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+                <!--android:text="사과농장"-->
+                <!--android:textSize="28sp" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -199,9 +199,8 @@
             <FrameLayout
                 android:id="@+id/detail_frame"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/activity_search_toolbar_left_padding">
-
 
             </FrameLayout>
 
@@ -222,6 +221,7 @@
                 android:background="#e891ef"
                 android:text="프로필 확인"
                 android:textColor="#ffffff" />
+
 
             <TextView
                 android:layout_width="match_parent"

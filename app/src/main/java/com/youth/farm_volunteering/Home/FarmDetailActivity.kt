@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -20,7 +19,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
+
 import com.youth.farm_volunteering.Home.QandA.qandaFragment
 import com.youth.farm_volunteering.R.id.detail_nsv
 import com.youth.farm_volunteering.data.ApplyRvData
@@ -36,6 +37,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     private lateinit var mMap: GoogleMap
 //    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
+
     lateinit var scheduleitems: ArrayList<ScheduleData>
     lateinit var applyitems: ArrayList<ApplyRvData>
     lateinit var scheduleAdapter: ScheduleAdapter
@@ -51,16 +53,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
 
 
-        scheduleitems = ArrayList()
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
 
-        scheduleAdapter = ScheduleAdapter(scheduleitems)
-        scheduleAdapter.setOnItemClickListener(this)
-
-        scheduleView.layoutManager = LinearLayoutManager(this)
-        scheduleView.adapter = scheduleAdapter
 
         applyitems = ArrayList()
         applyitems.add(ApplyRvData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
@@ -69,9 +62,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         applyAdapter = ApplyRvAdapter(applyitems)
         detail_apply_rv.layoutManager = LinearLayoutManager(this)
         detail_apply_rv.adapter = applyAdapter
-
-
-
 
 
         val mapFragment = supportFragmentManager
@@ -100,10 +90,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         Glide.with(toolbarImage.context)
                 .load(intent.getStringExtra("farm_img"))
                 .into(toolbarImage);
-        detail_location_tv.setText(intent.getStringExtra("farm_location"))
-        detail_name_tv.setText(intent.getStringExtra("farm_name"))
-        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
-        detail_days_tv.setText(intent.getStringExtra("farm_days"))
+//        detail_location_tv.setText(intent.getStringExtra("farm_location"))
+//        detail_name_tv.setText(intent.getStringExtra("farm_name"))
+//        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
+//        detail_days_tv.setText(intent.getStringExtra("farm_days"))
+
+
 
         addFragment(FarmIntroFragment())
         farm_introduce.isSelected = true
@@ -146,10 +138,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 clearSelected()
                 farm_location.isSelected = true
 
-                replaceFragment(FarmFAQFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
+                replaceFragment(ExpandFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmFAQFragment() ;
-                replaceFragment(FarmFAQFragment())
 //                mapFragment.getMapAsync(this)
 
             }
