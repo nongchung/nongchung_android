@@ -22,7 +22,7 @@ class FarmAdapter(var dataList : List<NonghwalData>) : RecyclerView.Adapter<Farm
 
         Glide.with(holder.itemView.context)
                 .load(dataList[position].img)
-                .into(holder.pic);
+                .into(holder.pic)
         holder.date.text = dataList[position].period
         holder.title.text = dataList[position].name
         holder.address.text = dataList[position].addr

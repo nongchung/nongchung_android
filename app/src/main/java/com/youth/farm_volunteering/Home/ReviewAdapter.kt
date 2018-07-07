@@ -25,9 +25,9 @@ class ReviewAdapter(private var reviewitems : ArrayList<ReviewData>) : RecyclerV
     override fun onBindViewHolder(holder: ReviewViewHolder?, position: Int) {
 
         holder!!.FarmReviewImg.setImageResource(reviewitems[position].reviewImg)
-        holder!!.FarmReviewProfile.setImageResource(reviewitems[position].reviewProfile)
-        holder!!.FarmReviewID.text = reviewitems[position].reviewId
-        holder!!.FarmReviewPW.text = reviewitems[position].reviewPw
+        //holder!!.FarmReviewProfile.setImageResource(reviewitems[position].reviewProfile)
+        //holder!!.FarmReviewID.text = reviewitems[position].reviewId
+        //holder!!.FarmReviewPW.text = reviewitems[position].reviewPw
         holder!!.FarmReviewComment.text = reviewitems[position].reviewComment
 
     }

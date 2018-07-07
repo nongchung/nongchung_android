@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" filepath="$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/NongHwal.iml" filepath="$PROJECT_DIR$/NongHwal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SOPT_AppJam_NongChung.iml" filepath="$PROJECT_DIR$/SOPT_AppJam_NongChung.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

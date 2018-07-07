@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -21,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.*
 import com.youth.farm_volunteering.Home.QandA.qandaFragment
+import com.youth.farm_volunteering.data.ApplyRvData
 import junit.framework.Test
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
@@ -34,7 +36,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 //    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
     lateinit var scheduleitems: ArrayList<ScheduleData>
+    lateinit var applyitems: ArrayList<ApplyRvData>
     lateinit var scheduleAdapter: ScheduleAdapter
+    lateinit var applyAdapter: ApplyRvAdapter
 
 //
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
@@ -44,6 +48,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farm_detail)
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
+        
+        detail_nsv.setNestedScrollingEnabled(false)
 
         scheduleitems = ArrayList()
         scheduleitems.add(ScheduleData("서울", "경기", "인천"))
@@ -55,6 +61,17 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         scheduleView.layoutManager = LinearLayoutManager(this)
         scheduleView.adapter = scheduleAdapter
+
+        applyitems = ArrayList()
+        applyitems.add(ApplyRvData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
+        applyitems.add(ApplyRvData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
+        applyitems.add(ApplyRvData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
+        applyAdapter = ApplyRvAdapter(applyitems)
+        detail_apply_rv.layoutManager = LinearLayoutManager(this)
+        detail_apply_rv.adapter = applyAdapter
+
+
+
 
 
         val mapFragment = supportFragmentManager
@@ -95,14 +112,25 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         farm_review.setOnClickListener(this)
 
 
-        detail_apply_btn.setOnClickListener {
-            Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
+        detail_date_btn.setOnClickListener {
             if (detail_apply_rv.visibility == View.GONE) {
+                detail_black.visibility = View.VISIBLE
                 detail_apply_rv.visibility = View.VISIBLE
             } else if (detail_apply_rv.visibility == View.VISIBLE) {
+                detail_black.visibility = View.GONE
                 detail_apply_rv.visibility = View.GONE
             }
+        }
 
+        detail_black.setOnClickListener{
+            if(detail_black.visibility == View.VISIBLE){
+                detail_black.visibility = View.GONE
+                detail_apply_rv.visibility = View.GONE
+            }
+        }
+
+        detail_apply_btn.setOnClickListener{
+            Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
         }
 
     }

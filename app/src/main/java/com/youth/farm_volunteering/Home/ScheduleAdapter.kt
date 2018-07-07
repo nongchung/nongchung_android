@@ -20,7 +20,7 @@ class ScheduleAdapter(private var scheduleitems : ArrayList<ScheduleData>) : Rec
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ScheduleViewHolder {
         val mainView : View = LayoutInflater.from(parent!!.context).inflate(R.layout.item_schedule,parent, false)
 
-        mainView.setOnClickListener(onItemClick)
+        //mainView.setOnClickListener(onItemClick)
         return ScheduleViewHolder(mainView)
     }
     override fun onBindViewHolder(holder: ScheduleViewHolder?, position: Int) {
