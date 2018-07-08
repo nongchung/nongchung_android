@@ -139,6 +139,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 clearSelected()
                 farm_introduce.isSelected = true
                 replaceFragment(FarmIntroFragment())
+
             }
             farm_location -> {
                 clearSelected()
