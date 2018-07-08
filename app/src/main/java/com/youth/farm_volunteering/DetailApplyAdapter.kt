@@ -27,7 +27,7 @@ class DetailApplyAdapter(var items: ArrayList<DetailApplyData>) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailApplyViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_apply, parent, true)
+                .inflate(R.layout.item_apply, parent, false)
         return DetailApplyViewHolder(mainView)
     }
 
@@ -43,7 +43,9 @@ class DetailApplyAdapter(var items: ArrayList<DetailApplyData>) : RecyclerView.A
         holderDetail.itemView.setOnClickListener {
 
             val intent = Intent(holderDetail.itemView.context, FarmDetailActivity::class.java)
+
             intent.putExtra("date",items[position].apply_rv_schedule)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             holderDetail.itemView.context.startActivity(intent)
         }
 
