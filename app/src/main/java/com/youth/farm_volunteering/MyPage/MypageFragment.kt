@@ -20,7 +20,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.provider.MediaStore.Images
-import com.youth.farm_volunteering.Login.LoginActivity
+import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
 import com.youth.farm_volunteering.login.LoginToken
