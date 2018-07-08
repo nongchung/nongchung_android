@@ -15,7 +15,17 @@ class SignupActivity1 : AppCompatActivity() {
 
         nextbutton.setOnClickListener {
             var signup2 = Intent(this, SignupActivity2::class.java)
-            startActivity(signup2)
+            startActivityForResult(signup2, 0)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            RESULT_CANCEL ->
+                finish()
+            RESULT_SUCCESS ->
+                finish()
         }
     }
 }
