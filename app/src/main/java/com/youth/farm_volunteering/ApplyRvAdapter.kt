@@ -18,9 +18,9 @@ class ApplyRvAdapter(var items : ArrayList<ApplyRvData>) : RecyclerView.Adapter<
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ApplyRvViewHolder, position: Int) {
-        holder.schedule.text = items[position].apply_rv_schedule
-        holder.start.text = items[position].apply_rv_start
-        holder.attendable.text = items[position].apply_rv_attendable
-        holder.left.text = items[position].apply_rv_left
+        holder.schedule.text = items[position].schedule
+        holder.start.text = items[position].start
+        holder.attendable.text = items[position].attendable
+        holder.left.text = items[position].left
     }
 }

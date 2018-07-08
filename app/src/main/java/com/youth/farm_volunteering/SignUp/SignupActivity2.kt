@@ -17,7 +17,7 @@ class SignupActivity2 : AppCompatActivity() {
         setResult(RESULT_CANCEL)
         button_signup_submit.setOnClickListener {
             setResult(RESULT_SUCCESS)
-            intent.putExtra()
+//            intent.putExtra()
             finish()
         }
 
