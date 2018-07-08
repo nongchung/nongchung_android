@@ -4,55 +4,31 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.data.rvListInfoData
 
-class ReviewImageAdapter(private var ReviewImageitems : ArrayList<ReviewImageData>) : RecyclerView.Adapter<ReviewImageViewHolder>(){
-
-    private lateinit var onItemClick: View.OnClickListener
-
-    override fun getItemCount(): Int = ReviewImageitems.size
-    fun setOnItemClickListener(l : View.OnClickListener){
-
-        onItemClick = l;
-
+class ReviewImageAdapter(var dataList: List<ReviewImageData>) : RecyclerView.Adapter<ReviewImageViewHolder>() {
+    override fun getItemCount(): Int{
+        when(dataList){
+            null -> return 0
+            else -> return dataList!!.size
+        }
     }
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ReviewImageViewHolder {
-        val mainView : View = LayoutInflater.from(parent!!.context).inflate(R.layout.item_schedule,parent, false)
 
-        mainView.setOnClickListener(onItemClick)
+    //private lateinit var onIntroClick: View.OnClickListener
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewImageViewHolder {
+        val mainView: View = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_review_img, parent, false)
+        //mainView.setOnClickListener(onIntroClick)
         return ReviewImageViewHolder(mainView)
     }
+
+
     override fun onBindViewHolder(holder: ReviewImageViewHolder?, position: Int) {
-
-        holder!!.FarmBoxReviewImg.setImageResource(ReviewImageitems[position].reviewBoxImg)
-
-
+        Glide.with(holder!!.itemView.context)
+                .load(dataList[position].reviewBoxImg) //String 줘서 이렇게??
+                .into(holder.FarmBoxReviewImg)
     }
 }
-
-//
-//class ScheduleAdapter(private var scheduleitems : ArrayList<ScheduleData>) : RecyclerView.Adapter<ScheduleViewHolder>(){
-//
-//    private lateinit var onItemClick: View.OnClickListener
-//
-//    override fun getItemCount(): Int = scheduleitems.size
-//    fun setOnItemClickListener(l : View.OnClickListener){
-//
-//        onItemClick = l;
-//
-//    }
-//    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ScheduleViewHolder {
-//        val mainView : View = LayoutInflater.from(parent!!.context).inflate(R.layout.item_schedule,parent, false)
-//
-//        mainView.setOnClickListener(onItemClick)
-//        return ScheduleViewHolder(mainView)
-//    }
-//    override fun onBindViewHolder(holder: ScheduleViewHolder?, position: Int) {
-//
-//        holder!!.FarmSchedule1.text = scheduleitems[position].schedule1
-//        holder!!.FarmSchedule2.text = scheduleitems[position].schedule2
-//        holder!!.FarmSchedule3.text = scheduleitems[position].schedule3
-//
-//    }
-//
-//}

@@ -38,12 +38,12 @@ class FarmIntroFragment : Fragment() {
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
         var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
-        Log.d("aaa",detailnongwalCall.toString())
+        //Log.d("aaa",detailnongwalCall.toString())
 
         detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
             override fun onFailure(call: Call<DetailNonghwalResponseData>, t: Throwable?) {
                 Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
-                Log.e("abc",t.toString())
+                //Log.e("abc",t.toString())
             }
             override fun onResponse(call: Call<DetailNonghwalResponseData>, response: Response<DetailNonghwalResponseData>) {
                 DetailNonghwalList = response.body().nhInfo

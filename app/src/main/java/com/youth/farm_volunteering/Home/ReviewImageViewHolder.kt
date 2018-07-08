@@ -7,5 +7,5 @@ import android.widget.TextView
 import com.youth.farm_volunteering.R
 
 class ReviewImageViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-    var FarmBoxReviewImg : ImageView = itemView!!.findViewById(R.id.review_box_img)
+    var FarmBoxReviewImg : ImageView = itemView!!.findViewById(R.id.item_review_send_img)
 }
