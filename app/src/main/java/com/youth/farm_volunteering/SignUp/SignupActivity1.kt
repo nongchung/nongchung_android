@@ -15,6 +15,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 const val RESULT_REQUEST_LOGIN: Int = 3;
+const val BUNDLE_KEY_EMAIL: String = "BUNDLE_KEY_EMAIL";
+const val BUNDLE_KEY_PASSWORD: String = "BUNDLE_KEY_PASSWORD";
 
 class SignupActivity1 : AppCompatActivity() {
 
@@ -47,9 +49,11 @@ class SignupActivity1 : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<DefaultResponseData>, response: Response<DefaultResponseData>) {
-                setResult(RESULT_REQUEST_LOGIN)
+                Toast.makeText(this@SignupActivity1, name + "님, 농활청춘에 오신 것을 환영합니다!", Toast.LENGTH_SHORT).show()
+                intent.putExtra(BUNDLE_KEY_EMAIL, email)
+                intent.putExtra(BUNDLE_KEY_PASSWORD, password)
+                setResult(RESULT_REQUEST_LOGIN, intent)
                 finish()
-
             }
         })
     }
