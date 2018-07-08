@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.DetailApplyData
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
