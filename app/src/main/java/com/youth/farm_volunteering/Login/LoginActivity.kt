@@ -1,12 +1,14 @@
 package com.youth.farm_volunteering.Login
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.SignUp.SignupActivity1
 import com.youth.farm_volunteering.data.LoginResponseData
 import com.youth.farm_volunteering.data.MyPageResponseData
 import com.youth.farm_volunteering.login.LoginToken
@@ -20,6 +22,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        textview_mypage_registration.setOnClickListener {
+            var i = Intent(this, SignupActivity1::class.java)
+            startActivity(i)
+        }
         button_login_login.setOnClickListener { v ->
             var loginCall = ApplicationController.instance!!.networkService!!.login(edittext_login_email.text.toString(), edittext_login_password.text.toString());
             loginCall.enqueue(object : Callback<LoginResponseData> {

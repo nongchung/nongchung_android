@@ -20,13 +20,13 @@
         android:layout_marginStart="2dp"
         android:text="이름"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText13"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_name"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/edittext_signup_name"
         android:layout_width="127dp"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
@@ -46,13 +46,13 @@
         android:layout_marginStart="2dp"
         android:text="생년월일"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText14"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_birth"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/edittext_signup_birth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <EditText
-        android:id="@+id/editText15"
+        android:id="@+id/edittext_signup_gender"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/button_signup_submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/editText19" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_phonenumber" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
@@ -117,13 +117,13 @@
         android:layout_marginStart="2dp"
         android:text="닉네임"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText18"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_nickname"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline9" />
 
     <EditText
-        android:id="@+id/editText18"
+        android:id="@+id/edittext_signup_nickname"
         android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
@@ -153,7 +153,7 @@
         android:background="@drawable/join1_red_icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/editText18" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_nickname" />
 
     <TextView
         android:id="@+id/textView26"
@@ -183,10 +183,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/editText15" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_gender" />
 
     <EditText
-        android:id="@+id/editText19"
+        android:id="@+id/edittext_signup_phonenumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
