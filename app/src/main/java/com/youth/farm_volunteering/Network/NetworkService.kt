@@ -26,7 +26,7 @@ interface NetworkService {
 
     @GET("/api/home/detail/nh")
     fun detailnonghwal(
-            @Query("idx") idx:Int
+            @Query("idx") idx: Int
     ): Call<DetailNonghwalResponseData>
 
     @GET("/api/home/detail/review")
@@ -36,7 +36,11 @@ interface NetworkService {
 
     @FormUrlEncoded
     @POST("/api/signin")
-    fun login(@Field("email") first: String, @Field("password") last: String): Call<LoginResponseData>
+    fun login(@Field("email") email: String, @Field("password") password: String): Call<LoginResponseData>
+
+    @FormUrlEncoded
+    @POST("/api/signup")
+    fun registration(@Field("email") email: String, @Field("password") password: String, @Field("nickname") nickname: String, @Field("name") name: String, @Field("sex") sex: Int, @Field("handphone") handphone: String, @Field("birth") birth: String): Call<DefaultResponseData>
 
 
 }

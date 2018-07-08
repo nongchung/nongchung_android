@@ -46,18 +46,17 @@
         android:layout_marginStart="2dp"
         android:text="생년월일"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_birth"
+        app:layout_constraintBottom_toTopOf="@+id/textview_signup_birth"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
-    <EditText
-        android:id="@+id/edittext_signup_birth"
+    <TextView
+        android:id="@+id/textview_signup_birth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="19970127"
-        android:inputType="textPersonName"
+        android:hint="1997-01-27"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
