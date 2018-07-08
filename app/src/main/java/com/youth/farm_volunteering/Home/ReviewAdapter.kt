@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering.Home
 
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Layout
 import android.view.LayoutInflater
@@ -32,6 +33,9 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
         holder.Reviewdate.text = dataList[position].startDate
         holder.Reviewstar.text = dataList[position].star.toString()
         holder.Reviewcontent.text = dataList[position].content
+        holder.reviewImageRecyclerView.adapter = ReviewImageAdapter(dataList[position].rvImages!!)
+        holder.reviewImageRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
+
 
     }
 }

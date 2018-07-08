@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.DetailApplyData
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
@@ -50,9 +51,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
 
 
-
-
-
         applyitems = ArrayList()
         applyitems.add(DetailApplyData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
         applyitems.add(DetailApplyData("2018년 7월 29일 ~ 30일", "오전 10시 출발 (1박 2일)", "참석가능", "(07명 남음)"))
@@ -62,8 +60,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         detail_apply_rv.adapter = detailApplyAdapter
 
 
-
-
+        if(intent.getStringExtra("date") == null){
+            detail_date_btn.setText(applyitems[0].apply_rv_schedule)
+        }
+        else {
+            detail_date_btn.setText(intent.getStringExtra("date"))
+        }
 
 
 
@@ -124,21 +126,24 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         detail_apply_btn.setOnClickListener{
             Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
         }
+
     }
+
 
     override fun onClick(v: View?) {
 
         when (v) {
+
+
             farm_introduce -> {
                 clearSelected()
                 farm_introduce.isSelected = true
                 replaceFragment(FarmIntroFragment())
-
-
             }
             farm_location -> {
                 clearSelected()
                 farm_location.isSelected = true
+
                 replaceFragment(ExpandFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmFAQFragment() ;
@@ -150,6 +155,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 farm_review.isSelected = true
                 replaceFragment(FarmReviewFragment())
             }
+
+
         }
 
         //따로 스캐줄에서 더 화면을 구성한다면!!!
@@ -197,11 +204,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         }
 
         return false
-    }
-
-
-    fun clickFloat() {
-
     }
 
     fun addFragment(fragment: Fragment) {
