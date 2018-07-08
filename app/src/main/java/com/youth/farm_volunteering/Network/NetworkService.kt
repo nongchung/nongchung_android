@@ -29,8 +29,14 @@ interface NetworkService {
             @Query("idx") idx:Int
     ): Call<DetailNonghwalResponseData>
 
+    @GET("/api/home/detail/review")
+    fun review(
+            @Query("scheIdx") scheIdx: Int
+    ): Call<ReviewResponseData>
+
     @FormUrlEncoded
     @POST("/api/signin")
     fun login(@Field("email") first: String, @Field("password") last: String): Call<LoginResponseData>
+
 
 }
