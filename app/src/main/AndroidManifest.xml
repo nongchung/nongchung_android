@@ -67,9 +67,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
-
-        <activity android:name=".StartActivity"></activity>
-
+        <activity android:name=".StartActivity" />
+        <activity android:name=".DetailApplyFragment"></activity>
     </application>
 
 </manifest>

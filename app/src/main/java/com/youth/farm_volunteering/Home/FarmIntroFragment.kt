@@ -22,7 +22,7 @@ import retrofit2.Response
 class FarmIntroFragment : Fragment() {
 
     lateinit var friendinfoAdapter: FriendInfoAdapter
-    lateinit var scheduleAdapter: ScheduleAdapter
+
 
     var DetailNonghwalList:NhInfoData? = null
     var DetailFriendInfoList: List<FriendInfoData>? = null
@@ -71,10 +71,9 @@ class FarmIntroFragment : Fragment() {
                 farminfo_name.setText(DetailFarmInfoList!!.name.toString())
                 farminfo_comment.setText(DetailFarmInfoList!!.comment.toString())
 
-                scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
-                v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
-                v.scheduleView_rv.adapter = scheduleAdapter
+
+
 
             }
         })
