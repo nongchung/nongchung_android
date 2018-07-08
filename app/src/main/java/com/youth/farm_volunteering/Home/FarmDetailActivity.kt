@@ -62,11 +62,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         detail_apply_rv.adapter = detailApplyAdapter
 
 
-
-
-
-
-
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -128,7 +123,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     }
 
     override fun onClick(v: View?) {
-        val idx : Int = detail_apply_rv.getChildAdapterPosition(v)
+//        val idx : Int = detail_apply_rv.getChildAdapterPosition(v)
 
 
         when (v) {

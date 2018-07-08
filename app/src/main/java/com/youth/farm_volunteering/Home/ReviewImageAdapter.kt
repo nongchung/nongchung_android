@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.rvListInfoData
 
-class ReviewImageAdapter(var dataList: List<ReviewImageData>) : RecyclerView.Adapter<ReviewImageViewHolder>() {
+class ReviewImageAdapter(var dataList: List<String>) : RecyclerView.Adapter<ReviewImageViewHolder>() {
     override fun getItemCount(): Int{
         when(dataList){
             null -> return 0
@@ -28,7 +28,7 @@ class ReviewImageAdapter(var dataList: List<ReviewImageData>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ReviewImageViewHolder?, position: Int) {
         Glide.with(holder!!.itemView.context)
-                .load(dataList[position].reviewBoxImg) //String 줘서 이렇게??
+                .load(dataList[position]) //String 줘서 이렇게??
                 .into(holder.FarmBoxReviewImg)
     }
 }

@@ -72,7 +72,7 @@
 
         <activity android:name=".SignUp.SignupActivity2" />
 
-        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".login.LoginActivity" />
 
         <activity
             android:name=".ReviewWriteActivity"

@@ -18,7 +18,7 @@ class DetailApplyAdapter(var items: ArrayList<DetailApplyData>) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailApplyViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_apply, parent, false)
+                .inflate(R.layout.item_apply, parent, true)
         return DetailApplyViewHolder(mainView)
     }
 
