@@ -124,23 +124,21 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         detail_apply_btn.setOnClickListener{
             Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onClick(v: View?) {
-        val idx : Int = detail_apply_rv.getChildAdapterPosition(v)
-
 
         when (v) {
             farm_introduce -> {
                 clearSelected()
                 farm_introduce.isSelected = true
                 replaceFragment(FarmIntroFragment())
+
+
             }
             farm_location -> {
                 clearSelected()
                 farm_location.isSelected = true
-
                 replaceFragment(ExpandFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmFAQFragment() ;
@@ -152,8 +150,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 farm_review.isSelected = true
                 replaceFragment(FarmReviewFragment())
             }
-
-
         }
 
         //따로 스캐줄에서 더 화면을 구성한다면!!!

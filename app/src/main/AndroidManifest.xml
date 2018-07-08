@@ -82,8 +82,6 @@
 
         <activity android:name=".StartActivity" />
 
-        <activity android:name=".DetailApplyFragment" />
-
     </application>
 
 </manifest>
