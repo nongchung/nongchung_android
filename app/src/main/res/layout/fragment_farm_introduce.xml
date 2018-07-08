@@ -16,40 +16,120 @@
 
 
     <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8dp"
-        android:padding="@dimen/activity_search_toolbar_left_padding"
-        android:text="농장관련정보"
-        android:textSize="28sp" />
-
-
-
-    <TextView
-        android:id="@+id/detail_introduce_addr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8dp"
-        android:padding="@dimen/activity_search_toolbar_left_padding"
-        android:text="사과농장"
-        android:textSize="28sp" />
-
-    <TextView
         android:id="@+id/detail_introduce_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
         android:lineSpacingExtra="8dp"
         android:padding="@dimen/activity_search_toolbar_left_padding"
         android:text="사과농장"
-        android:textSize="28sp" />
+        android:textSize="21sp"
+        android:textStyle="bold" />
 
     <RatingBar
         android:id="@+id/detail_introduce_star"
+        style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:isIndicator="true"
         android:stepSize="0.5" />
+
+
+    <TextView
+        android:id="@+id/detail_introduce_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="8dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="@dimen/activity_search_toolbar_left_padding"
+        android:text="사과농장"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/detail_place"
+            />
+
+        <TextView
+            android:id="@+id/detail_introduce_addr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:padding="@dimen/activity_search_toolbar_left_padding"
+            android:text="사과농장"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/detail_money"
+            />
+
+        <TextView
+            android:id="@+id/detail_introduce_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:padding="@dimen/activity_search_toolbar_left_padding"
+            android:text="사과농장"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/detail_time"
+
+            />
+
+        <TextView
+            android:id="@+id/detail_introduce_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:padding="@dimen/activity_search_toolbar_left_padding"
+            android:text="사과농장"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+
+
+
         <!--android:clickable="false"-->
 
         <!--android:longClickable="false"-->
@@ -67,31 +147,8 @@
 
 
 
-    <TextView
-        android:id="@+id/detail_introduce_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8dp"
-        android:padding="@dimen/activity_search_toolbar_left_padding"
-        android:text="사과농장"
-        android:textSize="28sp" />
 
-    <TextView
-        android:id="@+id/detail_introduce_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8dp"
-        android:padding="@dimen/activity_search_toolbar_left_padding"
-        android:text="사과농장"
-        android:textSize="28sp" />
-    <TextView
-        android:id="@+id/detail_introduce_period"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8dp"
-        android:padding="@dimen/activity_search_toolbar_left_padding"
-        android:text="사과농장"
-        android:textSize="28sp" />
+
 
     <TextView
         android:layout_width="match_parent"
