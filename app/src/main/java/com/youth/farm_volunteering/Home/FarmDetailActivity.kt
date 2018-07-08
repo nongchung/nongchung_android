@@ -128,9 +128,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     }
 
     override fun onClick(v: View?) {
-        val idx : Int = detail_apply_rv.getChildAdapterPosition(v)
-
-
+        
         when (v) {
             farm_introduce -> {
                 clearSelected()
