@@ -109,7 +109,5 @@ class MypageFragment : Fragment() {
                 .into(imageview_mypage_profile);
         textview_mypage_email.setText(myPageData!!.mail)
         textview_mypage_nickname.setText(myPageData!!.name)
-
-
     }
 }
