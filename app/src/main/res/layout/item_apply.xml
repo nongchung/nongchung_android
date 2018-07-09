@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11.33dp"
+        android:layout_marginTop="10.57dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14.41dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/apply_rv_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018년 6월 29일 ~ 30일"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/apply_rv_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오전 9시 출발 (1박 2일)"
+                android:textColor="#95989A"
+                android:textSize="11dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16.59dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/apply_rv_attendable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="참석가능"
+                android:textColor="#F15A87"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/apply_rv_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(06명 남음)"
+                android:textColor="#95989A"
+                android:textSize="11dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#26707070" />
+</LinearLayout>

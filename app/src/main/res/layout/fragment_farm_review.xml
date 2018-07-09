@@ -1,17 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E4E4E4">
 
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/reviewView"
+    <RelativeLayout
+        android:background="#ffffff"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="105.64dp"
+        android:layout_marginBottom="9.6dp">
 
-        android:padding="@dimen/activity_search_toolbar_left_padding">
+        <TextView
+            android:id="@+id/review_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27.85dp"
+            android:text="4.3"
+            android:textSize="50dp" />
 
-    </android.support.v7.widget.RecyclerView>
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12.9dp"
+            android:layout_toRightOf="@id/review_score"
+            android:orientation="vertical">
+
+            <RatingBar
+                android:id="@+id/review_rating_bar"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8.1dp"
+                android:rating="4.5"
+                android:theme="@style/RatingBar"/>
+
+            <TextView
+                android:id="@+id/review_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/review_rating_bar"
+                android:text="이 농활을 추천합니다!"
+                android:textSize="11dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:nestedScrollingEnabled="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/review_rv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:padding="@dimen/activity_search_toolbar_left_padding"
+            >
+        </android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

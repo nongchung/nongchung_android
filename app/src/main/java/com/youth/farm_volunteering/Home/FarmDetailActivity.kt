@@ -19,22 +19,27 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.*
-import com.youth.farm_volunteering.Home.QandA.qandaFragment
-import junit.framework.Test
+import com.youth.farm_volunteering.R.id.*
+import com.youth.farm_volunteering.data.DetailApplyData
 
 import kotlinx.android.synthetic.main.activity_farm_detail.*
-import java.util.*
+import java.util.ArrayList
 
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback {
 
-
+    lateinit var applyitems: ArrayList<DetailApplyData>
+    lateinit var detailApplyAdapter: DetailApplyAdapter
     private lateinit var mMap: GoogleMap
-//    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    //    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: android.support.v7.widget.Toolbar? = null
-    lateinit var scheduleitems: ArrayList<ScheduleData>
-    lateinit var scheduleAdapter: ScheduleAdapter
+
+//    lateinit var scheduleitems: ArrayList<ScheduleData>
+
+
+
 
 //
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
@@ -45,16 +50,23 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         setContentView(R.layout.activity_farm_detail)
 //            setContentView(R.layout.item_schedule)      //스캐줄 list 출력
 
-        scheduleitems = ArrayList()
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
-        scheduleitems.add(ScheduleData("서울", "경기", "인천"))
 
-        scheduleAdapter = ScheduleAdapter(scheduleitems)
-        scheduleAdapter.setOnItemClickListener(this)
+        applyitems = ArrayList()
+        applyitems.add(DetailApplyData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
+        applyitems.add(DetailApplyData("2018년 7월 29일 ~ 30일", "오전 10시 출발 (1박 2일)", "참석가능", "(07명 남음)"))
+        applyitems.add(DetailApplyData("2018년 8월 29일 ~ 30일", "오전 8시 출발 (1박 2일)", "참석가능", "(05명 남음)"))
+        detailApplyAdapter = DetailApplyAdapter(applyitems)
+        detail_apply_rv.layoutManager = LinearLayoutManager(this)
+        detail_apply_rv.adapter = detailApplyAdapter
 
-        scheduleView.layoutManager = LinearLayoutManager(this)
-        scheduleView.adapter = scheduleAdapter
+
+        if(intent.getStringExtra("date") == null){
+            detail_date_btn.setText(applyitems[0].apply_rv_schedule)
+        }
+        else {
+            detail_date_btn.setText(intent.getStringExtra("date"))
+        }
+
 
 
         val mapFragment = supportFragmentManager
@@ -83,10 +95,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         Glide.with(toolbarImage.context)
                 .load(intent.getStringExtra("farm_img"))
                 .into(toolbarImage);
-        detail_location_tv.setText(intent.getStringExtra("farm_location"))
-        detail_name_tv.setText(intent.getStringExtra("farm_name"))
-        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
-        detail_days_tv.setText(intent.getStringExtra("farm_days"))
+//        detail_location_tv.setText(intent.getStringExtra("farm_location"))
+//        detail_name_tv.setText(intent.getStringExtra("farm_name"))
+//        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
+//        detail_days_tv.setText(intent.getStringExtra("farm_days"))
+
+
 
         addFragment(FarmIntroFragment())
         farm_introduce.isSelected = true
@@ -95,33 +109,45 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         farm_review.setOnClickListener(this)
 
 
-        detail_apply_btn.setOnClickListener {
-            Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
+
+        detail_date_btn.setOnClickListener {
             if (detail_apply_rv.visibility == View.GONE) {
+                detail_black.visibility = View.VISIBLE
                 detail_apply_rv.visibility = View.VISIBLE
+                detail_nsv.isVerticalScrollBarEnabled = false
             } else if (detail_apply_rv.visibility == View.VISIBLE) {
+                detail_black.visibility = View.GONE
                 detail_apply_rv.visibility = View.GONE
             }
+        }
 
+
+
+        detail_apply_btn.setOnClickListener{
+            Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
         }
 
     }
 
+
     override fun onClick(v: View?) {
+
         when (v) {
+
+
             farm_introduce -> {
                 clearSelected()
                 farm_introduce.isSelected = true
                 replaceFragment(FarmIntroFragment())
+
             }
             farm_location -> {
                 clearSelected()
                 farm_location.isSelected = true
 
-                replaceFragment(FarmFAQFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
+                replaceFragment(ExpandFragment())    //MapsFragment()로 바꿔서 띄우고 싶은데 잘안됩니다...
 
 //                var mapFragment = FarmFAQFragment() ;
-                replaceFragment(FarmFAQFragment())
 //                mapFragment.getMapAsync(this)
 
             }
@@ -130,6 +156,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 farm_review.isSelected = true
                 replaceFragment(FarmReviewFragment())
             }
+
+
         }
 
         //따로 스캐줄에서 더 화면을 구성한다면!!!
@@ -179,11 +207,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         return false
     }
 
-
-    fun clickFloat() {
-
-    }
-
     fun addFragment(fragment: Fragment) {
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
@@ -204,6 +227,5 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         farm_location.isSelected = false
         farm_review.isSelected = false
     }
-
 
 }

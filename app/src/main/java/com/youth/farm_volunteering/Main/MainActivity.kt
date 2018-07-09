@@ -20,7 +20,7 @@ import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.Home.ApplicationActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
-import com.youth.farm_volunteering.Login.LoginActivity
+import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.Review.ReviewWriteActivity

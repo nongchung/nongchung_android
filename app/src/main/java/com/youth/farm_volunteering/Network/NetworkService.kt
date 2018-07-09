@@ -1,20 +1,46 @@
 package com.youth.farm_volunteering.Network
 
-import com.youth.farm_volunteering.data.HomeResponseData
-import com.youth.farm_volunteering.data.MyPageData
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.login.LoginToken
-import retrofit2.Call
+import com.youth.farm_volunteering.data.*
+import retrofit2.http.FormUrlEncoded
+
 import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
+import retrofit2.http.POST
+import retrofit2.http.Query
+
+import com.youth.farm_volunteering.data.MyPageResponseData
+import com.youth.farm_volunteering.data.DetailNonghwalResponseData
+import retrofit2.Call
+
+
+import retrofit2.http.*
 
 
 interface NetworkService {
     @GET("api/home")
-    fun home(): Call<HomeResponseData>
+    fun home(
+//            @Query : idx
+    ): Call<HomeResponseData>
 
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
+
+    @GET("/api/home/detail/nh")
+    fun detailnonghwal(
+            @Query("idx") idx: Int
+    ): Call<DetailNonghwalResponseData>
+
+    @GET("/api/home/detail/review")
+    fun review(
+            @Query("scheIdx") scheIdx: Int
+    ): Call<ReviewResponseData>
+
+    @FormUrlEncoded
+    @POST("/api/signin")
+    fun login(@Field("email") email: String, @Field("password") password: String): Call<LoginResponseData>
+
+    @FormUrlEncoded
+    @POST("/api/signup")
+    fun registration(@Field("email") email: String, @Field("password") password: String, @Field("nickname") nickname: String, @Field("name") name: String, @Field("sex") sex: Int, @Field("handphone") handphone: String, @Field("birth") birth: String): Call<DefaultResponseData>
+
 
 }

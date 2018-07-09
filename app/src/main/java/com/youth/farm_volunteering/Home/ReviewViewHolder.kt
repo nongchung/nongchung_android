@@ -8,11 +8,18 @@ import com.youth.farm_volunteering.R
 
 class ReviewViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
-    var FarmReviewImg : ImageView = itemView!!.findViewById(R.id.review_img)
-    var FarmReviewProfile : ImageView = itemView!!.findViewById(R.id.review_profile_img)
-    var FarmReviewID : TextView = itemView!!.findViewById(R.id.review_id)
-    var FarmReviewPW : TextView = itemView!!.findViewById(R.id.review_pw)
-    var FarmReviewComment : TextView = itemView!!.findViewById(R.id.review_comment)
+    var Reviewuimg: ImageView = itemView!!.findViewById(R.id.item_review_img)
+
+    var Reviewname: TextView = itemView!!.findViewById(R.id.item_review_id)
+
+    var Reviewdate: TextView = itemView!!.findViewById(R.id.item_review_date)
+
+    var Reviewstar: TextView = itemView!!.findViewById(R.id.item_review_short_comment)
+
+    var Reviewcontent: TextView = itemView!!.findViewById(R.id.item_review_comment)
+    var reviewImageRecyclerView: RecyclerView = itemView!!.findViewById(R.id.review_img_rv)
+
+
 //
 //    holder!!.FarmReviewImg.image = reviewitems[position].reviewImg
 //    holder!!.FarmReviewProfile.image = reviewitems[position].reviewProfile

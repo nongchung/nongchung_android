@@ -7,11 +7,8 @@ import android.widget.TextView
 import com.youth.farm_volunteering.R
 
 class ScheduleViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-    var FarmSchedule1 : TextView = itemView!!.findViewById(R.id.schedule_1)
-
-    var FarmSchedule2 : TextView = itemView!!.findViewById(R.id.schedule_2)
-
-    var FarmSchedule3 : TextView = itemView!!.findViewById(R.id.schedule_3)
+    var Scheduletime : TextView = itemView!!.findViewById(R.id.schedule_time)
+    var Scheduleactvity : TextView = itemView!!.findViewById(R.id.schedule_activity)
 
 }
 
