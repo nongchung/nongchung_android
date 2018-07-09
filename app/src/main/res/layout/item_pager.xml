@@ -8,7 +8,11 @@
     <ImageView
         android:id="@+id/item_slideImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -25,20 +29,25 @@
         app:layout_constraintGuide_percent="0.07" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/textviewAdTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#FFF"
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textviewAdDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/textviewAdTitle"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <android.support.constraint.Guideline
@@ -47,7 +56,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.945" />
-
 
 
     <android.support.constraint.Guideline
@@ -62,13 +70,34 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_ads_count"
         android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <TextView
+            android:id="@+id/textviewAdCurCnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="text"/>
+            android:text="1/"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/textviewAdSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textColor="#FFF" />
+
     </LinearLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </android.support.constraint.ConstraintLayout>

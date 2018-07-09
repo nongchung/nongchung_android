@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
-    android:layout_height="250dp"
-    android:orientation="vertical"
-    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="210dp"
+    android:layout_height="205dp"
+    android:weightSum="100"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="220dp"
-        android:layout_height="120dp">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+
 
         <ImageView
             android:id="@+id/farm_pic"
@@ -15,40 +21,87 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:scaleType="fitXY"
-
-            android:src="@color/colorAccent" />
-
-
-
-
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:orientation="vertical">
+            android:layout_weight="60"
+            android:background="#000"
+            android:src="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/farm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정"
+            android:background="#0ABD9D"
             android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <RatingBar
+            android:id="@+id/ratingBarFarmItem"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="8dp"
+            android:numStars="5"
+            android:progressTint="#FAD118"
+            android:progressBackgroundTint="#9f9f9f"
+            android:rating="3"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewBookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="11dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/selector_bookmark" />
+
+        <TextView
+            android:id="@+id/textViewRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Avg"
+            android:textColor="#FFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBarFarmItem"
+            app:layout_constraintStart_toEndOf="@+id/ratingBarFarmItem" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:background="#fff"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/farm_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
             android:text="농활명"
             android:textColor="#000000"
-            android:textSize="18sp"
-            />
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline13"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/farm_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="가격"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline13"
+            app:layout_constraintTop_toBottomOf="@+id/farm_address" />
 
         <TextView
             android:id="@+id/farm_address"
@@ -56,13 +109,20 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="주소" />
+            android:layout_marginTop="7dp"
+            android:text="주소"
+            android:textColor="#000000"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/farm_title"
+            app:layout_constraintTop_toBottomOf="@+id/farm_title" />
 
-        <TextView
-            android:id="@+id/farm_price"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가격" />
-    </LinearLayout>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.072916664" />
+    </android.support.constraint.ConstraintLayout>
 
-</RelativeLayout>
+
+</LinearLayout>

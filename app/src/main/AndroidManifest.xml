@@ -57,16 +57,17 @@
         -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_id"/>
+            android:value="@string/default_notification_channel_id" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_up" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -79,9 +80,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
-        <!--<activity android:name=".ShowAll.ShowAllActivity"></activity>-->
+        <!-- <activity android:name=".ShowAll.ShowAllActivity"></activity> -->
 
-        <activity android:name=".StartActivity"></activity>
+        <activity android:name=".StartActivity" />
 
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
@@ -94,6 +95,7 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".ShowAllActivity"></activity>
     </application>
 
 </manifest>

@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.asksira.loopingviewpager.LoopingViewPager
-        android:id="@+id/fragment_home_adViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-
-        app:autoScroll="true"
-        app:isInfinite="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:scrollInterval="5000"
-        app:wrap_content="true"
-
-        />
-
-
+    android:layout_height="match_parent"
+    android:background="#F3F3F5">
     <LinearLayout
-        android:id="@+id/fragment_home_weeklyHotFarm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_home_adViewPager"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/fragment_home_grid_padding_Right"
-        android:paddingStart="@dimen/fragment_home_grid_padding_Left">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
+            <com.asksira.loopingviewpager.LoopingViewPager
+                android:id="@+id/fragment_home_adViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                app:autoScroll="true"
+                app:isInfinite="true"
+                app:layout_constraintDimensionRatio="w,1:2.2"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:scrollInterval="5000"
+
+                app:wrap_content="true" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="30dp">
 
             <TextView
+                android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:layout_centerVertical="true"
+
+                android:layout_marginStart="16dp"
+                android:layout_weight="9"
                 android:text="이번 주 인기 농활"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/fragment_home_weeklyHotFarm_showAll_txt"
@@ -52,41 +58,55 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="모두보기" />
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:text="모두보기"
+                android:fontFamily="@font/nanumsquareround_otfb"
 
-        </RelativeLayout>
+                android:textAlignment="textEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/fragment_home_weeklyHotFarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_home_weeklyHotFarm_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </android.support.v7.widget.RecyclerView>
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/fragment_home_newFarm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_home_weeklyHotFarm"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/fragment_home_grid_padding_Right"
-        android:paddingStart="@dimen/fragment_home_grid_padding_Left">
-
-
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="30dp">
 
             <TextView
+                android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:fontFamily="@font/nanumsquareround_otfb"
+
+                android:layout_marginStart="16dp"
+                android:layout_weight="9"
                 android:text="새로운 농활"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/fragment_home_newFarm_showAll_txt"
@@ -94,39 +114,56 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="모두보기" />
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
+                android:layout_weight="1"
+                android:text="모두보기"
+                android:textAlignment="textEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-        </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fragment_home_newFarm_rv"
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fragment_home_newFarm_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/fragment_home_themeFarm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_home_newFarm"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/fragment_home_grid_padding_Right"
-        android:paddingStart="@dimen/fragment_home_grid_padding_Left">
+            </android.support.v7.widget.RecyclerView>
 
 
-        <RelativeLayout
+        </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="30dp">
 
             <TextView
+                android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+
+                android:layout_marginStart="16dp"
+                android:layout_weight="9"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="테마별 농활"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/fragment_home_themeFarm_showAll_txt"
@@ -134,41 +171,56 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="모두보기" />
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:text="모두보기"
+                android:textAlignment="textEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:fontFamily="@font/nanumsquareround_otfb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-        </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fragment_home_themeFarm_rv"
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fragment_home_themeFarm_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/fragment_home_hotFarm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_home_themeFarm"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/fragment_home_grid_padding_Right"
-        android:paddingStart="@dimen/fragment_home_grid_padding_Left">
+            </android.support.v7.widget.RecyclerView>
 
 
-        <RelativeLayout
+        </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="30dp">
 
             <TextView
+                android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:fontFamily="@font/nanumsquareround_otfb"
+
+                android:layout_marginStart="16dp"
+                android:layout_weight="9"
                 android:text="인기 농장"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/fragment_home_hotFarm_showAll_txt"
@@ -176,18 +228,35 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="모두보기" />
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanumsquareround_otfb"
+                android:text="모두보기"
+                android:textAlignment="textEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-        </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fragment_home_hotFarm_rv"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fragment_home_hotFarm_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
-
-</RelativeLayout>
 </ScrollView>
