@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
@@ -22,7 +23,7 @@ import retrofit2.Response
 class FarmIntroFragment : Fragment() {
 
     lateinit var friendinfoAdapter: FriendInfoAdapter
-
+    lateinit var scheduleAdapter: ScheduleAdapter
 
     var DetailNonghwalList:NhInfoData? = null
     var DetailFriendInfoList: List<FriendInfoData>? = null
@@ -37,7 +38,7 @@ class FarmIntroFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
-        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
+        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(8)
         //Log.d("aaa",detailnongwalCall.toString())
 
         detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
@@ -64,12 +65,33 @@ class FarmIntroFragment : Fragment() {
                 v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
                 v.friendinfoView_rv.adapter = friendinfoAdapter
 
+
+                    farm_friendinfo_img_plus.visibility=View.VISIBLE
+
+
                 introduceImage_linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
                 v.friendinfoView_rv!!.setLayoutManager(introduceImage_linearLayoutManager)
 
                 farminfo_name.setText(DetailFarmInfoList!!.name.toString())
                 farminfo_comment.setText(DetailFarmInfoList!!.comment.toString())
+                Glide.with(context)
+                        .load(DetailFarmInfoList!!.img.toString())
+                        .into(farminfo_image)
+
+//
+//                Glide.with(holder!!.itemView.context)
+//                        .load(dataList[position]) //String 줘서 이렇게??
+//                        .into(holder.FarmBoxReviewImg)
+
+                scheduleAdapter= ScheduleAdapter(DetailScheduleList!!)
+
+                v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
+                v.scheduleView_rv.adapter = scheduleAdapter
+
+
+
+
 
 
 

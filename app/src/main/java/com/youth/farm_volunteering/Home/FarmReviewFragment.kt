@@ -10,18 +10,21 @@ import java.util.ArrayList
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.FarmAdapter
+import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.people
+import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.peoples
+import com.youth.farm_volunteering.R.id.review_rating_bar
 import com.youth.farm_volunteering.data.DetailNonghwalResponseData
-import com.youth.farm_volunteering.data.NonghwalData
 import com.youth.farm_volunteering.data.ReviewResponseData
 import com.youth.farm_volunteering.data.rvListInfoData
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
+import kotlinx.android.synthetic.main.fragment_farm_review.*
 import kotlinx.android.synthetic.main.fragment_farm_review.view.*
 import kotlinx.android.synthetic.main.item_review.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Long.sum
 
 
 class FarmReviewFragment : Fragment(){
@@ -50,15 +53,22 @@ class FarmReviewFragment : Fragment(){
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
+                review_rating_bar.rating = peoples.toFloat()
                 ReviewList = response.body().rvListInfo
+
+
+
                 ReviewImageList = response.body().rvListInfo
 
-
                 reviewAdapter = ReviewAdapter(ReviewList!!)
-               // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
 
+
+
+
+               // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
                 v.review_rv.layoutManager = LinearLayoutManager(context)
                 v.review_rv.adapter = reviewAdapter
+
 
                // v.review_img_rv.layoutManager = LinearLayoutManager(context)
                // v.review_img_rv.adapter = reviewimageAdapter

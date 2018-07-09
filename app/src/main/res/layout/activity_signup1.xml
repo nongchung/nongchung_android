@@ -21,13 +21,13 @@
         android:layout_marginStart="2dp"
         android:text="이메일"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_email"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/edittext_signup_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -122,7 +122,7 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/join1_red_icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_email" />
 
     <Button
         android:id="@+id/nextbutton"

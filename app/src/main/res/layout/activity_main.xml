@@ -30,7 +30,6 @@
         android:id="@+id/activity_main_tabViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/activity_main_toolbar"
         android:layout_above="@id/activity_main_bottomTabLayout"
 
         android:visibility="gone">
@@ -40,13 +39,14 @@
         android:id="@+id/activity_main_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/activity_main_toolbar"
-        android:layout_above="@+id/activity_main_bottomTabLayout">
+        android:layout_above="@+id/activity_main_bottomTabLayout"
+        android:layout_below="@id/activity_main_toolbar">
     </FrameLayout>
     <android.support.design.widget.TabLayout
         android:id="@+id/activity_main_bottomTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="#FFF">
     </android.support.design.widget.TabLayout>
 </RelativeLayout>

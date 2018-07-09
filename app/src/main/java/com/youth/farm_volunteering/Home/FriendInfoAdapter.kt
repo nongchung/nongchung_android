@@ -10,7 +10,17 @@ import com.youth.farm_volunteering.data.FriendInfoData
 
 //참석자 image를 나오게 하는거라고 생각하고있음!
 class FriendInfoAdapter(var dataList: List<FriendInfoData>) : RecyclerView.Adapter<FriendInfoViewHolder>() {
-    override fun getItemCount(): Int = dataList.size
+//    override fun getItemCount(): Int = dataList.size
+
+    var aa : Int = 5
+
+    override fun getItemCount(): Int {
+        if(dataList.size >= 6){
+            return aa
+
+        } else
+       return dataList.size
+    }
 
     //private lateinit var onIntroClick: View.OnClickListener
 
@@ -22,11 +32,20 @@ class FriendInfoAdapter(var dataList: List<FriendInfoData>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: FriendInfoViewHolder?, position: Int) {
-        Glide.with(holder!!.itemView.context)
-                .load(dataList[position].img) //String 줘서 이렇게??
-                .into(holder.Friendimage)
-        holder.Friendname.text = dataList[position].name
+
+
+            Glide.with(holder!!.itemView.context)
+                    .load(dataList[position].img) //String 줘서 이렇게??
+                    .into(holder.Friendimage)
+            holder.Friendname.text = dataList[position].name
+
+
+
+        }
+
+
+
+
     }
 
 
-}
