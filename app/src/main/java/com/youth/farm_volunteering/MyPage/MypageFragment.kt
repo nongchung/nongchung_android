@@ -1,7 +1,6 @@
 package com.youth.farm_volunteering.MyPage
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
@@ -18,7 +17,6 @@ import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
-import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import retrofit2.Call

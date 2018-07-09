@@ -17,6 +17,8 @@ class LikeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        val v = inflater!!.inflate(R.layout.fragment_like, container, false)
+
         likeList = ArrayList()
 
         likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
@@ -28,9 +30,6 @@ class LikeFragment : Fragment() {
         likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
 
         likeAdapter = LikeAdapter(likeList!!)
-
-
-        val v = inflater!!.inflate(R.layout.fragment_like, container, false)
 
         return v
     }
