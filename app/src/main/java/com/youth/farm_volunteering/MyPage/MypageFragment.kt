@@ -13,13 +13,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.Login.LoginActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
+import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.android.synthetic.main.fragment_mypage.view.*
+import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
+import kotlinx.android.synthetic.main.fragment_mypage_1.*
+import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +33,7 @@ class MypageFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(R.layout.fragment_mypage, container, false)
+        val v = inflater!!.inflate(R.layout.fragment_mypage_1, container, false)
 
         if (LoginToken.logined) {
 
@@ -73,15 +74,15 @@ class MypageFragment : Fragment() {
             startActivity(nick)
         })
 
-        v.button_mypage_logout.setOnClickListener {
-            LoginToken.token = null;
-            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
-            var editor = sharedPreference.edit();
-            editor.remove(LoginToken.PREF_KEY)
-            editor.commit()
-            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-
-        }
+//        v.button_mypage_logout.setOnClickListener {
+//            LoginToken.token = null;
+//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+//            var editor = sharedPreference.edit();
+//            editor.remove(LoginToken.PREF_KEY)
+//            editor.commit()
+//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+//
+//        }
 
         return v
     }
@@ -103,10 +104,8 @@ class MypageFragment : Fragment() {
     fun invalidate() {
         Glide.with(activity)
                 .load(myPageData!!.img)
-                .into(imageview_mypage_profile);
+                .into(imageview_mypage_profile)
         textview_mypage_email.setText(myPageData!!.mail)
         textview_mypage_nickname.setText(myPageData!!.name)
-
-
     }
 }

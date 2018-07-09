@@ -17,12 +17,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
+import com.youth.farm_volunteering.Home.ApplicationActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyLogFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.StartActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
  //       supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
 
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home,null,false)
         bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist,null,false)
@@ -125,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         when(item!!.itemId){
             R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, StartActivity::class.java)
+                val intent = Intent(applicationContext, ApplicationActivity::class.java)
                 startActivity(intent)
             }
         }

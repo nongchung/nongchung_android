@@ -21,13 +21,13 @@
         android:layout_marginStart="2dp"
         android:text="이메일"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_email"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/edittext_signup_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,18 +47,18 @@
         android:layout_marginStart="2dp"
         android:text="비밀번호"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText11"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_signup_password1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/edittext_signup_password1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:inputType="textPassword"
         android:hint="비밀번호를 입력하세요."
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -77,16 +77,16 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/editText11"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password1"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/edittext_signup_password2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -113,7 +113,7 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/join1_red_icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password2" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -122,12 +122,12 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/join1_red_icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_email" />
 
     <Button
         android:id="@+id/nextbutton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/join1_next_icon"
         android:textSize="16sp"
@@ -177,7 +177,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"

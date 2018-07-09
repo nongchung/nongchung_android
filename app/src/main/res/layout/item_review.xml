@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/item_review_profile_img"
+            android:id="@+id/item_review_img"
             android:layout_width="34.57dp"
             android:layout_height="34.57dp"
             android:layout_gravity="center_vertical"
@@ -85,11 +85,15 @@
         android:textColor="#87000000"
         android:textSize="13dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/item_review_rv"
-        android:layout_width="match_parent"
-        android:layout_height="300dp">
+    <TextView
+        android:id="@+id/item_review_images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
-    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/review_img_rv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
 
 </LinearLayout>

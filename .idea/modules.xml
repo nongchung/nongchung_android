@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\soul_\Documents\nongchung_android\Appjam.iml" filepath="C:\Users\soul_\Documents\nongchung_android\Appjam.iml" />
+      <module fileurl="file://C:\Users\Lee_wonjun\Documents\nongchung_android\Appjam.iml" filepath="C:\Users\Lee_wonjun\Documents\nongchung_android\Appjam.iml" />
       <module fileurl="file://$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" filepath="$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" />
-      <module fileurl="file://C:\Users\soul_\Documents\nongchung_android\SOPT_AppJam_NongChung.iml" filepath="C:\Users\soul_\Documents\nongchung_android\SOPT_AppJam_NongChung.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/nongchung_android.iml" filepath="$PROJECT_DIR$/nongchung_android.iml" />
     </modules>
