@@ -22,6 +22,8 @@ import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.activity_main_bottomTabLayout
+import com.youth.farm_volunteering.R.id.activity_main_tabViewPager
 import com.youth.farm_volunteering.SignUp.SignupActivity
 import com.youth.farm_volunteering.SignUp.SignupActivity1
 import com.youth.farm_volunteering.StartActivity
