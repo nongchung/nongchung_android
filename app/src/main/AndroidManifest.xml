@@ -31,6 +31,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -63,11 +64,13 @@
         <activity android:name=".SignUp.SignupActivity2" />
         <activity android:name=".Login.LoginActivity" />
         <activity
-            android:name=".ReviewWriteActivity"
+            android:name=".Review.ReviewWriteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
-        <activity android:name=".StartActivity"></activity>
+        <activity android:name=".StartActivity" />
+        <activity android:name=".Home.ApplicationActivity" />
+        <activity android:name=".Home.ApplicationConfirmActivity"></activity>
     </application>
 
 </manifest>

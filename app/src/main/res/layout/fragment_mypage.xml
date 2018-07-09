@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -29,7 +30,6 @@
             android:layout_height="0dp"
             android:layout_weight="30">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageview_mypage_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/user1_temp"
@@ -39,7 +39,6 @@
                 android:paddingBottom="@dimen/padding_basepadding"/>
         </FrameLayout>
         <TextView
-            android:id="@+id/textview_mypage_nickname"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
@@ -49,7 +48,6 @@
             android:textStyle="bold"
             android:gravity="center_horizontal"/>
         <TextView
-            android:id="@+id/textview_mypage_email"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
@@ -84,7 +82,6 @@
             android:padding="3dp"/>
 
         <ImageView
-            android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6.5" />
@@ -92,6 +89,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6.5"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6.5" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -105,6 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6.5"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -122,9 +126,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6.5"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6.5"/>
+
     </LinearLayout>
 </LinearLayout>

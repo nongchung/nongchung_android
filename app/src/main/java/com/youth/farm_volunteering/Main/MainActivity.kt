@@ -17,11 +17,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
+import com.youth.farm_volunteering.Home.ApplicationActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.Login.LoginActivity
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.Review.ReviewWriteActivity
 import com.youth.farm_volunteering.SignUp.SignupActivity
 import com.youth.farm_volunteering.SignUp.SignupActivity1
 import com.youth.farm_volunteering.StartActivity
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
- //       supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
 
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home,null,false)
         likeTab = LayoutInflater.from(this).inflate(R.layout.tab_like,null,false)
@@ -129,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         when(item!!.itemId){
             R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, StartActivity::class.java)
+                val intent = Intent(applicationContext, ApplicationActivity::class.java)
                 startActivity(intent)
             }
         }
