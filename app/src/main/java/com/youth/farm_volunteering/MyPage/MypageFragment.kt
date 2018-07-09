@@ -11,7 +11,6 @@ import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmAdapter
 import com.youth.farm_volunteering.R
-import kotlinx.android.synthetic.main.fragment_mypage.*
 import android.content.Intent
 import com.youth.farm_volunteering.R.id.imageView
 import android.provider.MediaStore
@@ -24,7 +23,6 @@ import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
 import com.youth.farm_volunteering.login.LoginToken
-import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import retrofit2.Call
@@ -78,15 +76,15 @@ class MypageFragment : Fragment() {
             startActivity(nick)
         })
 
-        v.button_mypage_logout.setOnClickListener {
-            LoginToken.token = null;
-            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
-            var editor = sharedPreference.edit();
-            editor.remove(LoginToken.PREF_KEY)
-            editor.commit()
-            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-
-        }
+//        v.button_mypage_logout.setOnClickListener {
+//            LoginToken.token = null;
+//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+//            var editor = sharedPreference.edit();
+//            editor.remove(LoginToken.PREF_KEY)
+//            editor.commit()
+//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+//
+//        }
 
         return v
     }

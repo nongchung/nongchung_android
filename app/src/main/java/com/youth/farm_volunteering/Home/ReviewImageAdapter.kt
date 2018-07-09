@@ -27,6 +27,7 @@ class ReviewImageAdapter(var dataList: List<String>) : RecyclerView.Adapter<Revi
 
 
     override fun onBindViewHolder(holder: ReviewImageViewHolder?, position: Int) {
+
         Glide.with(holder!!.itemView.context)
                 .load(dataList[position]) //String 줘서 이렇게??
                 .into(holder.FarmBoxReviewImg)

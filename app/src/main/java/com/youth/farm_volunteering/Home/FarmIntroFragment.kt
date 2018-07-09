@@ -38,7 +38,7 @@ class FarmIntroFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
-        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
+        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(8)
         //Log.d("aaa",detailnongwalCall.toString())
 
         detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
@@ -64,6 +64,10 @@ class FarmIntroFragment : Fragment() {
 
                 v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
                 v.friendinfoView_rv.adapter = friendinfoAdapter
+
+
+                    farm_friendinfo_img_plus.visibility=View.VISIBLE
+
 
                 introduceImage_linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
