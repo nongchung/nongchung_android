@@ -29,7 +29,7 @@ interface NetworkService {
             @Query("idx") idx: Int
     ): Call<DetailNonghwalResponseData>
 
-    @GET("/api/home/detail/review")
+    @GET("/api/review")
     fun review(
             @Query("scheIdx") scheIdx: Int
     ): Call<ReviewResponseData>

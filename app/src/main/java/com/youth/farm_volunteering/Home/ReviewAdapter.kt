@@ -16,12 +16,6 @@ import kotlinx.android.synthetic.main.fragment_farm_review.*
 
 class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<ReviewViewHolder>() {
 
-    companion object {
-
-        var people : Int =0
-        var peoples : Int = 0
-        //var ratingAdd : Int = 0
-        }
 
 
 
@@ -46,7 +40,6 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
         holder.Reviewdate.text = dataList[position].startDate
 
         //ratingAdd += dataList[position].star!!.toInt()
-        people = people + 1
         holder.Reviewstar.text = dataList[position].star.toString()
         holder.Reviewcontent.text = dataList[position].content
         holder.reviewImageRecyclerView.adapter = ReviewImageAdapter(dataList[position].rvImages!!)
@@ -54,9 +47,6 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
 
 
 
-    }
-    fun sum(){
-        peoples=people
     }
 
 }
