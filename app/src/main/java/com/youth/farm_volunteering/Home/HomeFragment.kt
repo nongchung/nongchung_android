@@ -1,8 +1,8 @@
 package com.youth.farm_volunteering
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.support.design.R.id.container
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
@@ -19,13 +19,18 @@ import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.Home.PopulFarmAdapter
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_showall.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
+
+
 
     var weekFarmAdapter: WeekFarmAdapter? = null
     var introThemeFarmAdapter : IntroThemeFarmAdapter? = null
@@ -58,6 +63,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
+        val v_ = inflater!!.inflate(R.layout.fragment_showall, container, false)
+
         adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
 
 
@@ -123,19 +130,24 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
+
+
+
         when (v) {
             fragment_home_weeklyHotFarm_showAll_txt -> {
-//                replaceFragment(ShowAllFragment())
-                val intent = Intent(getActivity(), ShowAllActivity::class.java)
-                startActivity(intent)
+                activity!!.main_title.setText("이번 주 인기 농활")
+                replaceFragment(ShowAllFragment())
             }
             fragment_home_newFarm_showAll_txt -> {
+                activity!!.main_title.setText("새로운 농활")
                 replaceFragment(ShowAllFragment())
             }
             fragment_home_themeFarm_showAll_txt -> {
+                activity!!.main_title.setText("테마별 농활")
                 replaceFragment(ShowAllFragment())
             }
             fragment_home_hotFarm_showAll_txt -> {
+                activity!!.main_title.setText("인기 농장")
                 replaceFragment(ShowAllFragment())
             }
         }
@@ -186,6 +198,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         transaction.replace(R.id.activity_main_container, fragment)
 //        transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    companion object {
+        private val title = "title"
+        fun newInstance(param1 : String) : HomeFragment{
+            val fragment = HomeFragment()
+            val args = Bundle()
+            args.putString(title, param1)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
 }

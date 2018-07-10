@@ -8,6 +8,7 @@ import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 import kotlinx.android.synthetic.main.activity_show_all.*
+import org.sopt.cocochart.client.Main.TabAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +21,7 @@ class ShowAllActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_all)
+
 
         var homeCall = ApplicationController.instance!!.networkService!!.home();
         homeCall.enqueue(object : Callback<HomeResponseData> {

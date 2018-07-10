@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="13dp"
-        android:text="제목"
+        android:text="제목이야"
         android:textColor="#000000"
-        android:textSize="17sp" />
+        android:textSize="22sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/activity_show_all_rv"

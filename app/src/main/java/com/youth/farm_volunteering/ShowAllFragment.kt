@@ -25,6 +25,7 @@ class ShowAllFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val v = inflater.inflate(R.layout.fragment_showall, container, false)
 
 //        var farmList : ArrayList<WeekNonghwalData>? = null
@@ -53,16 +54,5 @@ class ShowAllFragment : Fragment() {
         })
 
         return v
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        fragment_showall_rv.layoutManager = LinearLayoutManager(context)
-//
-//        fragment_showall_rv.adapter = weekFarmAdapter
-
-
-
     }
 }
