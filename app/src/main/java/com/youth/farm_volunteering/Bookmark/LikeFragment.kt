@@ -3,44 +3,81 @@ package com.youth.farm_volunteering.Bookmark
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.data.LikeData
+import com.youth.farm_volunteering.data.LikeResponseData
 import kotlinx.android.synthetic.main.fragment_like.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class LikeFragment : Fragment() {
 
-    lateinit var likeList: ArrayList<LikeData>
+    var likeList : List<LikeData>? = null
+
+    private var like_linearLayoutManager: LinearLayoutManager? = null
+
     lateinit var likeAdapter: LikeAdapter
+    lateinit var requestManager : RequestManager
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_like, container, false)
 
-        likeList = ArrayList()
+        requestManager = Glide.with(this)
 
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
-        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+        var likeCall = ApplicationController.instance!!.networkService!!.like(); // 서버에서 데이터 가져오는거!!
+        likeCall.enqueue(object : Callback<LikeResponseData> {
+            override fun onFailure(call: Call<LikeResponseData>, t: Throwable?) {
+                Toast.makeText(activity, "like request fail", Toast.LENGTH_SHORT).show()
+            }
 
-        likeAdapter = LikeAdapter(likeList!!)
+            override fun onResponse(call: Call<LikeResponseData>, response: Response<LikeResponseData>) {
+
+                likeList = response.body().data
+                Log.d("aaa", likeList!!.toString())
+                likeAdapter = LikeAdapter(likeList!!, requestManager)
+                fragment_like_rv.adapter = likeAdapter
+            }
+        })
+
+
+
+
+//        likeList = ArrayList()
+//
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//        likeList.add(LikeData(R.drawable.image_1, "제주 행복 감귤 농장 1박 2일", "제주 서귀포시", "20,000원"))
+//
+//        likeAdapter = LikeAdapter(likeList!!)
 
         return v
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        fragment_home_weeklyHotFarm_showAll_txt.setOnClickListener(this)
-        fragment_like_rv.layoutManager = LinearLayoutManager(context)
-        fragment_like_rv.adapter = likeAdapter
-
-    }
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//
+//        Log.d("aaa", likeList!!.toString())
+//
+//
+//
+//        fragment_like_rv.layoutManager = LinearLayoutManager(context)
+//
+//
+//    }
 
 }
