@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -124,7 +125,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v) {
             fragment_home_weeklyHotFarm_showAll_txt -> {
-                replaceFragment(ShowAllFragment())
+//                replaceFragment(ShowAllFragment())
+                val intent = Intent(getActivity(), ShowAllActivity::class.java)
+                startActivity(intent)
             }
             fragment_home_newFarm_showAll_txt -> {
                 replaceFragment(ShowAllFragment())
