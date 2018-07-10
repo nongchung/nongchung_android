@@ -1,14 +1,17 @@
 package com.asksira.loopingviewpagerdemo
 
+//import com.asksira.loopingviewpager.LoopingPagerAdapter
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
-import com.asksira.loopingviewpager.LoopingPagerAdapter
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.Home.LoopingPagerAdapter
 import com.youth.farm_volunteering.R
-import java.util.*
+import com.youth.farm_volunteering.data.AdData
 
-class DemoInfiniteAdapter(context: Context, itemList: ArrayList<Int>, isInfinite: Boolean) : LoopingPagerAdapter<Int>(context, itemList, isInfinite) {
+class DemoInfiniteAdapter(context: Context, itemList: List<AdData>, isInfinite: Boolean) : LoopingPagerAdapter<Int>(context, itemList, isInfinite) {
 
 
 //    override fun getItemViewType(listPosition: Int): Int {
@@ -21,7 +24,14 @@ class DemoInfiniteAdapter(context: Context, itemList: ArrayList<Int>, isInfinite
     }
 
     override fun bindView(convertView: View, listPosition: Int, viewType: Int) {
-        convertView.findViewById<ImageView>(R.id.item_slideImage).setBackgroundResource(itemList[listPosition])
+        Glide.with(this.context)
+                .load(itemList[listPosition].img)
+                .into(convertView.findViewById(R.id.item_slideImage))
+//        convertView.findViewById<ImageView>(R.id.item_slideImage).setBackgroundResource(itemList[listPosition].img)
+        convertView.findViewById<TextView>(R.id.textviewAdTitle).text = itemList[listPosition].title
+        convertView.findViewById<TextView>(R.id.textviewAdDesc).text = itemList[listPosition].description
+        convertView.findViewById<TextView>(R.id.textviewAdCurCnt).text = itemList[listPosition].idx.toString() + " / "
+        convertView.findViewById<TextView>(R.id.textviewAdSize).text = itemList.size.toString()
     }
 
 

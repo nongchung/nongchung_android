@@ -10,10 +10,8 @@ import java.util.ArrayList
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.FarmAdapter
 import com.youth.farm_volunteering.R.id.review_rating_bar
 import com.youth.farm_volunteering.data.DetailNonghwalResponseData
-import com.youth.farm_volunteering.data.NonghwalData
 import com.youth.farm_volunteering.data.ReviewResponseData
 import com.youth.farm_volunteering.data.rvListInfoData
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
@@ -52,6 +50,7 @@ class FarmReviewFragment : Fragment(){
                 //Log.e("abc",t.toString())
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
+
                 ReviewList = response.body().rvListInfo
 
 
@@ -70,7 +69,6 @@ class FarmReviewFragment : Fragment(){
 
                // v.review_img_rv.layoutManager = LinearLayoutManager(context)
                // v.review_img_rv.adapter = reviewimageAdapter
-
 
 
 
@@ -106,8 +104,8 @@ class FarmReviewFragment : Fragment(){
         //a.reviewimageView.layoutManager = linearLayoutManager // 이걸바꾸자....
         //a.reviewimageView.adapter = reviewimgAdapter
 
-
         return v
+
 
 
 
