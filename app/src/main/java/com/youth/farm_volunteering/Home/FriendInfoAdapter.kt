@@ -14,9 +14,21 @@ class FriendInfoAdapter(var dataList: List<FriendInfoData>) : RecyclerView.Adapt
 
     var aa : Int = 5
 
+    //static로 FarmIntroFragment에 변수를 넣기위해서 사용함
+    companion object {
+        var friendsizelist : Int = 0
+        var additionfriendinfo : Int = 0
+
+    }
+
+    //size를 참석자가 6이상일때는 5명의 참석자만 표시되게 만들기위해 설정
     override fun getItemCount(): Int {
         if(dataList.size >= 6){
+
+            friendsizelist = dataList.size
+            additionfriendinfo = dataList.size-aa
             return aa
+
 
         } else
        return dataList.size
@@ -31,6 +43,10 @@ class FriendInfoAdapter(var dataList: List<FriendInfoData>) : RecyclerView.Adapt
         return FriendInfoViewHolder(mainView)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
+
     override fun onBindViewHolder(holder: FriendInfoViewHolder?, position: Int) {
 
 
@@ -38,8 +54,6 @@ class FriendInfoAdapter(var dataList: List<FriendInfoData>) : RecyclerView.Adapt
                     .load(dataList[position].img) //String 줘서 이렇게??
                     .into(holder.Friendimage)
             holder.Friendname.text = dataList[position].name
-
-
 
         }
 

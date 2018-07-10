@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering.Home
 
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,9 +11,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.additionfriendinfo
+import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.friendsizelist
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
+import junit.framework.Test
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
 import kotlinx.android.synthetic.main.layout_group.view.*
@@ -38,7 +42,7 @@ class FarmIntroFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
-        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(8)
+        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
         //Log.d("aaa",detailnongwalCall.toString())
 
         detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
@@ -65,10 +69,6 @@ class FarmIntroFragment : Fragment() {
                 v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
                 v.friendinfoView_rv.adapter = friendinfoAdapter
 
-
-                    farm_friendinfo_img_plus.visibility=View.VISIBLE
-
-
                 introduceImage_linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
                 v.friendinfoView_rv!!.setLayoutManager(introduceImage_linearLayoutManager)
@@ -88,19 +88,28 @@ class FarmIntroFragment : Fragment() {
 
                 v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
                 v.scheduleView_rv.adapter = scheduleAdapter
-
-
-
-
-
-
-
-
-
             }
+
+
         })
+        //size가 6이상일때는 +이미지가 표시되게 함
+        if(friendsizelist>=6){
+            v.farm_friendinfo_img_plus.visibility=View.VISIBLE
+            //image화면 클릭시 오류발생하는거 수정 필요!!
+            v.fram_friendinfo_add.setText(additionfriendinfo.toString())
+            v.fram_friendinfo_add.visibility=View.VISIBLE
+            v.farm_friendinfo_img_plus.setOnClickListener{
+                val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+
+
+
 
         return v
+
 
 
     }
