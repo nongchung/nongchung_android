@@ -42,13 +42,19 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<LoginResponseData>, response: Response<LoginResponseData>) {
-                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
-                var editor = sharedPreference.edit();
-                editor.putString(LoginToken.PREF_KEY, response.body().token)
-                editor.commit()
-                LoginToken.token = response.body().token
-                Toast.makeText(this@LoginActivity, response.body().data!!.get(0).name + "로그인 성공!", Toast.LENGTH_SHORT).show()
-                finish()
+                when (response.code()) {
+                    200 -> {
+                        var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+                        var editor = sharedPreference.edit();
+                        editor.putString(LoginToken.PREF_KEY, response.body().token)
+                        editor.commit()
+                        LoginToken.token = response.body().token
+                        Toast.makeText(this@LoginActivity, response.body().data!!.get(0).name + "로그인 성공!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    else ->
+                        Toast.makeText(this@LoginActivity, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }

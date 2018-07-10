@@ -10,8 +10,6 @@ import java.util.ArrayList
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.people
-import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.peoples
 import com.youth.farm_volunteering.R.id.review_rating_bar
 import com.youth.farm_volunteering.data.DetailNonghwalResponseData
 import com.youth.farm_volunteering.data.ReviewResponseData
@@ -53,7 +51,6 @@ class FarmReviewFragment : Fragment(){
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
-                review_rating_bar.rating = peoples.toFloat()
                 ReviewList = response.body().rvListInfo
 
 
