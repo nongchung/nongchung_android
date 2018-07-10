@@ -62,6 +62,20 @@
 
         <activity android:name=".SplashActivity" />
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_up" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
         <!-- The API key for Google Maps-based APIs is defined as a string resource. (See the file "res/values/google_maps_api.xml"). Note that the API key is linked to the encryption key used to sign the APK. You need a different API key for each encryption key, including the release key that is used to sign the APK for publishing. You can define the keys for the debug and release targets in src/debug/ and src/release/. -->
 
 
@@ -80,11 +94,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
+
         <activity android:name=".StartActivity" />
         <activity android:name=".Home.ApplicationActivity" />
         <activity android:name=".Home.ApplicationConfirmActivity"></activity>
 
 
+        <activity android:name=".ShowAllActivity"></activity>
     </application>
 
 </manifest>

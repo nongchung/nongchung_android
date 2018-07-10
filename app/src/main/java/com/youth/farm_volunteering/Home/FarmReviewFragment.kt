@@ -10,12 +10,10 @@ import java.util.ArrayList
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.FarmAdapter
 import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.people
 import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.peoples
 import com.youth.farm_volunteering.R.id.review_rating_bar
 import com.youth.farm_volunteering.data.DetailNonghwalResponseData
-import com.youth.farm_volunteering.data.NonghwalData
 import com.youth.farm_volunteering.data.ReviewResponseData
 import com.youth.farm_volunteering.data.rvListInfoData
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
