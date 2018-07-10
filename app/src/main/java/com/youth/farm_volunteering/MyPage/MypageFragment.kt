@@ -75,7 +75,15 @@ class MypageFragment : Fragment() {
             var nick = Intent(this.context, NicknameFragment::class.java)
             startActivity(nick)
         })
+        v.layout_mypage_logout.setOnClickListener {
+            LoginToken.token = null;
+            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+            var editor = sharedPreference.edit();
+            editor.remove(LoginToken.PREF_KEY)
+            editor.commit()
+            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
 
+        }
 //        v.button_mypage_logout.setOnClickListener {
 //            LoginToken.token = null;
 //            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
