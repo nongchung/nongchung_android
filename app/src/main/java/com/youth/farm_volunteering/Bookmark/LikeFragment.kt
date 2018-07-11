@@ -44,8 +44,14 @@ class LikeFragment : Fragment() {
             override fun onResponse(call: Call<LikeResponseData>, response: Response<LikeResponseData>) {
 
                 likeList = response.body().bmList
+                Log.d("aaa",(likeList!![0].addr).toString())
                 likeAdapter = LikeAdapter(likeList!!)
                 fragment_like_rv.adapter = likeAdapter
+
+                //layoutManager 안 달아주면 list가 뜨지 않어 ㅜㅜ 이거 몰라서 디지는 줄 알았자너 ㅜㅜ 멍청이였어
+                fragment_like_rv.layoutManager = LinearLayoutManager(context)
+                like_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                fragment_like_rv!!.setLayoutManager(like_linearLayoutManager)
 
             }
         })
