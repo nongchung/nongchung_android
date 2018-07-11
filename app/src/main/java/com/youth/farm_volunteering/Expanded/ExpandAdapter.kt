@@ -11,7 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.tv_title
-import kotlinx.android.synthetic.main.layout_group.view.*
+import kotlinx.android.synthetic.main.item_notice_group.view.*
+
 
 class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, var header: MutableList<String>, var body: MutableList<MutableList<String>>) : BaseExpandableListAdapter() {
     override fun getGroup(groupPosition: Int): String {
@@ -30,7 +31,7 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
         var convertView = convertView
         if (convertView == null) {
             val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = inflater.inflate(R.layout.layout_group, null)
+            convertView = inflater.inflate(R.layout.item_question_group, null)
         }
         val title = convertView!!.findViewById<TextView>(R.id.tv_title)
         title.text = getGroup(groupPosition)
@@ -47,10 +48,10 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
         }
         if (isExpanded) {
             //title?.setCompoundDrawablesWithIntrinsicBounds(0, 0,R.drawable.ic_up, 0);
-            convertView.imageView.isPressed = true  // 버튼클릭시 이미지 UP으로 변경
+            convertView.notice_arrow.isPressed = true  // 버튼클릭시 이미지 UP으로 변경
         } else {
             //title?.setCompoundDrawablesWithIntrinsicBounds(0, 0,R.drawable.ic_down, 0);
-            convertView.imageView.isPressed = false // 버튼다시클릭시 이미지 Down으로  변경
+            convertView.notice_arrow.isPressed = false // 버튼다시클릭시 이미지 Down으로  변경
         }
         return convertView
     }
@@ -76,7 +77,7 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
         if (convertView == null) {
 
             val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = inflater.inflate(R.layout.layout_child, null)
+            convertView = inflater.inflate(R.layout.item_question_child, null)
         }
         val title = convertView?.findViewById<TextView>(R.id.tv_title)
         title?.text = getChild(groupPosition, childPosition)

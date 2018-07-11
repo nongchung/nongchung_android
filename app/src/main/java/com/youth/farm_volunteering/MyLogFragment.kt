@@ -9,7 +9,8 @@ import android.view.ViewGroup
 
 class MyLogFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(R.layout.fragment_mylog, container, false)
+        val v = inflater!!.inflate(R.layout.fragment_myactivity, container, false)
+
         return v
     }
 }

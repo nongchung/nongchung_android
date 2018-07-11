@@ -4,9 +4,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.youth.farm_volunteering.Bookmark.LikeData
-import com.youth.farm_volunteering.Bookmark.LikeViewHolder
 import com.youth.farm_volunteering.R
 
 class ReviewAdapter (var ReviewItems : ArrayList<ReviewData>) : RecyclerView.Adapter<ReviewViewHolder>() {

@@ -12,17 +12,21 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
-import com.youth.farm_volunteering.Home.ApplicationActivity
+import com.youth.farm_volunteering.Home.FarmProfile.FramProfileActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
+import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyLogFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.SignUp.SignupActivity1
+import com.youth.farm_volunteering.SignUp.SignupActivity2
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
@@ -56,7 +60,6 @@ class MainActivity : AppCompatActivity() {
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage, null, false)
         mylogTab = LayoutInflater.from(this).inflate(R.layout.tab_mylog, null, false)
         searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search, null, false)
-
 
         tabImage_Array = arrayListOf(homeTab!!, searchTab!!, mylogTab!!, bookmarklistTab!!, mypageTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
         fragment_Array = arrayListOf(HomeFragment(), SearchFragment(), MyLogFragment(), LikeFragment(), MypageFragment())
@@ -124,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         when (item!!.itemId) {
             R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, ApplicationActivity::class.java)
+                val intent = Intent(applicationContext, FramProfileActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -146,7 +149,10 @@ class MainActivity : AppCompatActivity() {
 
     fun setCurrentTabFragment(tabPosition: Int) {
         when (tabPosition) {
-            tabPosition -> ReplaceFragment(fragment_Array!![tabPosition])
+            tabPosition -> {
+                ReplaceFragment(fragment_Array!![tabPosition])
+                Log.d("aaa",fragment_Array!![tabPosition].toString())
+            }
         }
     }
 

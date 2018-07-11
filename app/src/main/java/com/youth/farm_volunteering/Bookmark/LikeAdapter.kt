@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.data.LikeData
 
-class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<LikeViewHolder>(){
+class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeViewHolder {
         val mainView : View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_like, parent, false)
@@ -17,10 +19,12 @@ class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<L
     override fun getItemCount(): Int = LikeItems.size
 
     override fun onBindViewHolder(holder: LikeViewHolder, position: Int) {
-        holder.picture.setImageResource(LikeItems[position].picture)
-        holder.title.text = LikeItems[position].title
-        holder.location.text = LikeItems[position].location
-        holder.price.text = LikeItems[position].price
+        Glide.with(holder!!.itemView.context)
+                .load(LikeItems[position].img)
+                .into(holder.img)
+        holder.name.text = LikeItems[position].name
+        holder.addr.text = LikeItems[position].addr
+        holder.price.text = (LikeItems[position].price).toString()
 
         holder.itemView.setOnClickListener{
             Toast.makeText(holder.itemView.context, "눌러쪙? >_<", Toast.LENGTH_SHORT).show()

@@ -196,7 +196,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val fm = activity!!.supportFragmentManager
         val transaction = fm.beginTransaction()
         transaction.replace(R.id.activity_main_container, fragment)
-//        transaction.addToBackStack(null)
+        transaction.addToBackStack(null)
         transaction.commit()
     }
 

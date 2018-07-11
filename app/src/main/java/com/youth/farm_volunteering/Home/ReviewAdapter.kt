@@ -34,7 +34,7 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
 
     override fun onBindViewHolder(holder: ReviewViewHolder?, position: Int) {
         Glide.with(holder!!.itemView.context)
-                .load(dataList[position].uimg) //String 줘서 이렇게??
+                .load(dataList[position].uimg) //String 줘서 이렇게?? //ㅇㅇ 그렇게
                 .into(holder.Reviewuimg)
         holder.Reviewname.text = dataList[position].name
         holder.Reviewdate.text = dataList[position].startDate
