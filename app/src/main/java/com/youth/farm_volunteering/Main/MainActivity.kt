@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -146,7 +147,10 @@ class MainActivity : AppCompatActivity() {
 
     fun setCurrentTabFragment(tabPosition: Int) {
         when (tabPosition) {
-            tabPosition -> ReplaceFragment(fragment_Array!![tabPosition])
+            tabPosition -> {
+                ReplaceFragment(fragment_Array!![tabPosition])
+                Log.d("aaa",fragment_Array!![tabPosition].toString())
+            }
         }
     }
 

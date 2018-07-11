@@ -24,6 +24,12 @@ interface NetworkService {
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
 
+    @GET("/api/home/more/moreNew?idx=6")
+    fun all_new(): Call<AllNewResponseData>
+
+    @GET("/api/bookmark")
+    fun like(): Call<LikeResponseData>
+
     @GET("/api/home/detail/nh")
     fun detailnonghwal(
             @Query("idx") idx: Int

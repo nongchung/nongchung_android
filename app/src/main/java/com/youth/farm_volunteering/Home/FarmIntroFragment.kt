@@ -29,7 +29,7 @@ class FarmIntroFragment : Fragment() {
     lateinit var friendinfoAdapter: FriendInfoAdapter
     lateinit var scheduleAdapter: ScheduleAdapter
 
-    var DetailNonghwalList:NhInfoData? = null
+    var DetailNonghwalList: NhInfoData? = null
     var DetailFriendInfoList: List<FriendInfoData>? = null
     var DetailFarmInfoList: FarmInfoData? = null
     var DetailScheduleList: List<DetailSchData>? = null
@@ -42,7 +42,7 @@ class FarmIntroFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
-        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
+        var detailnongwalCall = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
         //Log.d("aaa",detailnongwalCall.toString())
 
         detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
@@ -50,6 +50,7 @@ class FarmIntroFragment : Fragment() {
                 Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
                 //Log.e("abc",t.toString())
             }
+
             override fun onResponse(call: Call<DetailNonghwalResponseData>, response: Response<DetailNonghwalResponseData>) {
                 DetailNonghwalList = response.body().nhInfo
                 DetailFriendInfoList = response.body().friendsInfo
@@ -64,12 +65,12 @@ class FarmIntroFragment : Fragment() {
                 detail_introduce_price.setText(DetailNonghwalList!!.price.toString())
                 detail_introduce_period.setText(DetailNonghwalList!!.period.toString())
 
-                friendinfoAdapter =FriendInfoAdapter(DetailFriendInfoList!!)
+                friendinfoAdapter = FriendInfoAdapter(DetailFriendInfoList!!)
 
                 v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
                 v.friendinfoView_rv.adapter = friendinfoAdapter
 
-                introduceImage_linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+                introduceImage_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
                 v.friendinfoView_rv!!.setLayoutManager(introduceImage_linearLayoutManager)
 
@@ -84,7 +85,7 @@ class FarmIntroFragment : Fragment() {
 //                        .load(dataList[position]) //String 줘서 이렇게??
 //                        .into(holder.FarmBoxReviewImg)
 
-                scheduleAdapter= ScheduleAdapter(DetailScheduleList!!)
+                scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
                 v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
                 v.scheduleView_rv.adapter = scheduleAdapter
@@ -93,23 +94,11 @@ class FarmIntroFragment : Fragment() {
 
         })
         //size가 6이상일때는 +이미지가 표시되게 함
-        if(friendsizelist>=6){
-            v.farm_friendinfo_img_plus.visibility=View.VISIBLE
-            //image화면 클릭시 오류발생하는거 수정 필요!!
-            v.fram_friendinfo_add.setText(additionfriendinfo.toString())
-            v.fram_friendinfo_add.visibility=View.VISIBLE
-            v.farm_friendinfo_img_plus.setOnClickListener{
-                val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
-
-
+//            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
+//            startActivity(intent)
 
 
         return v
-
 
 
     }

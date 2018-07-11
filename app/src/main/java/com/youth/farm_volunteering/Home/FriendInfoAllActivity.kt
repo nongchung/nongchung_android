@@ -17,43 +17,29 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val BUNDLEKEY_KEY_FRIENDINFO: String = "BUNDLEKEY_KEY_FRIENDINFO"
+
 class FriendInfoAllActivity : AppCompatActivity() {
+
     lateinit var friendAllinfoAdapter: FriendInfoAllAdapter
     var FriendInfoAllList: List<FriendInfoData>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.item_allfriendinfo)
+        setContentView(R.layout.activity_allfriendinfo)
 
 
-        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
-        //Log.d("aaa",detailnongwalCall.toString())
+        FriendInfoAllList = intent.getSerializableExtra(BUNDLEKEY_KEY_FRIENDINFO) as List<FriendInfoData>
+        friendAllinfoAdapter = FriendInfoAllAdapter(FriendInfoAllList!!)
 
-        detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
-            override fun onFailure(call: Call<DetailNonghwalResponseData>, t: Throwable?) {
-                Toast.makeText(baseContext, "home request fail", Toast.LENGTH_SHORT).show()
-                //Log.e("abc",t.toString())
-            }
-            override fun onResponse(call: Call<DetailNonghwalResponseData>, response: Response<DetailNonghwalResponseData>) {
-
-                FriendInfoAllList = response.body().friendsInfo
-
-                friendAllinfoAdapter =FriendInfoAllAdapter(FriendInfoAllList!!)
-
-                //모든 참석자 화면을 위한 manager설정
-
-
+        allfriendifo_rv.layoutManager = LinearLayoutManager(applicationContext)
+        allfriendifo_rv.adapter = friendAllinfoAdapter
+        //모든 참석자 화면을 위한 manager설정
 
 
 //                friendinfoView_rv.layoutManager = LinearLayoutManager(context)
 //                friendinfoView_rv.adapter = friendinfoAdapter
 
-            }
-
-
-        })
-        allfriendifo_rv.layoutManager = LinearLayoutManager(applicationContext)
-        allfriendifo_rv.adapter = friendAllinfoAdapter
         //applicatinocontext
     }
 }
