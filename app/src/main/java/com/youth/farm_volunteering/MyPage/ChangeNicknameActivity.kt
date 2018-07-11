@@ -99,11 +99,9 @@ class ChangeNicknameActivity : AppCompatActivity() {
 
                             else ->
                                 Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show()
+                        // 값이 왜 null이 뜰까요... 대체!!!!!!
 
                         }
-//                        Toast.makeText(applicationContext, "successful", Toast.LENGTH_SHORT).show()
-//                        changedNickData = response.body().data // 값이 왜 null이 뜰까요... 대체!!!!!!
-
                     }
                 })
 
