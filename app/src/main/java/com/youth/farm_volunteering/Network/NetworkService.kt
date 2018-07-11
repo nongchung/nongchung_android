@@ -48,9 +48,12 @@ interface NetworkService {
     @POST("/api/signup")
     fun registration(@Field("email") email: String, @Field("password") password: String, @Field("nickname") nickname: String, @Field("name") name: String, @Field("sex") sex: Int, @Field("handphone") handphone: String, @Field("birth") birth: String): Call<DefaultResponseData>
 
-    @PUT("/mypage/nickname")
+    @Multipart
+    @PUT("/api/mypage/nickname")
     fun nickname(
-            @Body nickname : String
+            @Part("nickname") nickname : String
+//        @Body nickname: String
     ): Call<NickNameResponseData>
+
 
 }

@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.FarmItemViewHolder
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.NonghwalData
 
 class MyAdapter(var myList : List<MyData>) : RecyclerView.Adapter<MyViewHolder>() {
 
