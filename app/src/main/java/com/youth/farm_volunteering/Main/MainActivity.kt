@@ -18,9 +18,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
-import com.youth.farm_volunteering.Home.ApplicationActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
+import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyLogFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage, null, false)
         mylogTab = LayoutInflater.from(this).inflate(R.layout.tab_mylog, null, false)
         searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search, null, false)
-
 
         tabImage_Array = arrayListOf(homeTab!!, searchTab!!, mylogTab!!, bookmarklistTab!!, mypageTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
         fragment_Array = arrayListOf(HomeFragment(), SearchFragment(), MyLogFragment(), LikeFragment(), MypageFragment())
@@ -125,8 +124,8 @@ class MainActivity : AppCompatActivity() {
         when (item!!.itemId) {
             R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, ApplicationActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(applicationContext, ::class.java)
+//                startActivity(intent)
             }
         }
 
