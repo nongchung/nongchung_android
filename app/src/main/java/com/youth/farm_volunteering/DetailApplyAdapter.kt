@@ -2,6 +2,7 @@ package com.youth.farm_volunteering
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +44,7 @@ class DetailApplyAdapter(var items: ArrayList<DetailApplyData>) : RecyclerView.A
         holderDetail.itemView.setOnClickListener {
 
             val intent = Intent(holderDetail.itemView.context, FarmDetailActivity::class.java)
-
+            holderDetail.itemView.setBackgroundColor(Color.parseColor("#ECECEC"))
             intent.putExtra("date",items[position].apply_rv_schedule)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             holderDetail.itemView.context.startActivity(intent)

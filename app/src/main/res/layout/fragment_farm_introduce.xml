@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <!--var addr: String? = null-->
     <!--var name: String? = null-->
@@ -19,8 +19,8 @@
         android:id="@+id/detail_introduce_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"
         android:lineSpacingExtra="8dp"
         android:padding="@dimen/activity_search_toolbar_left_padding"
         android:text="사과농장"
@@ -42,11 +42,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="8dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
         android:padding="@dimen/activity_search_toolbar_left_padding"
         android:text="사과농장"
-        android:textSize="13sp" />
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,10 +57,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/detail_place"
-            />
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/detail_place" />
 
         <TextView
             android:id="@+id/detail_introduce_addr"
@@ -83,10 +82,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/detail_money"
-            />
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/detail_money" />
 
         <TextView
             android:id="@+id/detail_introduce_price"
@@ -109,8 +107,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
             android:background="@drawable/detail_time"
 
             />
@@ -128,50 +126,93 @@
     </LinearLayout>
 
 
+    <!--android:clickable="false"-->
 
-
-        <!--android:clickable="false"-->
-
-        <!--android:longClickable="false"-->
-
+    <!--android:longClickable="false"-->
 
 
     <!--<TextView-->
-        <!--android:id="@+id/detail_introduce_star"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:lineSpacingExtra="8dp"-->
-        <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
-        <!--android:text="사과농장"-->
-        <!--android:textSize="28sp" />-->
-
-
-
-
+    <!--android:id="@+id/detail_introduce_star"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:lineSpacingExtra="8dp"-->
+    <!--android:padding="@dimen/activity_search_toolbar_left_padding"-->
+    <!--android:text="사과농장"-->
+    <!--android:textSize="28sp" />-->
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="#000000" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="참석인원"
 
         />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/friendinfoView_rv"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:orientation="horizontal">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/friendinfoView_rv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"></android.support.v7.widget.RecyclerView>
+        <!--
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
 
-    </android.support.v7.widget.RecyclerView>
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/farm_friendinfo_img_plus"
+
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="9dp"
+                        android:src="@drawable/detail_apply"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <!-android:visibility="invisible"
+
+                    <TextView
+                        android:id="@+id/fram_friendinfo_add"
+                        android:layout_width="26dp"
+                        android:layout_height="19dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="dfs"
+                        android:textAlignment="center"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/farm_friendinfo_img_plus"
+                        app:layout_constraintEnd_toEndOf="@+id/farm_friendinfo_img_plus"
+                        app:layout_constraintHorizontal_bias="0.485"
+                        app:layout_constraintStart_toStartOf="@+id/farm_friendinfo_img_plus"
+                        app:layout_constraintTop_toTopOf="@+id/farm_friendinfo_img_plus"
+                        app:layout_constraintVertical_bias="0.492" />
+
+                </android.support.constraint.ConstraintLayout>
+            -->
+
+        <!--app:layout_constraintBottom_toBottomOf="@+id/farm_friendinfo_img_plus"-->
+        <!--app:layout_constraintEnd_toEndOf="@+id/farm_friendinfo_img_plus"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/farm_friendinfo_img_plus"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/farm_friendinfo_img_plus"-->
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="#000000" />
 
     <TextView
         android:layout_width="match_parent"
@@ -197,30 +238,32 @@
         android:padding="@dimen/activity_search_toolbar_left_padding"
         android:text="사과농장"
         android:textSize="28sp" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/farminfo_image"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:lineSpacingExtra="8dp"
-        android:src="@color/colorAccent"
         android:padding="@dimen/activity_search_toolbar_left_padding"
+        android:src="@color/colorAccent"
 
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="#000000" />
 
     <Button
         android:id="@+id/detail_profile_watch_btn"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="프로필보기"/>
+        android:layout_height="50dp"
+        android:text="프로필보기" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="#000000" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -234,53 +277,56 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="#000000" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="준비물"
-        />
+        android:text="준비물" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="옷, 간식"
-        />
+        android:text="옷, 간식" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="#000000" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="집결지"
-        />
+        android:text="집결지" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/colorAccent"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="환불규정"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="환불규정 설명"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#000000"/>
+        android:background="@color/colorAccent" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="연락처"/>
+        android:text="환불규정" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="연락처관련설명"/>
+        android:text="환불규정 설명" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="연락처" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="연락처관련설명" />
 
 </LinearLayout>

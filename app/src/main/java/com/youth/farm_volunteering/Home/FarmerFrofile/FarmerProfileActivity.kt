@@ -21,7 +21,6 @@
 //import com.youth.farm_volunteering.HomeFragment
 //import com.youth.farm_volunteering.MyPage.MypageFragment
 //import com.youth.farm_volunteering.R
-//import com.youth.farm_volunteering.UndefinedFragment
 //import kotlinx.android.synthetic.main.activity_main.*
 //import org.sopt.cocochart.client.Main.TabAdapter
 //import java.util.ArrayList

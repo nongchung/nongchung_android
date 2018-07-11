@@ -3,38 +3,42 @@ package com.youth.farm_volunteering
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.bumptech.glide.RequestManager
 import com.youth.farm_volunteering.data.HomeResponseData
-import com.youth.farm_volunteering.data.NonghwalData
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.youth.farm_volunteering.data.WeekNonghwalData
 import kotlinx.android.synthetic.main.fragment_showall.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
+import android.view.KeyEvent.KEYCODE_BACK
+
+
 
 class ShowAllFragment : Fragment() {
     //lateinit var showAllAdapter : ShowAllAdapter
     //lateinit var requestManager : RequestManager
 
 
-    var popularNonghwalList: List<NonghwalData>? = null
-    lateinit var farmAdapter: FarmAdapter
+    var popularWeekNonghwalList: List<WeekNonghwalData>? = null
+    lateinit var weekFarmAdapter: WeekFarmAdapter
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val v = inflater.inflate(R.layout.fragment_showall, container, false)
 
-//        var farmList : ArrayList<NonghwalData>? = null
+//        var farmList : ArrayList<WeekNonghwalData>? = null
 //
 //        farmList = ArrayList()
 //
-//        farmAdapter = FarmAdapter(farmList!!)
+//        weekFarmAdapter = WeekFarmAdapter(farmList!!)
 
         var homeCall = ApplicationController.instance!!.networkService!!.home();
         homeCall.enqueue(object : Callback<HomeResponseData> {
@@ -44,28 +48,25 @@ class ShowAllFragment : Fragment() {
 
             override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
 
-                popularNonghwalList = response.body().populNh
+                popularWeekNonghwalList = response.body().populNh
 
 
-                farmAdapter = FarmAdapter(popularNonghwalList!!)
+                weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
 
                 fragment_showall_rv.layoutManager = LinearLayoutManager(context)
-                fragment_showall_rv.adapter = farmAdapter
+                fragment_showall_rv.adapter = weekFarmAdapter
 
             }
         })
 
         return v
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        fragment_showall_rv.layoutManager = LinearLayoutManager(context)
-//
-//        fragment_showall_rv.adapter = farmAdapter
-
-
-
+    fun replaceFragment(fragment: Fragment) {
+        //FragmentManager는 액티비티만 가질 수 있음, 따라서 MainTab과 같은 Fragment에서는 activity!!.supportFragmentManager 이렇게 호출해줘야 함
+        val fm = activity!!.supportFragmentManager
+        val transaction = fm.beginTransaction()
+        transaction.replace(R.id.activity_main_container, fragment)
+//        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

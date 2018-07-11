@@ -8,13 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.review_rating_bar
 import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.rvListInfoData
+import kotlinx.android.synthetic.main.fragment_farm_review.*
 
 
 class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<ReviewViewHolder>() {
 
+
+
+
     override fun getItemCount(): Int = dataList.size
+
+
 
     //private lateinit var onIntroClick: View.OnClickListener
 
@@ -31,12 +38,16 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
                 .into(holder.Reviewuimg)
         holder.Reviewname.text = dataList[position].name
         holder.Reviewdate.text = dataList[position].startDate
+
+        //ratingAdd += dataList[position].star!!.toInt()
         holder.Reviewstar.text = dataList[position].star.toString()
         holder.Reviewcontent.text = dataList[position].content
         holder.reviewImageRecyclerView.adapter = ReviewImageAdapter(dataList[position].rvImages!!)
         holder.reviewImageRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
 
 
+
     }
+
 }
 

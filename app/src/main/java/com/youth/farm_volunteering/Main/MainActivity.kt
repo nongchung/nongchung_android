@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -20,25 +21,25 @@ import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyActivity.MyActivityFragment
+import com.youth.farm_volunteering.MyLogFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.UndefinedFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    var toolbar : android.support.v7.widget.Toolbar? = null
-    var homeTab : View? = null
-    var likeTab : View? = null
-    var mypageTab : View? = null
-    var undefinedTab : View? = null
-    var searchTab : View? = null
-    var tabImage_Array : ArrayList<View>? = null
-    var fragment_Array : ArrayList<Fragment>? = null
+    var toolbar: android.support.v7.widget.Toolbar? = null
+    var homeTab: View? = null
+    var bookmarklistTab: View? = null
+    var mypageTab: View? = null
+    var mylogTab: View? = null
+    var searchTab: View? = null
+    var tabImage_Array: ArrayList<View>? = null
+    var fragment_Array: ArrayList<Fragment>? = null
 
-    private var linearLayoutManager : LinearLayoutManager? = null
+    private var linearLayoutManager: LinearLayoutManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,34 +51,32 @@ class MainActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.side_menu)
 
-        homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home,null,false)
-        likeTab = LayoutInflater.from(this).inflate(R.layout.tab_like,null,false)
-        mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage,null,false)
-        undefinedTab = LayoutInflater.from(this).inflate(R.layout.tab_undefined,null,false)
-        searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search,null,false)
+        homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
+        bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist, null, false)
+        mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage, null, false)
+        mylogTab = LayoutInflater.from(this).inflate(R.layout.tab_mylog, null, false)
+        searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search, null, false)
 
-        tabImage_Array = arrayListOf(homeTab!!, likeTab!!, mypageTab!!, undefinedTab!!,searchTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
-        fragment_Array = arrayListOf(HomeFragment(), LikeFragment(), MypageFragment(), UndefinedFragment(),SearchFragment())
+        tabImage_Array = arrayListOf(homeTab!!, searchTab!!, mylogTab!!, bookmarklistTab!!, mypageTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
+        fragment_Array = arrayListOf(HomeFragment(), SearchFragment(), MyLogFragment(), LikeFragment(), MypageFragment())
 
-        for(i in 0..fragment_Array!!.size-1) {
+        for (i in 0..fragment_Array!!.size - 1) {
             activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성
         }
 
-        supportFragmentManager.beginTransaction().add(R.id.activity_main_container, HomeFragment()).commit()        //첫 화면의 container를 HomeFragment()로 설정
+        supportFragmentManager.beginTransaction().replace(R.id.activity_main_container, HomeFragment()).commit()        //첫 화면의 container를 HomeFragment()로 설정
 
-        for(i in 0..tabImage_Array!!.size-1) {
+        for (i in 0..tabImage_Array!!.size - 1) {
             tabAdapter.addFragment(tabImage_Array!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
         }
-        for(i in 0..tabAdapter.count-1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
+        for (i in 0..tabAdapter.count - 1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
         activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
 
 
         activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
 
-        activity_main_tabViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        activity_main_tabViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
 
             }
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        activity_main_bottomTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        activity_main_bottomTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
@@ -115,14 +114,14 @@ class MainActivity : AppCompatActivity() {
         var menuInflater = getMenuInflater()
         menuInflater!!.inflate(R.menu.menu_main, menu)
 
-        var searchIcon : Drawable = menu!!.getItem(0).icon
+        var searchIcon: Drawable = menu!!.getItem(0).icon
         searchIcon.setColorFilter(0xFF000000.toInt(), PorterDuff.Mode.MULTIPLY)
 
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item!!.itemId){
+        when (item!!.itemId) {
             R.id.menu_search_icon -> {
 
 //                val intent = Intent(applicationContext, ::class.java)
@@ -134,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun ReplaceFragment(fragment : Fragment){
+    fun ReplaceFragment(fragment: Fragment) {
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
 //        fragment.arguments = bundle
@@ -147,7 +146,16 @@ class MainActivity : AppCompatActivity() {
 
     fun setCurrentTabFragment(tabPosition: Int) {
         when (tabPosition) {
-            tabPosition -> ReplaceFragment(fragment_Array!![tabPosition])
+            tabPosition -> {
+                ReplaceFragment(fragment_Array!![tabPosition])
+                Log.d("aaa",fragment_Array!![tabPosition].toString())
+            }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        
     }
 }

@@ -1,37 +1,28 @@
 package com.youth.farm_volunteering.MyPage
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.FarmAdapter
 import com.youth.farm_volunteering.R
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import android.content.Intent
-import com.youth.farm_volunteering.R.id.imageView
-import android.provider.MediaStore
-import android.graphics.Bitmap
-import android.app.Activity
-import android.content.Context
-import android.util.Log
-import android.provider.MediaStore.Images
-import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
+import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
-import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.FileNotFoundException
-import java.io.IOException
 
 
 class MypageFragment : Fragment() {
@@ -59,6 +50,10 @@ class MypageFragment : Fragment() {
             })
         } else {
             var i = Intent(activity, LoginActivity::class.java)
+            i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
             startActivity(i)
         }
         //내 정보 프레그먼트 밑에 있는 계정, 설정, 지원 전부 다 ImageView로 박은다음에 토글 키가 있는 설정은 RelativeLayout으로 두고 match_parent를 가지는
@@ -97,6 +92,24 @@ class MypageFragment : Fragment() {
             startActivity(v)
         })
 
+        v.layout_mypage_logout.setOnClickListener {
+            LoginToken.token = null;
+            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+            var editor = sharedPreference.edit();
+            editor.remove(LoginToken.PREF_KEY)
+            editor.commit()
+            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+
+        }
+//        v.button_mypage_logout.setOnClickListener {
+//            LoginToken.token = null;
+//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+//            var editor = sharedPreference.edit();
+//            editor.remove(LoginToken.PREF_KEY)
+//            editor.commit()
+//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+//
+//        }
 
 //        v.button_mypage_logout.setOnClickListener {
 //            LoginToken.token = null

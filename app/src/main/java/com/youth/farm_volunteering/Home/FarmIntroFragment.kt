@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering.Home
 
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,9 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.additionfriendinfo
+import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.friendsizelist
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
+import junit.framework.Test
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
 import kotlinx.android.synthetic.main.layout_group.view.*
@@ -22,9 +27,9 @@ import retrofit2.Response
 class FarmIntroFragment : Fragment() {
 
     lateinit var friendinfoAdapter: FriendInfoAdapter
+    lateinit var scheduleAdapter: ScheduleAdapter
 
-
-    var DetailNonghwalList:NhInfoData? = null
+    var DetailNonghwalList: NhInfoData? = null
     var DetailFriendInfoList: List<FriendInfoData>? = null
     var DetailFarmInfoList: FarmInfoData? = null
     var DetailScheduleList: List<DetailSchData>? = null
@@ -37,7 +42,7 @@ class FarmIntroFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
-        var detailnongwalCall  = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
+        var detailnongwalCall = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
         //Log.d("aaa",detailnongwalCall.toString())
 
         detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
@@ -45,6 +50,7 @@ class FarmIntroFragment : Fragment() {
                 Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
                 //Log.e("abc",t.toString())
             }
+
             override fun onResponse(call: Call<DetailNonghwalResponseData>, response: Response<DetailNonghwalResponseData>) {
                 DetailNonghwalList = response.body().nhInfo
                 DetailFriendInfoList = response.body().friendsInfo
@@ -59,24 +65,38 @@ class FarmIntroFragment : Fragment() {
                 detail_introduce_price.setText(DetailNonghwalList!!.price.toString())
                 detail_introduce_period.setText(DetailNonghwalList!!.period.toString())
 
-                friendinfoAdapter =FriendInfoAdapter(DetailFriendInfoList!!)
+                friendinfoAdapter = FriendInfoAdapter(DetailFriendInfoList!!)
 
                 v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
                 v.friendinfoView_rv.adapter = friendinfoAdapter
 
-                introduceImage_linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+                introduceImage_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
                 v.friendinfoView_rv!!.setLayoutManager(introduceImage_linearLayoutManager)
 
                 farminfo_name.setText(DetailFarmInfoList!!.name.toString())
                 farminfo_comment.setText(DetailFarmInfoList!!.comment.toString())
+                Glide.with(context)
+                        .load(DetailFarmInfoList!!.img.toString())
+                        .into(farminfo_image)
 
+//
+//                Glide.with(holder!!.itemView.context)
+//                        .load(dataList[position]) //String 줘서 이렇게??
+//                        .into(holder.FarmBoxReviewImg)
 
+                scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
-
-
+                v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
+                v.scheduleView_rv.adapter = scheduleAdapter
             }
+
+
         })
+        //size가 6이상일때는 +이미지가 표시되게 함
+//            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
+//            startActivity(intent)
+
 
         return v
 

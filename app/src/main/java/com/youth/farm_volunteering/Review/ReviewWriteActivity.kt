@@ -12,8 +12,8 @@ import android.util.Log
 import android.view.View
 import com.youth.farm_volunteering.R
 import kotlinx.android.synthetic.main.activity_review_write.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.android.synthetic.main.fragment_mypage.view.*
+//import kotlinx.android.synthetic.main.fragment_mypage.*
+//import kotlinx.android.synthetic.main.fragment_mypage.view.*
 
 
 class ReviewWriteActivity : AppCompatActivity() {
