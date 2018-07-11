@@ -8,9 +8,8 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.LikeData
-import com.bumptech.glide.RequestManager
 
-class LikeAdapter (var LikeItems : List<LikeData>, var requestManager : RequestManager) : RecyclerView.Adapter<LikeViewHolder>(){
+class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeViewHolder {
         val mainView : View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_like, parent, false)
@@ -20,7 +19,9 @@ class LikeAdapter (var LikeItems : List<LikeData>, var requestManager : RequestM
     override fun getItemCount(): Int = LikeItems.size
 
     override fun onBindViewHolder(holder: LikeViewHolder, position: Int) {
-        requestManager.load(LikeItems[position].img).into(holder.img)
+        Glide.with(holder!!.itemView.context)
+                .load(LikeItems[position].img)
+                .into(holder.img)
         holder.name.text = LikeItems[position].name
         holder.addr.text = LikeItems[position].addr
         holder.price.text = (LikeItems[position].price).toString()

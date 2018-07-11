@@ -43,10 +43,10 @@ class LikeFragment : Fragment() {
 
             override fun onResponse(call: Call<LikeResponseData>, response: Response<LikeResponseData>) {
 
-                likeList = response.body().data
-                Log.d("aaa", likeList!!.toString())
-                likeAdapter = LikeAdapter(likeList!!, requestManager)
+                likeList = response.body().bmList
+                likeAdapter = LikeAdapter(likeList!!)
                 fragment_like_rv.adapter = likeAdapter
+
             }
         })
 
@@ -67,17 +67,5 @@ class LikeFragment : Fragment() {
 
         return v
     }
-
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//
-//        Log.d("aaa", likeList!!.toString())
-//
-//
-//
-//        fragment_like_rv.layoutManager = LinearLayoutManager(context)
-//
-//
-//    }
 
 }
