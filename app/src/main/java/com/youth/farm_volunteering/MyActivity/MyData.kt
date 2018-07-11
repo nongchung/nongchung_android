@@ -9,6 +9,4 @@ data class MyData (
         var enddate : String,
         var people : String,
         var peoplecount : String
-
-
 )
