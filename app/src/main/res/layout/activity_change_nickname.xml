@@ -39,8 +39,8 @@
         android:text="닉네임 변경"
         android:textColor="#000000"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbarNickChange"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarNickChange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
