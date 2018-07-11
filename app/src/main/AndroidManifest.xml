@@ -85,6 +85,7 @@
 
         <activity android:name=".ShowAllActivity"></activity>
         <activity android:name=".Home.FriendInfoAllActivity"/>
+        <activity android:name=".MyPage.NKactivity"/>
     </application>
 
 </manifest>
