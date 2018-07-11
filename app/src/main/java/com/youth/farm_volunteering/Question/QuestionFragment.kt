@@ -20,8 +20,6 @@ class QuestionFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
-
         val v = inflater.inflate(R.layout.item_question, container, false)      //이건 큐엔에이
 
         questionitems = ArrayList()
