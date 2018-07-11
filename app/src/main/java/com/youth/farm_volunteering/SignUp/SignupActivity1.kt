@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.youth.farm_volunteering.Home.ApplicationCancleDialog
 import com.youth.farm_volunteering.Home.QandA.qandaFragment
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.DefaultResponseData
@@ -25,8 +26,11 @@ class SignupActivity1 : AppCompatActivity() {
         setContentView(R.layout.activity_signup1)
 
         nextbutton.setOnClickListener {
-            var signup2 = Intent(this, SignupActivity2::class.java)
-            startActivityForResult(signup2, 0)
+//            var signup2 = Intent(this, SignupActivity2::class.java)
+//            startActivityForResult(signup2, 0)
+            val fm = supportFragmentManager
+            val dialogFragment = ApplicationCancleDialog(this)
+            dialogFragment.show()
         }
     }
 

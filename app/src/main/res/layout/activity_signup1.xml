@@ -11,7 +11,8 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title=" "></android.support.v7.widget.Toolbar>
+        app:title=" ">
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView3"

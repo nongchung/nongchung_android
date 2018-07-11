@@ -13,7 +13,7 @@ import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.expandedView
 import com.youth.farm_volunteering.R.id.tv_title
 import kotlinx.android.synthetic.main.item_notice_group.view.*
-import kotlinx.android.synthetic.main.layout_group.view.*
+
 
 class NoticeAdapter(var context: Context, var noticeexpandedView: ExpandableListView, var header: MutableList<String>, var body: MutableList<MutableList<String>>) : BaseExpandableListAdapter() {
     override fun getGroup(groupPosition: Int): String {

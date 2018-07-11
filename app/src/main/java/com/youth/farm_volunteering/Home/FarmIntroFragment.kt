@@ -19,7 +19,6 @@ import com.youth.farm_volunteering.data.*
 import junit.framework.Test
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
-import kotlinx.android.synthetic.main.layout_group.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

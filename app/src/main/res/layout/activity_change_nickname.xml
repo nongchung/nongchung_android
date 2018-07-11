@@ -106,7 +106,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="적용"
-        android:textColor="#0ABD9D"
+        android:textColor="#3470FF"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toStartOf="@+id/guideline26"

@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="9dp"
-            android:src="@drawable/detail_money"
+            android:src="@drawable/complete_money"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
             app:layout_constraintTop_toBottomOf="@+id/imageView8"
@@ -194,7 +194,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="9dp"
             android:layout_marginTop="9dp"
-            android:src="@drawable/detail_place"
+            android:src="@drawable/complete_place"
             app:layout_constraintBottom_toTopOf="@+id/imageView4"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -259,7 +259,7 @@
             android:layout_height="wrap_content"
             android:max="20"
             android:progress="17"
-            android:progressTint="#0ABD9D"
+            android:progressTint="#3470FF"
             app:layout_constraintEnd_toStartOf="@+id/guideline23"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
             app:layout_constraintTop_toBottomOf="@+id/textView36" />
@@ -326,7 +326,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 3명"
-            android:textColor="#F15A87"
+            android:textColor="#F25620"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/textView37"
             app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
@@ -345,7 +345,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3분"
-            android:textColor="#F15A87"
+            android:textColor="#F25620"
             app:layout_constraintStart_toStartOf="@+id/textView38"
             app:layout_constraintTop_toTopOf="@+id/textView38" />
 
@@ -360,7 +360,7 @@
             android:text="확인완료"
             android:textColor="#ffffff"
             android:textSize="15sp"
-            android:background="@drawable/apply_apply_bg"
+            android:background="@drawable/complete_complete"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 
