@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.youth.farm_volunteering.R.id.detail_date_btn
+//import com.youth.farm_volunteering.R.id.detail_date_btn
 import com.youth.farm_volunteering.R.id.parent
 import com.youth.farm_volunteering.data.DetailApplyData
 import kotlinx.android.synthetic.main.activity_farm_detail.*

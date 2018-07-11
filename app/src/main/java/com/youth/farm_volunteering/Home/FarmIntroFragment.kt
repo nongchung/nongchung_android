@@ -1,9 +1,8 @@
 package com.youth.farm_volunteering.Home
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,9 @@ import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
-import kotlinx.android.synthetic.main.layout_group.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

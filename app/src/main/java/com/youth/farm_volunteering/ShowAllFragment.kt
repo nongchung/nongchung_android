@@ -20,7 +20,7 @@ class ShowAllFragment : Fragment() {
     //lateinit var requestManager : RequestManager
 
 
-    var popularWeekNonghwalList: List<WeekNonghwalData>? = null
+    var popularWeekNonghwalList: ArrayList<WeekNonghwalData>? = null
     lateinit var weekFarmAdapter: WeekFarmAdapter
 
 

@@ -1,17 +1,8 @@
 package com.youth.farm_volunteering.Network
 
+
 import com.youth.farm_volunteering.data.*
-import retrofit2.http.FormUrlEncoded
-
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
-
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.data.DetailNonghwalResponseData
 import retrofit2.Call
-
-
 import retrofit2.http.*
 
 
@@ -29,7 +20,7 @@ interface NetworkService {
             @Query("idx") idx: Int
     ): Call<DetailNonghwalResponseData>
 
-    @GET("/api/home/detail/review")
+    @GET("/api/review")
     fun review(
             @Query("scheIdx") scheIdx: Int
     ): Call<ReviewResponseData>

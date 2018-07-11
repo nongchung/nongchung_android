@@ -35,6 +35,13 @@ class MainActivity : AppCompatActivity() {
     var mypageTab: View? = null
     var mylogTab: View? = null
     var searchTab: View? = null
+
+//    var homeTab : HomeFragment? = null
+//    var searchTab : SearchFragment? = null
+//    var mylogTab : MyLogFragment? = null
+//    var bookmarklistTab : LikeFragment? = null
+//    var mypageTab : MypageFragment? = null
+
     var tabImage_Array: ArrayList<View>? = null
     var fragment_Array: ArrayList<Fragment>? = null
 
@@ -43,10 +50,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var tabAdapter = TabAdapter(supportFragmentManager)
-
-        activity_main_tabViewPager.adapter = tabAdapter
-        activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
 
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
@@ -57,22 +60,46 @@ class MainActivity : AppCompatActivity() {
         mylogTab = LayoutInflater.from(this).inflate(R.layout.tab_mylog, null, false)
         searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search, null, false)
 
+//        homeTab = HomeFragment()
+//        searchTab = SearchFragment()
+//        mylogTab = MyLogFragment()
+//        bookmarklistTab = LikeFragment()
+//        mypageTab = MypageFragment()
+//
+//        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab().setCustomView(homeTab))
+//        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab().setCustomView(searchTab))
+//        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab().setCustomView(mylogTab))
+//        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab().setCustomView(bookmarklistTab))
+//        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab().setCustomView(mypageTab))
+
+        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())
+        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())
+        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())
+        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())
+        activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())
+
+        var tabAdapter = TabAdapter(supportFragmentManager, activity_main_bottomTabLayout.tabCount)
 
         tabImage_Array = arrayListOf(homeTab!!, searchTab!!, mylogTab!!, bookmarklistTab!!, mypageTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
         fragment_Array = arrayListOf(HomeFragment(), SearchFragment(), MyLogFragment(), LikeFragment(), MypageFragment())
 
-        for (i in 0..fragment_Array!!.size - 1) {
-            activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성
-        }
+//        for (i in 0..fragment_Array!!.size - 1) {
+//            activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성
+//        }
 
         supportFragmentManager.beginTransaction().replace(R.id.activity_main_container, HomeFragment()).commit()        //첫 화면의 container를 HomeFragment()로 설정
 
-        for (i in 0..tabImage_Array!!.size - 1) {
-            tabAdapter.addFragment(tabImage_Array!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
+        for (i in 0..activity_main_bottomTabLayout.tabCount - 1) {
+            tabAdapter!!.addFragment(tabImage_Array!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
         }
-        for (i in 0..tabAdapter.count - 1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
-        activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
+        for (i in 0..tabAdapter!!.count - 1) {
+            activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter!!.getTabDataList(i).tabView)
+        } // 탭에 커스텀뷰 설정
 
+        activity_main_tabViewPager.adapter = tabAdapter
+        activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
+
+        activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
 
         activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
 
@@ -101,8 +128,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-//                activity_main_tabViewPager.currentItem = tab!!.position
-                setCurrentTabFragment(tab!!.position)
+                activity_main_tabViewPager.currentItem = tab!!.position
+//                setCurrentTabFragment(tab!!.position)
             }
 
         })

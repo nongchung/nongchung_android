@@ -1,190 +1,61 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/id_cd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.youth.farm_volunteering.FarmDetailActivity">
 
-
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
+            android:id="@+id/collapsingtoolbarDetail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="#F2F2F2"
+            app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="28dp"
+            app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:scrimVisibleHeightTrigger="100dp"
             app:titleEnabled="false">
-
-            <ImageView
-                android:id="@+id/toolbarImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/image_1"
-                app:layout_collapseMode="pin" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:title=" " />
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <ImageView
+                android:id="@+id/imageviewCollapse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/main_banner3" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/detail_nsv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayoutDetailActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabIndicatorColor="#A26A69"
+            app:tabPaddingStart="0dp"
+            app:tabPaddingEnd="0dp"
+            app:tabPaddingTop="0dp"
+            app:tabPaddingBottom="0dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+    </android.support.design.widget.AppBarLayout>
 
-                <TextView
-                    android:id="@+id/farm_introduce"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_weight="1"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:padding="@dimen/activity_search_toolbar_left_padding"
-                    android:text="농장소개"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/farm_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_weight="1"
-                    android:padding="@dimen/activity_search_toolbar_left_padding"
-                    android:text="농장질문"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/farm_review"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_weight="1"
-                    android:padding="@dimen/activity_search_toolbar_left_padding"
-                    android:text="농장후기"
-                    android:textAlignment="center" />
-
-
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/detail_frame"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/activity_search_toolbar_left_padding">
-
-            </FrameLayout>
-
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:map="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                tools:context=".FarmDetailActivity" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/scheduleView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"></android.support.v7.widget.RecyclerView>
-
-
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
-
-
-    <RelativeLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpagerDetailBottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/detail_apply_rv"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_above="@id/detail_footer"
-            android:background="#ffffff"
-            android:visibility="gone">
-
-
-        </android.support.v7.widget.RecyclerView>
-
-        <View
-            android:id="@+id/detail_black"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/detail_apply_rv"
-            android:background="#64000000"
-            android:visibility="gone" />
-
-
-        <RelativeLayout
-            android:id="@+id/detail_footer"
-            android:layout_width="match_parent"
-            android:layout_height="60.92dp"
-            android:layout_alignParentBottom="true"
-            android:background="#ffffff">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/detail_date_btn"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="225.05dp"
-                    android:layout_height="45.07dp"
-                    android:layout_marginRight="6.04dp"
-                    android:background="@drawable/button_shape_date"
-                    android:text="2018년 6월 29일 ~ 30일" />
-
-                <Button
-                    android:id="@+id/detail_apply_btn"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="114.11dp"
-                    android:layout_height="45.07dp"
-                    android:background="@drawable/button_shape_apply"
-                    android:text="신청하기" />
-            </LinearLayout>
-
-
-        </RelativeLayout>
-
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

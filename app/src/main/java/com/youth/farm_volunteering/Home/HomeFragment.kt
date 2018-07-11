@@ -35,7 +35,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
     //    var adViewPagerAdapter: AdViewPagerAdapter? = null
-    var popularWeekNonghwalList: List<WeekNonghwalData>? = null
+    var popularWeekNonghwalList: ArrayList<WeekNonghwalData>? = null
     var newNonghwalList : List<NewNonghwalData>? = null
     var popularFarmList : List<PopulFarmData>? = null
     var detailThemeFarmList: List<DetailThemeFarmData>? = null
@@ -129,9 +129,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             fragment_home_newFarm_showAll_txt -> {
                 replaceFragment(ShowAllFragment())
             }
-            fragment_home_themeFarm_showAll_txt -> {
-                replaceFragment(ShowAllFragment())
-            }
+
             fragment_home_hotFarm_showAll_txt -> {
                 replaceFragment(ShowAllFragment())
             }
@@ -143,11 +141,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         fragment_home_weeklyHotFarm_showAll_txt.setOnClickListener(this)
         fragment_home_newFarm_showAll_txt.setOnClickListener(this)
-        fragment_home_themeFarm_showAll_txt.setOnClickListener(this)
+        //테마별 농활의 모두보기 삭제
         fragment_home_hotFarm_showAll_txt.setOnClickListener(this)
-
-//        fragment_home_weeklyHotFarm.
-
 
         fragment_home_weeklyHotFarm_rv.layoutManager = LinearLayoutManager(context)
         fragment_home_newFarm_rv.layoutManager = LinearLayoutManager(context)
@@ -165,6 +160,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         fragment_home_themeFarm_rv!!.setLayoutManager(themeFarm_linearLayoutManager)
         fragment_home_hotFarm_rv!!.setLayoutManager(hotFarm_linearLayoutManager)
 
+        //RecyclerView별 horizontal로 간격띄우기
         horizontalItemDecoration = DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
         horizontalDecoration = ContextCompat.getDrawable(activity, R.drawable.horizontal_divider)
         horizontalItemDecoration!!.setDrawable(horizontalDecoration!!)

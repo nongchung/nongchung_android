@@ -52,7 +52,8 @@
 
         <activity
             android:name=".FarmDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label=" "/>
 
         <activity
             android:name=".SignUp.SignupActivity"
