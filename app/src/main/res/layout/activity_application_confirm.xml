@@ -253,7 +253,7 @@
             android:background="#CBCBCB"/>
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/my_progressBar"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -295,7 +295,7 @@
             android:text="참여인원"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+            app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
 
         <TextView
             android:id="@+id/textView38"
@@ -319,7 +319,7 @@
             android:text="17/20"
             android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline23"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+            app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
 
         <TextView
             android:id="@+id/textView51"
@@ -329,7 +329,7 @@
             android:textColor="#F15A87"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/textView37"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+            app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
 
         <TextView
             android:id="@+id/textView52"
@@ -338,7 +338,7 @@
             android:text=" 남았습니다!"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/textView51"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+            app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
 
         <TextView
             android:id="@+id/textView53"

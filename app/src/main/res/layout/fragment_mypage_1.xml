@@ -122,11 +122,11 @@
                 android:layout_marginLeft="13dp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/nickname_change_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
             <TextView
-                android:id="@+id/nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="닉네임 변경"
@@ -142,6 +142,7 @@
                 android:layout_marginRight="15dp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/password_change_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
@@ -192,6 +193,7 @@
                 android:layout_marginLeft="13dp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/push_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
@@ -223,6 +225,7 @@
                 android:layout_marginLeft="13dp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/notice_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
@@ -242,6 +245,7 @@
                 android:layout_marginRight="15dp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/faq_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">

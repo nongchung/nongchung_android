@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-=======
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
->>>>>>> c698865b6afbd4d1c57a49b303e9cf7693309ce9
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -102,14 +98,11 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-<<<<<<< HEAD
             android:layout_weight="6.5"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-=======
->>>>>>> c698865b6afbd4d1c57a49b303e9cf7693309ce9
             android:layout_weight="6.5" />
 
         <TextView
@@ -125,11 +118,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-<<<<<<< HEAD
             android:layout_weight="6.5"/>
-=======
-            android:layout_weight="6.5" />
->>>>>>> c698865b6afbd4d1c57a49b303e9cf7693309ce9
 
         <TextView
             android:layout_width="match_parent"
@@ -149,11 +138,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-<<<<<<< HEAD
             android:layout_weight="6.5"/>
 
-=======
-            android:layout_weight="6.5" />
 
         <Button
             android:id="@+id/button_mypage_logout"
@@ -161,6 +147,6 @@
             android:layout_height="0dp"
             android:layout_weight="6.5"
             android:text="로그아웃" />
->>>>>>> c698865b6afbd4d1c57a49b303e9cf7693309ce9
+
     </LinearLayout>
 </LinearLayout>
