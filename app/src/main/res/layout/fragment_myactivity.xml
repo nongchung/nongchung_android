@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
@@ -111,10 +111,15 @@
             </android.support.constraint.ConstraintLayout>
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+     <android.support.v7.widget.RecyclerView
+         android:id="@+id/my_rv"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+     </android.support.v7.widget.RecyclerView>
+
+
     </LinearLayout>
+
+
 </ScrollView>

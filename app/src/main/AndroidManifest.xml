@@ -75,8 +75,9 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".Home.ApplicationActivity" />
         <activity android:name=".Home.ApplicationConfirmActivity" />
-        <activity android:name=".MyPage.ChangeNicknameActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".MyPage.ChangeNicknameActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MyPage.ChangePasswordActivity" />
         <activity android:name=".MyPage.PushActivity" />
         <activity android:name=".MyPage.NoticeActivity" />
@@ -85,7 +86,10 @@
 
 
         <activity android:name=".ShowAllActivity"></activity>
-        <activity android:name=".Home.FriendInfoAllActivity"/>
+        <activity android:name=".Home.FriendInfoAllActivity" />
+        <activity
+            android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.MyPage
 
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -23,6 +24,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.NhInfoData
+import com.youth.farm_volunteering.login.LoginToken
 
 
 class ChangeNicknameActivity : AppCompatActivity() {
@@ -89,9 +91,17 @@ class ChangeNicknameActivity : AppCompatActivity() {
 
                     override fun onResponse(call: Call<NickNameResponseData>, response: Response<NickNameResponseData>) {
 
-                        Toast.makeText(applicationContext, "successful", Toast.LENGTH_SHORT).show()
-                        changedNickData = response.body().data // 값이 왜 null이 뜰까요... 대체!!!!!!
+                        when (response.code()) {
+                            200 -> {
+                                changedNickData = response.body().data // 닉네임을 서버에 전달
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show() // 메시지생성
+                            }
 
+                            else ->
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show()
+                        // 값이 왜 null이 뜰까요... 대체!!!!!!
+
+                        }
                     }
                 })
 

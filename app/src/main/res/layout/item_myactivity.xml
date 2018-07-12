@@ -8,13 +8,13 @@
 
     <ImageView
         android:id="@+id/my_image"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:src="@drawable/mymy_ing1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/mymy_ing1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/my_nonghwalname"
@@ -22,11 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="제주 행복 감귤 농장 1박 2일"
-        android:textColor="#DE000000"
+        android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/guideline40"
-        app:layout_constraintTop_toBottomOf="@+id/my_image"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/my_image" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline40"
@@ -41,11 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="제주 서귀포시"
-        android:textColor="#8A000000"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="@+id/guideline40"
-        app:layout_constraintTop_toBottomOf="@+id/my_nonghwalname"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/my_nonghwalname" />
 
     <TextView
         android:id="@+id/my_price"
@@ -53,11 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:text="20,000"
-        android:textColor="#DE000000"
+        android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/guideline40"
-        app:layout_constraintTop_toBottomOf="@+id/my_place"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/my_place" />
 
     <View
         android:id="@+id/view8"
@@ -76,13 +72,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:textColor="#DE000000"
         android:text="2018.6.29"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline41"
         app:layout_constraintStart_toStartOf="@+id/guideline40"
-        app:layout_constraintTop_toBottomOf="@+id/view8"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/view8" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline41"
@@ -105,15 +99,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:textColor="#DE000000"
         android:text="2018.6.30  "
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/my_startdate"
         app:layout_constraintEnd_toStartOf="@+id/guideline43"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
-        app:layout_constraintTop_toBottomOf="@+id/view8"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/view8" />
 
     <View
         android:id="@+id/view9"
@@ -131,11 +123,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:text="원"
-        android:textColor="#DE000000"
+        android:textColor="#000000"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/my_price"
-        app:layout_constraintStart_toEndOf="@+id/my_price"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintStart_toEndOf="@+id/my_price" />
 
     <ImageView
         android:id="@+id/imageView14"
@@ -171,23 +162,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="참여인원 "
-        android:textColor="#DE000000"
+        android:textColor="#000000"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="@+id/guideline40"
-        app:layout_constraintTop_toBottomOf="@+id/my_progressBar"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
 
     <TextView
         android:id="@+id/my_peoplecount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:textColor="#8A000000"
         android:text="17/20"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline43"
-        app:layout_constraintTop_toBottomOf="@+id/my_progressBar"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toBottomOf="@+id/my_progressBar" />
 
     <View
         android:id="@+id/view10"
@@ -204,9 +192,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
         android:src="@drawable/mymy_ic_ing"
         app:layout_constraintStart_toEndOf="@+id/my_nonghwalname"
         app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
+
     <ImageView
         android:id="@+id/imageView16"
         android:layout_width="wrap_content"
@@ -214,9 +204,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="2dp"
         android:src="@drawable/mymy_cancle_complete_selector"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/my_nonghwalname"
-        app:layout_constraintTop_toTopOf="@+id/my_nonghwalname"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
 
 
     <ImageView
@@ -232,11 +222,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" 남았습니다!  "
-        android:textColor="#DE000000"
+        android:textColor="#000000"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/my_people"
-        app:layout_constraintTop_toTopOf="@+id/my_people"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toTopOf="@+id/my_people" />
 
     <TextView
         android:id="@+id/my_people"
@@ -246,6 +235,5 @@
         android:textColor="#F25620"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/textView83"
-        app:layout_constraintTop_toTopOf="@+id/textView83"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        app:layout_constraintTop_toTopOf="@+id/textView83" />
 </android.support.constraint.ConstraintLayout>

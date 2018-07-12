@@ -55,5 +55,9 @@ interface NetworkService {
 //        @Body nickname: String
     ): Call<NickNameResponseData>
 
+    @PUT("api/mypage/password")
+    fun password(
+            @Part("password") password : String, @Part("newpw") newpw : String
+    ): Call<PasswordResourceData>
 
 }
