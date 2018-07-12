@@ -1,6 +1,6 @@
 package com.youth.farm_volunteering.data
 
-class WeekNonghwalData {
+class WeekNonghwalAllData {
     var idx: Int? = null
     var star: Float? = null
     var price: Int? = null

@@ -16,7 +16,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.view.KeyEvent.KEYCODE_BACK
-
+import com.youth.farm_volunteering.Home.WeekFarmAllAdapter
+import com.youth.farm_volunteering.data.WeekNonghwalAllData
+import kotlinx.android.synthetic.main.fragment_showall.view.*
 
 
 class ShowAllFragment : Fragment() {
@@ -25,7 +27,7 @@ class ShowAllFragment : Fragment() {
 
 
     var popularWeekNonghwalList: List<WeekNonghwalData>? = null
-    lateinit var weekFarmAdapter: WeekFarmAdapter
+    lateinit var weekFarmAdapter: WeekFarmAllAdapter
 
 
 
@@ -51,10 +53,10 @@ class ShowAllFragment : Fragment() {
                 popularWeekNonghwalList = response.body().populNh
 
 
-                weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
+                weekFarmAdapter = WeekFarmAllAdapter(popularWeekNonghwalList!!)
 
-                fragment_showall_rv.layoutManager = LinearLayoutManager(context)
-                fragment_showall_rv.adapter = weekFarmAdapter
+                v.fragment_showall_rv.layoutManager = LinearLayoutManager(context)
+                v.fragment_showall_rv.adapter = weekFarmAdapter
 
             }
         })

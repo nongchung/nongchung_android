@@ -26,7 +26,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_password)
-        toolbar = findViewById(R.id.toolbarNickChange)
+        toolbar = findViewById(R.id.toolbarpassword)
         setSupportActionBar(toolbar)
 
         editText = findViewById(R.id.editText7)
@@ -43,17 +43,17 @@ class ChangePasswordActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId){
             R.id.menu_password->{
-                password = editText.text.toString()
-                newpassword = neweditText.text.toString()
+                password = editText.text.toString() //비밀번호 친거
+                newpassword = neweditText.text.toString() //새로운 비밀번호 친거
 
 
                 var passwordCall = ApplicationController.instance!!.networkService!!.password(password!!,newpassword!!)
                 passwordCall.enqueue(object : Callback<PasswordResourceData> {
-                    override fun onFailure(call: Call<PasswordResourceData>, t: Throwable?) {
-                        Toast.makeText(applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
+                        override fun onFailure(call: Call<PasswordResourceData>, t: Throwable?) {
+                            Toast.makeText(applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
 
-                        //Log.e("abc",t.toString())
-                    }
+                            //Log.e("abc",t.toString())
+                        }
 
                     override fun onResponse(call: Call<PasswordResourceData>, response: Response<PasswordResourceData>) {
 

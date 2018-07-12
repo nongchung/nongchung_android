@@ -2,7 +2,6 @@ package com.youth.farm_volunteering
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.design.R.id.container
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
@@ -17,14 +16,13 @@ import com.asksira.loopingviewpagerdemo.DemoInfiniteAdapter
 import com.youth.farm_volunteering.Home.IntroThemeFarmAdapter
 import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.Home.PopulFarmAdapter
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_showall.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -66,6 +64,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val v_ = inflater!!.inflate(R.layout.fragment_showall, container, false)
 
         adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
+
+
 
 
         introThemeFarmList = listOf(R.drawable.main_banner1, R.drawable.main_banner2,
@@ -140,16 +140,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
             fragment_home_newFarm_showAll_txt -> {
                 activity!!.main_title.setText("새로운 농활")
-                replaceFragment(ShowAllFragment())
+                replaceFragment(NewShowAllFragment())
             }
-            fragment_home_themeFarm_showAll_txt -> {
-                activity!!.main_title.setText("테마별 농활")
-                replaceFragment(ShowAllFragment())
-            }
-            fragment_home_hotFarm_showAll_txt -> {
-                activity!!.main_title.setText("인기 농장")
-                replaceFragment(ShowAllFragment())
-            }
+//            fragment_home_themeFarm_showAll_txt -> {
+//                activity!!.main_title.setText("테마별 농활")
+//                replaceFragment(ThemaAllFragment())
+//            }
+//            fragment_home_hotFarm_showAll_txt -> {
+//                activity!!.main_title.setText("인기 농장")
+//                replaceFragment(ShowAllFragment())
+//            }
+            // 테마별 농활 인기농장부분 모두보기는 없애기로 함
         }
     }
 
@@ -158,8 +159,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         fragment_home_weeklyHotFarm_showAll_txt.setOnClickListener(this)
         fragment_home_newFarm_showAll_txt.setOnClickListener(this)
-        fragment_home_themeFarm_showAll_txt.setOnClickListener(this)
-        fragment_home_hotFarm_showAll_txt.setOnClickListener(this)
+//        fragment_home_themeFarm_showAll_txt.setOnClickListener(this)
+//        fragment_home_hotFarm_showAll_txt.setOnClickListener(this)
+        //모두보기 테마별과 인기농활에서는 모두보기 없애기로 했습니다
 
 //        fragment_home_weeklyHotFarm.
 

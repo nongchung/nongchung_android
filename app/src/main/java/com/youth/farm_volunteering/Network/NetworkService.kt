@@ -18,7 +18,7 @@ import retrofit2.http.*
 interface NetworkService {
     @GET("api/home")
     fun home(
-//            @Query : idx
+//            @Query("idx") idx: Int
     ): Call<HomeResponseData>
 
     @GET("/api/mypage")
@@ -51,10 +51,11 @@ interface NetworkService {
     @Multipart
     @PUT("/api/mypage/nickname")
     fun nickname(
-            @Part("nickname") nickname : String
-//        @Body nickname: String
+//            @Part("nickname") nickname : String
+        @Part ("nickname") nickname: String
     ): Call<NickNameResponseData>
 
+    @Multipart
     @PUT("api/mypage/password")
     fun password(
             @Part("password") password : String, @Part("newpw") newpw : String

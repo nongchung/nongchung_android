@@ -7,7 +7,7 @@
     <item
         android:id="@+id/menu_apply"
         android:actionLayout="@layout/menuitem_nickapply"
-        android:title="apply"
+        android:title="적용"
         app:showAsAction="always" />
 
 </menu>
