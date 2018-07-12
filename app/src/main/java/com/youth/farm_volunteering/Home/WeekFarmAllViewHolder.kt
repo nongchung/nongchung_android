@@ -17,6 +17,5 @@ class WeekFarmAllViewHolder(itemView : View?) : RecyclerView.ViewHolder(itemView
     var starall : RatingBar = itemView!!.findViewById(R.id.ratingBarFarmItem_all)
     var isBookedall : ImageView = itemView!!.findViewById(R.id.imageViewBookmark_all)
     var starNumall : TextView = itemView!!.findViewById(R.id.textViewRating_all)
-    var farmerImgall : ImageView = itemView!!.findViewById(R.id.farm_image)
 
 }
