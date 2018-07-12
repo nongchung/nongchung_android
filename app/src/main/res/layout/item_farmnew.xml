@@ -68,12 +68,15 @@
 
         <TextView
             android:id="@+id/textviewNewFarmTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
             android:text="농활명"
             android:textColor="#000000"
-            android:textSize="15sp"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,9 +84,9 @@
             android:id="@+id/textviewNewFarmPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="가격"
-            android:textSize="11sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmAddr" />
 
@@ -93,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="8dp"
             android:text="주소"
             android:textColor="#000000"
             android:textSize="11sp"
@@ -106,6 +109,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.072916664" />
+
+        <TextView
+            android:id="@+id/textView94"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textviewNewFarmPrice"
+            app:layout_constraintStart_toEndOf="@+id/textviewNewFarmPrice" />
     </android.support.constraint.ConstraintLayout>
 
 

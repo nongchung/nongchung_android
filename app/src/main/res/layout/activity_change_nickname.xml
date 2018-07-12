@@ -22,11 +22,13 @@
         android:hint="김슬비"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
-        android:textColor="#000000"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         android:textSize="13sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline26"
         app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toBottomOf="@+id/textView54" />
+        app:layout_constraintTop_toBottomOf="@+id/textView54"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView23"
@@ -37,22 +39,25 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="닉네임 변경"
-        android:textColor="#000000"
+        android:textColor="#DE000000"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbarNickChange"
         app:layout_constraintEnd_toEndOf="@+id/toolbarNickChange"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        />
 
     <TextView
         android:id="@+id/textView54"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="닉네임"
-        android:textColor="#000000"
+        android:textColor="#DE000000"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+        app:layout_constraintTop_toTopOf="@+id/guideline31"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline25"
@@ -75,10 +80,11 @@
         android:layout_marginStart="10dp"
         android:maxLength="20"
         android:text="0/20"
-        android:textColor="#000000"
+        android:textColor="#DE000000"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView54"
-        app:layout_constraintStart_toEndOf="@+id/textView54" />
+        app:layout_constraintStart_toEndOf="@+id/textView54"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView56"
@@ -89,7 +95,8 @@
         android:textColor="#E83700"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toBottomOf="@+id/nickname_change_text" />
+        app:layout_constraintTop_toBottomOf="@+id/nickname_change_text"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <ImageView
         android:id="@+id/imageView9"

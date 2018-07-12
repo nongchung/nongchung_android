@@ -19,8 +19,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="이메일"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/edittext_signup_email"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -35,18 +37,23 @@
         android:hint="e-mail을 입력하세요."
         android:inputType="textPersonName"
         android:textSize="14sp"
+        android:textColorHint="#8A000000"
+        android:textColor="#DE000000"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="비밀번호"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/edittext_signup_password1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -61,19 +68,24 @@
         android:inputType="textPassword"
         android:hint="비밀번호를 입력하세요."
         android:textSize="14sp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="비밀번호 확인"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
@@ -89,9 +101,12 @@
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
         android:textSize="14sp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -102,35 +117,38 @@
         android:layout_marginStart="2dp"
         android:text="중복된 이메일 입니다."
         android:textSize="12sp"
+        android:textColor="#E83700"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/join1_red_icon"
+        android:background="@drawable/namechange_warning"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password2" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/join1_red_icon"
+        android:background="@drawable/namechange_warning"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/edittext_signup_email" />
 
     <Button
         android:id="@+id/nextbutton"
         android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:background="@drawable/join1_next_icon"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
@@ -153,12 +171,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="회원가입"
-        android:textColor="@android:color/black"
+        android:textColor="#DE000000"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
@@ -175,10 +194,12 @@
         android:layout_marginStart="2dp"
         android:text="잘못된 비밀번호 입니다."
         android:textSize="12sp"
+        android:textColor="#E83700"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password2" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password2"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
@@ -192,6 +213,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="134dp" />
+        app:layout_constraintGuide_percent="0.21" />
 
 </android.support.constraint.ConstraintLayout>

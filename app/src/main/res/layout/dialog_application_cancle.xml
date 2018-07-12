@@ -22,7 +22,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <View
             android:id="@+id/view11"
@@ -43,9 +44,11 @@
             android:layout_marginTop="24dp"
             android:text="제주특별자치도 서귀포시"
             android:textSize="11sp"
+            android:textColor="#8A000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view11" />
+            app:layout_constraintTop_toBottomOf="@+id/view11"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView78"
@@ -53,11 +56,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="제주행복 감귤 농장 체험"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView67" />
+            app:layout_constraintTop_toBottomOf="@+id/textView67"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline47"
@@ -86,22 +90,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:text="2018.6"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline47"
             app:layout_constraintStart_toStartOf="@+id/guideline48"
-            app:layout_constraintTop_toBottomOf="@+id/textView78" />
+            app:layout_constraintTop_toBottomOf="@+id/textView78"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView80"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2018.6"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline49"
             app:layout_constraintStart_toStartOf="@+id/guideline47"
-            app:layout_constraintTop_toTopOf="@+id/textView79" />
+            app:layout_constraintTop_toTopOf="@+id/textView79"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView81"
@@ -110,12 +116,13 @@
             android:layout_marginBottom="28dp"
             android:layout_marginTop="6dp"
             android:text="29"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline47"
             app:layout_constraintStart_toStartOf="@+id/guideline48"
-            app:layout_constraintTop_toBottomOf="@+id/textView79" />
+            app:layout_constraintTop_toBottomOf="@+id/textView79"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView84"
@@ -123,11 +130,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="31"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="28sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline49"
             app:layout_constraintStart_toStartOf="@+id/guideline47"
-            app:layout_constraintTop_toBottomOf="@+id/textView80" />
+            app:layout_constraintTop_toBottomOf="@+id/textView80"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <ImageView
             android:id="@+id/imageView12"
@@ -153,10 +161,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="환불규정"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@+id/textView87"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView87"
@@ -168,12 +177,13 @@
             android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
             android:text="1. 출발 3일전까지 환불하셔야 100% 환불이 가능합니다."
-            android:textColor="#000000"
+            android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintBottom_toTopOf="@+id/textView90"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView86" />
+            app:layout_constraintTop_toBottomOf="@+id/textView86"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView90"
@@ -181,13 +191,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="2. 출발 2일전과 1일 2일 전은 40%만 환불 가능합니다."
-            android:textColor="#000000"
+            android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintBottom_toTopOf="@+id/textView91"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView87"
-            app:layout_constraintTop_toBottomOf="@+id/textView87" />
+            app:layout_constraintTop_toBottomOf="@+id/textView87"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView91"
@@ -195,13 +206,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="3. 당일최소는 환불 불가능합니다."
-            android:textColor="#000000"
+            android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView90"
-            app:layout_constraintTop_toBottomOf="@+id/textView90" />
+            app:layout_constraintTop_toBottomOf="@+id/textView90"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline42"
@@ -229,12 +241,13 @@
             android:background="@drawable/shape_circlebutton"
             android:backgroundTint="#F3F3F5"
             android:text="이전으로"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline46"
             app:layout_constraintStart_toStartOf="@+id/guideline44"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <Button
             android:id="@+id/button8"
@@ -249,7 +262,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/button7"
             app:layout_constraintEnd_toStartOf="@+id/guideline45"
             app:layout_constraintStart_toStartOf="@+id/guideline46"
-            app:layout_constraintTop_toTopOf="@+id/button7" />
+            app:layout_constraintTop_toTopOf="@+id/button7"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline44"

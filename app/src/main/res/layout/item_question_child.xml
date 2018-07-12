@@ -19,7 +19,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline37"
         app:layout_constraintStart_toEndOf="@+id/textView92"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:lineSpacingExtra ="5dp"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline34"
@@ -44,5 +46,6 @@
         android:textColor="#787879"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/guideline34"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 </android.support.constraint.ConstraintLayout>
