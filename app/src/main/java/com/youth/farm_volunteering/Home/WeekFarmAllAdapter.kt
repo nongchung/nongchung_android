@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.WeekFarmItemViewHolder
-import com.youth.farm_volunteering.data.WeekNonghwalAllData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 
 class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmAllViewHolder>() {
@@ -17,7 +15,7 @@ class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmAllViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_farmnew_all, parent, false)
+                .inflate(R.layout.item_farmweek_all, parent, false)
         return WeekFarmAllViewHolder(mainView)
     }
 
