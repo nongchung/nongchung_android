@@ -85,6 +85,7 @@
         <!--<activity android:name=".Home.FarmerFrofile.FarmerProfileActivity"></activity>-->
 
 
+        <activity android:name=".area.AreaSelectActivity"></activity>
         <activity android:name=".ShowAllActivity"></activity>
         <activity android:name=".Home.FriendInfoAllActivity" />
         <activity
