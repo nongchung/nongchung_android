@@ -19,6 +19,7 @@
             android:layout_alignParentTop="true"
             android:background="#000"
             android:src="#FAD118"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

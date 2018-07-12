@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/farm_pic_all"
             android:layout_width="match_parent"
-            android:layout_height="176dp"
+            android:layout_height="200dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:src="@color/colorAccent"
