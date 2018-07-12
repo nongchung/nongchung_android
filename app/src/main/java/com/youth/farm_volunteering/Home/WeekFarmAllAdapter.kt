@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.WeekNonghwalAllData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 
 class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmAllViewHolder>() {
@@ -36,6 +35,10 @@ class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerVie
                 1 -> holderWeek.isBookedall.isSelected = true
             }
         }
+        Glide.with(holderWeek.itemView.context)
+                .load(dataListWeek[position].farmerImg)
+                .into(holderWeek.farmerImgall)
+
         holderWeek.starNumall.text = dataListWeek[position].star.toString()
 
 
