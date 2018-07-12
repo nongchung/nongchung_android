@@ -46,8 +46,9 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/nanumsquareround_otfb"
+                android:lineSpacingExtra="5dp"
                 android:text="안녕하세요~ 제주도에서 가장 맛있는 감귤 농장입니다.\n제주도의 아름다운 자연풍경도 즐기면서 재배할 수 있습니다.\n감귤의 도시 제주도에서 감귤을 재배해보세요."
                 android:textAlignment="center"
                 android:textColor="#DE000000"
@@ -250,6 +251,7 @@
                 android:text="언제나 여러분들을 환영합니다\n즐거운 활동을 제공하도록 노력하겠습니다 ^^"
                 android:textColor="#DE000000"
                 android:textSize="11sp"
+                android:lineSpacingExtra ="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline56"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -320,7 +322,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline58"
                 app:layout_constraintStart_toStartOf="@+id/guideline57"
-                app:layout_constraintTop_toBottomOf="@+id/textView103"></android.support.v7.widget.RecyclerView>
+                app:layout_constraintTop_toBottomOf="@+id/textView103">
+            </android.support.v7.widget.RecyclerView>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline58"
@@ -413,17 +416,23 @@
                 app:layout_constraintTop_toTopOf="@+id/textView106"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
-            <ImageView
-                android:id="@+id/imageView18"
+            <fragment
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                tools:context=".FarmDetailActivity"
                 android:layout_width="0dp"
                 android:layout_height="254dp"
                 android:layout_marginBottom="21dp"
                 android:layout_marginTop="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline61"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline60"
                 app:layout_constraintTop_toBottomOf="@+id/textView106"
-                app:srcCompat="@android:color/holo_green_dark" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline61"
@@ -460,6 +469,7 @@
                 android:text="1. 출발 3일전까지 환불하셔야 100% 환불이 가능합니다.\n2. 출발 2일전과 1일 2일 전은 40%만 환불 가능합니다.\n3. 당일최소는 환불 불가능합니다."
                 android:textSize="13sp"
                 android:textColor="#DE000000"
+                android:lineSpacingExtra ="5dp"
                 app:layout_constraintStart_toStartOf="@+id/guideline62"
                 app:layout_constraintTop_toBottomOf="@+id/textView107"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
@@ -504,6 +514,7 @@
                 android:text="문의 사항은 QA나 전화를 통해서 부탁드립니다.\n연락처 : 010 0000 0000 (농활청춘 담당자)"
                 android:textColor="#DE000000"
                 android:textSize="13sp"
+                android:lineSpacingExtra ="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline62"
                 app:layout_constraintTop_toBottomOf="@+id/textView110" />

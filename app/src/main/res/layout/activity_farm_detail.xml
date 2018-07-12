@@ -105,7 +105,8 @@
 
             </FrameLayout>
 
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            <fragment
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:map="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/map"
@@ -114,11 +115,6 @@
                 android:layout_height="200dp"
                 tools:context=".FarmDetailActivity" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/scheduleView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:padding="@dimen/activity_search_toolbar_left_padding"></android.support.v7.widget.RecyclerView>
 
 
         </LinearLayout>
@@ -156,6 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="60.92dp"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
             android:background="#ffffff">
 
             <LinearLayout

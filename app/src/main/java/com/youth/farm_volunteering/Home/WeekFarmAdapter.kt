@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.WeekNonghwalData
+import java.lang.StringBuilder
 
 class WeekFarmAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>(){
     override fun getItemCount(): Int = dataListWeek.size
