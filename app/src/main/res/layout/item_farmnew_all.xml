@@ -56,7 +56,8 @@
             android:paddingHorizontal="5dp"
             android:paddingVertical="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
     </android.support.constraint.ConstraintLayout>
 

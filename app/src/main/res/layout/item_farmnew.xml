@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="151dp"
-    android:layout_height="191dp"
-    android:weightSum="100"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="60">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageviewNewFarm"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="118dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_weight="60"
             android:background="#000"
             android:src="#FAD118"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +27,10 @@
             android:id="@+id/textviewNewFarmDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#0ABD9D"
-            android:textColor="#000000"
+            android:background="#3470FF"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:textColor="#FFFFFF"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,10 +39,12 @@
             android:id="@+id/farm_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#F15A87"
+            android:background="#FFAF00"
             android:text="NEW"
-            android:textColor="#FFF"
+            android:textColor="#FFFFFF"
             android:textSize="11sp"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -51,8 +52,8 @@
             android:id="@+id/imageviewNewFarmBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="11dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/selector_bookmark" />
@@ -61,8 +62,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"
+        android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="vertical">
 
@@ -73,20 +73,25 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="4dp"
             android:text="농활명"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textviewNewFarmPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="가격"
+            android:textColor="#DE000000"
             android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmAddr" />
 
@@ -98,17 +103,18 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="8dp"
             android:text="주소"
-            android:textColor="#000000"
+            android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/textviewNewFarmTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmTitle"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.072916664" />
+            app:layout_constraintGuide_percent="0.052980132" />
 
         <TextView
             android:id="@+id/textView94"
@@ -116,8 +122,10 @@
             android:layout_height="wrap_content"
             android:text="원"
             android:textSize="11sp"
+            android:textColor="#DE000000"
             app:layout_constraintBottom_toBottomOf="@+id/textviewNewFarmPrice"
-            app:layout_constraintStart_toEndOf="@+id/textviewNewFarmPrice" />
+            app:layout_constraintStart_toEndOf="@+id/textviewNewFarmPrice"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
     </android.support.constraint.ConstraintLayout>
 
 
