@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.Home.FarmProfile.FramProfileActivity
 import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.additionfriendinfo
 import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.friendsizelist
 import com.youth.farm_volunteering.R

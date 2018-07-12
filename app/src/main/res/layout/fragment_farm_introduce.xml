@@ -359,7 +359,7 @@
                 android:layout_height="13dp"
                 android:layout_marginBottom="26dp"
                 android:layout_marginTop="14dp"
-                android:text="여벌 옷, 간식,"
+                android:text="여벌 옷, 간식"
                 android:textSize="11sp"
                 android:textColor="#DE000000"
                 app:layout_constraintBottom_toBottomOf="parent"

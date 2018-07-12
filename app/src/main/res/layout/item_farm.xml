@@ -19,6 +19,8 @@
             android:layout_height="124dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:background="#FFFFFF"
             android:src="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +30,10 @@
             android:id="@+id/farm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#0ABD9D"
+            android:background="#3470FF"
             android:textColor="#000000"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="2dp"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,8 +57,8 @@
             android:id="@+id/imageViewBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="11dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/selector_bookmark" />
@@ -130,12 +134,13 @@
             android:id="@+id/textView96"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="원"
-            android:textSize="11sp"
             android:textColor="#DE000000"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/farm_price"
-            app:layout_constraintStart_toEndOf="@+id/farm_price"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintStart_toEndOf="@+id/farm_price" />
     </android.support.constraint.ConstraintLayout>
 
 
