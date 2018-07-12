@@ -11,14 +11,17 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="  "></android.support.v7.widget.Toolbar>
+        app:title="  ">
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="이름"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/edittext_signup_name"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
@@ -26,14 +29,16 @@
     <EditText
         android:id="@+id/edittext_signup_name"
         android:layout_width="127dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:hint="이름"
         android:inputType="textPersonName"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintBottom_toTopOf="@+id/textView22"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
@@ -43,34 +48,41 @@
         android:layout_width="wrap_content"
         android:layout_height="15dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="생년월일"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textview_signup_birth"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
-    <TextView
+    <EditText
         android:id="@+id/textview_signup_birth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="1997-01-27"
+        android:hint="1997-01-27"
         android:textSize="14sp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="성별"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
@@ -85,16 +97,20 @@
         android:hint="남/여"
         android:inputType="textPersonName"
         android:textSize="14sp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <Button
         android:id="@+id/button_signup_submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/join2_ok_icon"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
@@ -113,8 +129,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="닉네임"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/edittext_signup_nickname"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -127,8 +145,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:ems="10"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:hint="닉네임"
         android:inputType="textPersonName"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/textView22"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -139,17 +160,19 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="중복된 닉네임 입니다."
+        android:textColor="#E83700"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintBottom_toTopOf="@+id/textview_signup_birth"
         app:layout_constraintStart_toStartOf="@+id/guideline9" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:background="@drawable/join1_red_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/namechange_warning"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/edittext_signup_nickname" />
@@ -163,21 +186,24 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="회원가입"
-        android:textColor="@android:color/black"
+        android:textColor="#DE000000"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
         android:text="전화번호"
+        android:textColor="#8A000000"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
@@ -192,9 +218,12 @@
         android:hint="000-0000-0000"
         android:inputType="textPersonName"
         android:textSize="14sp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintTop_toBottomOf="@+id/textView28"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline8"
@@ -222,7 +251,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="134dp" />
+        app:layout_constraintGuide_percent="0.23633157" />
 
 
 </android.support.constraint.ConstraintLayout>

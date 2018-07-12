@@ -15,26 +15,32 @@
         android:hint="아이디(e-mail)를 입력하세요."
         android:inputType="textPersonName"
         android:textSize="14sp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         android:background="@drawable/login_box"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <EditText
         android:id="@+id/edittext_login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingStart="8dp"
         android:background="@drawable/login_box"
         android:ems="10"
         android:hint="비밀번호를 입력하세요"
         android:inputType="textPersonName"
+        android:paddingStart="8dp"
+        android:textColor="#DE000000"
+        android:textColorHint="#8A000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_login_email"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <Button
         android:id="@+id/button_login_login"
@@ -45,7 +51,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_login_password"
+        android:fontFamily="@font/nanumsquareround_otfb"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -68,7 +75,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="회원가입 하기"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:text="계정이 없나요? 회원가입 하기"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,12 +92,13 @@
         android:layout_marginTop="8dp"
         android:text="계속 진행하면 농활청춘의 서비스 약관, \n개인정보 보호정책에 동의한 것으로 간주됩니다."
         android:textAlignment="center"
-        android:textSize="12sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_mypage_registration"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:fontFamily="@font/nanumsquareround_otfr"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"
