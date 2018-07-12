@@ -17,6 +17,7 @@
         app:popupTheme="@style/Theme.AppCompat.Light">
 
         <TextView
+            android:id="@+id/main_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -30,8 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/activity_main_bottomTabLayout"
-        android:layout_below="@id/activity_main_toolbar"
-        android:visibility="visible">
+        android:visibility="gone">
     </android.support.v4.view.ViewPager>
 
     <FrameLayout
@@ -39,13 +39,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/activity_main_bottomTabLayout"
-        android:layout_below="@id/activity_main_toolbar">
-    </FrameLayout>
+        android:layout_below="@+id/activity_main_toolbar">
 
+    </FrameLayout>
     <android.support.design.widget.TabLayout
         android:id="@+id/activity_main_bottomTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:tabTextColor="@color/colorAccent"></android.support.design.widget.TabLayout>
+        android:background="#FFF">
+    </android.support.design.widget.TabLayout>
 </RelativeLayout>

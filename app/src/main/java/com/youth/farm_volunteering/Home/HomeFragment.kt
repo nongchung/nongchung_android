@@ -17,6 +17,7 @@ import com.youth.farm_volunteering.Home.IntroThemeFarmAdapter
 import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.Home.PopulFarmAdapter
 import com.youth.farm_volunteering.data.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +31,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var introThemeFarmAdapter : IntroThemeFarmAdapter? = null
     var newFarmAdapter : NewFarmAdapter? = null
     var populFarmAdapter : PopulFarmAdapter? = null
-
 
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
@@ -57,8 +57,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
-        adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
+//        val v_ = inflater!!.inflate(R.layout.fragment_showall, container, false)
 
+        adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
 
         introThemeFarmList = listOf(R.drawable.main_banner1, R.drawable.main_banner2,
         R.drawable.main_banner3, R.drawable.main_banner4, R.drawable.main_banner5)
@@ -122,15 +123,21 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
+
+
+
         when (v) {
             fragment_home_weeklyHotFarm_showAll_txt -> {
+                activity!!.main_title.setText("이번 주 인기 농활")
                 replaceFragment(ShowAllFragment())
             }
             fragment_home_newFarm_showAll_txt -> {
+                activity!!.main_title.setText("새로운 농활")
                 replaceFragment(ShowAllFragment())
             }
 
             fragment_home_hotFarm_showAll_txt -> {
+                activity!!.main_title.setText("인기 농장")
                 replaceFragment(ShowAllFragment())
             }
         }
@@ -177,8 +184,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val fm = activity!!.supportFragmentManager
         val transaction = fm.beginTransaction()
         transaction.replace(R.id.activity_main_container, fragment)
-//        transaction.addToBackStack(null)
+        transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    companion object {
+        private val title = "title"
+        fun newInstance(param1 : String) : HomeFragment{
+            val fragment = HomeFragment()
+            val args = Bundle()
+            args.putString(title, param1)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
 }

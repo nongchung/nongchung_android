@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.Home.ReviewAdapter.Companion.peoples
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.ReviewResponseData
 import com.youth.farm_volunteering.data.rvListInfoData
+import kotlinx.android.synthetic.main.fragment_farm_review.view.*
+import com.youth.farm_volunteering.R.id.review_rating_bar
+import com.youth.farm_volunteering.data.DetailNonghwalResponseData
 import kotlinx.android.synthetic.main.fragment_farm_review.*
 import kotlinx.android.synthetic.main.fragment_farm_review.view.*
 import retrofit2.Call
@@ -46,7 +48,6 @@ class FarmReviewFragment : Fragment(){
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
-                review_rating_bar.rating = peoples.toFloat()
                 ReviewList = response.body().rvListInfo
                 ReviewImageList = response.body().rvListInfo
 

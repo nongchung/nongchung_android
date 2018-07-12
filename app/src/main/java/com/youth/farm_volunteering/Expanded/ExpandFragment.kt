@@ -29,16 +29,11 @@ class ExpandFragment : Fragment(){
         expendedView = v.findViewById(R.id.expandedView)
 
         val season1 : MutableList<String> = ArrayList()
-        season1.add("winter")
-        season1.add("Inside Games Thrones")
-        season1.add("Inside Games Thrones")
+        season1.add("winter\nInside Games Thrones\nInside Games Thrones")
+
 
         val season2 : MutableList<String> = ArrayList()
-        season2.add("winter")
-        season2.add("Inside Games Thrones")
-        season2.add("Inside Games Thrones")
-
-
+        season2.add("winter\nInside Games Thrones\nInside Games Thrones")
 
 
         header.add("Season:1")

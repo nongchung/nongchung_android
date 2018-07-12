@@ -1,7 +1,6 @@
 package com.youth.farm_volunteering
 
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -9,35 +8,53 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.DetailTabAdapter
 import com.youth.farm_volunteering.Home.FarmIntroFragment
 import com.youth.farm_volunteering.Home.FarmReviewFragment
-import com.youth.farm_volunteering.R.id.*
-import com.youth.farm_volunteering.data.DetailApplyData
-import com.youth.farm_volunteering.data.WeekNonghwalData
+import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_farm_detail.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
 
 
 class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback {
 
-    lateinit var applyitems: ArrayList<DetailApplyData>
+    lateinit var applyList: ArrayList<DetailApplyData>
     lateinit var detailApplyAdapter: DetailApplyAdapter
     private lateinit var mMap: GoogleMap
     //    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    var toolbar: android.support.v7.widget.Toolbar? = null
+    var toolbar: Toolbar? = null
 
-    var fragment_Array: ArrayList<Fragment>? = null
+    var detailNonghwalList: NhInfoData? = null
+    var detailFriendInfoList: ArrayList<FriendInfoData>? = null
+    var detailFarmInfoList: FarmInfoData? = null
+    lateinit var detailScheduleList: ArrayList<DetailSchData>
+    var detailImageList : List<String>? = null
+    var detailNearestStartDate : String? = null
+    lateinit var detailAllStartDate : ArrayList<AllStData>
+    lateinit var detailMyScheduleActivities : ArrayList<Int>
+
+    lateinit var detailTabAdapter : DetailTabAdapter
+
+    var fragment_Array: ArrayList<Fragment>? = ArrayList()
     var tabtextArray : ArrayList<String>? = null
-    var detailTabAdapter = DetailTabAdapter(supportFragmentManager)
+    var bottomSheetDialog : BottomSheetDialog? = null
 
 //    activity_main_tabViewPager.adapter = tabAdapter
 //    activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
@@ -47,65 +64,83 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
 //    lateinit var recycleAdapter: FarmRecyAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farm_detail)
+
+        toolbar = findViewById(R.id.toolbarDetail)
+        setSupportActionBar(toolbar)    //뒤로가기버튼생성
+
         var populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
         var nhIdx : Int = populData.nhIdx!!
-        var detailTabAdapter = DetailTabAdapter(supportFragmentManager)
-
 
         tabtextArray = arrayListOf("농활소개", "Q & A", "후기")
-        fragment_Array = arrayListOf(FarmIntroFragment(), FarmIntroFragment(), FarmReviewFragment())
+        fragment_Array = arrayListOf(FarmIntroFragment(), ExpandFragment(), FarmReviewFragment())
 
         for (i in 0..fragment_Array!!.size - 1) {
             tablayoutDetailActivity.addTab(tablayoutDetailActivity.newTab())        //프레그먼트 갯수만큼 탭 생성
         }
 
-        for (i in 0..fragment_Array!!.size - 1) {
-            detailTabAdapter!!.addFragment(tabtextArray!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
+        var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(nhIdx)
+        getDetail.enqueue(object : Callback<DetailNonghwalResponseData> {
+            override fun onResponse(call: Call<DetailNonghwalResponseData>?, response: Response<DetailNonghwalResponseData>?) {
+                if(response!!.isSuccessful){
+                    detailNonghwalList = response.body().nhInfo             //농활소개
+                    detailFriendInfoList = response.body().friendsInfo     //농활소개
+                    detailFarmInfoList = response.body().farmerInfo        //농활소개
+                    detailScheduleList = response.body().schedule!!           //BottomSheetDialog 신청하기
+                    detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
+                    detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
+                    detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 scheIdx
+
+//                    detailApplyAdapter = DetailApplyAdapter(detailScheduleList, supportFragmentManager)
+                    detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, nhIdx,
+                            detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
+
+//                    detailTabAdapter.setNhIntroContents(detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
+
+                    for (i in 0..fragment_Array!!.size - 1) {
+                        detailTabAdapter!!.addFragment(tabtextArray!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
+                    }
+
+                    buttonApplyDate.text = detailNearestStartDate
+                    viewpagerDetailBottom.adapter = detailTabAdapter
+                    tablayoutDetailActivity.setupWithViewPager(viewpagerDetailBottom)
+
+                    for (i in 0..detailTabAdapter.count - 1) tablayoutDetailActivity.getTabAt(i)!!.setText(detailTabAdapter.getDetailTabDataList(i).tabText) // 탭에 커스텀뷰 설정
+
+                    detailImageList = response.body().image                  //상단 농활이미지
+                }
+
+            }
+
+            override fun onFailure(call: Call<DetailNonghwalResponseData>?, t: Throwable?) {
+
+                Toast.makeText(applicationContext, "detail request fail", Toast.LENGTH_SHORT).show()
+
+            }
+
+        })
+
+        buttonApplyDate.setOnClickListener{
+            bottomSheetDialog = BottomSheetDialog.instance
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("scheList", detailScheduleList)
+            bundle.putIntegerArrayList("myScheduleActivities", detailMyScheduleActivities)
+            bundle.putParcelableArrayList("allStartItems", detailAllStartDate)
+
+            bottomSheetDialog!!.arguments = bundle
+
+            bottomSheetDialog!!.show(supportFragmentManager, "bottomSheet")
         }
 
-        viewpagerDetailBottom.adapter = detailTabAdapter
-        tablayoutDetailActivity.setupWithViewPager(viewpagerDetailBottom)
+        //탭레이아웃 색상 선택
+        tablayoutDetailActivity.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#3470FF"))
 
-        for (i in 0..detailTabAdapter.count - 1) tablayoutDetailActivity.getTabAt(i)!!.setText(detailTabAdapter.getDetailTabDataList(i).tabText) // 탭에 커스텀뷰 설정
 
         viewpagerDetailBottom.setCurrentItem(0)
 
-        applyitems = ArrayList()
-        applyitems.add(DetailApplyData("2018년 6월 29일 ~ 30일", "오전 9시 출발 (1박 2일)", "참석가능", "(06명 남음)"))
-        applyitems.add(DetailApplyData("2018년 7월 29일 ~ 30일", "오전 10시 출발 (1박 2일)", "참석가능", "(07명 남음)"))
-        applyitems.add(DetailApplyData("2018년 8월 29일 ~ 30일", "오전 8시 출발 (1박 2일)", "참석가능", "(05명 남음)"))
-
-        detailApplyAdapter = DetailApplyAdapter(applyitems)
-//        detail_apply_rv.layoutManager = LinearLayoutManager(this)
-//        detail_apply_rv.adapter = detailApplyAdapter
-//
-//
-//        if(intent.getStringExtra("date") == null){
-//            detail_date_btn.setText(applyitems[0].apply_rv_schedule)
-//        }
-//        else {
-//            detail_date_btn.setText(intent.getStringExtra("date"))
-//        }
-//
-//        val mapFragment = supportFragmentManager
-//                .findFragmentById(R.id.map) as SupportMapFragment
-//        mapFragment.getMapAsync(this)
-//
-//        recycleItems = ArrayList()
-//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
-//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
-//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
-//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
-//        recycleItems.add(FarmRecyData(R.drawable.image_1,  "1박2일", "농활", "서울", "20000"))
-//
-//        recycleAdapter = FarmRecyAdapter(recycleItems)
-//        recycleAdapter.setOnItemClickListener(this)
-
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)    //뒤로가기버튼생성
 
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -115,40 +150,18 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         Glide.with(applicationContext)
                 .load(populData.img)
-                .into(imageviewCollapse);
-//        detail_location_tv.setText(intent.getStringExtra("farm_location"))
-//        detail_name_tv.setText(intent.getStringExtra("farm_name"))
-//        detail_price_tv.setText(intent.getIntExtra("farm_price", 0).toString())
-//        detail_days_tv.setText(intent.getStringExtra("farm_days"))
-//
-//        detail_date_btn.setOnClickListener {
-//            if (detail_apply_rv.visibility == View.GONE) {
-//                detail_black.visibility = View.VISIBLE
-//                detail_apply_rv.visibility = View.VISIBLE
-//                detail_nsv.isVerticalScrollBarEnabled = false
-//            } else if (detail_apply_rv.visibility == View.VISIBLE) {
-//                detail_black.visibility = View.GONE
-//                detail_apply_rv.visibility = View.GONE
-//            }
-//        }
-
-
-
-//        detail_apply_btn.setOnClickListener{
-//            Toast.makeText(applicationContext, "신청버튼 누름", Toast.LENGTH_SHORT).show()
-//        }
-
+                .into(imageviewCollapse)
+        imageviewCollapse.scaleType = ImageView.ScaleType.FIT_XY
         viewpagerDetailBottom.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tablayoutDetailActivity))
 
         viewpagerDetailBottom.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
 
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
             override fun onPageSelected(position: Int) {
 
             }
@@ -233,8 +246,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         var menuInflater = getMenuInflater()
         menuInflater!!.inflate(R.menu.menu_farmdetail, menu)
 
-        var bookmark: Drawable = menu!!.getItem(0).icon
-        bookmark.setColorFilter(0xFFFFFFFF.toInt(), PorterDuff.Mode.MULTIPLY)
 
         return super.onCreateOptionsMenu(menu)
     }
@@ -247,29 +258,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             }
         }
 
-        return false
+        return true
     }
-
-    fun addFragment(fragment: Fragment) {
-        val fm = supportFragmentManager
-        val transaction = fm.beginTransaction()
-//        transaction.add(R.id.detail_frame, fragment)
-        transaction.commit()
-    }
-
-    fun replaceFragment(fragment: Fragment) {
-        val fm = supportFragmentManager
-        val transaction = fm.beginTransaction()
-        val bundle = Bundle()
-//        transaction.replace(R.id.detail_frame, fragment)
-//        transaction.addToBackStack(null)
-        transaction.commit()
-    }
-//
-//    fun clearSelected() {
-//        farm_introduce.isSelected = false
-//        farm_location.isSelected = false
-//        farm_review.isSelected = false
-//    }
-
 }

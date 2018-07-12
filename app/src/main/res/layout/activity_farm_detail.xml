@@ -4,37 +4,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.youth.farm_volunteering.FarmDetailActivity">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbarDetail"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="215dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleMarginStart="28dp"
+            app:scrimVisibleHeightTrigger="200dp"
+            android:background="#FFF"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
             app:titleEnabled="false">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbarDetail"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                android:background="#FFF"
+                app:layout_collapseMode="pin"/>
 
             <ImageView
                 android:id="@+id/imageviewCollapse"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/main_banner3" />
+                android:background="@drawable/main_banner3"
+                app:layout_collapseMode="pin"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -42,13 +45,14 @@
             android:id="@+id/tablayoutDetailActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:tabIndicatorColor="#A26A69"
-            app:tabPaddingStart="0dp"
+            android:background="#FFF"
+            app:tabIndicatorColor="#3470FF"
+            app:tabIndicatorHeight="4dp"
+            app:tabPaddingBottom="0dp"
             app:tabPaddingEnd="0dp"
+            app:tabPaddingStart="0dp"
             app:tabPaddingTop="0dp"
-            app:tabPaddingBottom="0dp"/>
+            app:tabTextColor="#000000" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -57,5 +61,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="#FFF"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <Button
+            android:id="@+id/buttonApplyDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:text="2018년 9월 19일" />
+
+        <Button
+            android:id="@+id/buttonApplyButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:text="신청하기" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

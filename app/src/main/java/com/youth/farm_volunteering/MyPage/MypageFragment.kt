@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.MyPage
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
@@ -67,11 +68,41 @@ class MypageFragment : Fragment() {
         })
 
         //닉네임 변경
-        v.nickname.setOnClickListener(View.OnClickListener {
-            var nick = Intent(this.context, NicknameFragment::class.java)
-            startActivity(nick)
+        v.nickname_change_button.setOnClickListener(View.OnClickListener {
+            var v = Intent(this.context, ChangeNicknameActivity::class.java)
+            startActivity(v)
+        })
+        //비밀번호 변경
+        v.password_change_button.setOnClickListener(View.OnClickListener {
+            var v = Intent(this.context, ChangePasswordActivity::class.java)
+            startActivity(v)
         })
 
+        //푸쉬알림설정
+        v.push_button.setOnClickListener(View.OnClickListener {
+            var v = Intent(this.context, PushActivity::class.java)
+            startActivity(v)
+        })
+        v.notice_button.setOnClickListener(View.OnClickListener {
+            var v = Intent(this.context, NoticeActivity::class.java)
+            startActivity(v)
+        })
+        v.faq_button.setOnClickListener(View.OnClickListener {
+            var v = Intent(this.context, FaqActivity::class.java)
+            startActivity(v)
+        })
+
+
+
+        v.layout_mypage_logout.setOnClickListener {
+            LoginToken.token = null
+            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
+            var editor = sharedPreference.edit()
+            editor.remove(LoginToken.PREF_KEY)
+            editor.commit()
+            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+
+        }
 //        v.button_mypage_logout.setOnClickListener {
 //            LoginToken.token = null;
 //            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
@@ -82,6 +113,15 @@ class MypageFragment : Fragment() {
 //
 //        }
 
+//        v.button_mypage_logout.setOnClickListener {
+//            LoginToken.token = null
+//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+//            var editor = sharedPreference.edit();
+//            editor.remove(LoginToken.PREF_KEY)
+//            editor.commit()
+//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+//
+//        }
         return v
     }
 
@@ -97,7 +137,6 @@ class MypageFragment : Fragment() {
             }
         }
     }
-
 
     fun invalidate() {
         Glide.with(activity)

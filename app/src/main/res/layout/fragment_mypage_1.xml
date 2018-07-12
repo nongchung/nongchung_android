@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,248 +17,290 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title=" ">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="더 보기"
-                android:textSize="17sp"
+                android:layout_marginRight="14dp"
                 android:gravity="center_horizontal"
-                android:layout_marginRight="14dp"/>
+                android:text="더 보기"
+                android:textSize="17sp" />
         </android.support.v7.widget.Toolbar>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="125dp">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageview_mypage_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/more_profile"/>
+                android:src="@drawable/more_profile" />
         </RelativeLayout>
+
         <TextView
             android:id="@+id/textview_mypage_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="이유리"
-            android:textSize="13sp"
-            android:layout_gravity="center"/>
+            android:textSize="13sp" />
+
         <TextView
             android:id="@+id/textview_mypage_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이유리"
-            android:textSize="11sp"
             android:layout_gravity="center"
-            android:layout_marginTop="9dp"/>
+            android:layout_marginTop="9dp"
+            android:text="이유리"
+            android:textSize="11sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이유리"
-            android:textSize="11sp"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:text="이유리"
+            android:textSize="11sp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="24dp"
-            android:background="#F3F3F5"
-            android:layout_marginTop="17dp">
+            android:layout_marginTop="17dp"
+            android:background="#F3F3F5">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="내 정보"
-                android:textSize="11sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="11sp" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="내가 쓴 후기"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="내 포인트"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:background="#F3F3F5">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="계정"
-                android:textSize="11sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="11sp" />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/nickname_change_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
-                android:id="@+id/nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="닉네임 변경"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/password_change_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="비밀번호 변경"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/layout_mypage_logout"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="로그아웃"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:background="#F3F3F5">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="알림"
-                android:textSize="11sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="11sp" />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/push_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="푸쉬알림"
-                android:textSize="14sp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:layout_marginLeft="13dp"
+                android:text="푸쉬알림"
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:background="#F3F3F5">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="지원"
-                android:textSize="11sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="11sp" />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/notice_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
                 android:text="공지사항"
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/faq_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FAQ"
-                android:textSize="14sp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"/>
+                android:layout_marginLeft="13dp"
+                android:text="FAQ"
+                android:textSize="14sp" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/more_click_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:src="@drawable/more_click_icon" />
         </RelativeLayout>
     </LinearLayout>
 
