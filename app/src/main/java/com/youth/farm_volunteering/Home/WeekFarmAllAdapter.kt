@@ -35,9 +35,6 @@ class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerVie
                 1 -> holderWeek.isBookedall.isSelected = true
             }
         }
-        Glide.with(holderWeek.itemView.context)
-                .load(dataListWeek[position].farmerImg)
-                .into(holderWeek.farmerImgall)
 
         holderWeek.starNumall.text = dataListWeek[position].star.toString()
 
