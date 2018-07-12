@@ -17,7 +17,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.view.KeyEvent.KEYCODE_BACK
 import com.youth.farm_volunteering.Home.WeekFarmAllAdapter
-import com.youth.farm_volunteering.data.WeekNonghwalAllData
 
 
 class ShowAllFragment : Fragment() {

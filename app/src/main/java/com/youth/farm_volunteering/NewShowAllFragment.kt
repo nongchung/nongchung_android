@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.R.id.activity_show_all_rv
+import com.youth.farm_volunteering.R.id.fragment_showall_rv
 import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.NewNonghwalData
 import kotlinx.android.synthetic.main.activity_show_all.*
@@ -21,7 +22,7 @@ import retrofit2.Response
 
 class NewShowAllFragment : Fragment() {
     var newNonghwalList : List<NewNonghwalData>? = null
-    lateinit var newNonghwalAdapter: NewFarmAdapter
+    lateinit var newNonghwalAdapter: NewFarmAllAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -44,7 +45,7 @@ class NewShowAllFragment : Fragment() {
                 newNonghwalList = response.body().newNh
 
 
-                newNonghwalAdapter = NewFarmAdapter(newNonghwalList!!)
+                newNonghwalAdapter = NewFarmAllAdapter(newNonghwalList!!)
 
                 fragment_showall_rv.layoutManager = LinearLayoutManager(context)
                 fragment_showall_rv.adapter = newNonghwalAdapter

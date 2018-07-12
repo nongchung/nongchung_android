@@ -36,7 +36,6 @@ class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerVie
             }
         }
 
-
         holderWeek.starNumall.text = dataListWeek[position].star.toString()
 
 
