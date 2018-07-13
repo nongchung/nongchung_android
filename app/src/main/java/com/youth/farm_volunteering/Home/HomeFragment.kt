@@ -79,12 +79,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         newNonghwalList = response.body().newNh
                         popularFarmList = response.body().populFarm
 
-                        weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
+                        weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)    //클리어
                         introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
-                        newFarmAdapter = NewFarmAdapter(newNonghwalList!!)
+                        newFarmAdapter = NewFarmAdapter(newNonghwalList!!)          //클리어
                         populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
                         vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
-
 
                         fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
                         fragment_home_newFarm_rv.adapter = newFarmAdapter

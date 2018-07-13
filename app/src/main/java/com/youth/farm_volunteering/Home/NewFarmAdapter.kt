@@ -35,11 +35,11 @@ class NewFarmAdapter(var dataList: List<NewNonghwalData>) : RecyclerView.Adapter
         }
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("farm_img", dataList[position].img)
-            intent.putExtra("farm_location", dataList[position].addr)
-            intent.putExtra("farm_price", dataList[position].price)
-            intent.putExtra("farm_days", dataList[position].period)
-            intent.putExtra("farm_name", dataList[position].name)
+            intent.putExtra("populData", dataList[position])
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
             //추천수
             //설명
