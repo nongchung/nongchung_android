@@ -45,16 +45,16 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var detailFriendInfoList: ArrayList<FriendInfoData>? = null
     var detailFarmInfoList: FarmInfoData? = null
     lateinit var detailScheduleList: ArrayList<DetailSchData>
-    var detailImageList : List<String>? = null
-    var detailNearestStartDate : String? = null
-    lateinit var detailAllStartDate : ArrayList<AllStData>
-    var detailMyScheduleActivities : ArrayList<Int>? = null
+    var detailImageList: List<String>? = null
+    var detailNearestStartDate: String? = null
+    lateinit var detailAllStartDate: ArrayList<AllStData>
+    var detailMyScheduleActivities: ArrayList<Int>? = null
 
-    lateinit var detailTabAdapter : DetailTabAdapter
+    lateinit var detailTabAdapter: DetailTabAdapter
 
     var fragment_Array: ArrayList<Fragment>? = ArrayList()
-    var tabtextArray : ArrayList<String>? = null
-    var bottomSheetDialog : BottomSheetDialog? = null
+    var tabtextArray: ArrayList<String>? = null
+    var bottomSheetDialog: BottomSheetDialog? = null
 
 //    activity_main_tabViewPager.adapter = tabAdapter
 //    activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
@@ -72,9 +72,13 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         toolbar = findViewById(R.id.toolbarDetail)
         setSupportActionBar(toolbar)    //뒤로가기버튼생성
 
-        var populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
-        var nhIdx : Int = populData.nhIdx!!
-
+        var isFromSearch: Boolean = intent.getBooleanExtra("is_from_search", false)
+        var populData: NonghwalData
+        if (!isFromSearch) {
+            populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
+        } else {
+            populData = intent.getSerializableExtra("populData") as NonghwalData
+        }
         tabtextArray = arrayListOf("농활소개", "Q & A", "후기")
         fragment_Array = arrayListOf(FarmIntroFragment(), ExpandFragment(), FarmReviewFragment())
 
@@ -82,22 +86,22 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             tablayoutDetailActivity.addTab(tablayoutDetailActivity.newTab())        //프레그먼트 갯수만큼 탭 생성
         }
 
-        var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(nhIdx)
+        var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(populData.getRealId()!!)
         getDetail.enqueue(object : Callback<DetailNonghwalResponseData> {
             override fun onResponse(call: Call<DetailNonghwalResponseData>?, response: Response<DetailNonghwalResponseData>?) {
-                if(response!!.isSuccessful){
+                if (response!!.isSuccessful) {
                     detailNonghwalList = response.body().nhInfo             //농활소개
                     detailFriendInfoList = response.body().friendsInfo     //농활소개
                     detailFarmInfoList = response.body().farmerInfo        //농활소개
                     detailScheduleList = response.body().schedule!!           //BottomSheetDialog 신청하기
                     detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
                     detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
-                    if(response.body().myScheduleActivities!=null) {
+                    if (response.body().myScheduleActivities != null) {
                         detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 sche
                     }
 
 //                    detailApplyAdapter = DetailApplyAdapter(detailScheduleList, supportFragmentManager)
-                    detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, nhIdx,
+                    detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, populData.getRealId()!!,
                             detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
 
 //                    detailTabAdapter.setNhIntroContents(detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
@@ -125,7 +129,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         })
 
-        buttonApplyDate.setOnClickListener{
+        buttonApplyDate.setOnClickListener {
             bottomSheetDialog = BottomSheetDialog.instance
             val bundle = Bundle()
             bundle.putParcelableArrayList("scheList", detailScheduleList)
@@ -156,7 +160,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         imageviewCollapse.scaleType = ImageView.ScaleType.FIT_XY
         viewpagerDetailBottom.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tablayoutDetailActivity))
 
-        viewpagerDetailBottom.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        viewpagerDetailBottom.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
@@ -164,13 +168,14 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             override fun onPageScrollStateChanged(state: Int) {
 
             }
+
             override fun onPageSelected(position: Int) {
 
             }
 
         })
 
-        tablayoutDetailActivity.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        tablayoutDetailActivity.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }

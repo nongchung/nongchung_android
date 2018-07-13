@@ -1,16 +1,17 @@
 package com.youth.farm_volunteering
 
 import android.content.Intent
-import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.data.NonghwalData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 import java.lang.StringBuilder
 
-class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
+class SearchResultAdapter(var dataListWeek: List<NonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataListWeek.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
@@ -28,7 +29,7 @@ class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerV
         holderWeek.title.text = dataListWeek[position].name
         holderWeek.address.text = dataListWeek[position].addr
         holderWeek.price.text = dataListWeek[position].price.toString()
-        holderWeek.star.rating = dataListWeek[position].star!!.toFloat()
+        holderWeek.star.visibility = GONE
         if (dataListWeek[position].isBooked != null) {
             when (dataListWeek[position].isBooked) {
                 0 -> holderWeek.isBooked.isSelected = false
@@ -40,7 +41,8 @@ class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerV
 
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataListWeek[position] as Parcelable)
+            intent.putExtra("populData", dataListWeek[position])
+            intent.putExtra("is_from_search", true)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
