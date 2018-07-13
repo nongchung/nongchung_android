@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_area.view.*
 class SelectAreaAdapter(var items: HashMap<Int, Boolean>) : RecyclerView.Adapter<SelectAreaViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectAreaViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_show_all, parent, false)
+                .inflate(R.layout.item_area, parent, false)
         return SelectAreaViewHolder(mainView)
     }
 
@@ -29,11 +29,11 @@ class SelectAreaAdapter(var items: HashMap<Int, Boolean>) : RecyclerView.Adapter
         var area = enumValues<Area>()[position]
         if (items.get(position)!!) {
             holder.itemView.setBackgroundColor(0xFF3470FF.toInt())
-            holder.itemView.textview_area_name.setText(area.name)
+            holder.itemView.textview_area_name.setText(area.regionName)
             holder.itemView.textview_area_name.setTextColor(0xFFFFFFFF.toInt())
         } else {
             holder.itemView.setBackgroundResource(R.drawable.rect)
-            holder.itemView.textview_area_name.setText("+ " + area.name)
+            holder.itemView.textview_area_name.setText("+ " + area.regionName)
             holder.itemView.textview_area_name.setTextColor(0xFFB1B1B1.toInt())
         }
 
