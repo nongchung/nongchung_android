@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Home
 
 import android.content.Intent
+import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,9 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.NewNonghwalData
+import com.youth.farm_volunteering.data.HomeNonghwalData
 
-class NewFarmAdapter(var dataList: List<NewNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>(){
+class NewFarmAdapter(var dataList: ArrayList<HomeNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>(){
     override fun getItemCount(): Int = dataList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewFarmItemViewHolder {
@@ -46,11 +47,7 @@ class NewFarmAdapter(var dataList: List<NewNonghwalData>) : RecyclerView.Adapter
 
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataList[position])
-
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.putExtra("populData", dataList[position]  as Parcelable)
 
             //추천수
             //설명

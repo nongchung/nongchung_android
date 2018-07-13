@@ -7,9 +7,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.AllStData
 import com.youth.farm_volunteering.data.DetailApplyData
-import com.youth.farm_volunteering.data.DetailSchData
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 
 /**
@@ -25,7 +25,6 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     var getDetailScheduleList: ArrayList<DetailSchData>? = null
     var getDetailAllStartDate: ArrayList<AllStData>? = null
     var getDetailMyScheduleActivities: ArrayList<Int>? = null
-    var getDate: String? = null
 
     var dateClickListener: View.OnClickListener? = null
 

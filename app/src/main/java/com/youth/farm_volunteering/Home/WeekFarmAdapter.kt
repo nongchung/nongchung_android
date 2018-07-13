@@ -7,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.data.WeekNonghwalData
-import java.lang.StringBuilder
+import com.youth.farm_volunteering.data.HomeNonghwalData
 
-class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
-    override fun getItemCount(): Int = dataListWeek.size
+class WeekFarmAdapter(var dataListHome: ArrayList<HomeNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
+    override fun getItemCount(): Int = dataListHome.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
@@ -22,25 +21,25 @@ class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerV
     override fun onBindViewHolder(holderWeek: WeekFarmItemViewHolder, position: Int) {
 
         Glide.with(holderWeek.itemView.context)
-                .load(dataListWeek[position].img)
+                .load(dataListHome[position].img)
                 .into(holderWeek.pic)
-        holderWeek.date.text = dataListWeek[position].period
-        holderWeek.title.text = dataListWeek[position].name
-        holderWeek.address.text = dataListWeek[position].addr
-        holderWeek.price.text = dataListWeek[position].price.toString()
-        holderWeek.star.rating = dataListWeek[position].star!!.toFloat()
-        if (dataListWeek[position].isBooked != null) {
-            when (dataListWeek[position].isBooked) {
+        holderWeek.date.text = dataListHome[position].period
+        holderWeek.title.text = dataListHome[position].name
+        holderWeek.address.text = dataListHome[position].addr
+        holderWeek.price.text = dataListHome[position].price.toString()
+        holderWeek.star.rating = dataListHome[position].star!!.toFloat()
+        if (dataListHome[position].isBooked != null) {
+            when (dataListHome[position].isBooked) {
                 0 -> holderWeek.isBooked.isSelected = false
                 1 -> holderWeek.isBooked.isSelected = true
             }
         }
-        holderWeek.starNum.text = dataListWeek[position].star.toString()
+        holderWeek.starNum.text = dataListHome[position].star.toString()
 
 
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataListWeek[position] as Parcelable)
+            intent.putExtra("populData", dataListHome[position] as Parcelable)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -56,7 +55,7 @@ class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerV
 //
 //    var onItemClick : View.OnClickListener? = null
 //
-//    override fun getItemCount(): Int = dataListWeek.size
+//    override fun getItemCount(): Int = dataListHome.size
 //
 //    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FarmGridViewHolder {
 //        val mainView = LayoutInflater.from(parent!!.context).inflate(R.layout.item_farm, parent, false)
