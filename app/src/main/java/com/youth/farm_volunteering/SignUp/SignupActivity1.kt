@@ -32,6 +32,7 @@ class SignupActivity1 : AppCompatActivity() {
 //            val fm = supportFragmentManager
 //            val dialogFragment = ApplicationCancleDialog(this)
 //            dialogFragment.show()
+
         }
     }
 

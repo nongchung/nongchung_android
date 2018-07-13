@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/thema_profile"
+            android:id="@+id/farm_profile"
             android:layout_width="match_parent"
             android:layout_height="176dp"
             android:layout_alignParentStart="true"
@@ -25,21 +25,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/thema_date"
+            android:id="@+id/farm_date_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#3470FF"
-            android:fontFamily="@font/nanumsquareround_otfb"
             android:paddingHorizontal="4dp"
             android:paddingVertical="2dp"
             android:textColor="#FFFFFF"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
 
         <ImageView
-            android:id="@+id/thema_Bookmark"
+            android:id="@+id/imageViewBookmark_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -47,16 +47,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/selector_bookmark" />
+
         <TextView
-            android:id="@+id/thema_new"
+            android:id="@+id/farm_new_profile"
             android:layout_width="wrap_content"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
             android:background="#FFAF00"
             android:paddingHorizontal="5dp"
             android:paddingVertical="2dp"
             android:text="NEW"
             android:textColor="#FFFFFF"
             android:textSize="11sp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -70,7 +72,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/thema_title"
+            android:id="@+id/farm_title_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -82,7 +84,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/thema_price"
+            android:id="@+id/farm_price_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -93,10 +95,10 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
-            app:layout_constraintTop_toBottomOf="@+id/thema_address" />
+            app:layout_constraintTop_toBottomOf="@+id/farm_address_profile" />
 
         <TextView
-            android:id="@+id/thema_address"
+            android:id="@+id/farm_address_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -107,7 +109,7 @@
             android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
-            app:layout_constraintTop_toBottomOf="@+id/thema_title" />
+            app:layout_constraintTop_toBottomOf="@+id/farm_title_profile" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13_profile"
@@ -126,11 +128,11 @@
             android:text="원"
             android:textColor="#DE000000"
             android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/thema_price"
-            app:layout_constraintStart_toEndOf="@+id/thema_price" />
+            app:layout_constraintBottom_toBottomOf="@+id/farm_price_profile"
+            app:layout_constraintStart_toEndOf="@+id/farm_price_profile" />
 
         <TextView
-            android:id="@+id/thema_period"
+            android:id="@+id/farm_profile_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -138,10 +140,9 @@
             android:text="1박2일"
             android:textColor="#DE000000"
             android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/thema_title"
-            app:layout_constraintTop_toTopOf="@+id/thema_title" />
+            app:layout_constraintStart_toEndOf="@+id/farm_title_profile"
+            app:layout_constraintTop_toTopOf="@+id/farm_title_profile" />
     </android.support.constraint.ConstraintLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
