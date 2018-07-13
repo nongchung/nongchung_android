@@ -23,9 +23,9 @@ interface NetworkService {
 
     ): Call<MyActivityResponseData>
 
-    @GET("api/home/detail/farm/4")
+    @GET("api/home/detail/farm")
     fun farmprofile(
-
+            @Query ("idx") idx: Int
     ): Call<FarmProfileResponseData>
 
     //모두보기

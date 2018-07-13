@@ -164,8 +164,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/mymy_ic_ing"
-            app:layout_constraintStart_toEndOf="@+id/my_period"
-            app:layout_constraintTop_toTopOf="@+id/my_period" />
+            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
+            app:layout_constraintTop_toTopOf="@+id/farmer_profile_phone" />
 
         <ImageView
             android:visibility="gone"
@@ -174,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/mymy_cancle_complete_selector"
-            app:layout_constraintStart_toEndOf="@+id/my_period"
+            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
             app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
 
         <ImageView
@@ -184,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/mymy_extention"
-            app:layout_constraintStart_toEndOf="@+id/my_period"
+            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
             app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
 
 
@@ -198,7 +198,7 @@
             app:layout_constraintTop_toTopOf="@+id/my_ic_ing" />
 
         <TextView
-            android:id="@+id/my_period"
+            android:id="@+id/farmer_profile_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumsquareround_otfb"
@@ -317,7 +317,7 @@
             android:text=" 남았습니다!  "
             android:textColor="#DE000000"
             android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@+id/profile_comment"
+            app:layout_constraintStart_toEndOf="@+id/profile_address"
             app:layout_constraintTop_toTopOf="@+id/my_people" />
 
         <TextView
@@ -332,7 +332,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView88" />
 
         <TextView
-            android:id="@+id/profile_comment"
+            android:id="@+id/profile_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumsquareround_otfb"
@@ -351,11 +351,11 @@
             android:text="17"
             android:textColor="#8A000000"
             android:textSize="11sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView69"
-            app:layout_constraintTop_toTopOf="@+id/textView69" />
+            app:layout_constraintEnd_toStartOf="@+id/farmer_profile_comment"
+            app:layout_constraintTop_toTopOf="@+id/farmer_profile_comment" />
 
         <TextView
-            android:id="@+id/textView69"
+            android:id="@+id/farmer_profile_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumsquareround_otfb"
@@ -414,7 +414,7 @@
             app:layout_constraintGuide_percent="0.9527778" />
 
         <TextView
-            android:id="@+id/textView70"
+            android:id="@+id/farmer_profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="11dp"
