@@ -7,11 +7,11 @@ import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.data.SearchData
+import com.youth.farm_volunteering.data.NonghwalData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 import java.lang.StringBuilder
 
-class SearchResultAdapter(var dataListWeek: List<SearchData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
+class SearchResultAdapter(var dataListWeek: List<NonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataListWeek.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
@@ -42,6 +42,7 @@ class SearchResultAdapter(var dataListWeek: List<SearchData>) : RecyclerView.Ada
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
             intent.putExtra("populData", dataListWeek[position])
+            intent.putExtra("is_from_search", true)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

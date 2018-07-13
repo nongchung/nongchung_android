@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering
 
 import android.content.Intent
+import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,11 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.WeekNonghwalData
 import java.lang.StringBuilder
 
-class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>(){
+class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataListWeek.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
-        val mainView : View = LayoutInflater.from(parent.context)
+        val mainView: View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_farm, parent, false)
         return WeekFarmItemViewHolder(mainView)
     }
@@ -27,19 +28,19 @@ class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerV
         holderWeek.title.text = dataListWeek[position].name
         holderWeek.address.text = dataListWeek[position].addr
         holderWeek.price.text = dataListWeek[position].price.toString()
-        holderWeek.star.rating = dataListWeek[position].star!!
-        if(dataListWeek[position].isBooked!=null){
-            when(dataListWeek[position].isBooked){
-                0-> holderWeek.isBooked.isSelected = false
-                1-> holderWeek.isBooked.isSelected = true
+        holderWeek.star.rating = dataListWeek[position].star!!.toFloat()
+        if (dataListWeek[position].isBooked != null) {
+            when (dataListWeek[position].isBooked) {
+                0 -> holderWeek.isBooked.isSelected = false
+                1 -> holderWeek.isBooked.isSelected = true
             }
         }
         holderWeek.starNum.text = dataListWeek[position].star.toString()
 
 
-        holderWeek.itemView.setOnClickListener{
+        holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataListWeek[position])
+            intent.putExtra("populData", dataListWeek[position] as Parcelable)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

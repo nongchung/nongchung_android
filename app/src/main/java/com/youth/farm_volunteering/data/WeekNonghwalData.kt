@@ -3,21 +3,13 @@ package com.youth.farm_volunteering.data
 import android.os.Parcel
 import android.os.Parcelable
 
-class WeekNonghwalData() : Parcelable {
-    var nhIdx : Int? = null
-    var idx: Int? = null
-    var star: Float? = null
-    var price: Int? = null
-    var name: String? = null
-    var period: String? = null
-    var addr: String? = null
-    var img: String? = null
-    var isBooked : Int? = null
+class WeekNonghwalData() : NonghwalData(), Parcelable {
+    var nhIdx: Int? = null
 
     constructor(parcel: Parcel) : this() {
         nhIdx = parcel.readValue(Int::class.java.classLoader) as? Int
         idx = parcel.readValue(Int::class.java.classLoader) as? Int
-        star = parcel.readValue(Float::class.java.classLoader) as? Float
+        star = parcel.readValue(Double::class.java.classLoader) as? Double
         price = parcel.readValue(Int::class.java.classLoader) as? Int
         name = parcel.readString()
         period = parcel.readString()
@@ -50,5 +42,9 @@ class WeekNonghwalData() : Parcelable {
         override fun newArray(size: Int): Array<WeekNonghwalData?> {
             return arrayOfNulls(size)
         }
+    }
+
+    override fun getRealId(): Int? {
+        return nhIdx
     }
 }
