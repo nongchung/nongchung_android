@@ -3,6 +3,7 @@ package com.youth.farm_volunteering
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,20 +19,22 @@ import com.youth.farm_volunteering.data.PopularSubData
 
 
 class ShowAllFragment : Fragment() {
+
     //lateinit var showAllAdapter : ShowAllAdapter
     //lateinit var requestManager : RequestManager
-
-
 
     var popularWeekNonghwalList: List<PopularSubData>? = null
     lateinit var weekFarmAdapter: WeekFarmAllAdapter
 
-
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater.inflate(R.layout.fragment_showall, container, false)
+
+
+
+
+//        val title = args.getString("title", "aaa")
+
 
 //        var farmList : ArrayList<HomeNonghwalData>? = null
 //
@@ -66,5 +69,13 @@ class ShowAllFragment : Fragment() {
         transaction.replace(R.id.activity_main_container, fragment)
 //        transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        var title = this.arguments.getString("title")
+        show_all_title.setText(title)
+
     }
 }

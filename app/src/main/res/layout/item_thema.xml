@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -13,45 +13,33 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/farm_pic_all"
+            android:id="@+id/thema_profile"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="176dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
             android:src="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="fitXY"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/farm_date_all"
+            android:id="@+id/thema_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#3470FF"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:paddingHorizontal="4dp"
             android:paddingVertical="2dp"
             android:textColor="#FFFFFF"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <RatingBar
-            android:id="@+id/ratingBarFarmItem_profile"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:layout_marginStart="8dp"
-            android:numStars="5"
-            android:progressTint="#FAD118"
-            android:progressBackgroundTint="#9f9f9f"
-            android:rating="3"
-            android:stepSize="0.1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
 
         <ImageView
-            android:id="@+id/imageViewBookmark_all"
+            android:id="@+id/thema_Bookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -59,19 +47,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/selector_bookmark" />
-
         <TextView
-            android:id="@+id/textViewRating_all"
+            android:id="@+id/thema_new"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:layout_marginStart="8dp"
-            android:text="Avg"
+            android:layout_height="18dp"
+            android:background="#FFAF00"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="NEW"
             android:textColor="#FFFFFF"
-            android:textSize="13sp"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ratingBarFarmItem_profile"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -86,9 +73,9 @@
             android:id="@+id/thema_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/nanumsquareround_otfb"
-            android:text="제주 행복 감귤 농장 1박 2일  "
+            android:text="제주 행복 감귤 농장"
             android:textColor="#DE000000"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
@@ -98,8 +85,8 @@
             android:id="@+id/thema_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/nanumsquareround_otfb"
             android:text="20,000"
             android:textColor="#DE000000"
@@ -141,7 +128,20 @@
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/thema_price"
             app:layout_constraintStart_toEndOf="@+id/thema_price" />
+
+        <TextView
+            android:id="@+id/thema_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="1박2일"
+            android:textColor="#DE000000"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/thema_title"
+            app:layout_constraintTop_toTopOf="@+id/thema_title" />
     </android.support.constraint.ConstraintLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
