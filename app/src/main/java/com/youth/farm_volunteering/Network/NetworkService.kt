@@ -15,7 +15,7 @@ interface NetworkService {
     //더보기(마이페이지)
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
-    
+
 
     @GET( "api/activity")
     fun myactivity(
