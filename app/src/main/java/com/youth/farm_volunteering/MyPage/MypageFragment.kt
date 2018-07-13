@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
+//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
@@ -70,8 +70,7 @@ class MypageFragment : Fragment() {
 
         //닉네임 변경
         v.nickname_change_button.setOnClickListener(View.OnClickListener {
-            //var v = Intent(this.context, ChangeNicknameActivity::class.java)
-            var v = Intent(this.context, ThemaActivity::class.java)
+            var v = Intent(this.context, ChangeNicknameActivity::class.java)
             startActivity(v)
         })
         //비밀번호 변경
