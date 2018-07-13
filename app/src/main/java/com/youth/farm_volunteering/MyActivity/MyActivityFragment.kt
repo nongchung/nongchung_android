@@ -6,26 +6,56 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.youth.farm_volunteering.NewFarmAllAdapter
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.farm_count_cases
+import com.youth.farm_volunteering.data.MyActivityData
+import com.youth.farm_volunteering.data.MyActivityResponseData
+import com.youth.farm_volunteering.data.TotalActivityData
+import kotlinx.android.synthetic.main.fragment_myactivity.*
 import kotlinx.android.synthetic.main.fragment_myactivity.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MyActivityFragment : Fragment() {
 
-    lateinit var myList: ArrayList<MyData>
-    lateinit var myAdapter : MyAdapter
+    var myList: List<MyActivityData>? = null
+    var timeList : List<TotalActivityData>? = null
+    lateinit var myAdapter: MyactivityAdapter
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(R.layout.fragment_myactivity, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        myList = ArrayList()
-        myList.add(MyData(R.drawable.mymy_ing1,"제주 행복 감귤 농장 1박 2일","제주 서귀포시","20,000","2018.6.29","2018.6.30","3","17/20"))
-        myList.add(MyData(R.drawable.mymy_ing1,"제주 행복 감귤 농장 1박 2일","제주 서귀포시","20,000","2018.6.29","2018.6.30","3","17/20"))
-        myList.add(MyData(R.drawable.mymy_ing1,"제주 행복 감귤 농장 1박 2일","제주 서귀포시","20,000","2018.6.29","2018.6.30","3","17/20"))
+        val v = inflater.inflate(R.layout.fragment_myactivity, container, false)
 
-        myAdapter = MyAdapter(myList)
-        v.my_rv.layoutManager = LinearLayoutManager(this.activity)
-        v.my_rv.adapter = myAdapter
+//        var farmList : ArrayList<WeekNonghwalData>? = null
+//
+//        farmList = ArrayList()
+//
+//        weekFarmAdapter = WeekFarmAdapter(farmList!!)
 
+        var homeCall = ApplicationController.instance!!.networkService!!.myactivity()
+        homeCall.enqueue(object : Callback<MyActivityResponseData> {
+            override fun onFailure(call: Call<MyActivityResponseData>, t: Throwable?) {
+                Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<MyActivityResponseData>, response: Response<MyActivityResponseData>) {
+
+                myList = response.body().data
+                timeList = response.body().total
+
+                myAdapter = MyactivityAdapter(myList!!)
+
+                farm_count_cases.setText(timeList!![0].tcount.toString())
+                farm_count_time.setText(timeList!![0].ttime.toString())
+
+                v.my_rv.layoutManager = LinearLayoutManager(context)
+                v.my_rv.adapter = myAdapter
+            }
+        })
         return v
     }
 }

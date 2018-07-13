@@ -24,13 +24,14 @@ interface NetworkService {
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
 
-    @GET("/api/home/more/moreNew")
-    fun allnew(
-            @Query("idx") idx: Int
-    ): Call<WeekNonghwalAllData>
-
     @GET("/api/bookmark")
     fun like(): Call<LikeResponseData>
+
+    @GET( "api/activity")
+    fun myactivity(
+
+    ): Call<MyActivityResponseData>
+
 
     @GET("/api/home/detail/nh")
     fun detailnonghwal(
@@ -42,6 +43,14 @@ interface NetworkService {
             @Query("scheIdx") scheIdx: Int
     ): Call<ReviewResponseData>
 
+    @GET("/api/home/more/moreNew")
+    fun new(
+    @Query("idx") idx : Int
+    ): Call<AllNewResponseData>
+    @GET("/api/home/more/morePopul")
+    fun popular(
+            @Query("idx") idx : Int
+    ):Call<PopularResponseData>
     @FormUrlEncoded
     @POST("/api/signin")
     fun login(@Field("email") email: String, @Field("password") password: String): Call<LoginResponseData>

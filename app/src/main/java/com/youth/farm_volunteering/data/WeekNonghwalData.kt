@@ -9,5 +9,4 @@ class WeekNonghwalData {
     var addr: String? = null
     var img: String? = null
     var isBooked : Int? = null
-    var farmerImg : String? = null
 }

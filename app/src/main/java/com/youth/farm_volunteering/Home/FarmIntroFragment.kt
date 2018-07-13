@@ -55,7 +55,6 @@ class FarmIntroFragment : Fragment() {
                 DetailFriendInfoList = response.body().friendsInfo
                 DetailFarmInfoList = response.body().farmerInfo
                 DetailScheduleList = response.body().schedule
-
                 detail_introduce_addr.setText(DetailNonghwalList!!.addr.toString())
                 detail_introduce_name.setText(DetailNonghwalList!!.name.toString())
 //                setText(DetailNonghwalList!!.star.toString())
