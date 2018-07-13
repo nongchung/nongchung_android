@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageviewCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/detail_schedule"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageviewLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/detail_scheduleline_short"
+        app:layout_constraintEnd_toEndOf="@+id/imageviewCircle"
+        app:layout_constraintStart_toStartOf="@+id/imageviewCircle"
+        app:layout_constraintTop_toBottomOf="@+id/imageviewCircle" />
+
+    <TextView
+        android:id="@+id/textviewActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:text="활동"
+        android:textColor="#DE000000"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textviewTime"
+        app:layout_constraintStart_toStartOf="@+id/guideline63"
+        app:layout_constraintTop_toTopOf="@+id/textviewTime" />
+
+    <TextView
+        android:id="@+id/textviewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:text="시간"
+        android:textColor="#8A000000"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/imageviewCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageviewCircle" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25277779" />
+
 
 </android.support.constraint.ConstraintLayout>

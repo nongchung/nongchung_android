@@ -18,14 +18,16 @@
                 android:id="@+id/detail_introduce_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="제주 행복 감귤 농장 체험"
-                android:textSize="21sp"
                 android:textColor="#DE000000"
+                android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RatingBar
                 android:id="@+id/detail_introduce_star"

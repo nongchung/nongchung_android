@@ -51,7 +51,6 @@ class ShowAllFragment : Fragment() {
 
                 popularWeekNonghwalList = response.body().populNh
 
-
                 weekFarmAdapter = WeekFarmAllAdapter(popularWeekNonghwalList!!)
 
                 fragment_showall_rv.layoutManager = LinearLayoutManager(context)

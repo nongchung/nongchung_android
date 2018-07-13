@@ -76,7 +76,7 @@
             android:text="제주 행복 감귤 농장 1박 2일  "
             android:textColor="#DE000000"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline13_all"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -90,7 +90,7 @@
             android:textColor="#DE000000"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline13_all"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
             app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmAddr_all" />
 
         <TextView
@@ -104,11 +104,11 @@
             android:text="제주 서귀포시  "
             android:textColor="#8A000000"
             android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline13_all"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
             app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmTitle_all" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline13_all"
+            android:id="@+id/guideline13_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"

@@ -1,4 +1,4 @@
-package com.youth.farm_volunteering.data
+package com.youth.farm_volunteering.Home.Schedule
 
 class DetailSchData {
     var time:String? = null

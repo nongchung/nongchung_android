@@ -1,59 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
-    android:layout_height="51dp"
-    android:orientation="vertical"
-    >
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+    <ImageView
+        android:id="@+id/imageviewCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/detail_schedule"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/schedule_img"
-            android:layout_width="24dp"
-            android:layout_height="22dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="18dp"
-            android:src="@color/colorAccent" />
+    <ImageView
+        android:id="@+id/imageviewLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/detail_scheduleline_short"
+        app:layout_constraintEnd_toEndOf="@+id/imageviewCircle"
+        app:layout_constraintStart_toStartOf="@+id/imageviewCircle"
+        app:layout_constraintTop_toBottomOf="@+id/imageviewCircle" />
 
-        <ImageView
-            android:id="@+id/schedule_img2"
-            android:layout_width="5dp"
-            android:layout_height="33dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/schedule_time"
-            android:layout_marginStart="27dp"
-            android:src="@color/colorAccent" />
+    <TextView
+        android:id="@+id/textviewActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:text="활동"
+        android:textColor="#DE000000"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textviewTime"
+        app:layout_constraintStart_toStartOf="@+id/guideline63"
+        app:layout_constraintTop_toTopOf="@+id/textviewTime" />
 
-        <TextView
-            android:id="@+id/schedule_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="59dp"
-            android:text="시간" />
+    <TextView
+        android:id="@+id/textviewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:text="시간"
+        android:textColor="#8A000000"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/imageviewCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageviewCircle" />
 
-        <TextView
-            android:id="@+id/schedule_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="85dp"
-            android:text="시간활동" />
-
-        />
-
-
-    </RelativeLayout>
-
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25277779" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -4,20 +4,17 @@ import android.content.Intent
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.Home.FarmProfile.FramProfileActivity
-import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.additionfriendinfo
-import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.friendsizelist
+import com.youth.farm_volunteering.Home.FarmProfile.FarmProfileActivity
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
+import com.youth.farm_volunteering.Home.Schedule.ScheduleAdapter
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
-import junit.framework.Test
 import kotlinx.android.synthetic.main.fragment_farm_introduce.*
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
 import retrofit2.Call
@@ -97,9 +94,12 @@ class FarmIntroFragment : Fragment() {
 //            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
 //            startActivity(intent)
 
+        v.detail_profile_watch_btn.setOnClickListener(View.OnClickListener  {
+            var v = Intent(this.context,FarmProfileActivity::class.java)
+            startActivity(v)
+        })
 
         return v
-
 
     }
 
