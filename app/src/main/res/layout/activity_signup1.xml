@@ -43,7 +43,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        android:fontFamily="@font/nanumsquareround_otfb"/>
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:textCursorDrawable="@drawable/cursor_color"/>
 
     <TextView
         android:id="@+id/textView"
@@ -150,6 +151,8 @@
         android:background="@drawable/join1_next_icon"
         android:fontFamily="@font/nanumsquareround_otfb"
         android:textSize="16sp"
+        android:text="다음"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"

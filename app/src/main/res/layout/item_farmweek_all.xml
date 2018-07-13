@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <RatingBar
-            android:id="@+id/ratingBarFarmItem_all"
+            android:id="@+id/ratingBarFarmItem_profile"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:textColor="#FFFFFF"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ratingBarFarmItem_all"
+            app:layout_constraintStart_toEndOf="@+id/ratingBarFarmItem_profile"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
     </android.support.constraint.ConstraintLayout>
@@ -83,7 +83,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/farm_title_all"
+            android:id="@+id/farm_title_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -91,11 +91,11 @@
             android:text="제주 행복 감귤 농장 1박 2일  "
             android:textColor="#DE000000"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline13_all"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/farm_price_all"
+            android:id="@+id/farm_price_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -105,11 +105,11 @@
             android:textColor="#DE000000"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline13_all"
-            app:layout_constraintTop_toBottomOf="@+id/farm_address_all" />
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
+            app:layout_constraintTop_toBottomOf="@+id/farm_address_profile" />
 
         <TextView
-            android:id="@+id/farm_address_all"
+            android:id="@+id/farm_address_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -119,11 +119,11 @@
             android:text="제주 서귀포시  "
             android:textColor="#8A000000"
             android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline13_all"
-            app:layout_constraintTop_toBottomOf="@+id/farm_title_all" />
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
+            app:layout_constraintTop_toBottomOf="@+id/farm_title_profile" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline13_all"
+            android:id="@+id/guideline13_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -139,8 +139,8 @@
             android:text="원"
             android:textColor="#DE000000"
             android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/farm_price_all"
-            app:layout_constraintStart_toEndOf="@+id/farm_price_all" />
+            app:layout_constraintBottom_toBottomOf="@+id/farm_price_profile"
+            app:layout_constraintStart_toEndOf="@+id/farm_price_profile" />
     </android.support.constraint.ConstraintLayout>
     <View
         android:layout_width="match_parent"

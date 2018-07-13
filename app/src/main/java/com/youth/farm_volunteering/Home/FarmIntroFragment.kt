@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -15,8 +18,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.FarmProfile.FarmProfileActivity
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
+import com.youth.farm_volunteering.Home.Schedule.ScheduleAdapter
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.DetailSchData
 import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.NhInfoData
@@ -33,7 +37,7 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
     var DetailNonghwalList: NhInfoData? = null
     var DetailFriendInfoList: List<FriendInfoData>? = null
     var DetailFarmInfoList: FarmInfoData? = null
-    var DetailScheduleList: List<DetailSchData>? = null
+    var DetailScheduleList: ArrayList<DetailSchData>? = null
     var nhIdx : Int? = null
 
     private var introduceImage_linearLayoutManager: LinearLayoutManager? = null
@@ -63,7 +67,7 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
         DetailNonghwalList = arguments.getParcelable("nhInfo")
         DetailFriendInfoList = arguments.getParcelableArrayList("friendsInfo")
         DetailFarmInfoList = arguments.getParcelable("farmerInfo")
-
+        DetailScheduleList = arguments.getParcelableArrayList("scheduleInfo")
 
 
         v.detail_introduce_addr.text = DetailNonghwalList!!.addr
@@ -94,11 +98,10 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
 //                        .load(dataList[position]) //String 줘서 이렇게??
 //                        .into(holder.FarmBoxReviewImg)
 
-        // 스캐줄부분은 잠시 생략...
-//        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
-//
-//        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
-//        v.scheduleView_rv.adapter = scheduleAdapter
+        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
+
+        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
+        v.scheduleView_rv.adapter = scheduleAdapter
 
         //size가 6이상일때는 +이미지가 표시되게 함
 //            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)

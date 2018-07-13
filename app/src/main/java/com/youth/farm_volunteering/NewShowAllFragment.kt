@@ -13,7 +13,6 @@ import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.data.AllNewData
 import com.youth.farm_volunteering.data.AllNewResponseData
 import com.youth.farm_volunteering.data.HomeResponseData
-import com.youth.farm_volunteering.data.NewNonghwalData
 import kotlinx.android.synthetic.main.activity_show_all.*
 import kotlinx.android.synthetic.main.fragment_showall.*
 import retrofit2.Call
@@ -28,7 +27,7 @@ class NewShowAllFragment : Fragment() {
 
         val v = inflater.inflate(R.layout.fragment_showall, container, false)
 
-//        var farmList : ArrayList<WeekNonghwalData>? = null
+//        var farmList : ArrayList<HomeNonghwalData>? = null
 //
 //        farmList = ArrayList()
 //

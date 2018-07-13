@@ -1,5 +1,7 @@
 package com.youth.farm_volunteering.data
 
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
+
 class DetailNonghwalResponseData {
     var message: String? = null
     var image: List<String>? = null
