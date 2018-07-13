@@ -9,4 +9,5 @@ class AllNewData {
     var addr: String? = null
     var img: String? = null
     var idx: Int? = null
+    var isBooked: Int? = null
 }

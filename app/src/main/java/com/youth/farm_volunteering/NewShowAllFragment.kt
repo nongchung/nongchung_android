@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.Home.NewFarmAdapter
-import com.youth.farm_volunteering.R.id.activity_show_all_rv
-import com.youth.farm_volunteering.R.id.fragment_showall_rv
+import com.youth.farm_volunteering.data.AllNewData
+import com.youth.farm_volunteering.data.AllNewResponseData
 import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.NewNonghwalData
 import kotlinx.android.synthetic.main.activity_show_all.*
@@ -21,7 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NewShowAllFragment : Fragment() {
-    var newNonghwalList : List<NewNonghwalData>? = null
+    var newNonghwalList : List<AllNewData>? = null
     lateinit var newNonghwalAdapter: NewFarmAllAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,15 +34,15 @@ class NewShowAllFragment : Fragment() {
 //
 //        weekFarmAdapter = WeekFarmAdapter(farmList!!)
 
-        var homeCall = ApplicationController.instance!!.networkService!!.home();
-        homeCall.enqueue(object : Callback<HomeResponseData> {
-            override fun onFailure(call: Call<HomeResponseData>, t: Throwable?) {
+        var homeCall = ApplicationController.instance!!.networkService!!.new(6)
+        homeCall.enqueue(object : Callback<AllNewResponseData> {
+            override fun onFailure(call: Call<AllNewResponseData>, t: Throwable?) {
                 Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
+            override fun onResponse(call: Call<AllNewResponseData>, response: Response<AllNewResponseData>) {
 
-                newNonghwalList = response.body().newNh
+                newNonghwalList = response.body().data
 
 
                 newNonghwalAdapter = NewFarmAllAdapter(newNonghwalList!!)

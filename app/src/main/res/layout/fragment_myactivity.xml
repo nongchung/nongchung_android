@@ -53,7 +53,7 @@
                     android:fontFamily="@font/nanumsquareround_otfb"/>
 
                 <TextView
-                    android:id="@+id/textView73"
+                    android:id="@+id/farm_count_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -77,12 +77,12 @@
                     android:textColor="#DE000000"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView73"
+                    app:layout_constraintStart_toEndOf="@+id/farm_count_cases"
                     app:layout_constraintTop_toTopOf="parent"
                     android:fontFamily="@font/nanumsquareround_otfb"/>
 
                 <TextView
-                    android:id="@+id/textView75"
+                    android:id="@+id/farm_count_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -105,7 +105,7 @@
                     android:textColor="#DE000000"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView75"
+                    app:layout_constraintStart_toEndOf="@+id/farm_count_time"
                     app:layout_constraintTop_toTopOf="parent"
                     android:fontFamily="@font/nanumsquareround_otfb"/>
             </android.support.constraint.ConstraintLayout>

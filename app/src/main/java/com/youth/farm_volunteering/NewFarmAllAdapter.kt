@@ -9,9 +9,10 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.Home.NewFarmAllViewHolder
 import com.youth.farm_volunteering.NewFarmAllAdapter
 import com.youth.farm_volunteering.Home.NewFarmItemViewHolder
+import com.youth.farm_volunteering.data.AllNewData
 import com.youth.farm_volunteering.data.NewNonghwalData
 
-class NewFarmAllAdapter(var dataList: List<NewNonghwalData>) : RecyclerView.Adapter<NewFarmAllViewHolder>(){
+class NewFarmAllAdapter(var dataList: List<AllNewData>) : RecyclerView.Adapter<NewFarmAllViewHolder>(){
     override fun getItemCount(): Int = dataList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewFarmAllViewHolder {

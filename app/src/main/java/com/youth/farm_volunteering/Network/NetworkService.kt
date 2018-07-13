@@ -16,6 +16,14 @@ interface NetworkService {
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
 
+
+    @GET( "api/activity")
+    fun myactivity(
+
+    ): Call<MyActivityResponseData>
+
+
+
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")
     fun all_new(): Call<AllNewResponseData>
@@ -30,6 +38,7 @@ interface NetworkService {
     fun like(): Call<LikeResponseData>
 
     //상세보기
+
     @GET("/api/home/detail/nh")
     fun detailnonghwal(
             @Query("idx") nhIdx: Int
@@ -40,6 +49,14 @@ interface NetworkService {
             @Query("nhIdx") nhIdx: Int
     ): Call<ReviewResponseData>
 
+    @GET("/api/home/more/moreNew")
+    fun new(
+    @Query("idx") idx : Int
+    ): Call<AllNewResponseData>
+    @GET("/api/home/more/morePopul")
+    fun popular(
+            @Query("idx") idx : Int
+    ):Call<PopularResponseData>
     @FormUrlEncoded
     @POST("/api/signin")
     fun login(@Field("email") email: String, @Field("password") password: String): Call<LoginResponseData>
