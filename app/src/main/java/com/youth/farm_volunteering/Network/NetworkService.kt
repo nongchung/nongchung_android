@@ -66,13 +66,23 @@ interface NetworkService {
     fun new(
     @Query("idx") idx : Int
     ): Call<AllNewResponseData>
+
     @GET("/api/home/more/morePopul")
     fun popular(
             @Query("idx") idx : Int
     ):Call<PopularResponseData>
+
     @FormUrlEncoded
     @POST("/api/signin")
     fun login(@Field("email") email: String, @Field("password") password: String): Call<LoginResponseData>
+
+    @FormUrlEncoded
+    @POST("/api/dup-email")
+    fun emailDup(@Field("email") email: String): Call<DupResponseData>
+
+    @FormUrlEncoded
+    @POST("/api/dup-nickname")
+    fun nickDup(@Field("nickname") nick: String): Call<DupResponseData>
 
     @FormUrlEncoded
     @POST("/api/signup")
