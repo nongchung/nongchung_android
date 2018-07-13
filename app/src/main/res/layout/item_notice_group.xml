@@ -26,7 +26,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
         app:layout_constraintStart_toStartOf="@+id/guideline32"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:textColor="#DE000000"
+        android:lineSpacingExtra ="5dp"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline33"

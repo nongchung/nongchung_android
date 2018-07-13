@@ -61,6 +61,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
 
+
         introThemeFarmList = listOf(R.drawable.main_banner1, R.drawable.main_banner2,
         R.drawable.main_banner3, R.drawable.main_banner4, R.drawable.main_banner5)
 
@@ -71,24 +72,29 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
+                if(response.isSuccessful){
+                    if(response.body().message.equals("Success To Get Information")){
+                        adDataList = response.body().ads
+                        popularWeekNonghwalList = response.body().populNh
+                        newNonghwalList = response.body().newNh
+                        popularFarmList = response.body().populFarm
 
-                adDataList = response.body().ads
-                popularWeekNonghwalList = response.body().populNh
-                newNonghwalList = response.body().newNh
-                popularFarmList = response.body().populFarm
-
-                weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
-                introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
-                newFarmAdapter = NewFarmAdapter(newNonghwalList!!)
-                populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
-                vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
+                        weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
+                        introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
+                        newFarmAdapter = NewFarmAdapter(newNonghwalList!!)
+                        populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
+                        vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
 
 
-                fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
-                fragment_home_newFarm_rv.adapter = newFarmAdapter
-                fragment_home_themeFarm_rv.adapter = introThemeFarmAdapter
-                fragment_home_hotFarm_rv.adapter = populFarmAdapter
-                adViewPager!!.adapter = vpAdapter
+                        fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
+                        fragment_home_newFarm_rv.adapter = newFarmAdapter
+                        fragment_home_themeFarm_rv.adapter = introThemeFarmAdapter
+                        fragment_home_hotFarm_rv.adapter = populFarmAdapter
+                        adViewPager!!.adapter = vpAdapter
+
+                    }
+                }
+
 
             }
         })
@@ -133,13 +139,20 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
             fragment_home_newFarm_showAll_txt -> {
                 activity!!.main_title.setText("새로운 농활")
+
                 replaceFragment(ShowAllFragment())
             }
 
-            fragment_home_hotFarm_showAll_txt -> {
-                activity!!.main_title.setText("인기 농장")
-                replaceFragment(ShowAllFragment())
-            }
+
+//            fragment_home_themeFarm_showAll_txt -> {
+//                activity!!.main_title.setText("테마별 농활")
+//                replaceFragment(ThemaAllFragment())
+//            }
+//            fragment_home_hotFarm_showAll_txt -> {
+//                activity!!.main_title.setText("인기 농장")
+//                replaceFragment(ShowAllFragment())
+//            }
+            // 테마별 농활 인기농장부분 모두보기는 없애기로 함
         }
     }
 
@@ -148,8 +161,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         fragment_home_weeklyHotFarm_showAll_txt.setOnClickListener(this)
         fragment_home_newFarm_showAll_txt.setOnClickListener(this)
-        //테마별 농활의 모두보기 삭제
-        fragment_home_hotFarm_showAll_txt.setOnClickListener(this)
+
+//        fragment_home_themeFarm_showAll_txt.setOnClickListener(this)
+//        fragment_home_hotFarm_showAll_txt.setOnClickListener(this)
+        //모두보기 테마별과 인기농활에서는 모두보기 없애기로 했습니다
+
 
         fragment_home_weeklyHotFarm_rv.layoutManager = LinearLayoutManager(context)
         fragment_home_newFarm_rv.layoutManager = LinearLayoutManager(context)

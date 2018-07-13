@@ -9,8 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        >
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbarDetail"
@@ -36,7 +35,6 @@
                 android:id="@+id/imageviewCollapse"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/main_banner3"
                 app:layout_collapseMode="pin"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -53,6 +51,8 @@
             app:tabPaddingStart="0dp"
             app:tabPaddingTop="0dp"
             app:tabTextColor="#000000" />
+
+
 
     </android.support.design.widget.AppBarLayout>
 
@@ -75,14 +75,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="70"
-            android:text="2018년 9월 19일" />
+            android:text="" />
 
         <Button
             android:id="@+id/buttonApplyButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="30"
-            android:text="신청하기" />
+            android:text="" />
 
     </LinearLayout>
 

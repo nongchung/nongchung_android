@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface NetworkService {
     @GET("api/home")
     fun home(
-//            @Query : idx
+//            @Query("idx") idx: Int
     ): Call<HomeResponseData>
 
     //더보기(마이페이지)
@@ -19,6 +19,11 @@ interface NetworkService {
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")
     fun all_new(): Call<AllNewResponseData>
+
+    @GET("/api/home/more/moreNew")
+    fun allnew(
+            @Query("idx") idx: Int
+    ): Call<WeekNonghwalAllData>
 
     //좋아요리스트
     @GET("/api/bookmark")
@@ -32,7 +37,7 @@ interface NetworkService {
 
     @GET("/api/review")
     fun review(
-            @Query("scheIdx") scheIdx: Int
+            @Query("nhIdx") nhIdx: Int
     ): Call<ReviewResponseData>
 
     @FormUrlEncoded
@@ -46,9 +51,14 @@ interface NetworkService {
     @Multipart
     @PUT("/api/mypage/nickname")
     fun nickname(
-            @Part("nickname") nickname : String
-//        @Body nickname: String
+//            @Part("nickname") nickname : String
+        @Part ("nickname") nickname: String
     ): Call<NickNameResponseData>
 
+    @Multipart
+    @PUT("api/mypage/password")
+    fun password(
+            @Part("password") password : String, @Part("newpw") newpw : String
+    ): Call<PasswordResourceData>
 
 }

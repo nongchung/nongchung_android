@@ -28,12 +28,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="참가 신청"
-            android:textColor="#000000"
+            android:textColor="#DE000000"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
             app:layout_constraintEnd_toEndOf="@+id/toolbar2"
             app:layout_constraintStart_toStartOf="@+id/toolbar2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
     </android.support.constraint.ConstraintLayout>
 
     <LinearLayout
@@ -51,11 +52,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="이름"
-                android:textColor="#95989A"
+                android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView40"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline16"
@@ -70,11 +72,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="생년월일"
-                android:textColor="#95989A"
+                android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView41"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/textView39" />
+                app:layout_constraintTop_toBottomOf="@+id/textView39"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:id="@+id/textView41"
@@ -82,11 +85,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="성별"
-                android:textColor="#95989A"
+                android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView42"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+                app:layout_constraintTop_toBottomOf="@+id/textView40"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:id="@+id/textView42"
@@ -94,11 +98,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="이메일"
-                android:textColor="#95989A"
+                android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView43"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/textView41" />
+                app:layout_constraintTop_toBottomOf="@+id/textView41"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:id="@+id/textView43"
@@ -107,11 +112,12 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="20dp"
                 android:text="전화번호"
-                android:textColor="#95989A"
+                android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/textView42" />
+                app:layout_constraintTop_toBottomOf="@+id/textView42"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <EditText
                 android:id="@+id/editText27"
@@ -120,12 +126,14 @@
                 android:ems="10"
                 android:hint="이름을 입력해주세요"
                 android:inputType="textPersonName"
-                android:textColor="#000000"
+                android:textColor="#DE000000"
+                android:textColorHint="#8A000000"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/editText28"
                 app:layout_constraintEnd_toStartOf="@+id/guideline18"
                 app:layout_constraintStart_toStartOf="@+id/guideline17"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <EditText
                 android:id="@+id/editText28"
@@ -134,12 +142,14 @@
                 android:ems="10"
                 android:hint="생년월일을 입력해주세요"
                 android:inputType="textPersonName"
-                android:textColor="#000000"
+                android:textColor="#DE000000"
+                android:textColorHint="#8A000000"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/application_woman_button"
                 app:layout_constraintEnd_toStartOf="@+id/guideline18"
                 app:layout_constraintStart_toStartOf="@+id/guideline17"
-                app:layout_constraintTop_toBottomOf="@+id/editText27" />
+                app:layout_constraintTop_toBottomOf="@+id/editText27"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline17"
@@ -180,12 +190,14 @@
                 android:ems="10"
                 android:hint="이메일을 입력해주세요"
                 android:inputType="textPersonName"
-                android:textColor="#000000"
+                android:textColor="#DE000000"
+                android:textColorHint="#8A000000"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/editText32"
                 app:layout_constraintEnd_toStartOf="@+id/guideline18"
                 app:layout_constraintStart_toStartOf="@+id/guideline17"
-                app:layout_constraintTop_toBottomOf="@+id/application_woman_button" />
+                app:layout_constraintTop_toBottomOf="@+id/application_woman_button"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <EditText
                 android:id="@+id/editText32"
@@ -194,13 +206,15 @@
                 android:ems="10"
                 android:hint="전화번호를 입력해주세요"
                 android:inputType="textPersonName"
-                android:textColor="#000000"
+                android:textColor="#DE000000"
+                android:textColorHint="#8A000000"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline18"
                 app:layout_constraintHorizontal_bias="0.175"
                 app:layout_constraintStart_toStartOf="@+id/guideline17"
-                app:layout_constraintTop_toBottomOf="@+id/editText31" />
+                app:layout_constraintTop_toBottomOf="@+id/editText31"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline22"
@@ -231,7 +245,9 @@
                 android:layout_marginLeft="11dp"
                 android:gravity="center_vertical"
                 android:text="농활정보"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:textColor="#8A000000"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
         </LinearLayout>
 
         <LinearLayout
@@ -262,7 +278,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_marginTop="16dp"
+                        android:fontFamily="@font/nanumsquareround_otfb"
                         android:text="2018년 6월 29일~30일(1박2일)"
+                        android:textColor="#8A000000"
                         android:textSize="11sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView45"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -278,11 +296,13 @@
                         android:layout_marginTop="7dp"
                         android:text="제주행복 감귤 농장 체험"
                         android:textSize="15sp"
+                        android:textColor="#DE000000"
                         app:layout_constraintBottom_toTopOf="@+id/textView46"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView44"
+                        android:fontFamily="@font/nanumsquareround_otfb"/>
 
                     <TextView
                         android:id="@+id/textView46"
@@ -293,11 +313,13 @@
                         android:layout_marginTop="43dp"
                         android:text="제주특별자치도 서귀포시"
                         android:textSize="11sp"
+                        android:textColor="#8A000000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView45" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView45"
+                        android:fontFamily="@font/nanumsquareround_otfb"/>
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
         </LinearLayout>
@@ -317,8 +339,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="24dp"
                 android:text="결제 금액"
-                android:textColor="#F15A87"
-                android:textSize="15sp" />
+                android:textColor="#F25620"
+                android:textSize="15sp"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -328,8 +351,9 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="36dp"
                 android:text="20000원"
-                android:textColor="#F15A87"
-                android:textSize="15sp" />
+                android:textColor="#F25620"
+                android:textSize="15sp"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -344,7 +368,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="11dp"
                 android:text="결제 수단 선택"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:textColor="#8A000000"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -353,7 +379,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="31dp"
                 android:text="현재 계좌이체만 가능합니다.양해부탁드립니다."
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:textColor="#DE000000"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -368,7 +396,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
                 android:text="계좌이체"
-                android:textSize="13sp" />
+                android:textColor="#DE000000"
+                android:textSize="13sp"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -377,7 +407,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/application_acount"
                 android:text="국민 0000-00-000000"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textColor="#8A000000"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
         </RelativeLayout>
 
@@ -396,7 +428,8 @@
                 android:textSize="15sp"
                 android:textColor="#ffffff"
                 android:background="@drawable/apply_apply_bg"
-                android:layout_centerInParent="true"/>
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
         </RelativeLayout>
     </LinearLayout>
 

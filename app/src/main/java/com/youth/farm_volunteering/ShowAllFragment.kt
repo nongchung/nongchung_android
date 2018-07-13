@@ -3,20 +3,18 @@ package com.youth.farm_volunteering
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.youth.farm_volunteering.Home.WeekFarmAllAdapter
 import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 import kotlinx.android.synthetic.main.fragment_showall.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.view.KeyEvent.KEYCODE_BACK
-
 
 
 class ShowAllFragment : Fragment() {
@@ -24,8 +22,10 @@ class ShowAllFragment : Fragment() {
     //lateinit var requestManager : RequestManager
 
 
-    var popularWeekNonghwalList: ArrayList<WeekNonghwalData>? = null
-    lateinit var weekFarmAdapter: WeekFarmAdapter
+
+    var popularWeekNonghwalList: List<WeekNonghwalData>? = null
+    lateinit var weekFarmAdapter: WeekFarmAllAdapter
+
 
 
 
@@ -51,7 +51,7 @@ class ShowAllFragment : Fragment() {
                 popularWeekNonghwalList = response.body().populNh
 
 
-                weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
+                weekFarmAdapter = WeekFarmAllAdapter(popularWeekNonghwalList!!)
 
                 fragment_showall_rv.layoutManager = LinearLayoutManager(context)
                 fragment_showall_rv.adapter = weekFarmAdapter

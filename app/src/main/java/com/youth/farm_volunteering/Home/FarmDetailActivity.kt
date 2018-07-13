@@ -48,7 +48,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var detailImageList : List<String>? = null
     var detailNearestStartDate : String? = null
     lateinit var detailAllStartDate : ArrayList<AllStData>
-    lateinit var detailMyScheduleActivities : ArrayList<Int>
+    var detailMyScheduleActivities : ArrayList<Int>? = null
 
     lateinit var detailTabAdapter : DetailTabAdapter
 
@@ -92,7 +92,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     detailScheduleList = response.body().schedule!!           //BottomSheetDialog 신청하기
                     detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
                     detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
-                    detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 scheIdx
+                    if(response.body().myScheduleActivities!=null) {
+                        detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 sche
+                    }
 
 //                    detailApplyAdapter = DetailApplyAdapter(detailScheduleList, supportFragmentManager)
                     detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, nhIdx,

@@ -165,7 +165,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
         </android.support.constraint.ConstraintLayout>
 
 
@@ -209,20 +208,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fragment_home_hotFarm_showAll_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/nanumsquareround_otfb"
-                android:text="모두보기"
-                android:textAlignment="textEnd"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <!--<TextView-->
+                <!--android:id="@+id/fragment_home_hotFarm_showAll_txt"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginEnd="16dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:fontFamily="@font/nanumsquareround_otfb"-->
+                <!--android:text="모두보기"-->
+                <!--android:textAlignment="textEnd"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout

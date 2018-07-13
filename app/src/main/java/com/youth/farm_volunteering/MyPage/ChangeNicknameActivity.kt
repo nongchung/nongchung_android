@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.MyPage
 
 
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.nio.file.WatchEvent
 import android.text.InputFilter
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.youth.farm_volunteering.R.id.*
@@ -29,10 +31,10 @@ import com.youth.farm_volunteering.login.LoginToken
 
 class ChangeNicknameActivity : AppCompatActivity() {
 
-    var changeNick : String? = null
+    var changeNick: String? = null
     lateinit var editText: EditText
     lateinit var result: TextView
-    var toolbar : Toolbar? = null
+    var toolbar: Toolbar? = null
     private val m_nMaxLengthOfDeviceName = 20
     var changedNickData: String? = null
 
@@ -53,12 +55,12 @@ class ChangeNicknameActivity : AppCompatActivity() {
 
 
         //글자수 제한
-        editText.addTextChangedListener(object : TextWatcher{
+        editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                  }
+            }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                 }
+            }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 editText.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(m_nMaxLengthOfDeviceName))
@@ -77,32 +79,33 @@ class ChangeNicknameActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item!!.itemId){
-            R.id.menu_apply->{
+        when (item!!.itemId) {
+            R.id.menu_apply -> {
                 changeNick = editText.text.toString()
 
                 var nicknameCall = ApplicationController.instance!!.networkService!!.nickname(changeNick!!)
                 nicknameCall.enqueue(object : Callback<NickNameResponseData> {
                     override fun onFailure(call: Call<NickNameResponseData>, t: Throwable?) {
                         Toast.makeText(applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
-
                         //Log.e("abc",t.toString())
                     }
 
+
                     override fun onResponse(call: Call<NickNameResponseData>, response: Response<NickNameResponseData>) {
 
+
+
                         when (response.code()) {
-                            200 -> {
-                                changedNickData = response.body().data // 닉네임을 서버에 전달
-                                Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show() // 메시지생성
-                            }
+                                    200 -> {
+                                        intent.putExtra(changeNick, editText.text.toString())
+                                        changedNickData = response.body().data // 닉네임을 서버에 전달 null값생성...
+                                        Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show() // 메시지생성
+                                    }
+                                    else ->
 
-                            else ->
-                                Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show()
-
+                                Toast.makeText(this@ChangeNicknameActivity, changeNick, Toast.LENGTH_SHORT).show()
+                        // 값이 왜 null이 뜰까요... 대체!!!!!!
                         }
-//                        Toast.makeText(applicationContext, "successful", Toast.LENGTH_SHORT).show()
-//                        changedNickData = response.body().data // 값이 왜 null이 뜰까요... 대체!!!!!!
 
                     }
                 })

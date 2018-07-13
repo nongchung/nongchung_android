@@ -12,10 +12,6 @@ import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.ReviewResponseData
 import com.youth.farm_volunteering.data.rvListInfoData
 import kotlinx.android.synthetic.main.fragment_farm_review.view.*
-import com.youth.farm_volunteering.R.id.review_rating_bar
-import com.youth.farm_volunteering.data.DetailNonghwalResponseData
-import kotlinx.android.synthetic.main.fragment_farm_review.*
-import kotlinx.android.synthetic.main.fragment_farm_review.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +26,7 @@ class FarmReviewFragment : Fragment(){
 
     lateinit var reviewimgitems: ArrayList<ReviewImageData>
     var ReviewList: List<rvListInfoData>? = null
-    var ReviewImageList : List<rvListInfoData>? = null
+    var ReviewImageList : List<String>? = null
 
     private  var linearLayoutManager : LinearLayoutManager? = null
 
@@ -39,30 +35,33 @@ class FarmReviewFragment : Fragment(){
         //activity!!.supportFragmentManager.beginTransaction().add()
         val a = inflater.inflate(R.layout.item_review,container,false)
 
-        var reviewCall  = ApplicationController.instance!!.networkService!!.review(4)
+        var nhIdx : Int = arguments.getInt("nhIdx")
+
+        var reviewCall  = ApplicationController.instance!!.networkService!!.review(2)
 
         reviewCall.enqueue(object : Callback<ReviewResponseData> {
             override fun onFailure(call: Call<ReviewResponseData>, t: Throwable?) {
-                Toast.makeText(activity.applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity.applicationContext, "review request fail", Toast.LENGTH_SHORT).show()
                 //Log.e("abc",t.toString())
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
-                ReviewList = response.body().rvListInfo
-                ReviewImageList = response.body().rvListInfo
+                if(response.isSuccessful){
+                    if(response.body().message == "Success to Get Review List"){
+                        ReviewList = response.body().rvListInfo
 
-                reviewAdapter = ReviewAdapter(ReviewList!!)
-               // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
-                v.review_rv.layoutManager = LinearLayoutManager(context)
-                v.review_rv.adapter = reviewAdapter
+                        reviewAdapter = ReviewAdapter(ReviewList!!)
+                        // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
+                        v.review_rv.layoutManager = LinearLayoutManager(context)
+                        v.review_rv.adapter = reviewAdapter
+
+                        // v.review_img_rv.layoutManager = LinearLayoutManager(context)
+                        // v.review_img_rv.adapter = reviewimageAdapter
+                       }
+                    }
+                }
 
 
-               // v.review_img_rv.layoutManager = LinearLayoutManager(context)
-               // v.review_img_rv.adapter = reviewimageAdapter
-
-
-
-            }
         })
 
 

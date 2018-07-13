@@ -26,11 +26,11 @@ class SignupActivity1 : AppCompatActivity() {
         setContentView(R.layout.activity_signup1)
 
         nextbutton.setOnClickListener {
-//            var signup2 = Intent(this, SignupActivity2::class.java)
-//            startActivityForResult(signup2, 0)
-            val fm = supportFragmentManager
-            val dialogFragment = ApplicationCancleDialog(this)
-            dialogFragment.show()
+            var signup2 = Intent(this, SignupActivity2::class.java)
+            startActivityForResult(signup2, 0)
+//            val fm = supportFragmentManager
+//            val dialogFragment = ApplicationCancleDialog(this)
+//            dialogFragment.show()
         }
     }
 

@@ -3,26 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="210dp"
-    android:layout_height="205dp"
-    android:weightSum="100"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="60">
+        android:layout_height="wrap_content">
 
 
 
         <ImageView
             android:id="@+id/farm_pic"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="124dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_weight="60"
-            android:background="#000"
+            android:scaleType="fitXY"
+            android:background="#FFFFFF"
             android:src="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,21 +30,24 @@
             android:id="@+id/farm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#0ABD9D"
+            android:background="#3470FF"
             android:textColor="#000000"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="2dp"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <RatingBar
             android:id="@+id/ratingBarFarmItem"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:numStars="5"
-            android:progressTint="#FAD118"
             android:progressBackgroundTint="#9f9f9f"
+            android:progressTint="#FAD118"
             android:rating="3"
             android:stepSize="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,8 +57,8 @@
             android:id="@+id/imageViewBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="11dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/selector_bookmark" />
@@ -66,19 +67,19 @@
             android:id="@+id/textViewRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:text="Avg"
-            android:textColor="#FFF"
-            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/ratingBarFarmItem"
-            app:layout_constraintStart_toEndOf="@+id/ratingBarFarmItem" />
+            app:layout_constraintStart_toEndOf="@+id/ratingBarFarmItem"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"
+        android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="vertical">
 
@@ -87,21 +88,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text="농활명"
-            android:textColor="#000000"
+            android:text="제주 행복 감귤 농장 체험  "
+            android:textColor="#DE000000"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/farm_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
             android:layout_marginTop="10dp"
-            android:text="가격"
-            android:textSize="11sp"
+            android:text="20,000"
+            android:textSize="15sp"
+            android:textColor="#DE000000"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/farm_address" />
+            app:layout_constraintTop_toBottomOf="@+id/farm_address"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/farm_address"
@@ -109,19 +115,32 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="7dp"
-            android:text="주소"
-            android:textColor="#000000"
+            android:layout_marginTop="8dp"
+            android:text="제주 서귀포시"
+            android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/farm_title"
-            app:layout_constraintTop_toBottomOf="@+id/farm_title" />
+            app:layout_constraintTop_toBottomOf="@+id/farm_title"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.072916664" />
+            app:layout_constraintGuide_percent="0.03809524" />
+
+        <TextView
+            android:id="@+id/textView96"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="원"
+            android:textColor="#DE000000"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/farm_price"
+            app:layout_constraintStart_toEndOf="@+id/farm_price" />
     </android.support.constraint.ConstraintLayout>
 
 

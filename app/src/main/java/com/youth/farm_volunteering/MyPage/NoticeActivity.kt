@@ -23,18 +23,22 @@ class NoticeActivity : AppCompatActivity() {
         noticeexpandedView = findViewById(R.id.notice_expandedView)
 
         val season1 : MutableList<String> = ArrayList()
-        season1.add("우리 농촌 활동 함께해요 특집이 게시되었습니다.\n특집은 농활참여자들이 학생일 경우 10%할인 됩니다.\n많은 관심 부탁드립니다.\n\n*특집 농활*\n1.우도환 완전 좋아좋아 짱이야 농장\n2서강준 짱멋져 농장\n3.박서준이 최고지 농장")
+        season1.add("검색기능\n  -내가 가고싶은 날짜와 지역의 농활을 검색해보세요!\n\n찜하기기능\n  -가고 싶은 농활을 찜해보세요! \n\n후기작성 \n  	-참여한 농활의 후기를 작성하고 \n     다른 사람들의 후기도 확인해보세요!")
 
         val season2 : MutableList<String> = ArrayList()
-        season2.add("재판의 전심절차로서 행정심판을 할 수 있다.\n행정심판의 절차는 법률로 정하되, 사법절차가 준용되어야 한다.\n\n국가는 전통문화의 계승·발전과 민족문화의 창달에 노력하여야 한다.")
+        season2.add("\t다양한 특집의 농활에 참여해보세요~\n\n\n1. 힐링 농활 특집\n    힐링이 필요한 사람들을 위한 휴양 농활\n\n" +
+                "2. 맛있는 농활 특집\n    100여개의 후기 중 엄선한 새참이 맛있는 농활 \n\n" +
+                "3. 그린투어리즘 특집\n    근처 관광지가 많아 관광까지 한꺼번에 즐길 수 있는 농활\n\n" +
+                "4. 오직 8월에만!\n    지역 축제를 함께 즐길 수 있는 농활!\n\n" +
+                "5. 서울 경기 근교 과일 농장\n    과일 농장!\n\n")
 
         val season3 : MutableList<String> = ArrayList()
-        season3.add("국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다.\n\n헌법재판소 재판관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니한다. ")
+        season3.add("1. 출발 3일전까지 환불하셔야 100% 환불이 가능합니다.\n\n2. 출발 2일전과 1일 2일 전은 40%만 환불 가능합니다.\n\n3. 당일최소는 환불 불가능합니다.")
 
 
-        header.add("업데이트8.8")
-        header.add("특집: 제주도 감귤농장")
-        header.add("농촌활동 신청시 취소 공지사항")
+        header.add("업데이트 1.0, 이 스펙 실화임?")
+        header.add("다양한 농활특집!")
+        header.add("농활 취소시 환불규정!")
 
 
         body.add(season1)
