@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.youth.farm_volunteering.Expanded.ExpandFragment
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.NhInfoData
@@ -19,9 +20,10 @@ class DetailTabAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
     var getNhInfo : NhInfoData? = null
     var getFriendsInfo: ArrayList<FriendInfoData>? = null
     var getFarmerInfo: FarmInfoData? = null
+    var getScheduleInfo : ArrayList<DetailSchData>? = null
 
     constructor(fm: FragmentManager, tabCount : Int, nhIdx : Int, getNhInfo : NhInfoData,
-                getFriendsInfo : ArrayList<FriendInfoData>, getFarmerInfo : FarmInfoData) : this(fm)
+                getFriendsInfo : ArrayList<FriendInfoData>, getScheduleInfo : ArrayList<DetailSchData>, getFarmerInfo : FarmInfoData) : this(fm)
     {
         this.introTab = FarmIntroFragment()
         this.expandTab = ExpandFragment()
@@ -30,6 +32,7 @@ class DetailTabAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
         this.nhIdx = nhIdx
         this.getNhInfo = getNhInfo
         this.getFriendsInfo = getFriendsInfo
+        this.getScheduleInfo = getScheduleInfo
         this.getFarmerInfo = getFarmerInfo
     }
 
@@ -50,6 +53,7 @@ class DetailTabAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
                 bundle.putParcelable("nhInfo", getNhInfo)
                 bundle.putParcelableArrayList("friendsInfo", getFriendsInfo)
                 bundle.putParcelable("farmerInfo", getFarmerInfo)
+                bundle.putParcelableArrayList("scheduleInfo", getScheduleInfo)
                 introTab!!.arguments = bundle
 
                 return introTab!!

@@ -1,16 +1,12 @@
 package com.youth.farm_volunteering.Home.FarmProfile
 
-import android.content.Intent
-import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.FarmerProfileData
-import com.youth.farm_volunteering.data.WeekNonghwalData
 
 class FarmProfileAdapter(var profileList: List<FarmerProfileData>) : RecyclerView.Adapter<FarmProfileViewHolder>() {
     override fun getItemCount(): Int = profileList.size

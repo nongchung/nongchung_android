@@ -27,7 +27,7 @@ import com.youth.farm_volunteering.Home.DetailTabAdapter
 import com.youth.farm_volunteering.Home.FarmIntroFragment
 import com.youth.farm_volunteering.Home.FarmReviewFragment
 import com.youth.farm_volunteering.Home.Schedule.DetailSchData
-import com.youth.farm_volunteering.Home.applyResponseData
+import com.youth.farm_volunteering.Home.Schedule.ScheduleAdapter
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call
@@ -54,6 +54,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var detailMyScheduleActivities: ArrayList<Int>? = null
 
     lateinit var detailTabAdapter: DetailTabAdapter
+    var scheduleAdapter : ScheduleAdapter? = null
 
     var fragment_Array: ArrayList<Fragment>? = ArrayList()
     var tabtextArray: ArrayList<String>? = null
@@ -79,7 +80,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         var isFromSearch: Boolean = intent.getBooleanExtra("is_from_search", false)
         var populData: NonghwalData
         if (!isFromSearch) {
-            populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
+            populData = intent.getParcelableExtra<HomeNonghwalData>("populData")
         } else {
             populData = intent.getSerializableExtra("populData") as NonghwalData
         }
@@ -106,7 +107,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
 //                    detailApplyAdapter = DetailApplyAdapter(detailScheduleList, supportFragmentManager)
                     detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, populData.getRealId()!!,
-                            detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
+                            detailNonghwalList!!, detailFriendInfoList!!, detailScheduleList!!, detailFarmInfoList!!)
 
 //                    detailTabAdapter.setNhIntroContents(detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
 
@@ -134,23 +135,23 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         })
 
 
-        buttonApplyButton.setOnClickListener {
-            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(populData.getRealId()!!, 3)
-            applyCall.enqueue(object : retrofit2.Callback<applyResponseData> {
-                override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
-                    if (response!!.isSuccessful) {
-                        if (response!!.body().message == "Success To Request For Application") {
-
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<applyResponseData>?, t: Throwable?) {
-
-                }
-
-            })
-        }
+//        buttonApplyButton.setOnClickListener {
+//            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(populData.getRealId()!!, 3)
+//            applyCall.enqueue(object : retrofit2.Callback<applyResponseData> {
+//                override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
+//                    if (response!!.isSuccessful) {
+//                        if (response!!.body().message == "Success To Request For Application") {
+//
+//                        }
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<applyResponseData>?, t: Throwable?) {
+//
+//                }
+//
+//            })
+//        }
 
         buttonApplyDate.setOnClickListener {
             bottomSheetDialog = BottomSheetDialog.instance

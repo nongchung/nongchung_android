@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.youth.farm_volunteering.Main.MainActivity">
 
-    <item
-        android:id="@+id/menu_search_icon"
-        android:icon="@drawable/search"
-        android:title="검색"
-        app:showAsAction="ifRoom" />
+
 
 </menu>
