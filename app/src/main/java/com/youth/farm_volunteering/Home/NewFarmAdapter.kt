@@ -43,7 +43,6 @@ class NewFarmAdapter(var dataList: List<NewNonghwalData>) : RecyclerView.Adapter
             }
         }
 
-
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
             intent.putExtra("populData", dataList[position])
