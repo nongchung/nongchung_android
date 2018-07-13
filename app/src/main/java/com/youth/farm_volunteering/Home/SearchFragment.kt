@@ -36,7 +36,7 @@ import java.util.*
 class SearchFragment : Fragment() {
     val searchDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     var registrationUserCount = 1
-    var searchAreaArray: Array<Area> = arrayOf(Area.ALL)
+    var searchAreaArray: MutableList<Area> = mutableListOf(Area.ALL)
     var startDateString: String = "1992-09-12"
     var endDateString: String = "2030-09-12"
 
@@ -47,6 +47,25 @@ class SearchFragment : Fragment() {
                 startDateString = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
                 endDateString = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
                 textview_search_date.setText(startDateString + "~" + endDateString)
+            }
+        }
+        if (resultCode == RESULT_OK && requestCode == 43) {
+            searchAreaArray = ArrayList()
+            if (data != null) {
+                var selectMap = (data.getSerializableExtra("area_map") as HashMap<Int, Boolean>);
+                enumValues<Area>().forEach { area ->
+                    if (selectMap.get(area.code)!!) {
+                        searchAreaArray.add(area)
+                    }
+                };
+                var sb = StringBuilder()
+                searchAreaArray.forEach { area ->
+                    sb.append(area.regionName)
+                    if (searchAreaArray.last() != area) {
+                        sb.append(",")
+                    }
+                }
+                view!!.findViewById<TextView>(R.id.textview_search_area).setText(sb.toString())
             }
         }
     }
@@ -66,7 +85,7 @@ class SearchFragment : Fragment() {
         }
         v.findViewById<View>(R.id.layout_search_area).setOnClickListener {
             val intent = Intent(activity, AreaSelectActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 43)
         }
         v.findViewById<View>(R.id.activity_search_plusButton).setOnClickListener {
             registrationUserCount = Math.min(9, registrationUserCount + 1)
