@@ -1,24 +1,24 @@
 package com.youth.farm_volunteering.area
 
-enum class Area(val code: Int) {
-    SEOUL(0),
-    PUSAN(2),
-    DAEGU(2),
-    INCHON(3),
-    GWANGJU(4),
-    DAEJEON(5),
-    ULSAN(6),
-    GYEONGGI(7),
-    GANGWON(8),
-    CHUNGNAM(9),
-    CHUNGBUK(10),
-    GYEONGNAM(11),
-    GYEONGBUK(12),
-    JEONNAM(13),
-    JEONBUK(14),
-    JEJU(15),
-    SEJONG(16),
-    ALL(17),
+enum class Area(val code: Int, val regionName: String) {
+    SEOUL(0, "서울"),
+    PUSAN(1, "부산"),
+    DAEGU(2, "대구"),
+    INCHON(3, "인천"),
+    GWANGJU(4, "광주"),
+    DAEJEON(5, "대전"),
+    ULSAN(6, "울산"),
+    GYEONGGI(7, "경기"),
+    GANGWON(8, "강원"),
+    CHUNGNAM(9, "충남"),
+    CHUNGBUK(10, "충북"),
+    GYEONGNAM(11, "경남"),
+    GYEONGBUK(12, "경북"),
+    JEONNAM(13, "전남"),
+    JEONBUK(14, "전북"),
+    JEJU(15, "제주"),
+    SEJONG(16, "세종"),
+    ALL(17, "전국"),
 }
 
 /*

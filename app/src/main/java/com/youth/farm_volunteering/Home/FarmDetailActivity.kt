@@ -26,6 +26,7 @@ import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.DetailTabAdapter
 import com.youth.farm_volunteering.Home.FarmIntroFragment
 import com.youth.farm_volunteering.Home.FarmReviewFragment
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.Home.applyResponseData
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_farm_detail.*
@@ -57,6 +58,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var fragment_Array: ArrayList<Fragment>? = ArrayList()
     var tabtextArray: ArrayList<String>? = null
 
+    var bottomSheetDialog: BottomSheetDialog? = null
+
 //    activity_main_tabViewPager.adapter = tabAdapter
 //    activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
 
@@ -73,9 +76,13 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         toolbar = findViewById(R.id.toolbarDetail)
         setSupportActionBar(toolbar)    //뒤로가기버튼생성
 
-        var populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
-        var nhIdx: Int = populData.nhIdx!!
-
+        var isFromSearch: Boolean = intent.getBooleanExtra("is_from_search", false)
+        var populData: NonghwalData
+        if (!isFromSearch) {
+            populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
+        } else {
+            populData = intent.getSerializableExtra("populData") as NonghwalData
+        }
         tabtextArray = arrayListOf("농활소개", "Q & A", "후기")
         fragment_Array = arrayListOf(FarmIntroFragment(), ExpandFragment(), FarmReviewFragment())
 
@@ -83,7 +90,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             tablayoutDetailActivity.addTab(tablayoutDetailActivity.newTab())        //프레그먼트 갯수만큼 탭 생성
         }
 
-        var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(nhIdx)
+        var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(populData.getRealId()!!)
         getDetail.enqueue(object : Callback<DetailNonghwalResponseData> {
             override fun onResponse(call: Call<DetailNonghwalResponseData>?, response: Response<DetailNonghwalResponseData>?) {
                 if (response!!.isSuccessful) {
@@ -98,7 +105,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     }
 
 //                    detailApplyAdapter = DetailApplyAdapter(detailScheduleList, supportFragmentManager)
-                    detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, nhIdx,
+                    detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, populData.getRealId()!!,
                             detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
 
 //                    detailTabAdapter.setNhIntroContents(detailNonghwalList!!, detailFriendInfoList!!, detailFarmInfoList!!)
@@ -126,8 +133,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         })
 
+
         buttonApplyButton.setOnClickListener {
-            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(nhIdx, 3)
+            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(populData.getRealId()!!, 3)
             applyCall.enqueue(object : retrofit2.Callback<applyResponseData> {
                 override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
                     if (response!!.isSuccessful) {
@@ -145,6 +153,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         }
 
         buttonApplyDate.setOnClickListener {
+            bottomSheetDialog = BottomSheetDialog.instance
             val bundle = Bundle()
             bundle.putParcelableArrayList("scheList", detailScheduleList)
             bundle.putIntegerArrayList("myScheduleActivities", detailMyScheduleActivities)

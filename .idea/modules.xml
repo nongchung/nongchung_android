@@ -4,8 +4,7 @@
     <modules>
       <module fileurl="file://C:\Users\Lee_wonjun\Documents\nongchung_android\Appjam.iml" filepath="C:\Users\Lee_wonjun\Documents\nongchung_android\Appjam.iml" />
       <module fileurl="file://$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" filepath="$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" />
-      <module fileurl="file://C:\Users\Lee_wonjun\Documents\nongchung_android\NongHwal.iml" filepath="C:\Users\Lee_wonjun\Documents\nongchung_android\NongHwal.iml" />
-      <module fileurl="file://C:\Users\Lee_wonjun\Documents\nongchung_android\SOPT_AppJam.iml" filepath="C:\Users\Lee_wonjun\Documents\nongchung_android\SOPT_AppJam.iml" />
+      <module fileurl="file://C:\Users\Lee_wonjun\Documents\nongchung_android\SOPT_NongChung.iml" filepath="C:\Users\Lee_wonjun\Documents\nongchung_android\SOPT_NongChung.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/nongchung_android.iml" filepath="$PROJECT_DIR$/nongchung_android.iml" />
     </modules>

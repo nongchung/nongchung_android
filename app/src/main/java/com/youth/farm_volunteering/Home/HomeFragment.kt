@@ -139,7 +139,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             fragment_home_newFarm_showAll_txt -> {
                 activity!!.main_title.setText("새로운 농활")
 
-                replaceFragment(ShowAllFragment())
+                replaceFragment(NewShowAllFragment())
             }
 
 

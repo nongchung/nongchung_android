@@ -1,4 +1,4 @@
-package com.youth.farm_volunteering.Home
+package com.youth.farm_volunteering.Home.Schedule
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -7,8 +7,9 @@ import android.widget.TextView
 import com.youth.farm_volunteering.R
 
 class ScheduleViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-    var Scheduletime : TextView = itemView!!.findViewById(R.id.schedule_time)
-    var Scheduleactvity : TextView = itemView!!.findViewById(R.id.schedule_activity)
+    var imageviewLine : ImageView = itemView!!.findViewById(R.id.imageviewLine)
+    var textviewTime : TextView = itemView!!.findViewById(R.id.textviewTime)
+    var textviewActivity : TextView = itemView!!.findViewById(R.id.textviewActivity)
 
 }
 

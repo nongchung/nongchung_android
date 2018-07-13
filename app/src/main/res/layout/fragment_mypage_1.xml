@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:id="@+id/mypage_profile"
+    android:visibility="gone"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,48 +32,56 @@
                 android:fontFamily="@font/nanumsquareround_otfb"/>
         </android.support.v7.widget.Toolbar>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="125dp">
+        <LinearLayout
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageview_mypage_profile"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="125dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageview_mypage_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/more_profile" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textview_mypage_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/more_profile" />
-        </RelativeLayout>
+                android:layout_gravity="center"
+                android:text="이유리"
+                android:textSize="13sp"
+                android:textColor="#DE000000"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
-        <TextView
-            android:id="@+id/textview_mypage_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="이유리"
-            android:textSize="13sp"
-            android:textColor="#DE000000"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            <TextView
+                android:id="@+id/textview_mypage_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="9dp"
+                android:textColor="#8A000000"
+                android:text="이유리"
+                android:textSize="11sp"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
-        <TextView
-            android:id="@+id/textview_mypage_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="9dp"
-            android:textColor="#8A000000"
-            android:text="이유리"
-            android:textSize="11sp"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="#8A000000"
+                android:text="이유리"
+                android:textSize="11sp"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:textColor="#8A000000"
-            android:text="이유리"
-            android:textSize="11sp"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

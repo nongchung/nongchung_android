@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
@@ -27,12 +28,22 @@ class NewFarmAdapter(var dataList: List<NewNonghwalData>) : RecyclerView.Adapter
         holder.textviewNewFarmDate.setText(dataList[position].period)
         holder.textviewNewFarmPrice.text = dataList[position].price.toString()
         holder.textviewNewFarmTitle.setText(dataList[position].name)
-        if(dataList[position].isBooked!=null){
-            when(dataList[position].isBooked){
-                0-> holder.imageviewNewFarmBookmark.isSelected = false
-                1-> holder.imageviewNewFarmBookmark.isSelected = true
+
+        holder.imageviewNewFarmBookmark.setOnClickListener {
+            Toast.makeText(holder.itemView.context,dataList[position].isBooked.toString(),Toast.LENGTH_SHORT).show()
+
+            if(dataList[position].isBooked!=0){
+                holder.imageviewNewFarmBookmark.isSelected = false
+                dataList[position].isBooked=0
+            }
+            else
+            {
+                holder.imageviewNewFarmBookmark.isSelected = true
+                dataList[position].isBooked=1
             }
         }
+
+
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
             intent.putExtra("populData", dataList[position])

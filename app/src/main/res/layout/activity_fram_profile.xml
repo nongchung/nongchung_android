@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context= ".Home.FarmProfile.FramProfileActivity">
+    tools:context= ".Home.FarmProfile.FarmProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 app:layout_constraintGuide_percent="0.06111111" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/profile_userimage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/farm_name"
+                android:id="@+id/profile_farm_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -40,24 +40,24 @@
                 android:text="제주 감귤농장"
                 android:textColor="#DE000000"
                 android:textSize="17sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
-                app:layout_constraintTop_toTopOf="@+id/imageView10"
+                app:layout_constraintStart_toEndOf="@+id/profile_userimage"
+                app:layout_constraintTop_toTopOf="@+id/profile_userimage"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
-                android:id="@+id/textView68"
+                android:id="@+id/profile_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="제주특별자치도 서귀포시"
                 android:textColor="#8A000000"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="@+id/farm_name"
-                app:layout_constraintTop_toBottomOf="@+id/farm_name"
+                app:layout_constraintStart_toStartOf="@+id/profile_farm_name"
+                app:layout_constraintTop_toBottomOf="@+id/profile_farm_name"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
-                android:id="@+id/textView69"
+                android:id="@+id/farmer_profile_comment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="23dp"
@@ -69,11 +69,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline50"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/textView72"
+                app:layout_constraintTop_toBottomOf="@+id/farmer_profile_phone"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
-                android:id="@+id/textView70"
+                android:id="@+id/farmer_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -93,11 +93,11 @@
                 android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/profile_userimage"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
-                android:id="@+id/textView72"
+                android:id="@+id/farmer_profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -106,7 +106,7 @@
                 android:textAlignment="center"
                 android:textColor="#8A000000"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/textView70"
+                app:layout_constraintTop_toBottomOf="@+id/farmer_profile_name"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <android.support.constraint.Guideline
@@ -120,6 +120,7 @@
 
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/profile_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>

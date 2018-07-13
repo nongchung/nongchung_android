@@ -43,7 +43,7 @@ class MypageFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
-
+                    mypage_profile.visibility = View.VISIBLE
                     myPageData = response.body().data!!.get(0)
                     invalidate()
                 }
