@@ -25,6 +25,7 @@ import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.DetailTabAdapter
 import com.youth.farm_volunteering.Home.FarmIntroFragment
 import com.youth.farm_volunteering.Home.FarmReviewFragment
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call

@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.AllStData
 import com.youth.farm_volunteering.data.DetailApplyData
-import com.youth.farm_volunteering.data.DetailSchData
 
 
 class DetailApplyAdapter(items: ArrayList<DetailApplyData>, fm: FragmentManager) : RecyclerView.Adapter<DetailApplyViewHolder>() {

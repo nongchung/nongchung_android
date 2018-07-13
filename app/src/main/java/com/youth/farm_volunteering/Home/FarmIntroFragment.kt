@@ -15,8 +15,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Home.FarmProfile.FarmProfileActivity
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
+import com.youth.farm_volunteering.Home.Schedule.ScheduleAdapter
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.DetailSchData
 import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.NhInfoData

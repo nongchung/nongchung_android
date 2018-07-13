@@ -5,9 +5,9 @@ import android.support.design.widget.BottomSheetDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.AllStData
 import com.youth.farm_volunteering.data.ApplyRvData
-import com.youth.farm_volunteering.data.DetailSchData
 
 /**
  * Created by Lee_wonjun on 2018-07-12.

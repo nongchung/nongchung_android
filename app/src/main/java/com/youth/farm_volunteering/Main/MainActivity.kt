@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Main
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             tabAdapter.addFragment(tabImage_Array!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
         }
         for (i in 0..tabAdapter.count - 1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
+        activity_main_bottomTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#3470FF"))
         activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
 
 
