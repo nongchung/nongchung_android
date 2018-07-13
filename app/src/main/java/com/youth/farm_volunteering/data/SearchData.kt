@@ -1,6 +1,8 @@
 package com.youth.farm_volunteering.data
 
-class SearchData {
+import java.io.Serializable
+
+class SearchData : Serializable {
     var idx: Int? = null
     var name: String? = null
     var addr: String? = null
