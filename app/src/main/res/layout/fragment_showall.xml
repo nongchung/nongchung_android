@@ -6,20 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ShowAllFragment">
 
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
     <TextView
         android:id="@+id/show_all_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="제목"
+        android:textColor="#000000"
         android:textSize="17sp" />
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/rl"
         android:id="@+id/fragment_showall_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="43.36dp">
+        android:layout_marginTop="0dp">
 
     </android.support.v7.widget.RecyclerView>
 
