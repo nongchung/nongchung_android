@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Network
 
 
+import com.youth.farm_volunteering.MyActivity.MyActivityResponseData
 import com.youth.farm_volunteering.data.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -17,11 +18,15 @@ interface NetworkService {
     fun mypage(): Call<MyPageResponseData>
 
 
-    @GET("api/activity")
+    @GET( "api/activity")
     fun myactivity(
 
     ): Call<MyActivityResponseData>
 
+    @GET("api/home/detail/farm/4")
+    fun farmprofile(
+
+    ): Call<FarmProfileResponseData>
 
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")
@@ -50,14 +55,12 @@ interface NetworkService {
 
     @GET("/api/home/more/moreNew")
     fun new(
-            @Query("idx") idx: Int
+    @Query("idx") idx : Int
     ): Call<AllNewResponseData>
-
     @GET("/api/home/more/morePopul")
     fun popular(
-            @Query("idx") idx: Int
-    ): Call<PopularResponseData>
-
+            @Query("idx") idx : Int
+    ):Call<PopularResponseData>
     @FormUrlEncoded
     @POST("/api/signin")
     fun login(@Field("email") email: String, @Field("password") password: String): Call<LoginResponseData>
@@ -70,23 +73,13 @@ interface NetworkService {
     @PUT("/api/mypage/nickname")
     fun nickname(
 //            @Part("nickname") nickname : String
-            @Part("nickname") nickname: String
+        @Part ("nickname") nickname: String
     ): Call<NickNameResponseData>
 
     @Multipart
     @PUT("api/mypage/password")
     fun password(
-            @Part("password") password: String, @Part("newpw") newpw: String
+            @Part("password") password : String, @Part("newpw") newpw : String
     ): Call<PasswordResourceData>
-
-    @GET("/api/search")
-    fun search(
-            @Query("start") startDate: String,
-            @Query("end") endDate: String,
-            @Query("person") personCount: Int,
-            @Query("scontent") content: String,
-            @Query("area") areaArrayString: String
-    ): Call<SearchResponseData>
-
 
 }

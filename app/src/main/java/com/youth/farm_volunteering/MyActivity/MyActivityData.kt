@@ -1,4 +1,4 @@
-package com.youth.farm_volunteering.data
+package com.youth.farm_volunteering.MyActivity
 
 class MyActivityData {
     var startDate: String? = null

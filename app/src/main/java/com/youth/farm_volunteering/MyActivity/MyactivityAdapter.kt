@@ -1,17 +1,12 @@
 package com.youth.farm_volunteering.MyActivity
 
-import android.content.Intent
+import android.opengl.Visibility
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.FarmDetailActivity
-import com.youth.farm_volunteering.Home.MyactivityViewHolder
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.WeekFarmItemViewHolder
-import com.youth.farm_volunteering.data.MyActivityData
-import com.youth.farm_volunteering.data.WeekNonghwalData
 
 
 class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Adapter<MyactivityViewHolder>(){
@@ -31,9 +26,46 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
         holder.startDate.text = mydataList[position].startDate
         holder.endDate.text = mydataList[position].endDate
         holder.addr.text = mydataList[position].addr
-       // holder.period.text = mydataList[position].period
+        holder.period.text = mydataList[position].period
         holder.name.text = mydataList[position].name
+        holder.person.text = mydataList[position].person.toString()
         holder.price.text = mydataList[position].price.toString()
+        holder.currentPerson.text = mydataList[position].currentPerson.toString()
+        holder.personLimit.text = mydataList[position].personLimit.toString()
+        holder.changebar.progress = mydataList[position].currentPerson!!
+        if(mydataList[position].state!=null){
+            when(mydataList[position].state){
+                0-> holder.changemoney.setImageResource(R.drawable.mymy_standby)
+                1-> holder.changemoney.setImageResource(R.drawable.mymy_ic_complete)
+                2-> {
+                    holder.changemoney.setImageResource(R.drawable.mymy_complete)
+                    holder.changeimg.visibility = View.GONE
+                }
+                3-> {
+                    holder.changemoney.setImageResource(R.drawable.mymy_cancel)
+                    holder.changeimg.visibility = View.GONE
+                }
+                4 -> {
+                    holder.changemoney.setImageResource(R.drawable.mymy_extention)
+                    holder.changeimg.visibility = View.GONE
+                }
+            }
+
+        }
+        if(mydataList[position].personLimit==mydataList[position].currentPerson){
+            holder.changemoney.setImageResource(R.drawable.mymy_extention)
+            holder.changeimg.visibility = View.GONE
+        }
+
+//        if(dataList[position].isBooked!=null){
+//            when(dataList[position].isBooked){
+//                0-> holder.imageviewNewFarmBookmarkall.isSelected = false
+//                1-> holder.imageviewNewFarmBookmarkall.isSelected = true
+//            }
+//        }
+//
+        if(mydataList[position].personLimit==mydataList[position].currentPerson){
+        }
 //        if(mydataList[position].isBooked!=null){
 //            when(mydataList[position].isBooked){
 //                0-> holder.isBooked.isSelected = false

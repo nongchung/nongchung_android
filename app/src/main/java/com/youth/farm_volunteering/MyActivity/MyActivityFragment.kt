@@ -3,25 +3,20 @@ package com.youth.farm_volunteering.MyActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.telecom.Call
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.NewFarmAllAdapter
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.*
-import com.youth.farm_volunteering.data.AllNewResponseData
-import com.youth.farm_volunteering.data.MyActivityData
-import com.youth.farm_volunteering.data.MyActivityResponseData
+import com.youth.farm_volunteering.R.id.farm_count_cases
+import com.youth.farm_volunteering.R.id.farm_count_time
 import com.youth.farm_volunteering.data.TotalActivityData
 import kotlinx.android.synthetic.main.fragment_myactivity.*
 import kotlinx.android.synthetic.main.fragment_myactivity.view.*
-import kotlinx.android.synthetic.main.fragment_myactivity.view.*
+import kotlinx.android.synthetic.main.item_myactivity.*
 import retrofit2.Response
 import java.util.*
-import javax.security.auth.callback.Callback
 
 
 class MyActivityFragment : Fragment() {
@@ -49,6 +44,8 @@ class MyActivityFragment : Fragment() {
                 myAdapter = MyactivityAdapter(myList!!)
                 farm_count_cases.setText(timeList!![0].tcount.toString())
                 farm_count_time.setText(timeList!![0].ttime.toString())
+
+
                 myAdapter = MyactivityAdapter(myList!!)
 
                 v.my_rv.layoutManager = LinearLayoutManager(context)

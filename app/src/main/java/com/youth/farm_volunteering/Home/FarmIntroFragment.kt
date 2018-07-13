@@ -63,10 +63,10 @@ class FarmIntroFragment : Fragment() {
 //                        .load(dataList[position]) //String 줘서 이렇게??
 //                        .into(holder.FarmBoxReviewImg)
 
-//        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
+        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
-//        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
-//        v.scheduleView_rv.adapter = scheduleAdapter
+        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
+        v.scheduleView_rv.adapter = scheduleAdapter
 
         //size가 6이상일때는 +이미지가 표시되게 함
 //            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
