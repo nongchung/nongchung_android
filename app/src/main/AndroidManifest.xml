@@ -35,7 +35,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".FarmDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label=" "/>
+
         <activity
             android:name=".SignUp.SignupActivity"
             android:screenOrientation="portrait"
@@ -85,6 +87,7 @@
         <!--<activity android:name=".Home.FarmerFrofile.FarmerProfileActivity"></activity>-->
 
 
+        <activity android:name=".area.AreaSelectActivity"></activity>
         <activity android:name=".ShowAllActivity"></activity>
         <activity android:name=".Home.FriendInfoAllActivity" />
         <activity

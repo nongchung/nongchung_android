@@ -19,19 +19,13 @@ import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.Home.ApplicationConfirmActivity
-import com.youth.farm_volunteering.Home.FarmProfile.FramProfileActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyActivity.MyActivityFragment
-import com.youth.farm_volunteering.MyLogFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.Review.ReviewWriteActivity
-import com.youth.farm_volunteering.SignUp.SignupActivity1
-import com.youth.farm_volunteering.SignUp.SignupActivity2
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,8 +35,8 @@ class MainActivity : AppCompatActivity() {
     var mypageTab: View? = null
     var mylogTab: View? = null
     var searchTab: View? = null
-    var tabImage_Array: ArrayList<View>? = null
-    var fragment_Array: ArrayList<Fragment>? = null
+    var tabImage_Array: ArrayList<View>? = ArrayList()
+    var fragment_Array: ArrayList<Fragment>? = ArrayList()
 
     private var linearLayoutManager: LinearLayoutManager? = null
 
@@ -64,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         searchTab = LayoutInflater.from(this).inflate(R.layout.tab_search, null, false)
 
         tabImage_Array = arrayListOf(homeTab!!, searchTab!!, mylogTab!!, bookmarklistTab!!, mypageTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
+
         fragment_Array = arrayListOf(HomeFragment(), SearchFragment(), MyActivityFragment(), LikeFragment(), MypageFragment())
 
         for (i in 0..fragment_Array!!.size - 1) {
@@ -161,6 +156,6 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
 
-        
+
     }
 }

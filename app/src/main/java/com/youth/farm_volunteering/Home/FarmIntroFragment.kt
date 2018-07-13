@@ -1,27 +1,17 @@
 package com.youth.farm_volunteering.Home
-
-import android.content.Intent
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.additionfriendinfo
-import com.youth.farm_volunteering.Home.FriendInfoAdapter.Companion.friendsizelist
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.*
-import com.youth.farm_volunteering.data.*
-import junit.framework.Test
-import kotlinx.android.synthetic.main.fragment_farm_introduce.*
+import com.youth.farm_volunteering.data.DetailSchData
+import com.youth.farm_volunteering.data.FarmInfoData
+import com.youth.farm_volunteering.data.FriendInfoData
+import com.youth.farm_volunteering.data.NhInfoData
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class FarmIntroFragment : Fragment() {
 
@@ -32,7 +22,7 @@ class FarmIntroFragment : Fragment() {
     var DetailFriendInfoList: List<FriendInfoData>? = null
     var DetailFarmInfoList: FarmInfoData? = null
     var DetailScheduleList: List<DetailSchData>? = null
-
+    var nhIdx : Int? = null
 
     private var introduceImage_linearLayoutManager: LinearLayoutManager? = null
 
@@ -41,56 +31,43 @@ class FarmIntroFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 //        activity!!.supportFragmentManager.beginTransaction().add()
 
-        var detailnongwalCall = ApplicationController.instance!!.networkService!!.detailnonghwal(2)
-        //Log.d("aaa",detailnongwalCall.toString())
+        DetailNonghwalList = arguments.getParcelable("nhInfo")
+        DetailFriendInfoList = arguments.getParcelableArrayList("friendsInfo")
+        DetailFarmInfoList = arguments.getParcelable("farmerInfo")
 
-        detailnongwalCall.enqueue(object : Callback<DetailNonghwalResponseData> {
-            override fun onFailure(call: Call<DetailNonghwalResponseData>, t: Throwable?) {
-                Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
-                //Log.e("abc",t.toString())
-            }
-
-            override fun onResponse(call: Call<DetailNonghwalResponseData>, response: Response<DetailNonghwalResponseData>) {
-                DetailNonghwalList = response.body().nhInfo
-                DetailFriendInfoList = response.body().friendsInfo
-                DetailFarmInfoList = response.body().farmerInfo
-                DetailScheduleList = response.body().schedule
-                detail_introduce_addr.setText(DetailNonghwalList!!.addr.toString())
-                detail_introduce_name.setText(DetailNonghwalList!!.name.toString())
+        v.detail_introduce_addr.text = DetailNonghwalList!!.addr
+        v.detail_introduce_name.text = DetailNonghwalList!!.name
 //                setText(DetailNonghwalList!!.star.toString())
-                detail_introduce_star.rating = DetailNonghwalList!!.star!!.toFloat() //rating에 서버에서 float값 받아와서 생성
-                detail_introduce_description.setText(DetailNonghwalList!!.description.toString())
-                detail_introduce_price.setText(DetailNonghwalList!!.price.toString())
-                detail_introduce_period.setText(DetailNonghwalList!!.period.toString())
+        v.detail_introduce_star.rating = DetailNonghwalList!!.star!!.toFloat() //rating에 서버에서 float값 받아와서 생성
+        v.detail_introduce_description.text = DetailNonghwalList!!.description
+        v.detail_introduce_price.text = DetailNonghwalList!!.price.toString()
+        v.detail_introduce_period.text = DetailNonghwalList!!.period.toString()
 
-                friendinfoAdapter = FriendInfoAdapter(DetailFriendInfoList!!)
+        friendinfoAdapter = FriendInfoAdapter(DetailFriendInfoList!!)
 
-                v.friendinfoView_rv.layoutManager = LinearLayoutManager(context)
-                v.friendinfoView_rv.adapter = friendinfoAdapter
+        v.friendinfoView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
+        v.friendinfoView_rv.adapter = friendinfoAdapter
 
-                introduceImage_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        introduceImage_linearLayoutManager = LinearLayoutManager(activity.applicationContext, LinearLayoutManager.HORIZONTAL, false)
 
-                v.friendinfoView_rv!!.setLayoutManager(introduceImage_linearLayoutManager)
+        v.friendinfoView_rv!!.layoutManager = introduceImage_linearLayoutManager
 
-                farminfo_name.setText(DetailFarmInfoList!!.name.toString())
-                farminfo_comment.setText(DetailFarmInfoList!!.comment.toString())
-                Glide.with(context)
-                        .load(DetailFarmInfoList!!.img.toString())
-                        .into(farminfo_image)
+        v.farminfo_name.text = DetailFarmInfoList!!.name
+        v.farminfo_comment.text = DetailFarmInfoList!!.comment
+        Glide.with(activity.applicationContext)
+                .load(DetailFarmInfoList!!.img)
+                .into(v.farminfo_image)
 
 //
 //                Glide.with(holder!!.itemView.context)
 //                        .load(dataList[position]) //String 줘서 이렇게??
 //                        .into(holder.FarmBoxReviewImg)
 
-                scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
+//        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
-                v.scheduleView_rv.layoutManager = LinearLayoutManager(context)
-                v.scheduleView_rv.adapter = scheduleAdapter
-            }
+//        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
+//        v.scheduleView_rv.adapter = scheduleAdapter
 
-
-        })
         //size가 6이상일때는 +이미지가 표시되게 함
 //            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
 //            startActivity(intent)

@@ -16,30 +16,26 @@ import com.asksira.loopingviewpagerdemo.DemoInfiniteAdapter
 import com.youth.farm_volunteering.Home.IntroThemeFarmAdapter
 import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.Home.PopulFarmAdapter
-import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
-
-
 
     var weekFarmAdapter: WeekFarmAdapter? = null
     var introThemeFarmAdapter : IntroThemeFarmAdapter? = null
     var newFarmAdapter : NewFarmAdapter? = null
     var populFarmAdapter : PopulFarmAdapter? = null
 
-
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
     //    var adViewPagerAdapter: AdViewPagerAdapter? = null
-    var popularWeekNonghwalList: List<WeekNonghwalData>? = null
+    var popularWeekNonghwalList: ArrayList<WeekNonghwalData>? = null
     var newNonghwalList : List<NewNonghwalData>? = null
     var popularFarmList : List<PopulFarmData>? = null
     var detailThemeFarmList: List<DetailThemeFarmData>? = null
@@ -61,11 +57,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
-        val v_ = inflater!!.inflate(R.layout.fragment_showall, container, false)
+//        val v_ = inflater!!.inflate(R.layout.fragment_showall, container, false)
 
         adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
-
-
 
 
         introThemeFarmList = listOf(R.drawable.main_banner1, R.drawable.main_banner2,
@@ -78,24 +72,29 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
+                if(response.isSuccessful){
+                    if(response.body().message.equals("Success To Get Information")){
+                        adDataList = response.body().ads
+                        popularWeekNonghwalList = response.body().populNh
+                        newNonghwalList = response.body().newNh
+                        popularFarmList = response.body().populFarm
 
-                adDataList = response.body().ads
-                popularWeekNonghwalList = response.body().populNh
-                newNonghwalList = response.body().newNh
-                popularFarmList = response.body().populFarm
-
-                weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
-                introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
-                newFarmAdapter = NewFarmAdapter(newNonghwalList!!)
-                populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
-                vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
+                        weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
+                        introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
+                        newFarmAdapter = NewFarmAdapter(newNonghwalList!!)
+                        populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
+                        vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
 
 
-                fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
-                fragment_home_newFarm_rv.adapter = newFarmAdapter
-                fragment_home_themeFarm_rv.adapter = introThemeFarmAdapter
-                fragment_home_hotFarm_rv.adapter = populFarmAdapter
-                adViewPager!!.adapter = vpAdapter
+                        fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
+                        fragment_home_newFarm_rv.adapter = newFarmAdapter
+                        fragment_home_themeFarm_rv.adapter = introThemeFarmAdapter
+                        fragment_home_hotFarm_rv.adapter = populFarmAdapter
+                        adViewPager!!.adapter = vpAdapter
+
+                    }
+                }
+
 
             }
         })
@@ -140,8 +139,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
             fragment_home_newFarm_showAll_txt -> {
                 activity!!.main_title.setText("새로운 농활")
-                replaceFragment(NewShowAllFragment())
+
+                replaceFragment(ShowAllFragment())
             }
+
+
 //            fragment_home_themeFarm_showAll_txt -> {
 //                activity!!.main_title.setText("테마별 농활")
 //                replaceFragment(ThemaAllFragment())
@@ -159,11 +161,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         fragment_home_weeklyHotFarm_showAll_txt.setOnClickListener(this)
         fragment_home_newFarm_showAll_txt.setOnClickListener(this)
+
 //        fragment_home_themeFarm_showAll_txt.setOnClickListener(this)
 //        fragment_home_hotFarm_showAll_txt.setOnClickListener(this)
         //모두보기 테마별과 인기농활에서는 모두보기 없애기로 했습니다
-
-//        fragment_home_weeklyHotFarm.
 
 
         fragment_home_weeklyHotFarm_rv.layoutManager = LinearLayoutManager(context)
@@ -182,6 +183,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         fragment_home_themeFarm_rv!!.setLayoutManager(themeFarm_linearLayoutManager)
         fragment_home_hotFarm_rv!!.setLayoutManager(hotFarm_linearLayoutManager)
 
+        //RecyclerView별 horizontal로 간격띄우기
         horizontalItemDecoration = DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
         horizontalDecoration = ContextCompat.getDrawable(activity, R.drawable.horizontal_divider)
         horizontalItemDecoration!!.setDrawable(horizontalDecoration!!)

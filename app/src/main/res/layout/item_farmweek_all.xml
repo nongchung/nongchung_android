@@ -29,8 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#3470FF"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="2dp"
             android:textColor="#FFFFFF"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
             android:id="@+id/imageViewBookmark_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/selector_bookmark" />
@@ -86,27 +86,27 @@
             android:id="@+id/farm_title_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="제주 행복 감귤 농장 1박 2일  "
             android:textColor="#DE000000"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/guideline13_all"
-            app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/farm_price_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginTop="14dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="20,000"
-            android:textSize="15sp"
             android:textColor="#DE000000"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline13_all"
-            app:layout_constraintTop_toBottomOf="@+id/farm_address_all"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toBottomOf="@+id/farm_address_all" />
 
         <TextView
             android:id="@+id/farm_address_all"
@@ -114,13 +114,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="제주 서귀포시  "
             android:textColor="#8A000000"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/guideline13_all"
-            app:layout_constraintTop_toBottomOf="@+id/farm_title_all"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toBottomOf="@+id/farm_title_all" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13_all"
@@ -133,13 +133,17 @@
             android:id="@+id/textView95"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginStart="1dp"
             android:fontFamily="@font/nanumsquareround_otfb"
             android:text="원"
-            android:textSize="11sp"
             android:textColor="#DE000000"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/farm_price_all"
             app:layout_constraintStart_toEndOf="@+id/farm_price_all" />
     </android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#F3F3F5" />
 </LinearLayout>

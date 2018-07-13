@@ -1,17 +1,8 @@
 package com.youth.farm_volunteering.Network
 
+
 import com.youth.farm_volunteering.data.*
-import retrofit2.http.FormUrlEncoded
-
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
-
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.data.DetailNonghwalResponseData
 import retrofit2.Call
-
-
 import retrofit2.http.*
 
 
@@ -21,9 +12,11 @@ interface NetworkService {
 //            @Query("idx") idx: Int
     ): Call<HomeResponseData>
 
+    //더보기(마이페이지)
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
 
+<<<<<<< HEAD
     @GET("/api/bookmark")
     fun like(): Call<LikeResponseData>
 
@@ -33,14 +26,30 @@ interface NetworkService {
     ): Call<MyActivityResponseData>
 
 
+=======
+    //모두보기
+    @GET("/api/home/more/moreNew?idx=6")
+    fun all_new(): Call<AllNewResponseData>
+
+    @GET("/api/home/more/moreNew")
+    fun allnew(
+            @Query("idx") idx: Int
+    ): Call<WeekNonghwalAllData>
+
+    //좋아요리스트
+    @GET("/api/bookmark")
+    fun like(): Call<LikeResponseData>
+
+    //상세보기
+>>>>>>> 81f0def17cd0051be7449f5933843db943d23a95
     @GET("/api/home/detail/nh")
     fun detailnonghwal(
-            @Query("idx") idx: Int
+            @Query("idx") nhIdx: Int
     ): Call<DetailNonghwalResponseData>
 
     @GET("/api/review")
     fun review(
-            @Query("scheIdx") scheIdx: Int
+            @Query("nhIdx") nhIdx: Int
     ): Call<ReviewResponseData>
 
     @GET("/api/home/more/moreNew")

@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.WeekNonghwalData
 import java.lang.StringBuilder
 
-class WeekFarmAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>(){
+class WeekFarmAdapter(var dataListWeek: ArrayList<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>(){
     override fun getItemCount(): Int = dataListWeek.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
@@ -39,11 +39,11 @@ class WeekFarmAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerView.A
 
         holderWeek.itemView.setOnClickListener{
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("farm_img", dataListWeek[position].img)
-            intent.putExtra("farm_location", dataListWeek[position].addr)
-            intent.putExtra("farm_price", dataListWeek[position].price)
-            intent.putExtra("farm_days", dataListWeek[position].period)
-            intent.putExtra("farm_name", dataListWeek[position].name)
+            intent.putExtra("populData", dataListWeek[position])
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
             //추천수
             //설명

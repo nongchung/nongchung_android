@@ -7,7 +7,7 @@ buildscript {
         jcenter()
         maven { url 'https://jitpack.io' }
         maven {
-            url 'http://dl.bintray.com/raphaelbussa/maven'
+            url "https://jitpack.io"
         }
 
         //maven을 통한 다이얼로그 만들기
