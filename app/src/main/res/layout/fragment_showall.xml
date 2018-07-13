@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ShowAllFragment">
 
-
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
