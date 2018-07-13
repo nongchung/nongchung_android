@@ -46,7 +46,7 @@
                         android:src="@drawable/search_ic_search" />
 
                     <EditText
-                        android:id="@+id/activity_search_edit"
+                        android:id="@+id/edittext_search_content"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="90"
@@ -89,11 +89,12 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/textview_search_date"
                 android:layout_width="0dp"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="9.2"
-                android:text="YYYY. MM. DD(Day)"
+                android:text="일정 선택"
                 android:textColor="#8A000000" />
 
             <ImageView
@@ -102,6 +103,40 @@
                 android:layout_weight="0.8" />
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_search_area"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_search_toolbar_Height"
+        android:background="@android:color/white"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_search_toolbar_left_padding"
+            android:src="@drawable/search_place" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textview_search_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9.2"
+                android:text="지역별 농활 검색"
+                android:textColor="#8A000000" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8" />
+        </LinearLayout>
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -121,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_search_toolbar_left_padding"
-                android:src="@drawable/search_place" />
+                android:src="@drawable/search_people_together" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,59 +176,34 @@
                 android:id="@+id/activity_search_minusButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2.5"
                 android:background="@android:color/transparent"
+                android:gravity="center"
                 android:text="-" />
 
             <TextView
                 android:id="@+id/activity_search_participants"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1" />
 
             <Button
                 android:id="@+id/activity_search_plusButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2.5"
                 android:background="@android:color/transparent"
+                android:gravity="center"
                 android:text="+" />
-
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_search_result"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_search_toolbar_Height"
-        android:background="@android:color/white"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_search_toolbar_left_padding"
-            android:src="@drawable/search_people_together" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="0dp"
-
-                android:layout_height="wrap_content"
-                android:layout_weight="9.2"
-                android:text="내 주변 농장 보기"
-                android:textColor="#8A000000" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8" />
-        </LinearLayout>
-    </LinearLayout>
-
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

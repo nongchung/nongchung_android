@@ -2,22 +2,15 @@ package com.youth.farm_volunteering.Home
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.review_rating_bar
-import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.rvListInfoData
-import kotlinx.android.synthetic.main.fragment_farm_review.*
 
 
 class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<ReviewViewHolder>() {
-
-
-
 
     override fun getItemCount(): Int = dataList.size
 

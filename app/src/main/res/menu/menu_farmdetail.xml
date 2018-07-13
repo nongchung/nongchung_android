@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/menu_detail_bookmark"
-        android:icon="@drawable/todays_pick"
+        android:icon="@drawable/selector_bookmark"
         android:title="pick"
         app:showAsAction="ifRoom" />
 

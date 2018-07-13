@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,11 +15,32 @@
             android:id="@+id/my_image"
             android:layout_width="0dp"
             android:layout_height="220dp"
-            android:background="#000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/mymy_ing1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cancel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:lineSpacingExtra="5dp"
+            android:text="인원미달로\n아쉽게도 농활이 취소되었습니다\n:-(  "
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/my_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/my_image" />
 
         <TextView
             android:id="@+id/my_nonghwalname"
@@ -84,16 +106,9 @@
             android:text="2018.6.29"
             android:textColor="#DE000000"
             android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline41"
+            app:layout_constraintEnd_toStartOf="@+id/guideline63"
             app:layout_constraintStart_toStartOf="@+id/guideline40"
             app:layout_constraintTop_toBottomOf="@+id/view8" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline41"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline43"
@@ -115,8 +130,7 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/my_startdate"
             app:layout_constraintEnd_toStartOf="@+id/guideline43"
-            app:layout_constraintHorizontal_bias="0.523"
-            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintStart_toStartOf="@+id/guideline63"
             app:layout_constraintTop_toBottomOf="@+id/view8" />
 
         <View
@@ -124,6 +138,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
+            android:background="#F3F3F5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -155,51 +170,54 @@
             app:layout_constraintStart_toEndOf="@+id/my_startdate"
             app:layout_constraintTop_toBottomOf="@+id/view8" />
 
-
+        <!--신청중-->
         <ImageView
-            android:visibility="visible"
             android:id="@+id/my_ic_ing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/mymy_ic_ing"
-            app:layout_constraintStart_toEndOf="@+id/textView72"
-            app:layout_constraintTop_toTopOf="@+id/textView72" />
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
+            app:layout_constraintTop_toTopOf="@+id/farmer_profile_phone" />
 
+        <!--신청완료,신청취소-->
         <ImageView
-            android:visibility="gone"
             android:id="@+id/mymy_cancle_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/mymy_cancle_complete_selector"
-            app:layout_constraintStart_toEndOf="@+id/textView72"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
             app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
 
+        <!--농활확정-->
         <ImageView
-            android:visibility="gone"
             android:id="@+id/my_extention"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/mymy_extention"
-            app:layout_constraintStart_toEndOf="@+id/textView72"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
             app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
 
-
+        <!--입금완료 입금대기-->
         <ImageView
-            android:visibility="visible"
             android:id="@+id/my_deposit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/mymy_deposit_selector"
+            android:visibility="visible"
             app:layout_constraintStart_toEndOf="@+id/my_ic_ing"
             app:layout_constraintTop_toTopOf="@+id/my_ic_ing" />
 
         <TextView
-            android:id="@+id/textView72"
+            android:id="@+id/farmer_profile_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:fontFamily="@font/nanumsquareround_otfb"
             android:text="1박2일"
             android:textColor="#DE000000"
@@ -207,24 +225,13 @@
             app:layout_constraintStart_toEndOf="@+id/my_nonghwalname"
             app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
 
-        <TextView
-            android:id="@+id/textView83"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline63"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="인원미달로\n아쉽게도 농활이 취소되었습니다\n:-(  "
-            android:fontFamily="@font/nanumsquareround_otfb"
-            android:lineSpacingExtra="5dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/my_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/my_image" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
     </android.support.constraint.ConstraintLayout>
 
 
@@ -254,25 +261,25 @@
 
 
     <android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    android:id="@+id/my_review_modify">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/my_review_modify">
 
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginTop="16dp"
-    android:text="후기 수정"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:textColor="#3470FF"
-    android:textSize="13sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:text="후기 수정"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:textColor="#3470FF"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 
@@ -281,118 +288,118 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/my_ing"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="visible">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
 
-    <android.support.constraint.Guideline
-    android:id="@+id/guideline_65"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.05" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
 
-    <android.support.constraint.Guideline
-    android:id="@+id/guideline66"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.95" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
 
-    <ProgressBar
-    android:id="@+id/progressBar_blue"
-    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="11dp"
-    android:max="20"
-    android:progress="17"
-    android:progressTint="#3470FF"
-    app:layout_constraintEnd_toStartOf="@+id/guideline66"
-    app:layout_constraintStart_toStartOf="@+id/guideline_65"
-    app:layout_constraintTop_toTopOf="parent" />
+        <ProgressBar
+            android:id="@+id/progressBar_blue"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:max="20"
+            android:progress="17"
+            android:progressTint="#3470FF"
+            app:layout_constraintEnd_toStartOf="@+id/guideline66"
+            app:layout_constraintStart_toStartOf="@+id/guideline_65"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-    android:id="@+id/textView88"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="11dp"
-    android:layout_marginTop="4dp"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text="참여인원 "
-    android:textColor="#DE000000"
-    android:textSize="11sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="@+id/guideline_65"
-    app:layout_constraintTop_toBottomOf="@+id/progressBar_blue" />
+        <TextView
+            android:id="@+id/textView88"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="참여인원 "
+            android:textColor="#DE000000"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_65"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar_blue" />
 
-    <TextView
-    android:id="@+id/textView85"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text=" 남았습니다!  "
-    android:textColor="#DE000000"
-    android:textSize="11sp"
-    app:layout_constraintStart_toEndOf="@+id/textView68"
-    app:layout_constraintTop_toTopOf="@+id/my_people" />
+        <TextView
+            android:id="@+id/textView85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text=" 남았습니다!  "
+            android:textColor="#DE000000"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/profile_address"
+            app:layout_constraintTop_toTopOf="@+id/my_people" />
 
-    <TextView
-    android:id="@+id/my_people"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text="3"
-    android:textColor="#F25620"
-    android:textSize="11sp"
-    app:layout_constraintStart_toEndOf="@+id/textView88"
-    app:layout_constraintTop_toTopOf="@+id/textView88" />
+        <TextView
+            android:id="@+id/my_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="3"
+            android:textColor="#F25620"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/textView88"
+            app:layout_constraintTop_toTopOf="@+id/textView88" />
 
-    <TextView
-    android:id="@+id/textView68"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text="명"
-    android:textColor="#F25620"
-    android:textSize="11sp"
-    app:layout_constraintStart_toEndOf="@+id/my_people"
-    app:layout_constraintTop_toTopOf="@+id/my_people" />
+        <TextView
+            android:id="@+id/profile_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="명"
+            android:textColor="#F25620"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/my_people"
+            app:layout_constraintTop_toTopOf="@+id/my_people" />
 
 
-    <TextView
-    android:id="@+id/my_peoplecount"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text="17"
-    android:textColor="#8A000000"
-    android:textSize="11sp"
-    app:layout_constraintEnd_toStartOf="@+id/textView69"
-    app:layout_constraintTop_toTopOf="@+id/textView69" />
+        <TextView
+            android:id="@+id/my_peoplecount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="17"
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/farmer_profile_comment"
+            app:layout_constraintTop_toTopOf="@+id/farmer_profile_comment" />
 
-    <TextView
-    android:id="@+id/textView69"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text="/"
-    android:textColor="#8A000000"
-    android:textSize="11sp"
-    app:layout_constraintEnd_toStartOf="@+id/my_peopleall"
-    app:layout_constraintTop_toTopOf="@+id/my_peopleall" />
+        <TextView
+            android:id="@+id/farmer_profile_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="/"
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/my_people_limit"
+            app:layout_constraintTop_toTopOf="@+id/my_people_limit" />
 
-    <TextView
-    android:id="@+id/my_peopleall"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:fontFamily="@font/nanumsquareround_otfb"
-    android:text="20"
-    android:textColor="#8A000000"
-    android:textSize="11sp"
-    app:layout_constraintEnd_toStartOf="@+id/guideline66"
-    app:layout_constraintTop_toBottomOf="@+id/progressBar_blue" />
+        <TextView
+            android:id="@+id/my_people_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="20"
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline66"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar_blue" />
     </android.support.constraint.ConstraintLayout>
 
 
@@ -431,7 +438,7 @@
             app:layout_constraintGuide_percent="0.9527778" />
 
         <TextView
-            android:id="@+id/textView70"
+            android:id="@+id/farmer_profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="11dp"
@@ -447,11 +454,11 @@
     </android.support.constraint.ConstraintLayout>
 
     <View
-    android:id="@+id/view10"
-    android:layout_width="match_parent"
-    android:layout_height="30dp"
-    android:background="#F3F3F5"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/view10"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#F3F3F5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </LinearLayout>

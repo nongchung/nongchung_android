@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.data.PopularSubData
 import com.youth.farm_volunteering.data.WeekNonghwalData
 
-class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerView.Adapter<WeekFarmAllViewHolder>() {
+class WeekFarmAllAdapter(var dataListWeek: List<PopularSubData>) : RecyclerView.Adapter<WeekFarmAllViewHolder>() {
     override fun getItemCount(): Int = dataListWeek.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmAllViewHolder {
@@ -28,7 +29,7 @@ class WeekFarmAllAdapter(var dataListWeek: List<WeekNonghwalData>) : RecyclerVie
         holderWeek.titleall.text = dataListWeek[position].name
         holderWeek.addressall.text = dataListWeek[position].addr
         holderWeek.priceall.text = dataListWeek[position].price.toString()
-        holderWeek.starall.rating = dataListWeek[position].star!!
+        holderWeek.starall.rating = dataListWeek[position].star!!.toFloat() // toFloat생성
         if (dataListWeek[position].isBooked != null) {
             when (dataListWeek[position].isBooked) {
                 0 -> holderWeek.isBookedall.isSelected = false

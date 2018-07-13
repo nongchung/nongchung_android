@@ -1,30 +1,58 @@
 package com.youth.farm_volunteering.MyActivity
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.farm_count_cases
+import com.youth.farm_volunteering.R.id.farm_count_time
+import com.youth.farm_volunteering.data.TotalActivityData
+import kotlinx.android.synthetic.main.fragment_myactivity.*
 import kotlinx.android.synthetic.main.fragment_myactivity.view.*
+import kotlinx.android.synthetic.main.item_myactivity.*
+import retrofit2.Response
+import java.util.*
+
 
 class MyActivityFragment : Fragment() {
 
-    lateinit var myList: ArrayList<MyData>
-    lateinit var myAdapter : MyAdapter
+    var myList: List<MyActivityData>?=null
+    var timeList : List<TotalActivityData>? = null
+    lateinit var myAdapter : MyactivityAdapter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_myactivity, container, false)
 
         myList = ArrayList()
-        myList.add(MyData(R.drawable.mymy_ing1,"제주 행복 감귤 농장 1박 2일","제주 서귀포시","20,000","2018.6.29","2018.6.30","3","17/20"))
-        myList.add(MyData(R.drawable.mymy_ing1,"제주 행복 감귤 농장 1박 2일","제주 서귀포시","20,000","2018.6.29","2018.6.30","3","17/20"))
-        myList.add(MyData(R.drawable.mymy_ing1,"제주 행복 감귤 농장 1박 2일","제주 서귀포시","20,000","2018.6.29","2018.6.30","3","17/20"))
 
-        myAdapter = MyAdapter(myList)
-        v.my_rv.layoutManager = LinearLayoutManager(this.activity)
-        v.my_rv.adapter = myAdapter
+        var homeCall = ApplicationController.instance!!.networkService!!.myactivity()
+        homeCall.enqueue(object : retrofit2.Callback<MyActivityResponseData> {
+            override fun onFailure(call: retrofit2.Call<MyActivityResponseData>, t: Throwable?) {
+                Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: retrofit2.Call<MyActivityResponseData>, response: Response<MyActivityResponseData>) {
+
+                myList = response.body().data
+                timeList = response.body().total
+
+                myAdapter = MyactivityAdapter(myList!!)
+                farm_count_cases.setText(timeList!![0].tcount.toString())
+                farm_count_time.setText(timeList!![0].ttime.toString())
+
+
+                myAdapter = MyactivityAdapter(myList!!)
+
+                v.my_rv.layoutManager = LinearLayoutManager(context)
+                v.my_rv.adapter = myAdapter
+
+            }
+        })
 
         return v
     }

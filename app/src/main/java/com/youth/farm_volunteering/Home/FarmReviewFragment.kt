@@ -1,28 +1,21 @@
 package com.youth.farm_volunteering.Home
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.youth.farm_volunteering.R
-import java.util.ArrayList
-import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.R.id.review_rating_bar
-import com.youth.farm_volunteering.data.DetailNonghwalResponseData
+import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.ReviewResponseData
 import com.youth.farm_volunteering.data.rvListInfoData
-import kotlinx.android.synthetic.main.fragment_farm_introduce.*
-import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
-import kotlinx.android.synthetic.main.fragment_farm_review.*
 import kotlinx.android.synthetic.main.fragment_farm_review.view.*
-import kotlinx.android.synthetic.main.item_review.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Long.sum
+import java.util.*
 
 
 class FarmReviewFragment : Fragment(){
@@ -33,7 +26,7 @@ class FarmReviewFragment : Fragment(){
 
     lateinit var reviewimgitems: ArrayList<ReviewImageData>
     var ReviewList: List<rvListInfoData>? = null
-    var ReviewImageList : List<rvListInfoData>? = null
+    var ReviewImageList : List<String>? = null
 
     private  var linearLayoutManager : LinearLayoutManager? = null
 
@@ -42,37 +35,33 @@ class FarmReviewFragment : Fragment(){
         //activity!!.supportFragmentManager.beginTransaction().add()
         val a = inflater.inflate(R.layout.item_review,container,false)
 
-        var reviewCall  = ApplicationController.instance!!.networkService!!.review(4)
+        var nhIdx : Int = arguments.getInt("nhIdx")
+
+        var reviewCall  = ApplicationController.instance!!.networkService!!.review(2)
 
         reviewCall.enqueue(object : Callback<ReviewResponseData> {
             override fun onFailure(call: Call<ReviewResponseData>, t: Throwable?) {
-                Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity.applicationContext, "review request fail", Toast.LENGTH_SHORT).show()
                 //Log.e("abc",t.toString())
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
-                ReviewList = response.body().rvListInfo
+                if(response.isSuccessful){
+                    if(response.body().message == "Success to Get Review List"){
+                        ReviewList = response.body().rvListInfo
+
+                        reviewAdapter = ReviewAdapter(ReviewList!!)
+                        // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
+                        v.review_rv.layoutManager = LinearLayoutManager(context)
+                        v.review_rv.adapter = reviewAdapter
+
+                        // v.review_img_rv.layoutManager = LinearLayoutManager(context)
+                        // v.review_img_rv.adapter = reviewimageAdapter
+                       }
+                    }
+                }
 
 
-
-                ReviewImageList = response.body().rvListInfo
-
-                reviewAdapter = ReviewAdapter(ReviewList!!)
-
-
-
-
-               // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
-                v.review_rv.layoutManager = LinearLayoutManager(context)
-                v.review_rv.adapter = reviewAdapter
-
-
-               // v.review_img_rv.layoutManager = LinearLayoutManager(context)
-               // v.review_img_rv.adapter = reviewimageAdapter
-
-
-
-            }
         })
 
 

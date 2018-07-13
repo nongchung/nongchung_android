@@ -44,7 +44,6 @@ class LikeFragment : Fragment() {
             override fun onResponse(call: Call<LikeResponseData>, response: Response<LikeResponseData>) {
 
                 likeList = response.body().bmList
-                Log.d("aaa",(likeList!![0].addr).toString())
                 likeAdapter = LikeAdapter(likeList!!)
                 fragment_like_rv.adapter = likeAdapter
 

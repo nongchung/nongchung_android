@@ -1,68 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline52"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="11.33dp"
-        android:layout_marginTop="10.57dp">
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.055555556" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14.41dp"
-            android:orientation="vertical">
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
 
-            <TextView
-                android:id="@+id/apply_rv_schedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2018년 6월 29일 ~ 30일"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+    <TextView
+        android:id="@+id/apply_rv_schedule"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/apply_rv_start"
+        app:layout_constraintEnd_toStartOf="@+id/guideline53"
+        app:layout_constraintStart_toEndOf="@+id/guideline52"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/apply_rv_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="오전 9시 출발 (1박 2일)"
-                android:textColor="#95989A"
-                android:textSize="11dp" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline54"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/apply_rv_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="TextView"
+        android:textColor="#95989A"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline53"
+        app:layout_constraintStart_toEndOf="@+id/guideline52"
+        app:layout_constraintTop_toBottomOf="@+id/apply_rv_schedule" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16.59dp"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/apply_rv_attendable"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#F25620"
+        android:text="참석가능"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/apply_rv_left"
+        app:layout_constraintEnd_toStartOf="@+id/guideline54"
+        app:layout_constraintStart_toEndOf="@+id/guideline53"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/apply_rv_attendable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="참석가능"
-                android:textColor="#F15A87"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/apply_rv_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(06명 남음)"
-                android:textColor="#95989A"
-                android:textSize="11dp" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#26707070" />
-</LinearLayout>
+    <TextView
+        android:id="@+id/apply_rv_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textColor="#95989A"
+        android:textAlignment="center"
+        android:layout_marginTop="5dp"
+        android:text="(06명남음)"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline54"
+        app:layout_constraintStart_toEndOf="@+id/guideline53"
+        app:layout_constraintTop_toBottomOf="@+id/apply_rv_attendable" />
+</android.support.constraint.ConstraintLayout>

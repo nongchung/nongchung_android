@@ -6,12 +6,10 @@ class DetailNonghwalResponseData {
     var message: String? = null
     var image: List<String>? = null
     var nhInfo: NhInfoData? = null
-    var friendsInfo: List<FriendInfoData>? = null
+    var friendsInfo: ArrayList<FriendInfoData>? = null
     var farmerInfo: FarmInfoData? = null
-    var schedule : List<DetailSchData>? = null
+    var schedule : ArrayList<DetailSchData>? = null
     var nearestStartDate : String? = null
-    var allStartDate : List<AllStData>? = null
-
-
-
+    var allStartDate : ArrayList<AllStData>? = null
+    var myScheduleActivities : ArrayList<Int>? = null
 }
