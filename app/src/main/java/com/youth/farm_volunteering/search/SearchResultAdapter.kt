@@ -16,7 +16,7 @@ class SearchResultAdapter(var dataListWeek: List<NonghwalData>) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_farm, parent, false)
+                .inflate(R.layout.item_searchresult, parent, false)
         return WeekFarmItemViewHolder(mainView)
     }
 
