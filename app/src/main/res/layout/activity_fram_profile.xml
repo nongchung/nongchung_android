@@ -69,7 +69,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline50"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/textView72"
+                app:layout_constraintTop_toBottomOf="@+id/my_period"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
@@ -97,7 +97,7 @@
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
-                android:id="@+id/textView72"
+                android:id="@+id/my_period"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

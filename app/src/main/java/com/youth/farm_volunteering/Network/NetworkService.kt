@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Network
 
 
+import com.youth.farm_volunteering.MyActivity.MyActivityResponseData
 import com.youth.farm_volunteering.data.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -22,7 +23,10 @@ interface NetworkService {
 
     ): Call<MyActivityResponseData>
 
+    @GET("api/home/detail/farm/4")
+    fun farmprofile(
 
+    ): Call<FarmProfileResponseData>
 
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")
