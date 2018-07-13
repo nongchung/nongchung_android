@@ -36,9 +36,9 @@ import java.util.*
 class SearchFragment : Fragment() {
     val searchDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     var registrationUserCount = 1
-    var searchArea: Area = Area.ALL
+    var searchAreaArray: Array<Area> = arrayOf(Area.ALL)
     var startDateString: String = "1992-09-12"
-    var endDateString: String = searchDateFormat.format(Date())
+    var endDateString: String = "2030-09-12"
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -83,7 +83,15 @@ class SearchFragment : Fragment() {
 //            @Query("person") personCount: Int,
 //            @Query("scontent") content: String,
 //            @Query("area") area: Int
-            var searchCall = ApplicationController.instance!!.networkService!!.search(startDateString, endDateString, registrationUserCount, v.findViewById<EditText>(R.id.edittext_search_content).text.toString(), searchArea.code); // 서버에서 데이터 가져오는거!!
+            var sb = StringBuilder()
+            sb.append("[")
+            searchAreaArray.forEach { area ->
+                sb.append(area.code)
+                sb.append(",")
+            }
+            sb.append("18]")
+            var areaArrayString: String = sb.toString()
+            var searchCall = ApplicationController.instance!!.networkService!!.search(startDateString, endDateString, registrationUserCount, v.findViewById<EditText>(R.id.edittext_search_content).text.toString(), areaArrayString); // 서버에서 데이터 가져오는거!!
             searchCall.enqueue(object : Callback<SearchResponseData> {
                 override fun onFailure(call: Call<SearchResponseData>, t: Throwable?) {
                     Toast.makeText(activity, "like request fail", Toast.LENGTH_SHORT).show()

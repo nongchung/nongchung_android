@@ -85,7 +85,7 @@ interface NetworkService {
             @Query("end") endDate: String,
             @Query("person") personCount: Int,
             @Query("scontent") content: String,
-            @Query("area") area: Int
+            @Query("area") areaArrayString: String
     ): Call<SearchResponseData>
 
 
