@@ -40,7 +40,7 @@ class MapsFragment : Fragment(),OnMapReadyCallback {
     //기존 소스
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.fragment_maps)
+//        ..
 //        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val mapFragment = supportFragmentManager
 //                .findFragmentById(R.id.map) as SupportMapFragment

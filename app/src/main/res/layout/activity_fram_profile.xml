@@ -23,7 +23,7 @@
                 app:layout_constraintGuide_percent="0.06111111" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/profile_userimage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/farm_name"
+                android:id="@+id/profile_farm_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -40,20 +40,20 @@
                 android:text="제주 감귤농장"
                 android:textColor="#DE000000"
                 android:textSize="17sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
-                app:layout_constraintTop_toTopOf="@+id/imageView10"
+                app:layout_constraintStart_toEndOf="@+id/profile_userimage"
+                app:layout_constraintTop_toTopOf="@+id/profile_userimage"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
-                android:id="@+id/textView68"
+                android:id="@+id/profile_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="제주특별자치도 서귀포시"
                 android:textColor="#8A000000"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="@+id/farm_name"
-                app:layout_constraintTop_toBottomOf="@+id/farm_name"
+                app:layout_constraintStart_toStartOf="@+id/profile_farm_name"
+                app:layout_constraintTop_toBottomOf="@+id/profile_farm_name"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
@@ -93,7 +93,7 @@
                 android:textColor="#8A000000"
                 android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/profile_userimage"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
