@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.HomeNonghwalData
 
@@ -35,6 +36,21 @@ class WeekFarmAdapter(var dataListHome: ArrayList<HomeNonghwalData>) : RecyclerV
             }
         }
         holderWeek.starNum.text = dataListHome[position].star.toString()
+
+        holderWeek.isBooked.setOnClickListener {
+            Toast.makeText(holderWeek.itemView.context,dataListHome[position].isBooked.toString(),Toast.LENGTH_SHORT).show()
+
+            if(dataListHome[position].isBooked!=0){
+                holderWeek.isBooked.isSelected = false
+                dataListHome[position].isBooked=0
+            }
+            else
+            {
+                holderWeek.isBooked.isSelected = true
+                dataListHome[position].isBooked=1
+            }
+        }
+
 
 
         holderWeek.itemView.setOnClickListener {
