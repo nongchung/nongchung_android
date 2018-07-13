@@ -159,6 +159,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline9" />
 
     <TextView
+        android:visibility="invisible"
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -171,9 +172,10 @@
         app:layout_constraintStart_toStartOf="@+id/guideline9" />
 
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="11dp"
         android:background="@drawable/namechange_warning"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/textView22"

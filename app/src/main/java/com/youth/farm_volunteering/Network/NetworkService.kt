@@ -1,4 +1,5 @@
 package com.youth.farm_volunteering.Network
+import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaData
 import com.youth.farm_volunteering.Home.applyResponseData
 import com.youth.farm_volunteering.data.*
 import retrofit2.http.*
@@ -26,8 +27,13 @@ interface NetworkService {
 
     @GET("api/home/detail/farm")
     fun farmprofile(
-            @Query("idx") idx: Int
+            @Path("idx") idx: Int
     ): Call<FarmProfileResponseData>
+
+    @GET("api/home/theme")
+    fun thema(
+            @Query("idx") idx : Int
+    ): Call<ThemaData>
 
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")

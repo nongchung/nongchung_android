@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_area_background"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="60dp"
     android:layout_margin="10dp"
     android:background="@drawable/rect"
     android:gravity="center">
@@ -12,5 +12,7 @@
         android:id="@+id/textview_area_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumsquareround_otfb"
+        android:textColor="#8A000000"
         android:text="서울" />
 </LinearLayout>
