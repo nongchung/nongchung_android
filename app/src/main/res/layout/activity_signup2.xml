@@ -112,6 +112,8 @@
         android:background="@drawable/join2_ok_icon"
         android:fontFamily="@font/nanumsquareround_otfb"
         android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:text="다음"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"

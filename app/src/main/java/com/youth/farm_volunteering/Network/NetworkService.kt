@@ -1,6 +1,8 @@
 package com.youth.farm_volunteering.Network
-
-
+import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaData
+import com.youth.farm_volunteering.Home.applyResponseData
+import com.youth.farm_volunteering.data.*
+import retrofit2.http.*
 import com.youth.farm_volunteering.MyActivity.MyActivityResponseData
 import com.youth.farm_volunteering.data.*
 import retrofit2.Call
@@ -23,10 +25,15 @@ interface NetworkService {
 
     ): Call<MyActivityResponseData>
 
-    @GET("api/home/detail/farm/4")
+    @GET("api/home/detail/farm")
     fun farmprofile(
-
+            @Path("idx") idx: Int
     ): Call<FarmProfileResponseData>
+
+    @GET("api/home/theme")
+    fun thema(
+            @Query("idx") idx : Int
+    ): Call<ThemaData>
 
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")
@@ -90,4 +97,10 @@ interface NetworkService {
             @Part("password") password : String, @Part("newpw") newpw : String
     ): Call<PasswordResourceData>
 
+    @FormUrlEncoded
+    @POST("api/home/request")
+    fun applyNh(
+            @Field("nhIdx") nhIdx : Int,
+            @Field("schIdx") schIdx : Int
+    ) : Call<applyResponseData>
 }

@@ -16,8 +16,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 const val RESULT_REQUEST_LOGIN: Int = 3;
-const val BUNDLE_KEY_EMAIL: String = "BUNDLE_KEY_EMAIL";
-const val BUNDLE_KEY_PASSWORD: String = "BUNDLE_KEY_PASSWORD";
+const val BUNDLE_KEY_EMAIL: String = "BUNDLE_KEY_EMAIL"
+const val BUNDLE_KEY_PASSWORD: String = "BUNDLE_KEY_PASSWORD"
 
 class SignupActivity1 : AppCompatActivity() {
 
@@ -28,9 +28,11 @@ class SignupActivity1 : AppCompatActivity() {
         nextbutton.setOnClickListener {
             var signup2 = Intent(this, SignupActivity2::class.java)
             startActivityForResult(signup2, 0)
+            //다이얼로그 띄우기
 //            val fm = supportFragmentManager
 //            val dialogFragment = ApplicationCancleDialog(this)
 //            dialogFragment.show()
+
         }
     }
 

@@ -44,7 +44,7 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
                 expandedView.expandGroup(groupPosition)
                 //convertView!!.imageView.isPressed = true
             }
-            Toast.makeText(context, getGroup(groupPosition), Toast.LENGTH_SHORT).show() // 여기 클릭인식은 Season1과 Season2에서만 toast를 인식...
+
         }
         if (isExpanded) {
             //title?.setCompoundDrawablesWithIntrinsicBounds(0, 0,R.drawable.ic_up, 0);
@@ -82,8 +82,6 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
         val title = convertView?.findViewById<TextView>(R.id.tv_title)
         title?.text = getChild(groupPosition, childPosition)
         title?.setOnClickListener {
-
-            Toast.makeText(context, getChild(groupPosition, childPosition), Toast.LENGTH_SHORT).show()
         }
 
         return convertView

@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
         <ImageView
             android:id="@+id/farm_pic"
             android:layout_width="match_parent"
@@ -87,13 +85,18 @@
             android:id="@+id/farm_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="9dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:singleLine="true"
             android:text="제주 행복 감귤 농장 체험  "
             android:textColor="#DE000000"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/farm_price"
@@ -115,13 +118,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:singleLine="true"
             android:text="제주 서귀포시"
             android:textColor="#8A000000"
             android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/farm_title"
-            app:layout_constraintTop_toBottomOf="@+id/farm_title"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toBottomOf="@+id/farm_title" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13"

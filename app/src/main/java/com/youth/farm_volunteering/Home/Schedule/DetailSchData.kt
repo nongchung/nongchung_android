@@ -1,4 +1,4 @@
-package com.youth.farm_volunteering.data
+package com.youth.farm_volunteering.Home.Schedule
 
 import android.os.Parcel
 import android.os.Parcelable

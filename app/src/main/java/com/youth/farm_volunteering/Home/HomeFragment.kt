@@ -19,13 +19,21 @@ import com.youth.farm_volunteering.Home.PopulFarmAdapter
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_showall.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import android.R.attr.fragment
+
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
+
+    private val ARG_PARAM1 = "이번 주 인기 농활"
+    private val ARG_PARAM2 = "새로운 농활"
+
+    var mParam: String? = null
 
     var weekFarmAdapter: WeekFarmAdapter? = null
     var introThemeFarmAdapter : IntroThemeFarmAdapter? = null
@@ -35,8 +43,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
     //    var adViewPagerAdapter: AdViewPagerAdapter? = null
-    var popularWeekNonghwalList: ArrayList<WeekNonghwalData>? = null
-    var newNonghwalList : List<NewNonghwalData>? = null
+    var popularHomeNonghwalList: ArrayList<HomeNonghwalData>? = null
+    var newNonghwalList : ArrayList<HomeNonghwalData>? = null
     var popularFarmList : List<PopulFarmData>? = null
     var detailThemeFarmList: List<DetailThemeFarmData>? = null
     var introThemeFarmList : List<Int>? = null
@@ -75,16 +83,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 if(response.isSuccessful){
                     if(response.body().message.equals("Success To Get Information")){
                         adDataList = response.body().ads
-                        popularWeekNonghwalList = response.body().populNh
+                        popularHomeNonghwalList = response.body().populNh
                         newNonghwalList = response.body().newNh
                         popularFarmList = response.body().populFarm
 
-                        weekFarmAdapter = WeekFarmAdapter(popularWeekNonghwalList!!)
+                        weekFarmAdapter = WeekFarmAdapter(popularHomeNonghwalList!!)    //클리어
                         introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
-                        newFarmAdapter = NewFarmAdapter(newNonghwalList!!)
+                        newFarmAdapter = NewFarmAdapter(newNonghwalList!!)          //클리어
                         populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
                         vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
-
 
                         fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
                         fragment_home_newFarm_rv.adapter = newFarmAdapter
@@ -134,13 +141,18 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         when (v) {
             fragment_home_weeklyHotFarm_showAll_txt -> {
-                activity!!.main_title.setText("이번 주 인기 농활")
-                replaceFragment(ShowAllFragment())
+                val fragment = ShowAllFragment()
+                val args = Bundle()
+                args.putString("title", "이번 주 인기농활")
+                fragment.setArguments(args)
+                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
             }
             fragment_home_newFarm_showAll_txt -> {
-                activity!!.main_title.setText("새로운 농활")
-
-                replaceFragment(NewShowAllFragment())
+                val fragment = ShowAllFragment()
+                val args = Bundle()
+                args.putString("title", "새로운 농활")
+                fragment.setArguments(args)
+                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
             }
 
 
@@ -204,15 +216,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
         transaction.commit()
     }
 
-    companion object {
-        private val title = "title"
-        fun newInstance(param1 : String) : HomeFragment{
-            val fragment = HomeFragment()
-            val args = Bundle()
-            args.putString(title, param1)
-            fragment.arguments = args
-            return fragment
-        }
+    fun setTitle(title: String): ShowAllFragment {
+        val f = ShowAllFragment()
+        // Pass index input as an argument.
+        val args = Bundle()
+        args.putString("title", title)
+        f.setArguments(args)
+        return f
     }
 
 }

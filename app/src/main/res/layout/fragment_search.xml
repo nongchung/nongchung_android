@@ -40,9 +40,10 @@
 
                     <ImageView
                         android:id="@+id/activity_top_search_icon"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="10"
+                        android:layout_gravity="center"
                         android:src="@drawable/search_ic_search" />
 
                     <EditText
@@ -62,6 +63,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:text="검색"
+                    android:fontFamily="@font/nanumsquareround_otfb"
                     android:textColor="@android:color/white" />
             </LinearLayout>
 
@@ -91,10 +93,11 @@
             <TextView
                 android:id="@+id/textview_search_date"
                 android:layout_width="0dp"
-
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:layout_height="wrap_content"
                 android:layout_weight="9.2"
                 android:text="일정 선택"
+                android:layout_marginLeft="8dp"
                 android:textColor="#8A000000" />
 
             <ImageView
@@ -128,6 +131,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="9.2"
                 android:text="지역별 농활 검색"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:textColor="#8A000000" />
 
             <ImageView
@@ -162,6 +167,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="함께 참여 가능한 인원"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:textColor="#8A000000" />
         </LinearLayout>
 
@@ -179,14 +186,16 @@
                 android:layout_weight="2.5"
                 android:background="@android:color/transparent"
                 android:gravity="center"
-                android:text="-" />
+                android:text="-"
+                android:fontFamily="@font/nanumsquareround_otfb"/>
 
             <TextView
                 android:id="@+id/activity_search_participants"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="1" />
 
             <Button
@@ -196,6 +205,7 @@
                 android:layout_weight="2.5"
                 android:background="@android:color/transparent"
                 android:gravity="center"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="+" />
         </LinearLayout>
 

@@ -170,16 +170,17 @@
                 android:id="@+id/application_woman_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/apply_woman"
+                android:background="@drawable/woman_selector"
                 app:layout_constraintBottom_toTopOf="@+id/editText31"
                 app:layout_constraintEnd_toStartOf="@+id/guideline22"
-                app:layout_constraintTop_toBottomOf="@+id/editText28" />
+                app:layout_constraintTop_toBottomOf="@+id/editText28"
+                />
 
             <ImageView
                 android:id="@+id/application_man_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/apply_man"
+                android:background="@drawable/man_selector"
                 app:layout_constraintStart_toStartOf="@+id/guideline22"
                 app:layout_constraintTop_toTopOf="@+id/application_woman_button" />
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="151dp"
-    android:layout_height="220dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -74,16 +74,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="농활명"
             android:textColor="#DE000000"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="parent"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textviewNewFarmPrice"
@@ -105,13 +105,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:singleLine="true"
             android:text="주소"
             android:textColor="#8A000000"
             android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textviewNewFarmTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmTitle"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toBottomOf="@+id/textviewNewFarmTitle" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13"

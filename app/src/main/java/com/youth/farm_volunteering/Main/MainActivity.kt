@@ -1,8 +1,5 @@
 package com.youth.farm_volunteering.Main
 
-import android.content.Intent
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -17,27 +14,17 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.Bookmark.LikeFragment
-import com.youth.farm_volunteering.Home.ApplicationConfirmActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.login.LoginActivity
-import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-    var currentTabIndex = 0
-    var isTabForced = false
+
     var toolbar: android.support.v7.widget.Toolbar? = null
     var homeTab: View? = null
     var bookmarklistTab: View? = null
@@ -59,6 +46,8 @@ class MainActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
+
+        supportActionBar!!.hide()
 
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
         bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist, null, false)
@@ -82,33 +71,26 @@ class MainActivity : AppCompatActivity() {
         for (i in 0..tabAdapter.count - 1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
         activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
 
+        activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
 
-//        activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
+        activity_main_tabViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
 
-//        activity_main_tabViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-//            override fun onPageScrollStateChanged(state: Int) {
-//
-//            }
-//
-//            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-//
-//            }
-//
-//            override fun onPageSelected(position: Int) {
-//            }
-//
-//        })
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+
+            }
+
+        })
 
         activity_main_bottomTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                if (tab!!.position >= 2 && !LoginToken.logined) {
-                    isTabForced = true
 
-                    activity_main_bottomTabLayout.setScrollPosition(currentTabIndex, 0f, true);
-                    activity_main_tabViewPager.setCurrentItem(currentTabIndex);
-                    var i = Intent(this@MainActivity, LoginActivity::class.java)
-                    startActivity(i)
-                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -117,16 +99,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
 //                activity_main_tabViewPager.currentItem = tab!!.position
-                if (tab!!.position >= 2 && !LoginToken.logined) {
-                    isTabForced = true
-
-                    activity_main_bottomTabLayout.setScrollPosition(currentTabIndex, 0f, true);
-                    activity_main_tabViewPager.setCurrentItem(currentTabIndex);
-                    var i = Intent(this@MainActivity, LoginActivity::class.java)
-                    startActivity(i)
-                } else {
-                    setCurrentTabFragment(tab!!.position)
-                }
+                setCurrentTabFragment(tab!!.position)
             }
 
         })
@@ -138,20 +111,11 @@ class MainActivity : AppCompatActivity() {
         var menuInflater = getMenuInflater()
         menuInflater!!.inflate(R.menu.menu_main, menu)
 
-        var searchIcon: Drawable = menu!!.getItem(0).icon
-        searchIcon.setColorFilter(0xFF000000.toInt(), PorterDuff.Mode.MULTIPLY)
-
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, ApplicationConfirmActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         return false
     }
@@ -169,11 +133,10 @@ class MainActivity : AppCompatActivity() {
 
 
     fun setCurrentTabFragment(tabPosition: Int) {
-        currentTabIndex = tabPosition
         when (tabPosition) {
             tabPosition -> {
                 ReplaceFragment(fragment_Array!![tabPosition])
-                Log.d("aaa", fragment_Array!![tabPosition].toString())
+                Log.d("aaa",fragment_Array!![tabPosition].toString())
             }
         }
     }

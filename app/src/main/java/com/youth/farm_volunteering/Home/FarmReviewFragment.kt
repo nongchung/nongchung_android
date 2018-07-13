@@ -37,7 +37,7 @@ class FarmReviewFragment : Fragment(){
 
         var nhIdx : Int = arguments.getInt("nhIdx")
 
-        var reviewCall  = ApplicationController.instance!!.networkService!!.review(2)
+        var reviewCall  = ApplicationController.instance!!.networkService!!.review(5)
 
         reviewCall.enqueue(object : Callback<ReviewResponseData> {
             override fun onFailure(call: Call<ReviewResponseData>, t: Throwable?) {
