@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering
 
+import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -25,6 +26,7 @@ import com.youth.farm_volunteering.Expanded.ExpandFragment
 import com.youth.farm_volunteering.Home.DetailTabAdapter
 import com.youth.farm_volunteering.Home.FarmIntroFragment
 import com.youth.farm_volunteering.Home.FarmReviewFragment
+import com.youth.farm_volunteering.Home.applyResponseData
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call
@@ -45,16 +47,15 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var detailFriendInfoList: ArrayList<FriendInfoData>? = null
     var detailFarmInfoList: FarmInfoData? = null
     lateinit var detailScheduleList: ArrayList<DetailSchData>
-    var detailImageList : List<String>? = null
-    var detailNearestStartDate : String? = null
-    lateinit var detailAllStartDate : ArrayList<AllStData>
-    var detailMyScheduleActivities : ArrayList<Int>? = null
+    var detailImageList: List<String>? = null
+    var detailNearestStartDate: String? = null
+    lateinit var detailAllStartDate: ArrayList<AllStData>
+    var detailMyScheduleActivities: ArrayList<Int>? = null
 
-    lateinit var detailTabAdapter : DetailTabAdapter
+    lateinit var detailTabAdapter: DetailTabAdapter
 
     var fragment_Array: ArrayList<Fragment>? = ArrayList()
-    var tabtextArray : ArrayList<String>? = null
-    var bottomSheetDialog : BottomSheetDialog? = null
+    var tabtextArray: ArrayList<String>? = null
 
 //    activity_main_tabViewPager.adapter = tabAdapter
 //    activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
@@ -73,7 +74,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         setSupportActionBar(toolbar)    //뒤로가기버튼생성
 
         var populData = intent.getParcelableExtra<WeekNonghwalData>("populData")
-        var nhIdx : Int = populData.nhIdx!!
+        var nhIdx: Int = populData.nhIdx!!
 
         tabtextArray = arrayListOf("농활소개", "Q & A", "후기")
         fragment_Array = arrayListOf(FarmIntroFragment(), ExpandFragment(), FarmReviewFragment())
@@ -85,14 +86,14 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(nhIdx)
         getDetail.enqueue(object : Callback<DetailNonghwalResponseData> {
             override fun onResponse(call: Call<DetailNonghwalResponseData>?, response: Response<DetailNonghwalResponseData>?) {
-                if(response!!.isSuccessful){
+                if (response!!.isSuccessful) {
                     detailNonghwalList = response.body().nhInfo             //농활소개
                     detailFriendInfoList = response.body().friendsInfo     //농활소개
                     detailFarmInfoList = response.body().farmerInfo        //농활소개
                     detailScheduleList = response.body().schedule!!           //BottomSheetDialog 신청하기
                     detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
                     detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
-                    if(response.body().myScheduleActivities!=null) {
+                    if (response.body().myScheduleActivities != null) {
                         detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 sche
                     }
 
@@ -125,25 +126,41 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         })
 
-        buttonApplyDate.setOnClickListener{
-            bottomSheetDialog = BottomSheetDialog.instance
+        buttonApplyButton.setOnClickListener {
+            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(nhIdx, 3)
+            applyCall.enqueue(object : retrofit2.Callback<applyResponseData> {
+                override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
+                    if (response!!.isSuccessful) {
+                        if (response!!.body().message == "Success To Request For Application") {
+
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<applyResponseData>?, t: Throwable?) {
+
+                }
+
+            })
+        }
+
+        buttonApplyDate.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelableArrayList("scheList", detailScheduleList)
             bundle.putIntegerArrayList("myScheduleActivities", detailMyScheduleActivities)
             bundle.putParcelableArrayList("allStartItems", detailAllStartDate)
+            var bottomSheetDialog = BottomSheetDialog.instance
+            bottomSheetDialog.onDismissListener = DialogInterface.OnDismissListener {
+                buttonApplyDate.text = bottomSheetDialog.selectedDate
+            }
 
             bottomSheetDialog!!.arguments = bundle
-
             bottomSheetDialog!!.show(supportFragmentManager, "bottomSheet")
         }
 
         //탭레이아웃 색상 선택
         tablayoutDetailActivity.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#3470FF"))
-
-
         viewpagerDetailBottom.setCurrentItem(0)
-
-
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
@@ -156,7 +173,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         imageviewCollapse.scaleType = ImageView.ScaleType.FIT_XY
         viewpagerDetailBottom.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tablayoutDetailActivity))
 
-        viewpagerDetailBottom.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        viewpagerDetailBottom.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
@@ -164,13 +181,14 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             override fun onPageScrollStateChanged(state: Int) {
 
             }
+
             override fun onPageSelected(position: Int) {
 
             }
 
         })
 
-        tablayoutDetailActivity.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        tablayoutDetailActivity.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
@@ -262,4 +280,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         return true
     }
+
+
 }

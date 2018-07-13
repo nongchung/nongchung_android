@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity() {
         for (i in 0..tabAdapter.count - 1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
         activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
 
-
         activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
 
         activity_main_tabViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

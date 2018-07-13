@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Network
 
 
+import com.youth.farm_volunteering.Home.applyResponseData
 import com.youth.farm_volunteering.data.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -61,4 +62,10 @@ interface NetworkService {
             @Part("password") password : String, @Part("newpw") newpw : String
     ): Call<PasswordResourceData>
 
+    @FormUrlEncoded
+    @POST("api/home/request")
+    fun applyNh(
+            @Field("nhIdx") nhIdx : Int,
+            @Field("schIdx") schIdx : Int
+    ) : Call<applyResponseData>
 }
