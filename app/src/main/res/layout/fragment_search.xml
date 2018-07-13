@@ -124,7 +124,6 @@
 
             <TextView
                 android:layout_width="0dp"
-
                 android:layout_height="wrap_content"
                 android:layout_weight="9.2"
                 android:text="지역별 농활 검색"
