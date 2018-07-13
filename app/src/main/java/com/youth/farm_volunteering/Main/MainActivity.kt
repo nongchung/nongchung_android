@@ -1,9 +1,5 @@
 package com.youth.farm_volunteering.Main
 
-import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -19,7 +15,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.youth.farm_volunteering.Bookmark.LikeFragment
-import com.youth.farm_volunteering.Home.ApplicationConfirmActivity
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyActivity.MyActivityFragment
@@ -52,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.activity_main_toolbar)
         setSupportActionBar(toolbar)
 
+        supportActionBar!!.hide()
+
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
         bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist, null, false)
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage, null, false)
@@ -72,9 +69,7 @@ class MainActivity : AppCompatActivity() {
             tabAdapter.addFragment(tabImage_Array!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
         }
         for (i in 0..tabAdapter.count - 1) activity_main_bottomTabLayout.getTabAt(i)!!.setCustomView(tabAdapter.getTabDataList(i).tabView) // 탭에 커스텀뷰 설정
-        activity_main_bottomTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#3470FF"))
         activity_main_bottomTabLayout.setSelectedTabIndicatorHeight(6)
-
 
         activity_main_tabViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(activity_main_bottomTabLayout))
 
@@ -116,20 +111,11 @@ class MainActivity : AppCompatActivity() {
         var menuInflater = getMenuInflater()
         menuInflater!!.inflate(R.menu.menu_main, menu)
 
-        var searchIcon: Drawable = menu!!.getItem(0).icon
-        searchIcon.setColorFilter(0xFF000000.toInt(), PorterDuff.Mode.MULTIPLY)
-
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.menu_search_icon -> {
 
-                val intent = Intent(applicationContext, ApplicationConfirmActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         return false
     }

@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.PopularSubData
-import com.youth.farm_volunteering.data.WeekNonghwalData
 
 class WeekFarmAllAdapter(var dataListWeek: List<PopularSubData>) : RecyclerView.Adapter<WeekFarmAllViewHolder>() {
     override fun getItemCount(): Int = dataListWeek.size

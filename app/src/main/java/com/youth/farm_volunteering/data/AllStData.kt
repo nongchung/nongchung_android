@@ -7,17 +7,20 @@ class AllStData() : Parcelable {
     var idx: Int? = null
     var state: Int? = null
     var startDate: String? = null
+    var availPerson : Int? = null
 
     constructor(parcel: Parcel) : this() {
         idx = parcel.readValue(Int::class.java.classLoader) as? Int
         state = parcel.readValue(Int::class.java.classLoader) as? Int
         startDate = parcel.readString()
+        availPerson = parcel.readValue(Int::class.java.classLoader) as? Int
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(idx)
         parcel.writeValue(state)
         parcel.writeString(startDate)
+        parcel.writeValue(availPerson)
     }
 
     override fun describeContents(): Int {
@@ -33,4 +36,6 @@ class AllStData() : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
+
 }

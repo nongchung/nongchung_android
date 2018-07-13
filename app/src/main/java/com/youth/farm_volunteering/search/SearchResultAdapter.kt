@@ -8,8 +8,6 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.NonghwalData
-import com.youth.farm_volunteering.data.WeekNonghwalData
-import java.lang.StringBuilder
 
 class SearchResultAdapter(var dataListWeek: List<NonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataListWeek.size
@@ -58,7 +56,7 @@ class SearchResultAdapter(var dataListWeek: List<NonghwalData>) : RecyclerView.A
 //
 //    var onItemClick : View.OnClickListener? = null
 //
-//    override fun getItemCount(): Int = dataListWeek.size
+//    override fun getItemCount(): Int = dataListHome.size
 //
 //    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FarmGridViewHolder {
 //        val mainView = LayoutInflater.from(parent!!.context).inflate(R.layout.item_farm, parent, false)

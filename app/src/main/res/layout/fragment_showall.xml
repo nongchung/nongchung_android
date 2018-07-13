@@ -6,10 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ShowAllFragment">
 
+    <TextView
+        android:id="@+id/show_all_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:text="제목"
+        android:textSize="17sp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_showall_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="43.36dp">
+
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

@@ -3,7 +3,7 @@ package com.youth.farm_volunteering.data
 import android.os.Parcel
 import android.os.Parcelable
 
-class WeekNonghwalData() : NonghwalData(), Parcelable {
+open class HomeNonghwalData() : NonghwalData(), Parcelable {
     var nhIdx: Int? = null
 
     constructor(parcel: Parcel) : this() {
@@ -34,12 +34,12 @@ class WeekNonghwalData() : NonghwalData(), Parcelable {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<WeekNonghwalData> {
-        override fun createFromParcel(parcel: Parcel): WeekNonghwalData {
-            return WeekNonghwalData(parcel)
+    companion object CREATOR : Parcelable.Creator<HomeNonghwalData> {
+        override fun createFromParcel(parcel: Parcel): HomeNonghwalData {
+            return HomeNonghwalData(parcel)
         }
 
-        override fun newArray(size: Int): Array<WeekNonghwalData?> {
+        override fun newArray(size: Int): Array<HomeNonghwalData?> {
             return arrayOfNulls(size)
         }
     }
