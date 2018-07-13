@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.HomeNonghwalData
+import com.youth.farm_volunteering.data.BookmarkData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class WeekFarmAdapter(var dataListHome: ArrayList<HomeNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataListHome.size
@@ -38,17 +43,22 @@ class WeekFarmAdapter(var dataListHome: ArrayList<HomeNonghwalData>) : RecyclerV
         holderWeek.starNum.text = dataListHome[position].star.toString()
 
         holderWeek.isBooked.setOnClickListener {
-            Toast.makeText(holderWeek.itemView.context,dataListHome[position].isBooked.toString(),Toast.LENGTH_SHORT).show()
 
-            if(dataListHome[position].isBooked!=0){
-                holderWeek.isBooked.isSelected = false
-                dataListHome[position].isBooked=0
-            }
-            else
-            {
-                holderWeek.isBooked.isSelected = true
-                dataListHome[position].isBooked=1
-            }
+            var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataListHome[position].nhIdx.toString()))
+            bookMark.enqueue(object : Callback<BookmarkData> {
+                override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+                    Toast.makeText(holderWeek.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                    if (response!!.body().message == "Success to Add") {
+                        holderWeek.isBooked.isSelected = true
+                    } else if (response!!.body().message == "Already Exist") {
+                        Toast.makeText(holderWeek.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            })
         }
 
 
