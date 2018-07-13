@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering.MyActivity
 
+import android.graphics.Color
 import android.opengl.Visibility
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
         Glide.with(holder.itemView.context)
                 .load(mydataList[position].img)
                 .into(holder.img)
+
         holder.startDate.text = mydataList[position].startDate
         holder.endDate.text = mydataList[position].endDate
         holder.addr.text = mydataList[position].addr
@@ -38,12 +40,17 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
                 0-> holder.changemoney.setImageResource(R.drawable.mymy_standby)
                 1-> holder.changemoney.setImageResource(R.drawable.mymy_ic_complete)
                 2-> {
-                    holder.changemoney.setImageResource(R.drawable.mymy_complete)
+
                     holder.changeimg.visibility = View.GONE
+                    holder.changemoney.setImageResource(R.drawable.mymy_complete)
                 }
                 3-> {
-                    holder.changemoney.setImageResource(R.drawable.mymy_cancel)
+
                     holder.changeimg.visibility = View.GONE
+                    holder.changemoney.setImageResource(R.drawable.mymy_cancel)
+                    holder.canceltext.visibility = View.VISIBLE
+                    holder.img.setColorFilter(Color.parseColor("#8A000000"))
+
                 }
                 4 -> {
                     holder.changemoney.setImageResource(R.drawable.mymy_extention)

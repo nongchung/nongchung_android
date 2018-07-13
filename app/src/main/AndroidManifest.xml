@@ -84,7 +84,7 @@
         <activity android:name=".MyPage.PushActivity" />
         <activity android:name=".MyPage.NoticeActivity" />
         <activity android:name=".MyPage.FaqActivity" />
-        <!--<activity android:name=".Home.FarmerFrofile.FarmerProfileActivity"></activity>-->
+        <activity android:name=".Home.FarmProfile.FarmProfileActivity"></activity>
 
 
         <activity android:name=".area.AreaSelectActivity"></activity>

@@ -24,6 +24,7 @@ class MyactivityViewHolder(itemView : View?) : RecyclerView.ViewHolder(itemView)
     var changeimg : ImageView = itemView!!.findViewById(R.id.my_ic_ing)
     var changemoney : ImageView = itemView!!.findViewById(R.id.my_deposit)
     var changebar : ProgressBar = itemView!!.findViewById(R.id.progressBar_blue)
+    var canceltext : TextView = itemView!!.findViewById(R.id.cancel_text)
     //var rState : TextView = itemView!!.findViewById(R.id.my_people) 후기작성및 수정버튼활성화
    // var rIdx : TextView = itemView!!.findViewById(R.id.my_people)
 }

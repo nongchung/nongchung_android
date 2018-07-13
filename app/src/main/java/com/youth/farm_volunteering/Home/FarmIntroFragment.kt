@@ -1,4 +1,5 @@
 package com.youth.farm_volunteering.Home
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -6,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.Home.FarmProfile.FarmProfileActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.DetailSchData
 import com.youth.farm_volunteering.data.FarmInfoData
@@ -63,15 +65,20 @@ class FarmIntroFragment : Fragment() {
 //                        .load(dataList[position]) //String 줘서 이렇게??
 //                        .into(holder.FarmBoxReviewImg)
 
-        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
-
-        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
-        v.scheduleView_rv.adapter = scheduleAdapter
+        // 스캐줄부분은 잠시 생략...
+//        scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
+//
+//        v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
+//        v.scheduleView_rv.adapter = scheduleAdapter
 
         //size가 6이상일때는 +이미지가 표시되게 함
 //            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
 //            startActivity(intent)
 
+        v.detail_profile_watch_btn.setOnClickListener(View.OnClickListener  {
+            var v = Intent(this.context,FarmProfileActivity::class.java)
+            startActivity(v)
+        })
 
         return v
 
