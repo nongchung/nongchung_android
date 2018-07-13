@@ -48,6 +48,14 @@ interface NetworkService {
             @Query("idx") nhIdx: Int
     ): Call<DetailNonghwalResponseData>
 
+    @GET("/api/search")
+    fun search(
+            @Query("start") startDate: String,
+            @Query("end") endDate: String,
+            @Query("person") personCount: Int,
+            @Query("scontent") content : String,
+            @Query("area") areaArrayString : String
+    ): Call<SearchResponseData>
     @GET("/api/review")
     fun review(
             @Query("nhIdx") nhIdx: Int
