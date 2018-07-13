@@ -24,7 +24,7 @@ class FarmProfileAdapter(var profileList: List<FarmerProfileData>) : RecyclerVie
     override fun onBindViewHolder(holderWeek: FarmProfileViewHolder, position: Int) {
 
         Glide.with(holderWeek.itemView.context)
-                .load(profileList[position].farmImg.toString())
+                .load(profileList[position].farmImg)
                 .into(holderWeek.profilefarmImg)
 //        holderWeek.profileisBooked.text = profileList[position].isBooked.toString()
         holderWeek.profilenhName.text = profileList[position].nhName
