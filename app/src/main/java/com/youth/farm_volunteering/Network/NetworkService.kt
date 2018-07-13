@@ -15,10 +15,7 @@ interface NetworkService {
     //더보기(마이페이지)
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
-
-<<<<<<< HEAD
-    @GET("/api/bookmark")
-    fun like(): Call<LikeResponseData>
+    
 
     @GET( "api/activity")
     fun myactivity(
@@ -26,7 +23,7 @@ interface NetworkService {
     ): Call<MyActivityResponseData>
 
 
-=======
+
     //모두보기
     @GET("/api/home/more/moreNew?idx=6")
     fun all_new(): Call<AllNewResponseData>
@@ -41,7 +38,7 @@ interface NetworkService {
     fun like(): Call<LikeResponseData>
 
     //상세보기
->>>>>>> 81f0def17cd0051be7449f5933843db943d23a95
+
     @GET("/api/home/detail/nh")
     fun detailnonghwal(
             @Query("idx") nhIdx: Int
