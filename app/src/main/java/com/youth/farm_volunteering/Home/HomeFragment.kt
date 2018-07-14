@@ -17,14 +17,14 @@ import com.youth.farm_volunteering.Home.IntroThemeFarmAdapter
 import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.Home.PopulFarmAdapter
 import com.youth.farm_volunteering.data.*
-import kotlinx.android.synthetic.main.activity_main.*
+
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_showall.*
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import android.R.attr.fragment
+
 
 
 
@@ -91,7 +91,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!)
                         newFarmAdapter = NewFarmAdapter(newNonghwalList!!)          //클리어
                         populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
-                        vpAdapter = DemoInfiniteAdapter(activity.applicationContext, adDataList!!, true)
+                        vpAdapter = DemoInfiniteAdapter(activity!!.applicationContext, adDataList!!, true)
 
                         fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
                         fragment_home_newFarm_rv.adapter = newFarmAdapter
