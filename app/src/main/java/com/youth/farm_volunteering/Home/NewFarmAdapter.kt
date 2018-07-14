@@ -12,7 +12,7 @@ import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.HomeNonghwalData
 
-class NewFarmAdapter(var dataList: ArrayList<HomeNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>(){
+class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>(){
     override fun getItemCount(): Int = dataList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewFarmItemViewHolder {

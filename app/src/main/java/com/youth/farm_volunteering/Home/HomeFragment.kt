@@ -35,8 +35,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var vpAdapter: DemoInfiniteAdapter? = null
     var adViewPager: LoopingViewPager? = null
     //    var adViewPagerAdapter: AdViewPagerAdapter? = null
-    var popularHomeNonghwalList: ArrayList<HomeNonghwalData>? = null
-    var newNonghwalList : ArrayList<HomeNonghwalData>? = null
+    var popularHomeNonghwalList: List<HomeNonghwalData>? = null
+    var newNonghwalList : List<HomeNonghwalData>? = null
     var popularFarmList : List<PopulFarmData>? = null
     var detailThemeFarmList: List<DetailThemeFarmData>? = null
     var introThemeFarmList : List<Int>? = null

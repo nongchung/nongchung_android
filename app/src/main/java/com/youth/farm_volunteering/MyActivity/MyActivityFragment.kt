@@ -9,12 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.farm_count_cases
-import com.youth.farm_volunteering.R.id.farm_count_time
 import com.youth.farm_volunteering.data.TotalActivityData
 import kotlinx.android.synthetic.main.fragment_myactivity.*
 import kotlinx.android.synthetic.main.fragment_myactivity.view.*
-import kotlinx.android.synthetic.main.item_myactivity.*
 import retrofit2.Response
 import java.util.*
 
@@ -37,20 +34,23 @@ class MyActivityFragment : Fragment() {
             }
 
             override fun onResponse(call: retrofit2.Call<MyActivityResponseData>, response: Response<MyActivityResponseData>) {
+                if(response!!.isSuccessful){
+                    if(response!!.body().message == "success to show activity"){
+                        myList = response.body().data
+                        timeList = response.body().total
 
-                myList = response.body().data
-                timeList = response.body().total
-
-                myAdapter = MyactivityAdapter(myList!!)
-                farm_count_cases.setText(timeList!![0].tcount.toString())
-                farm_count_time.setText(timeList!![0].ttime.toString())
+                        myAdapter = MyactivityAdapter(myList!!)
+                        farm_count_cases.setText(timeList!![0].tcount.toString())
+                        farm_count_time.setText(timeList!![0].ttime.toString())
 
 
-                myAdapter = MyactivityAdapter(myList!!)
+                        myAdapter = MyactivityAdapter(myList!!)
 
-                v.my_rv.layoutManager = LinearLayoutManager(context)
-                v.my_rv.adapter = myAdapter
+                        v.my_rv.layoutManager = LinearLayoutManager(context)
+                        v.my_rv.adapter = myAdapter
 
+                    }
+                }
             }
         })
 

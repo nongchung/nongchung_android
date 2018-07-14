@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.data.HomeNonghwalData
 
-class WeekFarmAdapter(var dataListHome: ArrayList<HomeNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
+class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataListHome.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
@@ -40,6 +40,7 @@ class WeekFarmAdapter(var dataListHome: ArrayList<HomeNonghwalData>) : RecyclerV
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
             intent.putExtra("populData", dataListHome[position] as Parcelable)
+
 
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

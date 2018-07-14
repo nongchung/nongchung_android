@@ -17,14 +17,16 @@ import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
  */
 class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
 
-    var selectedIdx: Int? = null
+    var selectedChildIdx: Int? = null
     var selectedDate: String? = null
+    var selectedIdx : Int? = null
 
     var onDismissListener: DialogInterface.OnDismissListener? = null
     var applyList: ArrayList<DetailApplyData>? = null
     var getDetailScheduleList: ArrayList<DetailSchData>? = null
     var getDetailAllStartDate: ArrayList<AllStData>? = null
     var getDetailMyScheduleActivities: ArrayList<Int>? = null
+    var getDetailNearestStartDate : String? = null
 
     var dateClickListener: View.OnClickListener? = null
 
@@ -36,7 +38,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         getDetailScheduleList = arguments.getParcelableArrayList("scheList")
         getDetailMyScheduleActivities = arguments.getIntegerArrayList("myScheduleActivities")
         getDetailAllStartDate = arguments.getParcelableArrayList("allStartItems")
-
+        getDetailNearestStartDate = arguments.getString("nearestStartDate")
 
 //        applyList = Arrays.asList(arrayOfNulls<AllStData>(getDetailAllStartDate!!.size))
 
@@ -66,8 +68,9 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
 //    }
 
     override fun onClick(v: View?) {
-        selectedIdx = v!!.getTag() as Int
-        selectedDate  = applyList!!.get(selectedIdx!!).apply_rv_schedule
+        selectedChildIdx = v!!.getTag() as Int
+        selectedDate  = applyList!!.get(selectedChildIdx!!).apply_rv_schedule
+        selectedIdx = getDetailAllStartDate!![selectedChildIdx!!].idx
 
         dismiss()
 //        override fun onClick(v: View?) {
