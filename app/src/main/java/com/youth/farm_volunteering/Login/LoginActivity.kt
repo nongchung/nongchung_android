@@ -2,9 +2,8 @@ package com.youth.farm_volunteering.login
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
@@ -13,8 +12,6 @@ import com.youth.farm_volunteering.SignUp.BUNDLE_KEY_PASSWORD
 import com.youth.farm_volunteering.SignUp.RESULT_REQUEST_LOGIN
 import com.youth.farm_volunteering.SignUp.SignupActivity1
 import com.youth.farm_volunteering.data.LoginResponseData
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,8 +44,21 @@ class LoginActivity : AppCompatActivity() {
                         var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
                         var editor = sharedPreference.edit();
                         editor.putString(LoginToken.PREF_KEY, response.body().token)
+                        editor.putString("uName", response.body().data!![0].name)
+                        editor.putInt("uPoint", response.body().data!![0].point!!)
+                        editor.putString("uImg", response.body().data!![0].img)
+                        editor.putString("uNickname", response.body().data!![0].nickname)
+                        editor.putInt("uAge", response.body().data!![0].age!!)
+
                         editor.commit()
                         LoginToken.token = response.body().token
+
+                        LoginData.name = response.body().data!![0].name
+                        LoginData.point = response.body().data!![0].point
+                        LoginData.img = response.body().data!![0].img
+                        LoginData.nickname = response.body().data!![0].nickname
+                        LoginData.age = response.body().data!![0].age
+
                         Toast.makeText(this@LoginActivity, response.body().data!!.get(0).name + "로그인 성공!", Toast.LENGTH_SHORT).show()
                         finish()
                     }

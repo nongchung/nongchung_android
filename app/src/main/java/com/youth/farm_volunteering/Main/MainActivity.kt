@@ -21,7 +21,11 @@ import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_review_write.view.*
 import org.sopt.cocochart.client.Main.TabAdapter
+import android.view.KeyEvent
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar!!.hide()
+
+
+
 
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
         bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist, null, false)

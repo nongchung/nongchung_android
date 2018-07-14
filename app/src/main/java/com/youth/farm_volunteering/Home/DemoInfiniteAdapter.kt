@@ -28,8 +28,6 @@ class DemoInfiniteAdapter(context: Context, itemList: List<AdData>, isInfinite: 
                 .load(itemList[listPosition].img)
                 .into(convertView.findViewById(R.id.item_slideImage))
 //        convertView.findViewById<ImageView>(R.id.item_slideImage).setBackgroundResource(itemList[listPosition].img)
-        convertView.findViewById<TextView>(R.id.textviewAdTitle).text = itemList[listPosition].title
-        convertView.findViewById<TextView>(R.id.textviewAdDesc).text = itemList[listPosition].description
         convertView.findViewById<TextView>(R.id.textviewAdCurCnt).text = itemList[listPosition].idx.toString() + " / "
         convertView.findViewById<TextView>(R.id.textviewAdSize).text = itemList.size.toString()
     }
