@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -23,12 +24,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.youth.farm_volunteering.Expanded.ExpandFragment
+import com.youth.farm_volunteering.Home.ApplicationActivity
 import com.youth.farm_volunteering.Home.DetailTabAdapter
 import com.youth.farm_volunteering.Home.FarmIntroFragment
 import com.youth.farm_volunteering.Home.FarmReviewFragment
 import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.Home.Schedule.ScheduleAdapter
 import com.youth.farm_volunteering.data.*
+import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,8 +44,11 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     lateinit var applyList: ArrayList<DetailApplyData>
     lateinit var detailApplyAdapter: DetailApplyAdapter
     private lateinit var mMap: GoogleMap
+
+
     //    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var toolbar: Toolbar? = null
+    var userDataList: ArrayList<UserData>? = null
 
     var detailNonghwalList: NhInfoData? = null
     var detailFriendInfoList: ArrayList<FriendInfoData>? = null
@@ -52,9 +58,10 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var detailNearestStartDate: String? = null
     lateinit var detailAllStartDate: ArrayList<AllStData>
     var detailMyScheduleActivities: ArrayList<Int>? = null
+    var scheIdx: Int? = null
 
     lateinit var detailTabAdapter: DetailTabAdapter
-    var scheduleAdapter : ScheduleAdapter? = null
+    var scheduleAdapter: ScheduleAdapter? = null
 
     var fragment_Array: ArrayList<Fragment>? = ArrayList()
     var tabtextArray: ArrayList<String>? = null
@@ -79,6 +86,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         var isFromSearch: Boolean = intent.getBooleanExtra("is_from_search", false)
         var populData: NonghwalData
+
         if (!isFromSearch) {
             populData = intent.getParcelableExtra<HomeNonghwalData>("populData")
         } else {
@@ -101,9 +109,17 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     detailScheduleList = response.body().schedule!!           //BottomSheetDialog 신청하기
                     detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
                     detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
+
+
+//                    var abc : SimpleDateFormat? = null
+//                    var date : Date? = null
+//                    var dateToStr : String? = null
+//                    abc = SimpleDateFormat("yyyy-MM-dd")
+
                     if (response.body().myScheduleActivities != null) {
                         detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 sche
                     }
+
 
 //                    detailApplyAdapter = DetailApplyAdapter(detailScheduleList, supportFragmentManager)
                     detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, populData.getRealId()!!,
@@ -135,23 +151,44 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         })
 
 
-//        buttonApplyButton.setOnClickListener {
-//            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(populData.getRealId()!!, 3)
-//            applyCall.enqueue(object : retrofit2.Callback<applyResponseData> {
-//                override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
-//                    if (response!!.isSuccessful) {
-//                        if (response!!.body().message == "Success To Request For Application") {
+        buttonApplyButton.setOnClickListener {
+            if (scheIdx == null) {
+                scheIdx = detailAllStartDate[0].idx
+            }
+
+            var getUserInfo = ApplicationController.instance!!.networkService!!.getUserInfo()
+            getUserInfo.enqueue(object : Callback<UserResponseData> {
+                override fun onResponse(call: Call<UserResponseData>?, response: Response<UserResponseData>?) {
+                    if (LoginToken.token != null) {
+                        if (response!!.isSuccessful) {
+                            if (response!!.body().message == "Success To Get User Info") {
+                                userDataList = response.body().data
+                                val intent = Intent(applicationContext, ApplicationActivity::class.java)
+                                intent.putParcelableArrayListExtra("userData", userDataList)
+                                intent.putExtra("nhIdx", populData!!.idx)
+                                intent.putExtra("nhName", populData!!.name)
+                                intent.putExtra("nhAddr", populData!!.addr)
+                                intent.putExtra("nhPrice", populData!!.price)
+                                intent.putExtra("nhImg", populData!!.img)
+                                intent.putExtra("scheDate", buttonApplyDate.text.toString())
+                                intent.putExtra("scheIdx", scheIdx)
+                                intent.putExtra("period", populData.period)
+                                startActivity(intent)
+                            }
+                        }
+                    } else {
+                        Toast.makeText(applicationContext, "로그인이 필요합니다!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<UserResponseData>?, t: Throwable?) {
 //
-//                        }
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<applyResponseData>?, t: Throwable?) {
-//
-//                }
-//
-//            })
-//        }
+                    Toast.makeText(applicationContext, "Please Check Network", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+        }
 
         buttonApplyDate.setOnClickListener {
             bottomSheetDialog = BottomSheetDialog.instance
@@ -159,9 +196,16 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             bundle.putParcelableArrayList("scheList", detailScheduleList)
             bundle.putIntegerArrayList("myScheduleActivities", detailMyScheduleActivities)
             bundle.putParcelableArrayList("allStartItems", detailAllStartDate)
+            bundle.putString("nearestStartDate", detailNearestStartDate)
             var bottomSheetDialog = BottomSheetDialog.instance
             bottomSheetDialog.onDismissListener = DialogInterface.OnDismissListener {
-                buttonApplyDate.text = bottomSheetDialog.selectedDate
+                if (bottomSheetDialog.selectedDate == null) {
+                    buttonApplyDate.text = detailNearestStartDate
+                } else {
+                    buttonApplyDate.text = bottomSheetDialog.selectedDate
+                }
+
+                scheIdx = bottomSheetDialog.selectedIdx
             }
 
             bottomSheetDialog!!.arguments = bundle

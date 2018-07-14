@@ -51,7 +51,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView59"
+            android:id="@+id/textViewUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -78,8 +78,8 @@
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="@+id/textView19"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView59"
-            app:layout_constraintTop_toTopOf="@+id/textView59" />
+            app:layout_constraintStart_toEndOf="@+id/textViewUserName"
+            app:layout_constraintTop_toTopOf="@+id/textViewUserName" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -116,75 +116,70 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:src="@drawable/complete_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline20"
             app:layout_constraintStart_toStartOf="@+id/guideline19"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/complete_arrow" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/textview_confirm_startmonth"
+            android:layout_width="wrap_content"
+            android:layout_height="11dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="2018.6"
+            android:textColor="#8A000000"
+            android:textSize="13sp"
+            tools:layout_editor_absoluteX="91dp"
+            tools:layout_editor_absoluteY="15dp" />
+
+        <TextView
+            android:id="@+id/textview_confirm_endmonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="2018.6"
-            android:textSize="13sp"
             android:textColor="#8A000000"
-            app:layout_constraintBottom_toTopOf="@+id/textView34"
-            app:layout_constraintEnd_toStartOf="@+id/guideline15"
-            app:layout_constraintStart_toStartOf="@+id/guideline19"
-            app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
-
-        <TextView
-            android:id="@+id/textView33"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="2018.6"
             android:textSize="13sp"
-            android:textColor="#8A000000"
-            app:layout_constraintBottom_toTopOf="@+id/textView35"
+            app:layout_constraintBottom_toTopOf="@+id/textview_confirm_enddate"
             app:layout_constraintEnd_toStartOf="@+id/guideline20"
             app:layout_constraintStart_toStartOf="@+id/guideline15"
-            app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView34"
+            android:id="@+id/textview_confirm_startdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="29"
-            android:textSize="35sp"
             android:textColor="#DE000000"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline15"
             app:layout_constraintStart_toStartOf="@+id/guideline19"
-            app:layout_constraintTop_toBottomOf="@+id/textView27"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toBottomOf="@+id/textview_confirm_startmonth" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/textview_confirm_enddate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="31"
-            android:textSize="35sp"
             android:textColor="#DE000000"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline20"
             app:layout_constraintStart_toStartOf="@+id/guideline15"
-            app:layout_constraintTop_toBottomOf="@+id/textView33"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintTop_toBottomOf="@+id/textview_confirm_endmonth" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -240,7 +235,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <TextView
-            android:id="@+id/textView48"
+            android:id="@+id/textViewConfirmTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -248,7 +243,7 @@
             android:text="제주행복 감귤 농장 체험"
             android:textSize="13sp"
             android:textColor="#DE000000"
-            app:layout_constraintBottom_toTopOf="@+id/textView49"
+            app:layout_constraintBottom_toTopOf="@+id/textViewConfirmAddr"
             app:layout_constraintStart_toStartOf="@+id/guideline24"
             app:layout_constraintTop_toBottomOf="@+id/view4"
             android:fontFamily="@font/nanumsquareround_otfb"/>
@@ -261,7 +256,7 @@
             app:layout_constraintGuide_percent="0.15555556" />
 
         <TextView
-            android:id="@+id/textView49"
+            android:id="@+id/textViewConfirmAddr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -269,13 +264,13 @@
             android:text="제주특별자치도 서귀포시"
             android:textSize="13sp"
             android:textColor="#DE000000"
-            app:layout_constraintBottom_toTopOf="@+id/textView50"
+            app:layout_constraintBottom_toTopOf="@+id/textViewConfirmPrice"
             app:layout_constraintStart_toStartOf="@+id/guideline24"
-            app:layout_constraintTop_toBottomOf="@+id/textView48"
+            app:layout_constraintTop_toBottomOf="@+id/textViewConfirmTitle"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
-            android:id="@+id/textView50"
+            android:id="@+id/textViewConfirmPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -285,7 +280,7 @@
             android:textColor="#DE000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline24"
-            app:layout_constraintTop_toBottomOf="@+id/textView49"
+            app:layout_constraintTop_toBottomOf="@+id/textViewConfirmAddr"
             android:fontFamily="@font/nanumsquareround_otfb"/>
     </android.support.constraint.ConstraintLayout>
 
@@ -299,7 +294,7 @@
             android:background="#CBCBCB"/>
 
         <ProgressBar
-            android:id="@+id/my_progressBar"
+            android:id="@+id/progressBarConfrim"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -344,11 +339,11 @@
             android:textSize="11sp"
             android:textColor="#DE000000"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toBottomOf="@+id/my_progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarConfrim"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
-            android:id="@+id/textView38"
+            android:id="@+id/textViewLeftPersonBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -356,7 +351,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nanumsquareround_otfb"
-            android:text="      만 더 신청하면 농활을 갈 수 있어요!\n조금만 기다려 주세요!"
+            android:text="     만 더 신청하면 농활을 갈 수 있어요!\n조금만 기다려 주세요!"
             android:textAlignment="center"
             android:textColor="#DE000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -372,18 +367,18 @@
             android:textSize="11sp"
             android:textColor="#8A000000"
             app:layout_constraintEnd_toStartOf="@+id/guideline23"
-            app:layout_constraintTop_toBottomOf="@+id/my_progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarConfrim"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
-            android:id="@+id/textView51"
+            android:id="@+id/textViewLeftPersonTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 3명"
             android:textColor="#F25620"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/textView37"
-            app:layout_constraintTop_toBottomOf="@+id/my_progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarConfrim"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
@@ -393,18 +388,18 @@
             android:text=" 남았습니다!"
             android:textSize="11sp"
             android:textColor="#DE000000"
-            app:layout_constraintStart_toEndOf="@+id/textView51"
-            app:layout_constraintTop_toBottomOf="@+id/my_progressBar"
+            app:layout_constraintStart_toEndOf="@+id/textViewLeftPersonTop"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarConfrim"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
             android:id="@+id/textView53"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3분"
+            android:text="3"
             android:textColor="#F25620"
-            app:layout_constraintStart_toStartOf="@+id/textView38"
-            app:layout_constraintTop_toTopOf="@+id/textView38"
+            app:layout_constraintStart_toStartOf="@+id/textViewLeftPersonBottom"
+            app:layout_constraintTop_toTopOf="@+id/textViewLeftPersonBottom"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
     </android.support.constraint.ConstraintLayout>

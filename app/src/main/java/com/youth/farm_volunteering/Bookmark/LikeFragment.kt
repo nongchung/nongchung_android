@@ -3,7 +3,6 @@ package com.youth.farm_volunteering.Bookmark
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_like.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class LikeFragment : Fragment() {
 
@@ -42,16 +40,18 @@ class LikeFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<LikeResponseData>, response: Response<LikeResponseData>) {
+                if(response!!.isSuccessful){
+                    if(response!!.body().message == "Success"){
+                        likeList = response.body().bmList
+                        likeAdapter = LikeAdapter(likeList!!)
+                        fragment_like_rv.adapter = likeAdapter
 
-                likeList = response.body().bmList
-                likeAdapter = LikeAdapter(likeList!!)
-                fragment_like_rv.adapter = likeAdapter
-
-                //layoutManager 안 달아주면 list가 뜨지 않어 ㅜㅜ 이거 몰라서 디지는 줄 알았자너 ㅜㅜ 멍청이였어
-                fragment_like_rv.layoutManager = LinearLayoutManager(context)
-                like_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                fragment_like_rv!!.setLayoutManager(like_linearLayoutManager)
-
+                        //layoutManager 안 달아주면 list가 뜨지 않어 ㅜㅜ 이거 몰라서 디지는 줄 알았자너 ㅜㅜ 멍청이였어
+                        fragment_like_rv.layoutManager = LinearLayoutManager(context)
+                        like_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                        fragment_like_rv!!.setLayoutManager(like_linearLayoutManager)
+                    }
+                }
             }
         })
 

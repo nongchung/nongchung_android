@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.data.HomeResponseData
 import com.youth.farm_volunteering.data.HomeNonghwalData
+import com.youth.farm_volunteering.data.HomeResponseData
 import kotlinx.android.synthetic.main.activity_show_all.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,7 +14,7 @@ import retrofit2.Response
 
 class ShowAllActivity : AppCompatActivity() {
 
-    var popularHomeNonghwalList: ArrayList<HomeNonghwalData>? = null
+    var popularHomeNonghwalList: List<HomeNonghwalData>? = null
     lateinit var weekFarmAdapter: WeekFarmAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
