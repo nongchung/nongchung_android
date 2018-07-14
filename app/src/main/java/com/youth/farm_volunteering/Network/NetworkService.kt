@@ -110,10 +110,10 @@ interface NetworkService {
     ): Call<PasswordResourceData>
 
     @FormUrlEncoded
-    @POST("/api/home/request")
+    @POST("api/home/request")
     fun applyNh(
-            @Field("schIdx") schIdx : Int,
-            @Field("nhIdx") nhIdx : Int
+            @Field("nhIdx") nhIdx : Int,
+            @Field("schIdx") schIdx : Int
     ) : Call<applyResponseData>
 
     @GET("/api/home/request/user")

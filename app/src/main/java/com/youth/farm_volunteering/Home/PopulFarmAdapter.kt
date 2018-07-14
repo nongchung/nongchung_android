@@ -18,10 +18,23 @@ class PopulFarmAdapter(var dataList: List<PopulFarmData>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: PopulFarmItemViewHolder, position: Int) {
 
-//        holder.imageviewPopulFarmFarm
-//        holder.imageviewPopulFarmFarmer
+//        Glide.with(holder.itemView.context)
+//                .load(dataList[position].farmImg)
+//                .into(holder.imageviewPopulFarmFarm)
+//        Glide.with(holder.itemView.context)
+//                .load(dataList[position].farmerImg)
+//                .into(holder.imageviewPopulFarmFarmer)
+
         holder.textviewPopulFarmTitle.text = dataList[position].name
         holder.textviewPopulFarmAddr.text = dataList[position].addr
+
+//        holder.itemView.setOnClickListener {
+//            val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
+//            intent.putExtra("populData", dataList[position] as Parcelable)
+//
+//            holder.itemView.context.startActivity(intent)
+//        }
+
     }
 
 }

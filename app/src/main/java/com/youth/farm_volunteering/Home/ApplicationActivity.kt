@@ -10,6 +10,7 @@ import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.UserData
 import kotlinx.android.synthetic.main.activity_application.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class ApplicationActivity : AppCompatActivity() {
@@ -31,6 +32,8 @@ class ApplicationActivity : AppCompatActivity() {
 
         getNhIdx = intent.getIntExtra("nhIdx", 0)
         getScheIdx = intent.getIntExtra("scheIdx", 0)
+
+
         editTextName.setText(userDataList[0].name)
         editTextEmail.setText(userDataList[0].mail)
         editTextPhone.setText(userDataList[0].hp)
@@ -51,8 +54,10 @@ class ApplicationActivity : AppCompatActivity() {
         textViewAddr.text = intent.getStringExtra("nhAddr")
 
         buttonConfirm.setOnClickListener {
-            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(getScheIdx!!, getNhIdx!!)
-            applyCall.enqueue(object : retrofit2.Callback<applyResponseData> {
+            Toast.makeText(applicationContext, "신청완료!", Toast.LENGTH_SHORT).show()
+//            finish()
+            var applyCall = ApplicationController.instance!!.networkService!!.applyNh(7, 17)
+            applyCall.enqueue(object : Callback<applyResponseData> {
                 override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
                     if (response!!.isSuccessful) {
                         if (response!!.body().message == "Success To Request For Application") {
@@ -70,6 +75,8 @@ class ApplicationActivity : AppCompatActivity() {
                             intent.putExtra("start_date", textViewDate.text.toString())
 
                             startActivity(intent)
+                        } else if(response.body().message == "Duplicate to Request"){
+                            Toast.makeText(applicationContext, "시간 중복 불가!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

@@ -2,6 +2,7 @@ package com.youth.farm_volunteering.Home
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.youth.farm_volunteering.R
 import kotlinx.android.synthetic.main.activity_application_confirm.*
 import java.text.SimpleDateFormat
@@ -48,5 +49,9 @@ class ApplicationConfirmActivity : AppCompatActivity() {
         textview_confirm_startdate.text = startDate!!.day.toString()
         textview_confirm_endmonth.text = endDate!!.year.toString() + "." + (endDate!!.month + 1)
         textview_confirm_enddate.text = endDate!!.day.toString()
+
+        buttonFinalConfrim.setOnClickListener{
+            Toast.makeText(applicationContext, "신청 완료!", Toast.LENGTH_SHORT).show()
+        }
     }
 }

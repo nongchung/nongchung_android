@@ -140,20 +140,20 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
         when (v) {
-            fragment_home_weeklyHotFarm_showAll_txt -> {
-                val fragment = ShowAllFragment()
-                val args = Bundle()
-                args.putString("title", "이번 주 인기농활")
-                fragment.setArguments(args)
-                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
-            }
-            fragment_home_newFarm_showAll_txt -> {
-                val fragment = ShowAllFragment()
-                val args = Bundle()
-                args.putString("title", "새로운 농활")
-                fragment.setArguments(args)
-                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
-            }
+//            fragment_home_weeklyHotFarm_showAll_txt -> {
+//                val fragment = ShowAllFragment()
+//                val args = Bundle()
+//                args.putString("title", "이번 주 인기농활")
+//                fragment.setArguments(args)
+//                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
+//            }
+//            fragment_home_newFarm_showAll_txt -> {
+//                val fragment = ShowAllFragment()
+//                val args = Bundle()
+//                args.putString("title", "새로운 농활")
+//                fragment.setArguments(args)
+//                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
+//            }
 
 
 //            fragment_home_themeFarm_showAll_txt -> {

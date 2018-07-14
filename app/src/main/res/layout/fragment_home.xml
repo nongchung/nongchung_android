@@ -198,6 +198,7 @@
 
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
+            android:background="#D9E7F4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
@@ -234,6 +235,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:background="#D9E7F4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

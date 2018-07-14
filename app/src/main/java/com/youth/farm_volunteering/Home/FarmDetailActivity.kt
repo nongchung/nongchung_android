@@ -165,7 +165,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                                 userDataList = response.body().data
                                 val intent = Intent(applicationContext, ApplicationActivity::class.java)
                                 intent.putParcelableArrayListExtra("userData", userDataList)
-                                intent.putExtra("nhIdx", populData!!.idx)
+                                intent.putExtra("nhIdx", populData!!.getRealId())
                                 intent.putExtra("nhName", populData!!.name)
                                 intent.putExtra("nhAddr", populData!!.addr)
                                 intent.putExtra("nhPrice", populData!!.price)
