@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3F3F5"
     android:layout_gravity="center_horizontal"
-    tools:context=".Bookmark.LikeFragment">
+    tools:context=".Bookmark.LikeFragment"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title=" ">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="찜한 목록"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:layout_marginRight="12dp"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:layout_centerHorizontal="true"
         android:id="@+id/fragment_like_rv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         >
 
     </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</LinearLayout>

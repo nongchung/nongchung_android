@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering
 
 import android.content.Intent
+import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -36,11 +37,12 @@ class NewFarmAllAdapter(var dataList: List<AllNewData>) : RecyclerView.Adapter<N
         }
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("farm_img", dataList[position].img)
-            intent.putExtra("farm_location", dataList[position].addr)
-            intent.putExtra("farm_price", dataList[position].price)
-            intent.putExtra("farm_days", dataList[position].period)
-            intent.putExtra("farm_name", dataList[position].name)
+            intent.putExtra("populData", dataList[position] as Parcelable)
+
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
             //추천수
             //설명
