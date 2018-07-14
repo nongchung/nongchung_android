@@ -22,10 +22,10 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.06111111" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_userimage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/farmer_profile1_circleprofile"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
@@ -60,19 +60,19 @@
                 android:id="@+id/farmer_profile_comment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="23dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="언제나 여러분들을 환영합니다\n궁금한 점이 있으면 편하게 연락 주세요 ^^~ㅎㅎㅎㅎ \n궁금한 점이 있으면 편하게 연락 주세요 ^^~ㅎㅎㅎㅎ\n궁금한 점이 있으면 편하게 연락 주세요 ^^~ㅎㅎㅎㅎ"
                 android:textColor="#8A000000"
+                android:lineSpacingExtra="3dp"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline50"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/farmer_profile_phone"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/farmer_profile_phone" />
 
             <TextView
                 android:id="@+id/farmer_profile_name"
@@ -134,5 +134,4 @@
     </LinearLayout>
 
 </ScrollView>
-
 

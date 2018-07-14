@@ -28,6 +28,7 @@ class FarmProfileAdapter(var profileList: ArrayList<FarmerProfileData>) : Recycl
         holderWeek.profileperiod.text = profileList[position].period
         holderWeek.profileprice.text = profileList[position].price.toString()
         holderWeek.profiledatafarmImg.text = profileList[position].period
+        holderWeek.profileplace.text = profileList[position].place
 
 
 
