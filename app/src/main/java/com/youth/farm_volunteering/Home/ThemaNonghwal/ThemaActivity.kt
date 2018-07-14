@@ -14,11 +14,17 @@ import retrofit2.Response
 class ThemaActivity : AppCompatActivity() {
     var themaList : List<ThemaListData>? = null
     lateinit var themaAdapter: ThemaAdapter
+    var getPosition : Int? = null
+    var getImage : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_thema)
-        var profileCall = ApplicationController.instance!!.networkService!!.thema(idx = 1)
+
+        getPosition = intent.getIntExtra("themePosition",0)
+        getImage = intent.getIntExtra("themeImage", 0)
+
+        var profileCall = ApplicationController.instance!!.networkService!!.thema(getPosition!!)
         profileCall.enqueue(object : Callback<ThemaData> {
             override fun onFailure(call: Call<ThemaData>, t: Throwable?) {
                 Toast.makeText(applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
@@ -26,7 +32,7 @@ class ThemaActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<ThemaData>, response: Response<ThemaData>) {
                 themaList = response.body().data
-
+                imageviewThemeImage.setImageResource(getImage!!)
 
                 themaAdapter = ThemaAdapter(themaList!!)
 

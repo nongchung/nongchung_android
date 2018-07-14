@@ -6,5 +6,5 @@ class FarmerProfileData {
     var nhName : String? = null
     var period: String? = null
     var farmImg : String? = null
-    var isBooked : Int? = null
+//    var isBooked : Int? = null
 }

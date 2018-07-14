@@ -7,4 +7,5 @@ class ProfileFarmerInfoData {
     var farmerName : String? = null
     var farmerPhone : String? = null
     var farmerComment : String? = null
+    var farmerImg : String? = null
 }

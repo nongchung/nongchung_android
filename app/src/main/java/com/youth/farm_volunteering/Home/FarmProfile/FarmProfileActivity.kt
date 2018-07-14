@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
+import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.Home.WeekFarmAllAdapter
 import com.youth.farm_volunteering.NewFarmAllAdapter
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
 import kotlinx.android.synthetic.main.activity_fram_profile.*
+import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

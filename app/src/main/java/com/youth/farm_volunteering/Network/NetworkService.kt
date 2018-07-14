@@ -27,12 +27,12 @@ interface NetworkService {
 
     @GET("api/home/detail/farm")
     fun farmprofile(
-            @Path("idx") idx: Int
+            @Query("idx") idx: Int
     ): Call<FarmProfileResponseData>
 
-    @GET("api/home/theme")
+    @GET("api/home/theme/{idx}")
     fun thema(
-            @Query("idx") idx : Int
+            @Path("idx") idx : Int
     ): Call<ThemaData>
 
     //모두보기
