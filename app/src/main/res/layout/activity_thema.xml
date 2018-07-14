@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home.ThemaNonghwal.ThemaActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title=" ">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:gravity="center_horizontal"
+            android:text="테마별 농활"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imageviewThemeImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_banner1"
+
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/thema_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

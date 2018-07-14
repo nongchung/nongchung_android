@@ -63,14 +63,16 @@
                 android:layout_marginBottom="23dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="언제나 여러분들을 환영합니다\n궁금한 점이 있으면 편하게 연락 주세요 ^^~ㅎㅎㅎㅎ \n궁금한 점이 있으면 편하게 연락 주세요 ^^~ㅎㅎㅎㅎ\n궁금한 점이 있으면 편하게 연락 주세요 ^^~ㅎㅎㅎㅎ"
                 android:textColor="#8A000000"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline50"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
                 app:layout_constraintTop_toBottomOf="@+id/farmer_profile_phone"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/farmer_profile_name"
@@ -102,12 +104,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/farmer_profile1_phone"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="000 0000 0000"
                 android:textAlignment="center"
                 android:textColor="#8A000000"
                 app:layout_constraintStart_toStartOf="@+id/guideline39"
-                app:layout_constraintTop_toBottomOf="@+id/farmer_profile_name"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                app:layout_constraintTop_toBottomOf="@+id/farmer_profile_name" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline50"
@@ -122,7 +124,10 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/profile_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="12dp"
+            android:background="#F3F3F5">
         </android.support.v7.widget.RecyclerView>
 
 

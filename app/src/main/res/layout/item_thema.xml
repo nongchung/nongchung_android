@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/farm_profile"
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/farm_date_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#3470FF"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="2dp"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+
+        <ImageView
+            android:id="@+id/imageViewBookmark_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/selector_bookmark" />
+
+        <TextView
+            android:id="@+id/farm_new_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFAF00"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="NEW"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/farm_title_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="제주 행복 감귤 농장"
+            android:textColor="#DE000000"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/farm_price_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="20,000"
+            android:textColor="#DE000000"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
+            app:layout_constraintTop_toBottomOf="@+id/farm_address_profile" />
+
+        <TextView
+            android:id="@+id/farm_address_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="제주 서귀포시  "
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline13_profile"
+            app:layout_constraintTop_toBottomOf="@+id/farm_title_profile" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline13_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.044444446" />
+
+        <TextView
+            android:id="@+id/textView95"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="원"
+            android:textColor="#DE000000"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/farm_price_profile"
+            app:layout_constraintStart_toEndOf="@+id/farm_price_profile" />
+
+        <TextView
+            android:id="@+id/farm_profile_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="1박2일"
+            android:textColor="#DE000000"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/farm_title_profile"
+            app:layout_constraintTop_toTopOf="@+id/farm_title_profile" />
+    </android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#F3F3F5" />
+</LinearLayout>

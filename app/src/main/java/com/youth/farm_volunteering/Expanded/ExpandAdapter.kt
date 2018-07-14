@@ -82,8 +82,6 @@ class ExpandAdapter(var context: Context, var expandedView: ExpandableListView, 
         val title = convertView?.findViewById<TextView>(R.id.tv_title)
         title?.text = getChild(groupPosition, childPosition)
         title?.setOnClickListener {
-
-            Toast.makeText(context, getChild(groupPosition, childPosition), Toast.LENGTH_SHORT).show()
         }
 
         return convertView

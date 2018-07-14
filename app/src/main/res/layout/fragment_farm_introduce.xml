@@ -37,6 +37,7 @@
                 android:layout_marginTop="8dp"
                 android:isIndicator="true"
                 android:stepSize="0.5"
+                android:theme="@style/RatingBar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detail_introduce_name" />
@@ -46,8 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nanumsquareround_otfb"
                 android:lineSpacingExtra="5dp"
@@ -141,11 +142,13 @@
         </android.support.constraint.ConstraintLayout>
 
         <View
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="#F3F3F5" />
 
         <android.support.constraint.ConstraintLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -347,13 +350,13 @@
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="준비물"
-                android:textSize="11sp"
                 android:textColor="#8A000000"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline59"
-                app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text2"
@@ -362,7 +365,7 @@
                 android:layout_marginBottom="26dp"
                 android:layout_marginTop="14dp"
                 android:text="여벌 옷, 간식"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:textColor="#DE000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline59"
@@ -510,13 +513,13 @@
                 android:id="@+id/textView109"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="100dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nanumsquareround_otfb"
+                android:lineSpacingExtra="5dp"
                 android:text="문의 사항은 QA나 전화를 통해서 부탁드립니다.\n연락처 : 010 0000 0000 (농활청춘 담당자)"
                 android:textColor="#DE000000"
                 android:textSize="13sp"
-                android:lineSpacingExtra ="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline62"
                 app:layout_constraintTop_toBottomOf="@+id/textView110" />

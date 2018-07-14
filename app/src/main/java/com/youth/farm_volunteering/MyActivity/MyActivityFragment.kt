@@ -18,9 +18,9 @@ import java.util.*
 
 class MyActivityFragment : Fragment() {
 
-    var myList: List<MyActivityData>?=null
-    var timeList : List<TotalActivityData>? = null
-    lateinit var myAdapter : MyactivityAdapter
+    var myList: List<MyActivityData>? = null
+    var timeList: TotalActivityData? = null
+    lateinit var myAdapter: MyactivityAdapter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_myactivity, container, false)
@@ -34,17 +34,15 @@ class MyActivityFragment : Fragment() {
             }
 
             override fun onResponse(call: retrofit2.Call<MyActivityResponseData>, response: Response<MyActivityResponseData>) {
-                if(response!!.isSuccessful){
-                    if(response!!.body().message == "success to show activity"){
+                if (response!!.isSuccessful) {
+                    if (response!!.body().message == "success to show activity") {
                         myList = response.body().data
                         timeList = response.body().total
 
                         myAdapter = MyactivityAdapter(myList!!)
-                        farm_count_cases.setText(timeList!![0].tcount.toString())
-                        farm_count_time.setText(timeList!![0].ttime.toString())
+                        farm_count_cases.setText(timeList!!.tcount.toString())
+                        farm_count_time.setText(timeList!!.ttime.toString())
 
-
-                        myAdapter = MyactivityAdapter(myList!!)
 
                         v.my_rv.layoutManager = LinearLayoutManager(context)
                         v.my_rv.adapter = myAdapter

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="215dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@color/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="28dp"
             app:scrimVisibleHeightTrigger="200dp"
@@ -27,7 +27,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarDetail"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:background="#FFF"
                 app:layout_collapseMode="pin"/>
 
@@ -68,21 +68,34 @@
         android:layout_gravity="bottom"
         android:background="#FFF"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:weightSum="100">
 
         <Button
             android:id="@+id/buttonApplyDate"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:text="" />
+            android:background="@drawable/detail_greybox_bg"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="3dp"
+            android:text=""
+            android:textColor="#DE000000"
+            android:textSize="15sp"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <Button
             android:id="@+id/buttonApplyButton"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="30"
-            android:text="" />
+            android:background="@drawable/detail_apply"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="8dp"
+            android:text="신청하기"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
 
     </LinearLayout>
 

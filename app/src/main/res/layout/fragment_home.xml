@@ -41,18 +41,19 @@
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquareround_otfb"
                 android:layout_centerVertical="true"
-
+                android:textColor="#8A000000"
                 android:layout_marginStart="16dp"
                 android:layout_weight="9"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="이번 주 인기 농활"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/fragment_home_weeklyHotFarm_showAll_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,13 +61,18 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
-                android:text="모두보기"
                 android:fontFamily="@font/nanumsquareround_otfb"
+                android:src="@drawable/main_showall"
 
+                android:text="모두보기"
                 android:textAlignment="textEnd"
+                android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -98,27 +104,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:fontFamily="@font/nanumsquareround_otfb"
-
+                android:textColor="#8A000000"
                 android:layout_marginStart="16dp"
                 android:layout_weight="9"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="새로운 농활"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/fragment_home_newFarm_showAll_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/nanumsquareround_otfb"
                 android:layout_weight="1"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="모두보기"
                 android:textAlignment="textEnd"
+                android:textSize="11sp"
+                android:src="@drawable/main_showall"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -155,12 +164,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-
+                android:textColor="#8A000000"
                 android:layout_marginStart="16dp"
                 android:layout_weight="9"
                 android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="테마별 농활"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -198,12 +207,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:fontFamily="@font/nanumsquareround_otfb"
-
                 android:layout_marginStart="16dp"
+                android:textColor="#8A000000"
                 android:layout_weight="9"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="인기 농장"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
