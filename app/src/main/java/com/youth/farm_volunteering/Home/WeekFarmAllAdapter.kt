@@ -1,12 +1,10 @@
 package com.youth.farm_volunteering.Home
 
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.PopularSubData
 
@@ -39,17 +37,17 @@ class WeekFarmAllAdapter(var dataListWeek: List<PopularSubData>) : RecyclerView.
         holderWeek.starNumall.text = dataListWeek[position].star.toString()
 
 
-        holderWeek.itemView.setOnClickListener {
-            val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("farm_img", dataListWeek[position].img)
-            intent.putExtra("farm_location", dataListWeek[position].addr)
-            intent.putExtra("farm_price", dataListWeek[position].price)
-            intent.putExtra("farm_days", dataListWeek[position].period)
-            intent.putExtra("farm_name", dataListWeek[position].name)
-
-            //추천수
-            //설명
-            holderWeek.itemView.context.startActivity(intent)
-        }
+//        holderWeek.itemView.setOnClickListener {
+//            val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
+//            intent.putExtra("farm_img", dataListWeek[position].img)
+//            intent.putExtra("farm_location", dataListWeek[position].addr)
+//            intent.putExtra("farm_price", dataListWeek[position].price)
+//            intent.putExtra("farm_days", dataListWeek[position].period)
+//            intent.putExtra("farm_name", dataListWeek[position].name)
+//
+//            //추천수
+//            //설명
+//            holderWeek.itemView.context.startActivity(intent)
+//        }
     }
 }

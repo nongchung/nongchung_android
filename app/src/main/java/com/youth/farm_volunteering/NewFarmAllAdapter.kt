@@ -1,15 +1,11 @@
 package com.youth.farm_volunteering
 
-import android.content.Intent
-import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.Home.NewFarmAllViewHolder
-import com.youth.farm_volunteering.NewFarmAllAdapter
-import com.youth.farm_volunteering.Home.NewFarmItemViewHolder
 import com.youth.farm_volunteering.data.AllNewData
 
 class NewFarmAllAdapter(var dataList: List<AllNewData>) : RecyclerView.Adapter<NewFarmAllViewHolder>(){
@@ -35,18 +31,18 @@ class NewFarmAllAdapter(var dataList: List<AllNewData>) : RecyclerView.Adapter<N
                 1-> holder.imageviewNewFarmBookmarkall.isSelected = true
             }
         }
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataList[position] as Parcelable)
-
-
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
-            //추천수
-            //설명
-            holder.itemView.context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener{
+//            val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
+//            intent.putExtra("populData", dataList[position] as Parcelable)
+//
+//
+//            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//
+//            //추천수
+//            //설명
+//            holder.itemView.context.startActivity(intent)
+//        }
     }
 }

@@ -17,9 +17,7 @@ import com.youth.farm_volunteering.Home.IntroThemeFarmAdapter
 import com.youth.farm_volunteering.Home.NewFarmAdapter
 import com.youth.farm_volunteering.Home.PopulFarmAdapter
 import com.youth.farm_volunteering.data.*
-
 import kotlinx.android.synthetic.main.fragment_home.*
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -140,20 +138,22 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
         when (v) {
-//            fragment_home_weeklyHotFarm_showAll_txt -> {
-//                val fragment = ShowAllFragment()
-//                val args = Bundle()
-//                args.putString("title", "이번 주 인기농활")
-//                fragment.setArguments(args)
-//                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
-//            }
-//            fragment_home_newFarm_showAll_txt -> {
-//                val fragment = ShowAllFragment()
-//                val args = Bundle()
-//                args.putString("title", "새로운 농활")
-//                fragment.setArguments(args)
-//                fragmentManager.beginTransaction().add(R.id.activity_main_container, fragment).commit()
-//            }
+            fragment_home_weeklyHotFarm_showAll_txt -> {
+                val fragment = ShowAllFragment()
+                val args = Bundle()
+                args.putString("title", "이번 주 인기농활")
+                fragment.setArguments(args)
+                fragmentManager.beginTransaction().addToBackStack(null).add(R.id.activity_main_container, fragment).commit()
+
+            }
+            fragment_home_newFarm_showAll_txt -> {
+
+                val fragment = ShowAllFragment()
+                val args = Bundle()
+                args.putString("title", "새로운 농활")
+                fragment.setArguments(args)
+                fragmentManager.beginTransaction().addToBackStack(null).add(R.id.activity_main_container, fragment).commit()
+            }
 
 
 //            fragment_home_themeFarm_showAll_txt -> {
