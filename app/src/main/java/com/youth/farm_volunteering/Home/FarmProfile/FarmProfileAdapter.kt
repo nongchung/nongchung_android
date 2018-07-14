@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.FarmerProfileData
 
-class FarmProfileAdapter(var profileList: List<FarmerProfileData>) : RecyclerView.Adapter<FarmProfileViewHolder>() {
+class FarmProfileAdapter(var profileList: ArrayList<FarmerProfileData>) : RecyclerView.Adapter<FarmProfileViewHolder>() {
     override fun getItemCount(): Int = profileList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FarmProfileViewHolder {
@@ -18,10 +18,11 @@ class FarmProfileAdapter(var profileList: List<FarmerProfileData>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holderWeek: FarmProfileViewHolder, position: Int) {
-
-        Glide.with(holderWeek.itemView.context)
-                .load(profileList[position].farmImg)
-                .into(holderWeek.profilefarmImg)
+//
+//        Glide.with(holderWeek.itemView.context)
+//                .load(profileList[position].farmImg)
+//                .into(holderWeek.profilefarmImg)
+        holderWeek.profilefarmImg.setImageResource(profileList[position].farmImg!!.toInt())
 //        holderWeek.profileisBooked.text = profileList[position].isBooked.toString()
         holderWeek.profilenhName.text = profileList[position].nhName
         holderWeek.profileperiod.text = profileList[position].period
