@@ -3,6 +3,7 @@ package com.youth.farm_volunteering
 import android.content.Intent
 import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
                 }
 
                 override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                    Log.d("aaa", response!!.body().message)
                     if (response!!.body().message == "Success to Add") {
                         holderWeek.isBooked.isSelected = true
                     } else if (response!!.body().message == "Already Exist") {

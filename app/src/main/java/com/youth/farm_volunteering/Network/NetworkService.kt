@@ -118,4 +118,11 @@ interface NetworkService {
 
     @GET("/api/home/request/user")
     fun getUserInfo() : Call<UserResponseData>
+
+
+
+
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path="/api/bookmark", hasBody=true)
+    fun delete(@Field("nhIdx") nhIdx: Int): Call<BookmarkData>
 }

@@ -3,6 +3,7 @@ package com.youth.farm_volunteering.Home
 import android.content.Intent
 import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,15 +36,26 @@ class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapte
         holder.textviewNewFarmPrice.text = dataList[position].price.toString()
         holder.textviewNewFarmTitle.setText(dataList[position].name)
 
+        if (dataList[position].isBooked != null) {
+            when (dataList[position].isBooked) {
+                0 -> holder.imageviewNewFarmBookmark.isSelected = false
+                1 -> holder.imageviewNewFarmBookmark.isSelected = true
+            }
+        }
+
         holder.imageviewNewFarmBookmark.setOnClickListener {
+
+            Log.d("idx",dataList[position].nhIdx.toString())
+
 
             var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataList[position].nhIdx.toString()))
             bookMark.enqueue(object : Callback<BookmarkData> {
                 override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
                     Toast.makeText(holder.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
                 }
-
                 override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                    Log.d("aaa", response!!.body().message)
+
                     if (response!!.body().message == "Success to Add") {
                         holder.imageviewNewFarmBookmark.isSelected = true
                     } else if (response!!.body().message == "Already Exist") {
@@ -52,6 +64,19 @@ class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapte
                 }
 
             })
+
+//                override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+//
+////                    Log.d("aaa",response!!.body().message)
+////                    Log.d("aaa",response!!.body().toString())
+//
+//                    if (response!!.body().message == "Success to Add") {
+//                        holder.imageviewNewFarmBookmark.isSelected = true
+//                    } else if (response!!.body().message == "Already Exist") {
+//                        Toast.makeText(holder.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            })
         }
 
         holder.itemView.setOnClickListener {
