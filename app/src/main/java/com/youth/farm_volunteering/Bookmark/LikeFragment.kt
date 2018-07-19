@@ -59,7 +59,8 @@ class LikeFragment : Fragment(){
 
         requestManager = Glide.with(this)
 
-        var likeCall = ApplicationController.instance!!.networkService!!.like(); // 서버에서 데이터 가져오는거!!
+        var likeCall = ApplicationController.instance!!.networkService!!.like();
+        // 서버에서 데이터 가져오는거!!
         likeCall.enqueue(object : Callback<LikeResponseData> {
             override fun onFailure(call: Call<LikeResponseData>, t: Throwable?) {
                 Toast.makeText(activity, "like request fail", Toast.LENGTH_SHORT).show()
