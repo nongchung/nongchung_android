@@ -1,12 +1,16 @@
 package com.youth.farm_volunteering.MyPage
 
+import android.Manifest
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.youth.farm_volunteering.Main.MainActivity
 //import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.MyPageData
@@ -27,20 +32,22 @@ import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import pub.devrel.easypermissions.EasyPermissions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
 
-class MypageFragment : Fragment() {
+class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var REQ_CODE_SELECT_IMAGE = 100
-    lateinit var data : Uri
-    private var image : MultipartBody.Part? = null
-
+    lateinit var data: Uri
+    private var image: MultipartBody.Part? = null
+    private var selectedImage: Uri? = null
     var myPageData: MyPageData? = null
 
 
@@ -74,10 +81,9 @@ class MypageFragment : Fragment() {
 
         //프로필 사진 변경
         v.imageview_mypage_profile.setOnClickListener(View.OnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
-            intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
+            val photoPickerIntent = Intent(Intent.ACTION_PICK)
+            photoPickerIntent.type = "image/png"
+            startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
         })
 
         //닉네임 변경
@@ -138,71 +144,122 @@ class MypageFragment : Fragment() {
         return v
     }
 
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        Log.d(TAG, "Permission has been denied");
+    }
+
+    private fun getRealPathFromURIPath(contentURI: Uri, activity: Activity): String {
+        val cursor = activity.contentResolver.query(contentURI, null, null, null, null)
+        if (cursor == null) {
+            return contentURI.path
+        } else {
+            cursor.moveToFirst()
+            val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+            return cursor.getString(idx)
+        }
+    }
+
+
+    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
+        if (selectedImage != null) {
+            var filePath = getRealPathFromURIPath(selectedImage!!, MypageFragment@ this.activity);
+            var file = File(filePath);
+            val mFile = RequestBody.create(MediaType.parse("image/*"), file)
+            //body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
+            val fileToUpload = MultipartBody.Part.createFormData("file", file.name, mFile)
+
+            Log.d("photoa", "1")
+
+            var photo_change = ApplicationController.instance!!.networkService!!.change_photo(fileToUpload)
+            Log.d("photoa", "2")
+            photo_change.enqueue(object : Callback<MyPhoto> {
+
+                override fun onFailure(call: Call<MyPhoto>, t: Throwable?) {
+                    Log.d("photoa", "3")
+                    Toast.makeText(activity, "photo request fail", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<MyPhoto>, response: Response<MyPhoto>) {
+                    Log.d("aaa", response!!.code().toString())
+                    Log.d("aaa", response!!.message())
+                    if (response!!.isSuccessful) {
+
+                        if (response!!.body().message == "success To change photo") {
+                            Toast.makeText(activity, "성공일거야", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            })
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
                 try {
                     //if(ApplicationController.getInstance().is)
-                    this.data = data!!.data
-
-                    val options = BitmapFactory.Options()
-
-                    var input: InputStream? = null // here, you need to get your context.
-                    try {
-                        input = context.contentResolver.openInputStream(this.data)
-                    } catch (e: FileNotFoundException) {
-                        e.printStackTrace()
-                    }
-
-                    val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
-                    val baos = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                    val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
+//                    this.data = data!!.data
+//
+//                    val options = BitmapFactory.Options()
+//
+//                    var input: InputStream? = null // here, you need to get your context.
+//                    try {
+//                        input = context.contentResolver.openInputStream(this.data)
+//                    } catch (e: FileNotFoundException) {
+//                        e.printStackTrace()
+//                    }
+//
+//                    val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
+//                    val baos = ByteArrayOutputStream()
+//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+//                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+//                    val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 //                    val photo = this.data.toString()
 //                    /RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
                     // MultipartBody.Part 실제 파일의 이름을 보내기 위해 사용!!
+                    selectedImage = data!!.getData();
+                    if (EasyPermissions.hasPermissions(this.activity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                        var filePath = getRealPathFromURIPath(selectedImage!!, MypageFragment@ this.activity);
+                        var file = File(filePath);
+                        val mFile = RequestBody.create(MediaType.parse("image/*"), file)
+                        //body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
+                        val fileToUpload = MultipartBody.Part.createFormData("file", file.name, mFile)
+                        Glide.with(this)
+                                .load(data!!.data)
+                                .into(imageview_mypage_profile)
 
-                    image = MultipartBody.Part.createFormData("photo", photo.name, photoBody)
+                        Log.d("photoa", "1")
 
-                    //body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
+                        var photo_change = ApplicationController.instance!!.networkService!!.change_photo(fileToUpload)
+                        Log.d("photoa", "2")
+                        photo_change.enqueue(object : Callback<MyPhoto> {
 
-                    Glide.with(this)
-                            .load(data.data)
-                            .into(imageview_mypage_profile)
+                            override fun onFailure(call: Call<MyPhoto>, t: Throwable?) {
+                                Log.d("photoa", "3")
+                                Toast.makeText(activity, "photo request fail", Toast.LENGTH_SHORT).show()
+                            }
 
-                    Log.d("photoa","1")
+                            override fun onResponse(call: Call<MyPhoto>, response: Response<MyPhoto>) {
+                                Log.d("aaa", response!!.code().toString())
+                                Log.d("aaa", response!!.message())
+                                if (response!!.isSuccessful) {
 
-                    var photo_change = ApplicationController.instance!!.networkService!!.change_photo(image)
-                    Log.d("photoa","2")
-                    photo_change.enqueue(object : Callback<MyPhoto> {
-
-                        override fun onFailure(call: Call<MyPhoto>, t: Throwable?) {
-                            Log.d("photoa","3")
-                            Toast.makeText(activity, "photo request fail", Toast.LENGTH_SHORT).show()
-                        }
-                        override fun onResponse(call: Call<MyPhoto>, response: Response<MyPhoto>) {
-                            Log.d("aaa",response!!.code().toString())
-                            Log.d("aaa",response!!.message())
-                            if(response!!.isSuccessful){
-
-                                if(response!!.body().message == "success To change photo"){
-                                    Toast.makeText(activity, "성공일거야", Toast.LENGTH_SHORT).show()
+                                    if (response!!.body().message == "success To change photo") {
+                                        Toast.makeText(activity, "성공일거야", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                             }
-                        }
-                    })
-
+                        })
+                    } else {
+                        EasyPermissions.requestPermissions(this, "This app needs access to your file storage so that it can read photos.", 300, Manifest.permission.READ_EXTERNAL_STORAGE);
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
-
             }
         }
 
     }
-
-
 
 
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
