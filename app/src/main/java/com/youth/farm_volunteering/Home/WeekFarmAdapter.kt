@@ -44,23 +44,47 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
         holderWeek.starNum.text = dataListHome[position].star.toString()
 
         holderWeek.isBooked.setOnClickListener {
-
-            var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataListHome[position].nhIdx.toString()))
-            bookMark.enqueue(object : Callback<BookmarkData> {
-                override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
-                    Toast.makeText(holderWeek.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
-                    Log.d("aaa", response!!.body().message)
-                    if (response!!.body().message == "Success to Add") {
-                        holderWeek.isBooked.isSelected = true
-                    } else if (response!!.body().message == "Already Exist") {
-                        Toast.makeText(holderWeek.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
+            if (dataListHome[position].isBooked == 0) {
+                var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataListHome[position].nhIdx.toString()))
+                bookMark.enqueue(object : Callback<BookmarkData> {
+                    override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+                        Toast.makeText(holderWeek.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
                     }
-                }
 
-            })
+                    override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                        Log.d("aaa", response!!.body().message)
+                        if (response!!.body().message == "Success to Add") {
+                            holderWeek.isBooked.isSelected = true
+                        } else if (response!!.body().message == "Already Exist") {
+                            Toast.makeText(holderWeek.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                })
+            }
+
+            if (dataListHome[position].isBooked == 1) {
+                var delete = ApplicationController.instance!!.networkService!!.delete(Integer.parseInt(dataListHome[position].nhIdx.toString()))
+                delete.enqueue(object : Callback<BookmarkData> {
+                    override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+                        Toast.makeText(holderWeek.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                        if (response!!.body().message == "Success to Delete") {
+                            Toast.makeText(holderWeek.itemView.context, "북마크에서 삭제하였습니다", Toast.LENGTH_SHORT).show()
+                            holderWeek.isBooked.isSelected = false
+                        } else if (response!!.body().message == "No nonghwal activity") {
+                            Toast.makeText(holderWeek.itemView.context, "에러가 발생하였습니다", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(holderWeek.itemView.context, response!!.body().message, Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+                })
+
+
+            }
         }
 
 
