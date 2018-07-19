@@ -12,17 +12,30 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.Main.MainActivity
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.view
 import com.youth.farm_volunteering.data.BookmarkData
 import com.youth.farm_volunteering.data.LikeData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.app.Activity
+import android.app.Fragment
+import android.content.Intent
+import com.youth.farm_volunteering.StartActivity
+
 
 class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeViewHolder>(){
+
+    private var onItemClick : View.OnClickListener? = null
+
+    fun setOnItemClickListener(l:View.OnClickListener){
+        onItemClick = l
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeViewHolder {
         val mainView : View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_like, parent, false)
+        mainView.setOnClickListener(onItemClick)
         return LikeViewHolder(mainView)
     }
 
@@ -35,6 +48,17 @@ class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeVi
         holder.name.text = LikeItems[position].name
         holder.addr.text = LikeItems[position].addr
         holder.price.text = (LikeItems[position].price).toString()
+
+        holder.itemView.setOnClickListener{
+            Log.d("aaa","here")
+
+
+            val manager = (MainActivity() as Activity).fragmentManager.beginTransaction()
+
+
+            manager.detach(Fragment()).attach(Fragment()).commitAllowingStateLoss()
+
+        }
 
         holder.itemView.setOnClickListener {
             Log.d("idx",(LikeItems[position].idx).toString())
@@ -55,9 +79,10 @@ class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeVi
                     else{
                         Toast.makeText(holder.itemView.context,response!!.body().message,Toast.LENGTH_SHORT).show()
                     }
-
                 }
             })
+            val intent = Intent(holder.itemView.context, MainActivity::class.java)
+            holder.itemView.context.startActivity(intent)
         }
 
 
