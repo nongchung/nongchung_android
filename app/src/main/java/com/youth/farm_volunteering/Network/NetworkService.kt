@@ -2,8 +2,11 @@ package com.youth.farm_volunteering.Network
 import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaData
 import com.youth.farm_volunteering.Home.applyResponseData
 import com.youth.farm_volunteering.MyActivity.MyActivityResponseData
+import com.youth.farm_volunteering.Review.PostReviewResponseData
+import com.youth.farm_volunteering.Review.ReviewData
 import com.youth.farm_volunteering.data.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.http.*
 
 
@@ -71,6 +74,11 @@ interface NetworkService {
     @Query("idx") idx : Int
     ): Call<AllNewResponseData>
 
+    @POST("/api/review")
+    fun postReview(
+            @Body postReviewData : ReviewData
+    ) : Callback<PostReviewResponseData>
+
     @GET("/api/home/more/morePopul")
     fun popular(
             @Query("idx") idx : Int
@@ -104,17 +112,14 @@ interface NetworkService {
     ): Call<NickNameResponseData>
 
     @Multipart
-    @PUT("api/mypage/password")
+    @PUT("/api/mypage/password")
     fun password(
             @Part("password") password : String, @Part("newpw") newpw : String
     ): Call<PasswordResourceData>
 
     @FormUrlEncoded
-    @POST("api/home/request")
-    fun applyNh(
-            @Field("nhIdx") nhIdx : Int,
-            @Field("schIdx") schIdx : Int
-    ) : Call<applyResponseData>
+    @POST("/api/home/request")
+    fun applyNh(@Field("nhIdx") nhIdx: Int, @Field("schIdx") schIdx: Int): Call<applyResponseData>
 
     @GET("/api/home/request/user")
     fun getUserInfo() : Call<UserResponseData>

@@ -6,16 +6,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.BookmarkData
 import com.youth.farm_volunteering.data.HomeNonghwalData
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>() {
     override fun getItemCount(): Int = dataList.size
@@ -35,24 +29,24 @@ class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapte
         holder.textviewNewFarmPrice.text = dataList[position].price.toString()
         holder.textviewNewFarmTitle.setText(dataList[position].name)
 
-        holder.imageviewNewFarmBookmark.setOnClickListener {
-
-            var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataList[position].nhIdx.toString()))
-            bookMark.enqueue(object : Callback<BookmarkData> {
-                override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
-                    Toast.makeText(holder.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
-                    if (response!!.body().message == "Success to Add") {
-                        holder.imageviewNewFarmBookmark.isSelected = true
-                    } else if (response!!.body().message == "Already Exist") {
-                        Toast.makeText(holder.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-            })
-        }
+//        holder.imageviewNewFarmBookmark.setOnClickListener {
+//
+//            var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataList[position].nhIdx.toString()))
+//            bookMark.enqueue(object : Callback<BookmarkData> {
+//                override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+//                    Toast.makeText(holder.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
+//                }
+//
+//                override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+//                    if (response!!.body().message == "Success to Add") {
+//                        holder.imageviewNewFarmBookmark.isSelected = true
+//                    } else if (response!!.body().message == "Already Exist") {
+//                        Toast.makeText(holder.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//            })
+//        }
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)

@@ -1,7 +1,7 @@
 package com.youth.farm_volunteering.MyPage
 
+//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
@@ -31,7 +30,6 @@ class MypageFragment : Fragment() {
 
     var myPageData: MyPageData? = null
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_mypage_1, container, false)
 
@@ -40,7 +38,7 @@ class MypageFragment : Fragment() {
             var mypageCall = ApplicationController.instance!!.networkService!!.mypage();
             mypageCall.enqueue(object : Callback<MyPageResponseData> {
                 override fun onFailure(call: Call<MyPageResponseData>, t: Throwable?) {
-                    Toast.makeText(activity!!, "home request fail", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity!!, "통신상태를 점검해주세요!", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
@@ -96,33 +94,15 @@ class MypageFragment : Fragment() {
 
 
         v.layout_mypage_logout.setOnClickListener {
-            LoginToken.token = null
-            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
-            var editor = sharedPreference.edit()
-            editor.remove(LoginToken.PREF_KEY)
-            editor.commit()
-            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity!!, "프로토타입버전에선 항상 로그인이 되어있습니다.", Toast.LENGTH_SHORT).show()
+//            LoginToken.token = null
+//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
+//            var editor = sharedPreference.edit()
+//            editor.remove(LoginToken.PREF_KEY)
+//            editor.commit()
+//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
 
         }
-//        v.button_mypage_logout.setOnClickListener {
-//            LoginToken.token = null;
-//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
-//            var editor = sharedPreference.edit();
-//            editor.remove(LoginToken.PREF_KEY)
-//            editor.commit()
-//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-//
-//        }
-
-//        v.button_mypage_logout.setOnClickListener {
-//            LoginToken.token = null
-//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
-//            var editor = sharedPreference.edit();
-//            editor.remove(LoginToken.PREF_KEY)
-//            editor.commit()
-//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-//
-//        }
         return v
     }
 
@@ -145,5 +125,6 @@ class MypageFragment : Fragment() {
                 .into(imageview_mypage_profile)
         textview_mypage_email.setText(myPageData!!.mail)
         textview_mypage_nickname.setText(myPageData!!.name)
+        textview_name.setText(myPageData!!.name + " / " + myPageData!!.age + "세")
     }
 }

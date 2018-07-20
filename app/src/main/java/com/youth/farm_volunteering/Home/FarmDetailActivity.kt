@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -56,9 +57,15 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     lateinit var detailScheduleList: ArrayList<DetailSchData>
     var detailImageList: List<String>? = null
     var detailNearestStartDate: String? = null
+    var detailNearestEndDate : String? = null
     lateinit var detailAllStartDate: ArrayList<AllStData>
     var detailMyScheduleActivities: ArrayList<Int>? = null
+    
     var scheIdx: Int? = null
+    var fixedStartDate : String? = null
+    var fixedEndDate : String? = null
+
+    var selectedStData : AllStData? = null
 
     lateinit var detailTabAdapter: DetailTabAdapter
     var scheduleAdapter: ScheduleAdapter? = null
@@ -67,10 +74,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     var tabtextArray: ArrayList<String>? = null
 
     var bottomSheetDialog: BottomSheetDialog? = null
+    var splitDateDay : Int? = null
 
 //    activity_main_tabViewPager.adapter = tabAdapter
 //    activity_main_bottomTabLayout.setupWithViewPager(activity_main_tabViewPager)
 
+    var formatTemp : String? = null
 
 //    lateinit var scheduleitems: ArrayList<ScheduleData>
 //    lateinit var recycleItems: ArrayList<FarmRecyData>
@@ -108,8 +117,43 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     detailFarmInfoList = response.body().farmerInfo        //농활소개
                     detailScheduleList = response.body().schedule!!           //BottomSheetDialog 신청하기
                     detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
+                    detailNearestEndDate = response.body().nearestEndDate!!
                     detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
 
+//                    var dateInput : String = detailNearestStartDate!!
+//                    var parsedDate : Date = Date.parse(dateInput)
+
+
+
+                    var dateFormat = SimpleDateFormat("yyyy-MM-dd")
+                    var parsedStartDate : Date = dateFormat.parse(detailNearestStartDate)        //이렇게하면 SimpleDateFormat형 변수인 dateFormat으로
+                                                                                                //파싱된 paredDate라는 2018년 07월 21일이라는
+                                                                                                //Date형 변수가 얻어진다
+                    var parsedEndDate : Date = dateFormat.parse(detailNearestEndDate)
+                    var dateFormatStart = SimpleDateFormat("yyyy년 MM월 dd일")
+                    var firstStartDate = dateFormatStart.format(parsedStartDate)
+                    var dateFormatEnd = SimpleDateFormat(" ~ dd일")
+                    var firstEndDate = dateFormatEnd.format(parsedEndDate)
+
+                    var dateFormatDesigned = SimpleDateFormat("yyyy년 MM월 dd일")
+                    var formattedDate = dateFormatDesigned.format(parsedStartDate)
+//                    var dayFormatDesigned = SimpleDateFormat("~dd일")
+//                    var formattedAfterDay = dayFormatDesigned.format(parsedDate)
+
+                    if(detailNonghwalList!!.period!="당일 치기") {
+                        var splitDay: List<String> = detailNonghwalList!!.period!!.split("박")       //ex) 1박 2일을 넣고 1과 2일로 쪼갬
+                        var splitDayDay = Integer.parseInt(splitDay[0])                       //     '1'과 '2일' 중에서 1을 Int형으로 저장한 변수
+                        var splitDate : List<String> = detailNearestStartDate!!.split("-")      //ex) 2018-07-21
+//                      var splitDateYear = Integer.parseInt(splitDate[0])                                      //    2018
+//                      var splitDateMonth = Integer.parseInt(splitDate[1])                                     //    07
+                        splitDateDay = Integer.parseInt(splitDate[2])                                         //    21
+                        var afterDate = splitDateDay!! + splitDayDay
+
+                        buttonApplyDate.text = firstStartDate + firstEndDate
+                        formatTemp = firstStartDate + firstEndDate
+                    }else{
+                        buttonApplyDate.text = firstStartDate
+                    }
 
 //                    var abc : SimpleDateFormat? = null
 //                    var date : Date? = null
@@ -131,7 +175,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                         detailTabAdapter!!.addFragment(tabtextArray!![i], fragment_Array!![i])        //프레그먼트에 맞는 탭의 TabData를 넣음
                     }
 
-                    buttonApplyDate.text = detailNearestStartDate
                     viewpagerDetailBottom.adapter = detailTabAdapter
                     tablayoutDetailActivity.setupWithViewPager(viewpagerDetailBottom)
 
@@ -153,7 +196,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         buttonApplyButton.setOnClickListener {
             if (scheIdx == null) {
-                scheIdx = detailAllStartDate[0].idx
+                selectedStData = detailAllStartDate[0]
             }
 
             var getUserInfo = ApplicationController.instance!!.networkService!!.getUserInfo()
@@ -171,9 +214,10 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                                 intent.putExtra("nhPrice", populData!!.price)
                                 intent.putExtra("nhImg", populData!!.img)
                                 intent.putExtra("scheDate", buttonApplyDate.text.toString())
-                                intent.putExtra("scheIdx", scheIdx)
+                                intent.putExtra("scheIdx", selectedStData!!.idx)
+                                intent.putExtra("selectedStData", selectedStData)
                                 intent.putExtra("period", populData.period)
-                                startActivity(intent)
+                                startActivityForResult(intent, applyReqCode)
                             }
                         }
                     } else {
@@ -200,11 +244,11 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             var bottomSheetDialog = BottomSheetDialog.instance
             bottomSheetDialog.onDismissListener = DialogInterface.OnDismissListener {
                 if (bottomSheetDialog.selectedDate == null) {
-                    buttonApplyDate.text = detailNearestStartDate
+                    buttonApplyDate.text = formatTemp
                 } else {
                     buttonApplyDate.text = bottomSheetDialog.selectedDate
                 }
-
+                selectedStData = bottomSheetDialog.selectedStData
                 scheIdx = bottomSheetDialog.selectedIdx
             }
 
@@ -331,8 +375,19 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 //                startActivity(intent)
             }
         }
-
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode==applyReqCode){
+//            Toast.makeText(applicationContext, "신청 완료!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    companion object {
+        val applyReqCode = 101;
     }
 
 

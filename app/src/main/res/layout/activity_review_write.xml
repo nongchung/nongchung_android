@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar2"
+            android:id="@+id/toolbar_review"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title=" ">
         </android.support.v7.widget.Toolbar>
 
         <TextView
-            android:id="@+id/textView29"
+            android:id="@+id/textview_farm_name"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -34,11 +34,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_review"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/textview_farm_date"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -56,7 +56,7 @@
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <EditText
-            android:id="@+id/editText21"
+            android:id="@+id/edittext_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -88,14 +88,14 @@
             android:text="후기 작성하기"
             android:textColor="#DE000000"
             android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-            app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_review"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar_review"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar2"
+            app:layout_constraintTop_toTopOf="@+id/toolbar_review"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <RatingBar
-            android:id="@+id/ratingBar"
+            android:id="@+id/ratingbar_star"
             style="@style/Widget.AppCompat.RatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,10 +106,10 @@
             android:theme="@style/RatingBar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText21" />
+            app:layout_constraintTop_toBottomOf="@+id/edittext_content" />
 
         <TextView
-            android:id="@+id/textView32"
+            android:id="@+id/textview_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -120,8 +120,8 @@
             android:textColor="#FAD118"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/ratingBar"
-            app:layout_constraintTop_toTopOf="@+id/ratingBar"
+            app:layout_constraintStart_toEndOf="@+id/ratingbar_star"
+            app:layout_constraintTop_toTopOf="@+id/ratingbar_star"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <View
@@ -133,7 +133,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView29" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_farm_name" />
 
         <View
             android:id="@+id/view2"
@@ -144,7 +144,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_farm_date" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13"

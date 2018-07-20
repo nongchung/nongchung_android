@@ -4,5 +4,6 @@ class MyPageData {
     var img: String? = null
     var mail: String? = null
     var name: String? = null
-    var period: String? = null
+    var age: String? = null
+    var nickname : String? = null
 }

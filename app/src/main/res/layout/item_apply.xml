@@ -48,7 +48,6 @@
         android:textColor="#95989A"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline53"
         app:layout_constraintStart_toEndOf="@+id/guideline52"
         app:layout_constraintTop_toBottomOf="@+id/apply_rv_schedule" />
 
@@ -79,4 +78,16 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline54"
         app:layout_constraintStart_toEndOf="@+id/guideline53"
         app:layout_constraintTop_toBottomOf="@+id/apply_rv_attendable" />
+
+    <TextView
+        android:id="@+id/apply_rv_period"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+
+        android:textColor="#95989A"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/apply_rv_start"
+        app:layout_constraintTop_toTopOf="@+id/apply_rv_start" />
 </android.support.constraint.ConstraintLayout>
