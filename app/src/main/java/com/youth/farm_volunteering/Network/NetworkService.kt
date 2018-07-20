@@ -1,13 +1,18 @@
 package com.youth.farm_volunteering.Network
+import android.graphics.Bitmap
+import android.net.Uri
 import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaData
 import com.youth.farm_volunteering.Home.applyResponseData
 import com.youth.farm_volunteering.MyActivity.MyActivityResponseData
 import com.youth.farm_volunteering.Review.PostReviewResponseData
 import com.youth.farm_volunteering.Review.ReviewData
 import com.youth.farm_volunteering.data.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.*
+import java.io.File
 
 
 interface NetworkService {
@@ -19,6 +24,20 @@ interface NetworkService {
     //더보기(마이페이지)
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
+
+//    @FormUrlEncoded
+//    @HTTP(method = "PUT", path="/api/mypage/photo", hasBody=true)
+//    fun myphoto(@Field("image") image: File): Call<PhotoData>
+
+    @Multipart
+    @PUT("/api/mypage/photo")
+    fun change_photo(
+            @Part image : MultipartBody.Part?
+    ) : Call<MyPhoto>
+
+
+
+
 
 
     @GET( "api/activity")
@@ -123,4 +142,11 @@ interface NetworkService {
 
     @GET("/api/home/request/user")
     fun getUserInfo() : Call<UserResponseData>
+
+
+
+
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path="/api/bookmark", hasBody=true)
+    fun delete(@Field("nhIdx") nhIdx: Int): Call<BookmarkData>
 }
