@@ -1,16 +1,11 @@
 package com.youth.farm_volunteering.MyPage
 
-import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
-
 //import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
-import android.app.Activity
+//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import android.Manifest
+import android.app.Activity
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -22,8 +17,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.Main.MainActivity
-//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
@@ -39,14 +32,10 @@ import pub.devrel.easypermissions.EasyPermissions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileNotFoundException
-import java.io.InputStream
 
 
-class MypageFragment : android.app.Fragment(), EasyPermissions.PermissionCallbacks {
+class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
     private var image: MultipartBody.Part? = null
@@ -81,28 +70,41 @@ class MypageFragment : android.app.Fragment(), EasyPermissions.PermissionCallbac
         //내 정보 프레그먼트 밑에 있는 계정, 설정, 지원 전부 다 ImageView로 박은다음에 토글 키가 있는 설정은 RelativeLayout으로 두고 match_parent를 가지는
         //ImageView의 background를 '푸시알림'으로 두고 토글키를 오른쪽 끝에다가 alignRight해주자
 
+        v.layout_mypoint.setOnClickListener{
+            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+        }
+
+        v.layout_myreviews.setOnClickListener {
+            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+
+        }
+
         //프로필 사진 변경
         v.imageview_mypage_profile.setOnClickListener(View.OnClickListener {
-            val photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/png"
-            startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
+            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+//            val photoPickerIntent = Intent(Intent.ACTION_PICK)
+//            photoPickerIntent.type = "image/png"
+//            startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
         })
 
         //닉네임 변경
         v.nickname_change_button.setOnClickListener(View.OnClickListener {
-            var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
-            startActivity(v)
+            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+//            var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
+//            startActivity(v)
         })
         //비밀번호 변경
         v.password_change_button.setOnClickListener(View.OnClickListener {
-            var v = Intent(this.activity.applicationContext, ChangePasswordActivity::class.java)
-            startActivity(v)
+            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+//            var v = Intent(this.activity.applicationContext, ChangePasswordActivity::class.java)
+//            startActivity(v)
         })
 
         //푸쉬알림설정
         v.push_button.setOnClickListener(View.OnClickListener {
-            var v = Intent(this.activity.applicationContext, PushActivity::class.java)
-            startActivity(v)
+            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+//            var v = Intent(this.activity.applicationContext, PushActivity::class.java)
+//            startActivity(v)
         })
         v.notice_button.setOnClickListener(View.OnClickListener {
             var v = Intent(this.context, NoticeActivity::class.java)

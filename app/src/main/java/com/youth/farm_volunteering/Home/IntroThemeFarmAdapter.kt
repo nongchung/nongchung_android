@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.youth.farm_volunteering.R
 
 class IntroThemeFarmAdapter(var dataList: List<Int>) : RecyclerView.Adapter<IntroThemeFarmItemViewHolder>(){
@@ -20,14 +21,15 @@ class IntroThemeFarmAdapter(var dataList: List<Int>) : RecyclerView.Adapter<Intr
         holder.imageviewFarmThemeIntro.setImageResource(dataList[position]!!)
 
 
-//        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener{
+            Toast.makeText(holder.itemView.context, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
 //            val intent = Intent(holder.itemView.context, ThemaActivity::class.java)
 //            intent.putExtra("themePosition", position)
 //            intent.putExtra("themeImage", dataList[position])
 //            //추천수
 //            //설명
 //            holder.itemView.context.startActivity(intent)
-//        }
+        }
     }
 
 }

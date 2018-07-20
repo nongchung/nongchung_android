@@ -24,8 +24,6 @@ import retrofit2.Response
 import java.util.*
 
 
-
-
 class HomeFragment : Fragment(), View.OnClickListener {
 
     private val ARG_PARAM1 = "이번 주 인기 농활"

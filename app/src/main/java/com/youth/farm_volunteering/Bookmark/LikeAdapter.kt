@@ -1,6 +1,8 @@
 package com.youth.farm_volunteering.Bookmark
 
-import android.support.v4.app.FragmentTransaction
+import android.app.Activity
+import android.app.Fragment
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,19 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
-import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.Main.MainActivity
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.R.id.view
 import com.youth.farm_volunteering.data.BookmarkData
 import com.youth.farm_volunteering.data.LikeData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.app.Activity
-import android.app.Fragment
-import android.content.Intent
-import com.youth.farm_volunteering.StartActivity
 
 
 class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeViewHolder>(){
@@ -82,6 +78,7 @@ class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeVi
                 }
             })
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             holder.itemView.context.startActivity(intent)
         }
 

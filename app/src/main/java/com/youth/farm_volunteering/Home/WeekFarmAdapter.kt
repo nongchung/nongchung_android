@@ -41,7 +41,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
                 1 -> holderWeek.isBooked.isSelected = true
             }
         }
-        holderWeek.starNum.text = dataListHome[position].star.toString()
+        holderWeek.starNum.text = (dataListHome[position].star!! /2.0).toString()
 
         holderWeek.isBooked.setOnClickListener {
             if (dataListHome[position].isBooked == 0) {
@@ -55,6 +55,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
                         Log.d("aaa", response!!.body().message)
                         if (response!!.body().message == "Success to Add") {
                             holderWeek.isBooked.isSelected = true
+                            dataListHome[position].isBooked = 1
                         } else if (response!!.body().message == "Already Exist") {
                             Toast.makeText(holderWeek.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
                         }
@@ -74,6 +75,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
                         if (response!!.body().message == "Success to Delete") {
                             Toast.makeText(holderWeek.itemView.context, "북마크에서 삭제하였습니다", Toast.LENGTH_SHORT).show()
                             holderWeek.isBooked.isSelected = false
+                            dataListHome[position].isBooked = 0
                         } else if (response!!.body().message == "No nonghwal activity") {
                             Toast.makeText(holderWeek.itemView.context, "에러가 발생하였습니다", Toast.LENGTH_SHORT).show()
                         } else {
@@ -86,6 +88,8 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
 
             }
         }
+
+
 
 
         holderWeek.itemView.setOnClickListener {

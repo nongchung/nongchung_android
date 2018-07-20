@@ -1,12 +1,8 @@
 package com.youth.farm_volunteering.Bookmark
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +10,6 @@ import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.LikeData
 import com.youth.farm_volunteering.data.LikeResponseData
@@ -22,12 +17,6 @@ import kotlinx.android.synthetic.main.fragment_like.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.app.Activity
-import android.widget.FrameLayout
-import com.youth.farm_volunteering.HomeFragment
-import com.youth.farm_volunteering.Main.MainActivity
-import com.youth.farm_volunteering.data.BookmarkData
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class LikeFragment : Fragment(){
@@ -70,9 +59,6 @@ class LikeFragment : Fragment(){
                     if(response!!.body().message == "Success"){
                         likeList = response.body().bmList
                         likeAdapter = LikeAdapter(likeList!!)
-
-
-
 
 
                         fragment_like_rv.adapter = likeAdapter

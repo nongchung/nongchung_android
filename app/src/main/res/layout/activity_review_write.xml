@@ -115,7 +115,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="4.0"
+            android:text="5.0"
             android:textSize="32sp"
             android:textColor="#FAD118"
             app:layout_constraintEnd_toEndOf="parent"

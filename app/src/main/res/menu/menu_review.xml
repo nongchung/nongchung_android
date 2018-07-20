@@ -7,7 +7,7 @@
     <item
         android:id="@+id/menu_complete"
         android:actionLayout="@layout/menuitem_review_complete"
-        android:title="완료"
+        android:title=" "
         app:showAsAction="always" />
 
 </menu>

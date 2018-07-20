@@ -37,6 +37,12 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
         holder.personLimit.text = mydataList[position].personLimit.toString()
         holder.changebar.max = mydataList[position].personLimit!!
         holder.changebar.setProgress(mydataList[position].currentPerson!!)
+        holder.textviewWrieteReview.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ReviewWriteActivity::class.java)
+            intent.putExtra("MyActivityData", mydataList[position])
+            holder.itemView.context.startActivity(intent)
+        }
+
         if (mydataList[position].state != null) {
             when (mydataList[position].state) {
                 0 -> {
@@ -52,11 +58,7 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
                     holder.changemoney.setImageResource(R.drawable.mymy_complete)
                     holder.constraintLayoutApplyIng.visibility = View.GONE
                     holder.textviewWrieteReview.visibility = View.VISIBLE
-                    holder.textviewWrieteReview.setOnClickListener {
-                        val intent = Intent(holder.itemView.context, ReviewWriteActivity::class.java)
-                        intent.putExtra("MyActivityData", mydataList[position])
-                        holder.itemView.context.startActivity(intent)
-                    }
+
                 }
                 3 -> {
 

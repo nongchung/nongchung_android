@@ -65,7 +65,7 @@ class ApplicationActivity : AppCompatActivity() {
                 applyCall.enqueue(object : Callback<applyResponseData> {
                     override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
                         if(response!!.code() ==400){
-                            Toast.makeText(applicationContext, "시간이 중복되었습니다!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "시간이 중복되었습니다!\n 내 활동목록을 확인해주세요!", Toast.LENGTH_SHORT).show()
                         }
                         if (response!!.isSuccessful) {
 
