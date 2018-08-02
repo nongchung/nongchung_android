@@ -43,7 +43,6 @@ class MyActivityFragment : Fragment() {
                         farm_count_cases.setText(timeList!!.tcount.toString())
                         farm_count_time.setText(timeList!!.ttime.toString())
 
-
                         v.my_rv.layoutManager = LinearLayoutManager(context)
                         v.my_rv.adapter = myAdapter
 

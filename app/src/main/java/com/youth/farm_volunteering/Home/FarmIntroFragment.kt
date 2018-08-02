@@ -75,7 +75,7 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
 //                setText(DetailNonghwalList!!.star.toString())
         v.detail_introduce_star.rating = DetailNonghwalList!!.star!!.toFloat() //rating에 서버에서 float값 받아와서 생성
         v.detail_introduce_description.text = DetailNonghwalList!!.description
-        v.detail_introduce_price.text = DetailNonghwalList!!.price.toString()
+        v.detail_introduce_price.text = DetailNonghwalList!!.price.toString() + "원"
         v.detail_introduce_period.text = DetailNonghwalList!!.period.toString()
 
         friendinfoAdapter = FriendInfoAdapter(DetailFriendInfoList!!)

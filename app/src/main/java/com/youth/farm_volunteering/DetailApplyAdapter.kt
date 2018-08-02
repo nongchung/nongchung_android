@@ -26,6 +26,7 @@ class DetailApplyAdapter(var items: ArrayList<DetailApplyData>) : RecyclerView.A
         holderDetail.itemView.setTag(position)
         holderDetail.itemView.setOnClickListener(onItemClick)
         holderDetail.schedule.text = items!![position].apply_rv_schedule
+        holderDetail.period.text = "(" + items!![position].apply_rv_period + ")"
         holderDetail.start.text = items!![position].apply_rv_start
 //        holderDetail.attendable.text = items!![position].apply_rv_attendable
         if(items!![position].apply_rv_attendable.equals(1)){

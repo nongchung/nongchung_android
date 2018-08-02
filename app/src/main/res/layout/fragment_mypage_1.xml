@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    android:id="@+id/mypage_profile"
-    android:visibility="gone"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mypage_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:visibility="gone">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,19 +25,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="14dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:gravity="center_horizontal"
                 android:text="더 보기"
-                android:textSize="17sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="17sp" />
         </android.support.v7.widget.Toolbar>
 
         <LinearLayout
 
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="125dp">
@@ -47,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/more_profile" />
             </RelativeLayout>
 
@@ -55,10 +57,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="이유리"
-                android:textSize="13sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/textview_mypage_email"
@@ -66,18 +68,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="9dp"
-                android:textColor="#8A000000"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="이유리"
-                android:textSize="11sp"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textColor="#8A000000"
+                android:textSize="11sp" />
 
             <TextView
+                android:id="@+id/textview_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:textColor="#8A000000"
-                android:text="이유리"
+                android:text="이유리 / 22세"
                 android:textSize="11sp"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 
@@ -87,21 +90,21 @@
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:layout_marginTop="17dp"
-            android:background="#F3F3F5"
-            >
+            android:background="#F3F3F5">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="내 정보"
-                android:textSize="11sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="11sp" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/layout_myreviews"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
@@ -111,10 +114,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="내가 쓴 후기"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -126,6 +129,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/layout_mypoint"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#FFFFFF">
@@ -135,10 +139,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="내 포인트"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -159,10 +163,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="계정"
-                android:textSize="11sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="11sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -176,10 +180,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="닉네임 변경"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -201,10 +205,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="비밀번호 변경"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -226,10 +230,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="로그아웃"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -250,10 +254,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="알림"
-                android:textSize="11sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="11sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -267,10 +271,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="푸쉬알림"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -291,10 +295,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="지원"
-                android:textSize="11sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="11sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -308,10 +312,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="공지사항"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -333,10 +337,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="FAQ"
-                android:textSize="14sp"
                 android:textColor="#DE000000"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"

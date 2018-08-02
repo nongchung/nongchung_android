@@ -11,6 +11,8 @@ import com.youth.farm_volunteering.Home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.AllStData
 import com.youth.farm_volunteering.data.DetailApplyData
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Lee_wonjun on 2018-07-12.
@@ -20,6 +22,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     var selectedChildIdx: Int? = null
     var selectedDate: String? = null
     var selectedIdx : Int? = null
+    var selectedStData : AllStData? = null
 
     var onDismissListener: DialogInterface.OnDismissListener? = null
     var applyList: ArrayList<DetailApplyData>? = null
@@ -27,6 +30,12 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     var getDetailAllStartDate: ArrayList<AllStData>? = null
     var getDetailMyScheduleActivities: ArrayList<Int>? = null
     var getDetailNearestStartDate : String? = null
+
+    var parsedStartDate : Date? = null
+    var parsedEndDate : Date? = null
+    var StartDate : String? = null
+    var EndDate : String? = null
+
 
     var dateClickListener: View.OnClickListener? = null
 
@@ -40,17 +49,28 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         getDetailAllStartDate = arguments.getParcelableArrayList("allStartItems")
         getDetailNearestStartDate = arguments.getString("nearestStartDate")
 
+        var dateFormat = SimpleDateFormat("yyyy-MM-dd")
+        var dateFormatStart = SimpleDateFormat("yyyy년 MM월 dd일")
+        var dateFormatEnd = SimpleDateFormat(" ~ dd일")
+
 //        applyList = Arrays.asList(arrayOfNulls<AllStData>(getDetailAllStartDate!!.size))
 
         applyList = ArrayList();
         for (i in 0..getDetailAllStartDate!!.size - 1) {
+            parsedStartDate = dateFormat.parse(getDetailAllStartDate!![i].startDate)
+            parsedEndDate = dateFormat.parse(getDetailAllStartDate!![i].endDate)
+
+            StartDate = dateFormatStart.format(parsedStartDate)
+            EndDate = dateFormatEnd.format(parsedEndDate)
+
             applyList!!.add(i, DetailApplyData(
-                    getDetailAllStartDate!![i].startDate!!,
+                    StartDate + EndDate,
                     getDetailScheduleList!![0].time + getDetailScheduleList!![0].activity!!,
+                    getDetailAllStartDate!![i].period!!,
                     getDetailAllStartDate!![i].state!!,
                     "(" + getDetailAllStartDate!![i].availPerson!!.toString() + "명남음)"))
         }
-        v.recyclerviewBottomDialog.layoutManager = LinearLayoutManager(this.activity)
+        v.recyclerviewBottomDialog.layoutManager = LinearLayoutManager(this.context)
 
         applyAdapter = DetailApplyAdapter(applyList!!)
         applyAdapter.setOnItemClickListener(this)
@@ -71,6 +91,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         selectedChildIdx = v!!.getTag() as Int
         selectedDate  = applyList!!.get(selectedChildIdx!!).apply_rv_schedule
         selectedIdx = getDetailAllStartDate!![selectedChildIdx!!].idx
+        selectedStData = getDetailAllStartDate!![selectedChildIdx!!]
 
         dismiss()
 //        override fun onClick(v: View?) {

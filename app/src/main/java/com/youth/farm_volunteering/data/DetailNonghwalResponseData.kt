@@ -10,6 +10,7 @@ class DetailNonghwalResponseData {
     var farmerInfo: FarmInfoData? = null
     var schedule : ArrayList<DetailSchData>? = null
     var nearestStartDate : String? = null
+    var nearestEndDate : String? = null
     var allStartDate : ArrayList<AllStData>? = null
     var myScheduleActivities : ArrayList<Int>? = null
 }

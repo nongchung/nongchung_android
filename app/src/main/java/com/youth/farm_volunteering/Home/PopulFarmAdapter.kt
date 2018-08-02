@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.PopulFarmData
 
@@ -28,12 +29,14 @@ class PopulFarmAdapter(var dataList: List<PopulFarmData>) : RecyclerView.Adapter
         holder.textviewPopulFarmTitle.text = dataList[position].name
         holder.textviewPopulFarmAddr.text = dataList[position].addr
 
-//        holder.itemView.setOnClickListener {
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+
 //            val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
 //            intent.putExtra("populData", dataList[position] as Parcelable)
 //
 //            holder.itemView.context.startActivity(intent)
-//        }
+        }
 
     }
 

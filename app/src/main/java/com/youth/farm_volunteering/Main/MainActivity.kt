@@ -22,10 +22,7 @@ import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_review_write.view.*
 import org.sopt.cocochart.client.Main.TabAdapter
-import android.view.KeyEvent
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -66,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         tabImage_Array = arrayListOf(homeTab!!, searchTab!!, mylogTab!!, bookmarklistTab!!, mypageTab!!)     //tab에 들어갈 커스텀뷰들을 array에 넣음
 
         fragment_Array = arrayListOf(HomeFragment(), SearchFragment(), MyActivityFragment(), LikeFragment(), MypageFragment())
+
 
         for (i in 0..fragment_Array!!.size - 1) {
             activity_main_bottomTabLayout.addTab(activity_main_bottomTabLayout.newTab())        //프레그먼트 갯수만큼 탭 생성

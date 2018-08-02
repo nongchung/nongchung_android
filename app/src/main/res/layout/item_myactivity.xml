@@ -172,7 +172,7 @@
 
         <!--신청중-->
         <ImageView
-            android:id="@+id/my_ic_ing"
+            android:id="@+id/textview_apply_ing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -205,13 +205,13 @@
 
         <!--입금완료 입금대기-->
         <ImageView
-            android:id="@+id/my_deposit"
+            android:id="@+id/textview_deposit_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/mymy_deposit_selector"
             android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@+id/my_ic_ing"
-            app:layout_constraintTop_toTopOf="@+id/my_ic_ing" />
+            app:layout_constraintStart_toEndOf="@+id/textview_apply_ing"
+            app:layout_constraintTop_toTopOf="@+id/textview_apply_ing" />
 
         <TextView
             android:id="@+id/farmer_profile_phone"
@@ -283,11 +283,8 @@
     </android.support.constraint.ConstraintLayout>
 
 
-
-
-
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/my_ing"
+        android:id="@+id/constraintLayout_apply_ing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible">
@@ -452,6 +449,33 @@
             app:layout_constraintTop_toBottomOf="@+id/progressBar_gray" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout_complete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/textview_write_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:text="후기 작성"
+            android:textColor="#3470FF"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
 
     <View
         android:id="@+id/view10"

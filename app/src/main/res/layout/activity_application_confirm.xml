@@ -125,13 +125,18 @@
         <TextView
             android:id="@+id/textview_confirm_startmonth"
             android:layout_width="wrap_content"
-            android:layout_height="11dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/nanumsquareround_otfb"
             android:text="2018.6"
             android:textColor="#8A000000"
             android:textSize="13sp"
-            tools:layout_editor_absoluteX="91dp"
-            tools:layout_editor_absoluteY="15dp" />
+            app:layout_constraintBottom_toTopOf="@+id/textview_confirm_startdate"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintStart_toStartOf="@+id/guideline19"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textview_confirm_endmonth"
@@ -343,7 +348,7 @@
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
-            android:id="@+id/textViewLeftPersonBottom"
+            android:id="@+id/textview_nothing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -351,7 +356,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nanumsquareround_otfb"
-            android:text="     만 더 신청하면 농활을 갈 수 있어요!\n조금만 기다려 주세요!"
+            android:text="만 더 신청하면 농활을 갈 수 있어요!\n조금만 기다려 주세요!"
             android:textAlignment="center"
             android:textColor="#DE000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -360,7 +365,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
         <TextView
-            android:id="@+id/textView47"
+            android:id="@+id/textview_progress_people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="17/20"
@@ -393,14 +398,14 @@
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
         <TextView
-            android:id="@+id/textView53"
+            android:id="@+id/textview_left_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:text="3"
             android:textColor="#F25620"
-            app:layout_constraintStart_toStartOf="@+id/textViewLeftPersonBottom"
-            app:layout_constraintTop_toTopOf="@+id/textViewLeftPersonBottom"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            app:layout_constraintEnd_toStartOf="@+id/textview_nothing"
+            app:layout_constraintTop_toTopOf="@+id/textview_nothing" />
 
     </android.support.constraint.ConstraintLayout>
     <RelativeLayout

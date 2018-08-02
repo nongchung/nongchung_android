@@ -63,6 +63,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <LinearLayout
+        android:id="@+id/linearlayout_before_apply"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
@@ -97,6 +98,21 @@
             android:textSize="15sp"
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/linearlayout_after_apply"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="8dp"
+        android:layout_gravity="bottom"
+        android:background="#FFF">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="취소하기"
+            android:fontFamily="@font/nanumsquareround_otfb"
+            android:background="@drawable/detail_greybox_bg"/>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

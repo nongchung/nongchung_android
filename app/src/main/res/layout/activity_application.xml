@@ -271,6 +271,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:padding="10dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/apply_img1" />
 
                 <android.support.constraint.ConstraintLayout
@@ -370,6 +371,7 @@
             android:background="#F3F3F5">
 
             <TextView
+                android:id="@+id/textview_buy_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -382,7 +384,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/textview_buy_select"
+                android:layout_marginLeft="@dimen/margin_doublebasemargin"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="31dp"
                 android:text="현재 계좌이체만 가능합니다.양해부탁드립니다."
