@@ -48,7 +48,31 @@ class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeVi
 
 
         holder.imageviewlikeBookmark.setOnClickListener{
-            Log.d("aaa","clicked")
+
+            var delete = ApplicationController.instance!!.networkService!!.delete(Integer.parseInt((LikeItems[position].idx).toString()))
+            delete.enqueue(object : Callback<BookmarkData> {
+                override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+                    Toast.makeText(holder.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                    if (response!!.body().message == "Success to Delete") {
+                        Toast.makeText(holder.itemView.context, "북마크에서 삭제하였습니다", Toast.LENGTH_SHORT).show()
+
+                    } else if (response!!.body().message == "No nonghwal activity") {
+                        Toast.makeText(holder.itemView.context, "에러가 발생하였습니다", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(holder.itemView.context,response!!.body().message,Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+
+            val intent = Intent(holder.itemView.context, MainActivity::class.java)
+            intent.putExtra("likeDelete","likeDelete")
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            holder.itemView.context.startActivity(intent)
+
         }
 
 //        holder.itemView.setOnClickListener{
