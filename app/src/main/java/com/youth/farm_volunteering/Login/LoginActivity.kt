@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.SignUp.BUNDLE_KEY_EMAIL
 import com.youth.farm_volunteering.SignUp.BUNDLE_KEY_PASSWORD
 import com.youth.farm_volunteering.SignUp.RESULT_REQUEST_LOGIN

@@ -5,6 +5,7 @@ package com.youth.farm_volunteering.MyPage
 import android.Manifest
 import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,6 +19,7 @@ import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
 import com.youth.farm_volunteering.data.MyPhoto
@@ -89,9 +91,9 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         //닉네임 변경
         v.nickname_change_button.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
-//            var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
-//            startActivity(v)
+            //            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
+            startActivity(v)
         })
         //비밀번호 변경
         v.password_change_button.setOnClickListener(View.OnClickListener {
@@ -118,13 +120,13 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
         v.layout_mypage_logout.setOnClickListener {
-            Toast.makeText(activity!!, "프로토타입버전에선 항상 로그인이 되어있습니다.", Toast.LENGTH_SHORT).show()
-//            LoginToken.token = null
-//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
-//            var editor = sharedPreference.edit()
-//            editor.remove(LoginToken.PREF_KEY)
-//            editor.commit()
-//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            //            Toast.makeText(activity!!, "프로토타입버전에선 항상 로그인이 되어있습니다.", Toast.LENGTH_SHORT).show()
+            LoginToken.token = null
+            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
+            var editor = sharedPreference.edit()
+            editor.remove(LoginToken.PREF_KEY)
+            editor.commit()
+            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
 
         }
         return v

@@ -26,12 +26,15 @@ import android.view.Menu
 import android.view.MenuItem
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.NhInfoData
+import com.youth.farm_volunteering.login.LoginData
+import com.youth.farm_volunteering.login.LoginData.nickname
 import com.youth.farm_volunteering.login.LoginToken
 
 
 class ChangeNicknameActivity : AppCompatActivity() {
 
     var changeNick: String? = null
+    var newchangeNick: String? = null
     lateinit var editText: EditText
     lateinit var result: TextView
     var toolbar: Toolbar? = null
@@ -75,6 +78,7 @@ class ChangeNicknameActivity : AppCompatActivity() {
         var menuInflater = getMenuInflater()
         menuInflater!!.inflate(R.menu.menu_nickchange, menu)
 
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -82,8 +86,9 @@ class ChangeNicknameActivity : AppCompatActivity() {
         when (item!!.itemId) {
             R.id.menu_apply -> {
                 changeNick = editText.text.toString()
+                newchangeNick = editText.text.toString()
 
-                var nicknameCall = ApplicationController.instance!!.networkService!!.nickname(changeNick!!)
+                var nicknameCall = ApplicationController.instance!!.networkService!!.nickname(changeNick!!,newchangeNick!!)
                 nicknameCall.enqueue(object : Callback<NickNameResponseData> {
                     override fun onFailure(call: Call<NickNameResponseData>, t: Throwable?) {
                         Toast.makeText(applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
@@ -92,18 +97,20 @@ class ChangeNicknameActivity : AppCompatActivity() {
 
 
                     override fun onResponse(call: Call<NickNameResponseData>, response: Response<NickNameResponseData>) {
-
-
-
                         when (response.code()) {
-                                    200 -> {
-                                        intent.putExtra(changeNick, editText.text.toString())
-                                        changedNickData = response.body().data // 닉네임을 서버에 전달 null값생성...
-                                        Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show() // 메시지생성
-                                    }
-                                    else ->
-
-                                Toast.makeText(this@ChangeNicknameActivity, changeNick, Toast.LENGTH_SHORT).show()
+                            200 -> {
+                                intent.putExtra(changeNick, editText.text.toString())
+                                changedNickData = response.body().data // 닉네임을 서버에 전달 null값생성...
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "성공", Toast.LENGTH_SHORT).show() // 메시지생성
+                            }
+                            else -> {
+                                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE); // 잘모르고씀
+                                var editor = sharedPreference.edit();
+                                editor.putString("uNickname", response.body().data!!)
+                                LoginToken.token = response.body().data
+                                LoginData.nickname = response.body().data!![0].toString()
+                                Toast.makeText(this@ChangeNicknameActivity, changeNick + "실패", Toast.LENGTH_SHORT).show()
+                            }
                         // 값이 왜 null이 뜰까요... 대체!!!!!!
                         }
 

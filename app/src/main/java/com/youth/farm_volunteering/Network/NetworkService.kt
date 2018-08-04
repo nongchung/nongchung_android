@@ -127,7 +127,7 @@ interface NetworkService {
     @PUT("/api/mypage/nickname")
     fun nickname(
 //            @Part("nickname") nickname : String
-        @Part ("nickname") nickname: String
+        @Part ("nickname") nickname: String, @Part("newnickname") newnickname : String
     ): Call<NickNameResponseData>
 
     @Multipart

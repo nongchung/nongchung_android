@@ -21,6 +21,8 @@ import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.activity_main_bottomTabLayout
+import com.youth.farm_volunteering.R.id.activity_main_tabViewPager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.sopt.cocochart.client.Main.TabAdapter
 
