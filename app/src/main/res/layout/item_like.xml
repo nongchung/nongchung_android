@@ -21,11 +21,9 @@
             android:scaleType="centerCrop" />
 
         <ImageView
-            android:id="@+id/imageviewNewFarmBookmark"
+            android:id="@+id/imageviewlikeBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_constraintEnd_toEndOf="parent"
-            android:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/selector_bookmark"
