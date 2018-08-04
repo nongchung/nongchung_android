@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.Main
 
 import android.graphics.Color
+import android.graphics.ImageFormat
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -15,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import com.youth.farm_volunteering.Bookmark.LikeFragment
 import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
@@ -53,9 +55,6 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar!!.hide()
 
-
-
-
         homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
         bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist, null, false)
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage, null, false)
@@ -73,8 +72,12 @@ class MainActivity : AppCompatActivity() {
 
 
         if(intent.getStringExtra("likeDelete") == "likeDelete"){
+//            setCurrentTabFragment(3)
+//            tabImage_Array!![0].isSelected = false
             supportFragmentManager.beginTransaction().replace(R.id.activity_main_container, LikeFragment()).commit()
+//            tabImage_Array!![3].isSelected = true
         }
+
         else{
             supportFragmentManager.beginTransaction().replace(R.id.activity_main_container, HomeFragment()).commit()        //첫 화면의 container를 HomeFragment()로 설정
         }
