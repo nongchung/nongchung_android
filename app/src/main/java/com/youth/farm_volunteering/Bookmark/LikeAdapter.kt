@@ -71,6 +71,7 @@ class LikeAdapter (var LikeItems : List<LikeData>) : RecyclerView.Adapter<LikeVi
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
             intent.putExtra("likeDelete","likeDelete")
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             holder.itemView.context.startActivity(intent)
 
         }
