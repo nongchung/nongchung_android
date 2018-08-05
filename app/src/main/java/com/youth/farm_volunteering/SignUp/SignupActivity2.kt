@@ -2,6 +2,7 @@ package com.youth.farm_volunteering.SignUp
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -11,6 +12,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.StartActivity
 import com.youth.farm_volunteering.data.DupResponseData
 import kotlinx.android.synthetic.main.activity_signup2.*
 import retrofit2.Call
@@ -87,14 +89,21 @@ class SignupActivity2 : AppCompatActivity() {
             } else if (textView22.visibility == VISIBLE) {
                 Toast.makeText(this, "닉네임을 확인해주세요", Toast.LENGTH_SHORT).show()
             } else {
+                var signup = Intent(this, StartActivity::class.java)
+                startActivityForResult(signup, 0)
+
                 intent.putExtra(BUNDLE_KEY_NAME, edittext_signup_name.text.toString())
                 intent.putExtra(BUNDLE_KEY_BIRTH, textview_signup_birth.text.toString())
                 intent.putExtra(BUNDLE_KEY_NICKNAME, edittext_signup_nickname.text.toString())
                 intent.putExtra(BUNDLE_KEY_PHONENUMBER, edittext_signup_phonenumber.text.toString())
                 intent.putExtra(BUNDLE_KEY_SEX, edittext_signup_gender.text.toString())
                 setResult(RESULT_SUCCESS, intent)
+// 임시보류
+
 //            intent.putExtra()
                 finish()
+
+
             }
         }
 

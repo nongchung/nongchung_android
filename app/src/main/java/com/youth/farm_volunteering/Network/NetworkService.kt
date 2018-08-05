@@ -123,11 +123,11 @@ interface NetworkService {
     @POST("/api/signup")
     fun registration(@Field("email") email: String, @Field("password") password: String, @Field("nickname") nickname: String, @Field("name") name: String, @Field("sex") sex: Int, @Field("handphone") handphone: String, @Field("birth") birth: String): Call<DefaultResponseData>
 
-    @Multipart
+    @FormUrlEncoded
     @PUT("/api/mypage/nickname")
     fun nickname(
 //            @Part("nickname") nickname : String
-        @Part ("nickname") nickname: String, @Part("newnickname") newnickname : String
+        @Field ("nickname") nickname: String, @Field("newnickname") newnickname : String
     ): Call<NickNameResponseData>
 
     @Multipart

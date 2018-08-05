@@ -10,6 +10,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.StartActivity
 import com.youth.farm_volunteering.data.DefaultResponseData
 import com.youth.farm_volunteering.data.DupResponseData
 import kotlinx.android.synthetic.main.activity_signup1.*
@@ -123,6 +124,7 @@ class SignupActivity1 : AppCompatActivity() {
                 intent.putExtra(BUNDLE_KEY_PASSWORD, password)
                 setResult(RESULT_REQUEST_LOGIN, intent)
                 finish()
+
             }
         })
     }

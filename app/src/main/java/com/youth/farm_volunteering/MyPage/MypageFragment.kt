@@ -127,6 +127,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             editor.remove(LoginToken.PREF_KEY)
             editor.commit()
             Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.activity.applicationContext, LoginActivity::class.java)
+            startActivity(v)
 
         }
         return v
