@@ -12,6 +12,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.StartActivity
 import com.youth.farm_volunteering.data.DupResponseData
 import kotlinx.android.synthetic.main.activity_signup2.*

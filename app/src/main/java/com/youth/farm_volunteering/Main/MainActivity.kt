@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering.Main
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.ImageFormat
 import android.os.Build
@@ -22,10 +23,15 @@ import com.youth.farm_volunteering.Home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.MyActivity.MyActivityFragment
 import com.youth.farm_volunteering.MyPage.MypageFragment
+import com.youth.farm_volunteering.MyPage.RESULT_REQUEST_NICKNAME
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.activity_main_bottomTabLayout
 import com.youth.farm_volunteering.R.id.activity_main_tabViewPager
+import com.youth.farm_volunteering.SignUp.*
+import kotlinx.android.synthetic.main.activity_change_nickname.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_signup1.*
+import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import org.sopt.cocochart.client.Main.TabAdapter
 
 
@@ -164,4 +170,12 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        when (resultCode) {
+//            RESULT_REQUEST_NICKNAME ->
+//                textview_mypage_nickname.setText(nickname_change_text.toString())
+//
+//                  }
+//    }
 }

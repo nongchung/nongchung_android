@@ -40,7 +40,7 @@ import com.youth.farm_volunteering.login.LoginData.nickname
 import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.activity_signup2.*
 
-
+const val RESULT_REQUEST_NICKNAME: Int = 3
 class ChangeNicknameActivity : AppCompatActivity() {
 
     var changeNick: String? = null
@@ -155,27 +155,39 @@ class ChangeNicknameActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<NickNameResponseData>, response: Response<NickNameResponseData>) {
                         when (response.code()) {
                             200 -> {
-                                intent.putExtra(changeNick, editText.text.toString())
+//                                intent.putExtra(changeNick, editText.text.toString())
                                 changedNickData = response.body().data // 닉네임을 서버에 전달 null값생성...
                                 if (textView56.visibility == View.VISIBLE) {
                                     Toast.makeText(this@ChangeNicknameActivity, "닉네임을 다시 확인해주세요", Toast.LENGTH_SHORT).show()
+
                                 } else {
                                     //BUNDLE_KEY_NICKNAME
-                                    intent.putExtra(newchangeNick!!, nickname_change_text.text.toString())
-                                    Toast.makeText(this@ChangeNicknameActivity, response.body().message + "성공1234", Toast.LENGTH_SHORT).show() // 메시지생성
+                                    intent.putExtra(changedNickData, nickname_change_text.text.toString())
+                                    Toast.makeText(this@ChangeNicknameActivity, response.body().message, Toast.LENGTH_SHORT).show() // 메시지생성
+                                    setResult(RESULT_REQUEST_NICKNAME, intent)
                                     finish()
                                 }
 
                             }
-                            else -> {
+                            400 -> {
 //                                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE); // 잘모르고씀
 //                                var editor = sharedPreference.edit();
 //                                editor.putString("uNickname", response.body().data!!)
 //                                LoginToken.token = response.body().data
 //                                LoginData.nickname = response.body().data!![0].toString()
-                                Toast.makeText(this@ChangeNicknameActivity, changeNick + "실패5678", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패5678", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
+                            500 -> {
+//                                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE); // 잘모르고씀
+//                                var editor = sharedPreference.edit();
+//                                editor.putString("uNickname", response.body().data!!)
+//                                LoginToken.token = response.body().data
+//                                LoginData.nickname = response.body().data!![0].toString()
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패5678", Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+
                         // 값이 왜 null이 뜰까요... 대체!!!!!!
                         }
 

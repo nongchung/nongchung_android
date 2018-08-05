@@ -20,11 +20,13 @@ import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
+import com.youth.farm_volunteering.SignUp.*
 import com.youth.farm_volunteering.data.MyPageData
 import com.youth.farm_volunteering.data.MyPageResponseData
 import com.youth.farm_volunteering.data.MyPhoto
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
+import kotlinx.android.synthetic.main.activity_signup1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import okhttp3.MediaType
@@ -93,8 +95,11 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         v.nickname_change_button.setOnClickListener(View.OnClickListener {
             //            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
             var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
-            startActivity(v)
+            startActivityForResult(v,101)
         })
+
+
+
         //비밀번호 변경
         v.password_change_button.setOnClickListener(View.OnClickListener {
             Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
@@ -148,6 +153,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             return cursor.getString(idx)
         }
     }
+
 
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
@@ -286,7 +292,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 .load(myPageData!!.img)
                 .into(imageview_mypage_profile)
         textview_mypage_email.setText(myPageData!!.mail)
-        textview_mypage_nickname.setText(myPageData!!.name)
+        textview_mypage_nickname.setText(myPageData!!.nickname)
         textview_name.setText(myPageData!!.name + " / " + myPageData!!.age + "세")
     }
 }
