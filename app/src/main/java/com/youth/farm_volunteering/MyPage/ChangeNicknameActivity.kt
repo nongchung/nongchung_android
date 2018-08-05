@@ -61,6 +61,7 @@ class ChangeNicknameActivity : AppCompatActivity() {
 
 
         textView56.visibility = View.INVISIBLE
+        imageView9.visibility = View.INVISIBLE
         //Log.d("aaa",detailnongwalCall.toString())
 
         editText = findViewById(R.id.nickname_change_text)
@@ -97,8 +98,10 @@ class ChangeNicknameActivity : AppCompatActivity() {
                         override fun onResponse(call: Call<DupResponseData>?, response: Response<DupResponseData>?) {
                             if (response!!.body().message == "available") {
                                 textView56.visibility = View.INVISIBLE
+                                imageView9.visibility = View.INVISIBLE
                             } else if (response!!.body().message == "duplication") {
                                 textView56.visibility = View.VISIBLE
+                                imageView9.visibility = View.VISIBLE
                             }
                         }
                     })}
@@ -175,7 +178,7 @@ class ChangeNicknameActivity : AppCompatActivity() {
 //                                editor.putString("uNickname", response.body().data!!)
 //                                LoginToken.token = response.body().data
 //                                LoginData.nickname = response.body().data!![0].toString()
-                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패5678", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
                             500 -> {
@@ -184,7 +187,7 @@ class ChangeNicknameActivity : AppCompatActivity() {
 //                                editor.putString("uNickname", response.body().data!!)
 //                                LoginToken.token = response.body().data
 //                                LoginData.nickname = response.body().data!![0].toString()
-                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패5678", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
 

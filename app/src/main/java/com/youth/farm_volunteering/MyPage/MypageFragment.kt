@@ -102,9 +102,9 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         //비밀번호 변경
         v.password_change_button.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
-//            var v = Intent(this.activity.applicationContext, ChangePasswordActivity::class.java)
-//            startActivity(v)
+//            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.activity.applicationContext, ChangePasswordActivity::class.java)
+            startActivity(v)
         })
 
         //푸쉬알림설정

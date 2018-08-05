@@ -130,10 +130,10 @@ interface NetworkService {
         @Field ("nickname") nickname: String, @Field("newnickname") newnickname : String
     ): Call<NickNameResponseData>
 
-    @Multipart
+    @FormUrlEncoded
     @PUT("/api/mypage/password")
     fun password(
-            @Part("password") password : String, @Part("newpw") newpw : String
+            @Field("password") password : String, @Field("newpw") newpw : String
     ): Call<PasswordResourceData>
 
     @FormUrlEncoded
