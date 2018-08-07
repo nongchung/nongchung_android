@@ -10,7 +10,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +23,7 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.SignUp.*
-import com.youth.farm_volunteering.data.MyPageData
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.data.MyPhoto
+import com.youth.farm_volunteering.data.*
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.activity_signup1.*
@@ -42,9 +42,12 @@ import java.io.File
 class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
-    private var image: MultipartBody.Part? = null
+//    private var image: MultipartBody.Part? = null
     private var selectedImage: Uri? = null
     var myPageData: MyPageData? = null
+    var image: File? = null
+    var photostring : String? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_mypage_1, container, false)
@@ -85,11 +88,46 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         //프로필 사진 변경
         v.imageview_mypage_profile.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
-//            val photoPickerIntent = Intent(Intent.ACTION_PICK)
-//            photoPickerIntent.type = "image/png"
-//            startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
-        })
+
+// View.OnclickListener 지움
+
+
+//            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+
+//            var v = Intent(this.activity.applicationContext, ChangePhotoActivity::class.java)
+//            startActivityForResult(v,101)
+//            startActivity(v)
+//            var photoCall = ApplicationController.instance!!.networkService!!.photo(photo!!)
+            var photoCall = ApplicationController.instance!!.networkService!!.image(image!!)
+            photoCall.enqueue(object : Callback<MyPhoto> {
+                override fun onFailure(call: Call<MyPhoto>, t: Throwable?) {
+                    Toast.makeText(activity.applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
+                    //Log.e("abc",t.toString())
+                }
+                override fun onResponse(call: Call<MyPhoto>, response: Response<MyPhoto>) {
+                    when (response.code()) {
+
+
+                        200 -> {
+                            photostring = response.body().data
+//                                intent.putExtra(changeNick, editText.text.toString())
+                                //BUNDLE_KEY_NICKNAME
+                            val photoPickerIntent = Intent(Intent.ACTION_PICK)
+                            photoPickerIntent.type = "image/png"
+                            startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
+                            photostring = image.toString()
+//                            Toast.makeText(activity.applicationContext, "123242", Toast.LENGTH_SHORT).show()
+
+                            }
+                        else -> {
+                            Toast.makeText(activity.applicationContext, "실패1234", Toast.LENGTH_SHORT).show()
+                        }
+                        }
+                    }
+                })
+            })
+
+
 
         //닉네임 변경
         v.nickname_change_button.setOnClickListener(View.OnClickListener {
@@ -166,7 +204,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
             Log.d("photoa", "1")
 
-            var photo_change = ApplicationController.instance!!.networkService!!.change_photo(fileToUpload)
+            var photo_change = ApplicationController.instance!!.networkService!!.image(file)
+//                    change_photo(fileToUpload)
             Log.d("photoa", "2")
             photo_change.enqueue(object : Callback<MyPhoto> {
 
@@ -226,7 +265,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                         Log.d("photoa", "1")
 
-                        var photo_change = ApplicationController.instance!!.networkService!!.change_photo(fileToUpload)
+                        var photo_change = ApplicationController.instance!!.networkService!!.image(file)
+//                                change_photo(fileToUpload)
                         Log.d("photoa", "2")
                         photo_change.enqueue(object : Callback<MyPhoto> {
 

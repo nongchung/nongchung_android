@@ -1,6 +1,7 @@
 package com.youth.farm_volunteering.data
 
-data class MyPhoto (
-    var message : String,
-    var data : ArrayList<MyPhotoData>
-)
+class MyPhoto {
+    var message: String? = null
+    var data: String? = null
+//    var data : ArrayList<MyPhotoData>
+}
