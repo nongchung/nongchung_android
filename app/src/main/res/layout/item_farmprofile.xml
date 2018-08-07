@@ -38,15 +38,15 @@
             android:fontFamily="@font/nanumsquareround_otfb"/>
 
 
-        <ImageView
-            android:id="@+id/imageViewBookmark_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/selector_bookmark" />
+        <!--<ImageView-->
+            <!--android:id="@+id/imageViewBookmark_profile"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="12dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:srcCompat="@drawable/selector_bookmark" />-->
 
         <TextView
             android:id="@+id/farm_new_profile"

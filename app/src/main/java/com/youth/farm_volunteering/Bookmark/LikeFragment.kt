@@ -3,6 +3,7 @@ package com.youth.farm_volunteering.Bookmark
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,7 @@ class LikeFragment : Fragment(){
         requestManager = Glide.with(this)
 
         var likeCall = ApplicationController.instance!!.networkService!!.like();
+
         // 서버에서 데이터 가져오는거!!
         likeCall.enqueue(object : Callback<LikeResponseData> {
             override fun onFailure(call: Call<LikeResponseData>, t: Throwable?) {
@@ -57,17 +59,25 @@ class LikeFragment : Fragment(){
             override fun onResponse(call: Call<LikeResponseData>, response: Response<LikeResponseData>) {
                 if(response!!.isSuccessful){
                     if(response!!.body().message == "Success"){
-                        likeList = response.body().bmList
-                        likeAdapter = LikeAdapter(likeList!!)
+
+                        if(response.body().bmList.toString() == "[]"){
+                            no_zzim1.visibility = View.VISIBLE
+                        }
+                        else{
+                            no_zzim1.visibility = View.GONE
+
+                            likeList = response.body().bmList
+                            likeAdapter = LikeAdapter(likeList!!)
 
 
-                        fragment_like_rv.adapter = likeAdapter
+                            fragment_like_rv.adapter = likeAdapter
 
 
-                        //layoutManager 안 달아주면 list가 뜨지 않어 ㅜㅜ 이거 몰라서 디지는 줄 알았자너 ㅜㅜ 멍청이였어
-                        fragment_like_rv.layoutManager = LinearLayoutManager(context)
-                        like_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                        fragment_like_rv!!.setLayoutManager(like_linearLayoutManager)
+                            //layoutManager 안 달아주면 list가 뜨지 않어 ㅜㅜ 이거 몰라서 디지는 줄 알았자너 ㅜㅜ 멍청이였어
+                            fragment_like_rv.layoutManager = LinearLayoutManager(context)
+                            like_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                            fragment_like_rv!!.setLayoutManager(like_linearLayoutManager)
+                        }
 
 
                     }
