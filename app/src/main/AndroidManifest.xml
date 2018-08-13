@@ -20,23 +20,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".main.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Main.SearchActivity"
+            android:name=".main.SearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".FarmDetailActivity"
             android:label=" "
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".SignUp.SignupActivity"
+            android:name=".signup.SignupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
@@ -65,32 +64,34 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".SignUp.SignupActivity1" />
-        <activity android:name=".SignUp.SignupActivity2" />
+        <activity android:name=".signup.SignupActivity1" />
+        <activity android:name=".signup.SignupActivity2" />
         <activity android:name=".login.LoginActivity" />
         <activity
-            android:name=".Review.ReviewWriteActivity"
+            android:name=".review.ReviewWriteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity android:name=".StartActivity" />
-        <activity android:name=".Home.ApplicationActivity" />
-        <activity android:name=".Home.ApplicationConfirmActivity" />
+        <activity android:name=".home.ApplicationActivity" />
+        <activity android:name=".home.ApplicationConfirmActivity" />
         <activity
-            android:name=".MyPage.ChangeNicknameActivity"
+            android:name=".mypage.ChangeNicknameActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".MyPage.ChangePasswordActivity" />
-        <activity android:name=".MyPage.PushActivity" />
-        <activity android:name=".MyPage.NoticeActivity" />
-        <activity android:name=".MyPage.FaqActivity" />
-        <activity android:name=".Home.FarmProfile.FarmProfileActivity" />
+        <activity android:name=".mypage.ChangePasswordActivity" />
+        <activity android:name=".mypage.PushActivity" />
+        <activity android:name=".mypage.NoticeActivity" />
+        <activity android:name=".mypage.FaqActivity" />
+        <activity android:name=".home.FarmProfile.FarmProfileActivity" />
         <activity android:name=".area.AreaSelectActivity" />
-        <activity android:name=".ShowAllActivity" />
-        <activity android:name=".Home.FriendInfoAllActivity" />
+        <activity android:name=".home.FriendInfoAllActivity" />
         <activity
             android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Home.ThemaNonghwal.ThemaActivity"></activity>
+        <activity
+            android:name=".home.ThemaNonghwal.ThemaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ShowAllActivity"></activity>
     </application>
 
 </manifest>

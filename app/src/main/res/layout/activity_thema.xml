@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home.ThemaNonghwal.ThemaActivity"
+    tools:context=".home.ThemaNonghwal.ThemaActivity"
+    android:background="#FFF"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -29,9 +30,7 @@
         android:id="@+id/imageviewThemeImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/main_banner1"
-
-        />
+        android:src="@drawable/main_banner1" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/thema_rv"
         android:layout_width="match_parent"
@@ -39,5 +38,11 @@
         android:layout_marginTop="12dp">
 
     </android.support.v7.widget.RecyclerView>
+    <ProgressBar
+        android:id="@+id/progressbar_read_themefragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
 
 </LinearLayout>

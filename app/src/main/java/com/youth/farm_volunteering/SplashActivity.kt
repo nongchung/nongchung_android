@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.Main.MainActivity
+import com.youth.farm_volunteering.main.MainActivity
 import com.youth.farm_volunteering.data.LoginResponseData
 import com.youth.farm_volunteering.login.LoginData
 import com.youth.farm_volunteering.login.LoginToken

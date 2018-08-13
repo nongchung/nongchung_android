@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="46dp"
+            android:text="취소 및 환불하시겠습니까?"
+            android:textColor="#F25620"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:background="#707070"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView66" />
+
+        <TextView
+            android:id="@+id/textview_refund_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="제주특별자치도 서귀포시"
+            android:textSize="11sp"
+            android:textColor="#8A000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view11"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textview_refund_nhname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="제주행복 감귤 농장 체험"
+            android:textColor="#DE000000"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_refund_addr"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.090361446" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9096386" />
+
+        <TextView
+            android:id="@+id/textview_refund_startmonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:text="2018.6"
+            android:textColor="#DE000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline47"
+            app:layout_constraintStart_toStartOf="@+id/guideline48"
+            app:layout_constraintTop_toBottomOf="@+id/textview_refund_nhname"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textview_refund_endmonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018.6"
+            android:textColor="#DE000000"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline49"
+            app:layout_constraintStart_toStartOf="@+id/guideline47"
+            app:layout_constraintTop_toTopOf="@+id/textview_refund_startmonth"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textview_refund_startday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="6dp"
+            android:text="29"
+            android:textColor="#DE000000"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline47"
+            app:layout_constraintStart_toStartOf="@+id/guideline48"
+            app:layout_constraintTop_toBottomOf="@+id/textview_refund_startmonth"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textview_refund_endday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="31"
+            android:textColor="#DE000000"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline49"
+            app:layout_constraintStart_toStartOf="@+id/guideline47"
+            app:layout_constraintTop_toBottomOf="@+id/textview_refund_endmonth"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toStartOf="@+id/textview_refund_endday"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toEndOf="@+id/textview_refund_startday"
+            app:layout_constraintTop_toBottomOf="@+id/textview_refund_nhname"
+            android:src="@drawable/popup_cancel_arrow" />
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F5">
+
+        <TextView
+            android:id="@+id/textView86"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="환불규정"
+            android:textColor="#DE000000"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/textView87"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textView87"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="1. 출발 3일전까지 환불하셔야 100% 환불이 가능합니다."
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView90"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView86"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textView90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="2. 출발 2일전과 1일 2일 전은 40%만 환불 가능합니다."
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView91"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView87"
+            app:layout_constraintTop_toBottomOf="@+id/textView87"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <TextView
+            android:id="@+id/textView91"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="3. 당일최소는 환불 불가능합니다."
+            android:textColor="#8A000000"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView90"
+            app:layout_constraintTop_toBottomOf="@+id/textView90"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <Button
+            android:id="@+id/button_apply_cancel"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_circlebutton"
+            android:backgroundTint="#F3F3F5"
+            android:text="이전으로"
+            android:textColor="#DE000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline46"
+            app:layout_constraintStart_toStartOf="@+id/guideline44"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <Button
+            android:id="@+id/button_apply_refund"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:background="@drawable/shape_circlebutton"
+            android:backgroundTint="#3470FF"
+            android:text="환불하기"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/button_apply_cancel"
+            app:layout_constraintEnd_toStartOf="@+id/guideline45"
+            app:layout_constraintStart_toStartOf="@+id/guideline46"
+            app:layout_constraintTop_toTopOf="@+id/button_apply_cancel"
+            android:fontFamily="@font/nanumsquareround_otfb"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+</LinearLayout>

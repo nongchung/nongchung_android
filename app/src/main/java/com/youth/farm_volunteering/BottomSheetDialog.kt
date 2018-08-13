@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.youth.farm_volunteering.Home.Schedule.DetailSchData
+import com.youth.farm_volunteering.home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.AllStData
 import com.youth.farm_volunteering.data.DetailApplyData
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
@@ -35,7 +35,6 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     var parsedEndDate : Date? = null
     var StartDate : String? = null
     var EndDate : String? = null
-
 
     var dateClickListener: View.OnClickListener? = null
 
@@ -94,12 +93,6 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         selectedStData = getDetailAllStartDate!![selectedChildIdx!!]
 
         dismiss()
-//        override fun onClick(v: View?) {
-//            val idx : Int = webList!!.getChildAdapterPosition(v)
-//            val name : String? = webDatas!!.get(idx).webText
-//
-//            Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
-//        }
     }
 
     override fun onDismiss(dialog: DialogInterface?) {
