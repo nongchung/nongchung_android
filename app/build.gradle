@@ -59,8 +59,9 @@ dependencies {
     //compile로 된거 implementation으로 수정
     implementation 'com.google.firebase:firebase-messaging:17.0.0'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
-    implementation 'com.android.support:support-fragment:26.1.0'
-    implementation 'pub.devrel:easypermissions:0.2.0'
+
+    implementation "com.android.support:support-fragment:26.1.0"
+    implementation 'pub.devrel:easypermissions:0.2.0' //compile로 된거 implementation으로 수정
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

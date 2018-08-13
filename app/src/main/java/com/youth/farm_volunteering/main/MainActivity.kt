@@ -1,6 +1,8 @@
 package com.youth.farm_volunteering.main
 
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.ImageFormat
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -20,8 +22,14 @@ import com.youth.farm_volunteering.home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.myactivity.MyActivityFragment
 import com.youth.farm_volunteering.mypage.MypageFragment
+import android.widget.ImageView
 import com.youth.farm_volunteering.R
+import com.youth.farm_volunteering.R.id.activity_main_bottomTabLayout
+import com.youth.farm_volunteering.R.id.activity_main_tabViewPager
+import kotlinx.android.synthetic.main.activity_change_nickname.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_signup1.*
+import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import org.sopt.cocochart.client.Main.TabAdapter
 
 
@@ -49,7 +57,9 @@ class MainActivity : AppCompatActivity() {
         mainTabLayout = findViewById(R.id.activity_main_bottomTabLayout)
         setSupportActionBar(toolbar)
 
-        homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
+        supportActionBar!!.hide()
+
+       homeTab = LayoutInflater.from(this).inflate(R.layout.tab_home, null, false)
         bookmarklistTab = LayoutInflater.from(this).inflate(R.layout.tab_bookmarklist, null, false)
         mypageTab = LayoutInflater.from(this).inflate(R.layout.tab_mypage, null, false)
         mylogTab = LayoutInflater.from(this).inflate(R.layout.tab_mylog, null, false)
@@ -62,6 +72,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         val tabAdapter = TabAdapter(supportFragmentManager, mainTabLayout!!.tabCount, tabImageArray!!)
+
+        if(intent.getStringExtra("likeDelete") == "likeDelete"){
+//            setCurrentTabFragment(3)
+//            tabImage_Array!![0].isSelected = false
+            supportFragmentManager.beginTransaction().replace(R.id.activity_main_container, LikeFragment()).commit()
+//            tabImage_Array!![3].isSelected = true
+        }
 
         activity_main_tabViewPager.adapter = tabAdapter
         mainTabLayout!!.setupWithViewPager(activity_main_tabViewPager)
@@ -105,32 +122,5 @@ class MainActivity : AppCompatActivity() {
 
 
         return false
-    }
-
-
-    fun ReplaceFragment(fragment: Fragment) {
-        val fm = supportFragmentManager
-        val transaction = fm.beginTransaction()
-//        fragment.arguments = bundle
-        transaction.replace(R.id.activity_main_container, fragment)
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        transaction.addToBackStack(null)
-        transaction.commit()
-    }
-
-
-    fun setCurrentTabFragment(tabPosition: Int) {
-        when (tabPosition) {
-            tabPosition -> {
-                ReplaceFragment(fragment_Array!![tabPosition])
-                Log.d("aaa",fragment_Array!![tabPosition].toString())
-            }
-        }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-
     }
 }

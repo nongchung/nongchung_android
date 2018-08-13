@@ -11,6 +11,7 @@ import com.youth.farm_volunteering.signup.BUNDLE_KEY_EMAIL
 import com.youth.farm_volunteering.signup.BUNDLE_KEY_PASSWORD
 import com.youth.farm_volunteering.signup.RESULT_REQUEST_LOGIN
 import com.youth.farm_volunteering.signup.SignupActivity1
+import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.LoginResponseData
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call

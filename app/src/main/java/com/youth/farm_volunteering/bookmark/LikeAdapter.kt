@@ -44,20 +44,10 @@ class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<L
         holder.name.text = LikeItems[position].name
         holder.addr.text = LikeItems[position].addr
         holder.price.text = (LikeItems[position].price).toString()
-
-        holder.itemView.setOnClickListener{
-            Log.d("aaa","here")
+        holder.imageviewlikeBookmark.isSelected = true
 
 
-            val manager = (MainActivity() as Activity).fragmentManager.beginTransaction()
-
-
-            manager.detach(Fragment()).attach(Fragment()).commitAllowingStateLoss()
-
-        }
-
-        holder.itemView.setOnClickListener {
-            Log.d("idx",(LikeItems[position].idx).toString())
+        holder.imageviewlikeBookmark.setOnClickListener {
 
             var delete = ApplicationController.instance!!.networkService!!.delete(Integer.parseInt((LikeItems[position].idx).toString()))
             delete.enqueue(object : Callback<BookmarkData> {
@@ -73,18 +63,11 @@ class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<L
 
                     } else if (response!!.body().message == "No nonghwal activity") {
                         Toast.makeText(holder.itemView.context, "에러가 발생하였습니다", Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        Toast.makeText(holder.itemView.context,response!!.body().message,Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(holder.itemView.context, response!!.body().message, Toast.LENGTH_SHORT).show()
                     }
                 }
             })
-//            val intent = Intent(holder.itemView.context, MainActivity::class.java)
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//            holder.itemView.context.startActivity(intent)
         }
-
-
-
     }
 }

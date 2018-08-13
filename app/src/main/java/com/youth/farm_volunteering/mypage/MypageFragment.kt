@@ -1,15 +1,16 @@
 package com.youth.farm_volunteering.mypage
 
-//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
-//import com.youth.farm_volunteering.Home.ThemaNonghwal.ThemaActivity
 import android.Manifest
 import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +19,11 @@ import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
-import com.youth.farm_volunteering.data.MyPageData
-import com.youth.farm_volunteering.data.MyPageResponseData
-import com.youth.farm_volunteering.data.MyPhoto
+import com.youth.farm_volunteering.R.id.*
+import com.youth.farm_volunteering.data.*
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
+import kotlinx.android.synthetic.main.activity_signup1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.*
 import kotlinx.android.synthetic.main.fragment_mypage_1.view.*
 import okhttp3.MediaType
@@ -38,9 +39,12 @@ import java.io.File
 class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
-    private var image: MultipartBody.Part? = null
+//    private var image: MultipartBody.Part? = null
     private var selectedImage: Uri? = null
     var myPageData: MyPageData? = null
+    var image: File? = null
+    var photostring : String? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_mypage_1, container, false)
@@ -87,17 +91,51 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
         })
 
+
+        var photoCall = ApplicationController.instance!!.networkService!!.image(image!!)
+        photoCall.enqueue(object : Callback<MyPhoto> {
+            override fun onFailure(call: Call<MyPhoto>, t: Throwable?) {
+                Toast.makeText(activity.applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
+                //Log.e("abc",t.toString())
+            }
+            override fun onResponse(call: Call<MyPhoto>, response: Response<MyPhoto>) {
+                when (response.code()) {
+
+
+                    200 -> {
+                        photostring = response.body().data
+//                                intent.putExtra(changeNick, editText.text.toString())
+                        //BUNDLE_KEY_NICKNAME
+                        val photoPickerIntent = Intent(Intent.ACTION_PICK)
+                        photoPickerIntent.type = "image/png"
+                        startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
+                        photostring = image.toString()
+//                            Toast.makeText(activity.applicationContext, "123242", Toast.LENGTH_SHORT).show()
+
+                    }
+                    else -> {
+                        Toast.makeText(activity.applicationContext, "실패1234", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+        })
+
+
         //닉네임 변경
         v.nickname_change_button.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
-//            var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
-//            startActivity(v)
+            //            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.activity.applicationContext, ChangeNicknameActivity::class.java)
+            startActivityForResult(v,101)
         })
+
+
+
         //비밀번호 변경
         v.password_change_button.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
-//            var v = Intent(this.activity.applicationContext, ChangePasswordActivity::class.java)
-//            startActivity(v)
+//            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.activity.applicationContext, ChangePasswordActivity::class.java)
+            startActivity(v)
         })
 
         //푸쉬알림설정
@@ -118,13 +156,15 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
         v.layout_mypage_logout.setOnClickListener {
-            Toast.makeText(activity!!, "프로토타입버전에선 항상 로그인이 되어있습니다.", Toast.LENGTH_SHORT).show()
-//            LoginToken.token = null
-//            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
-//            var editor = sharedPreference.edit()
-//            editor.remove(LoginToken.PREF_KEY)
-//            editor.commit()
-//            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            //            Toast.makeText(activity!!, "프로토타입버전에선 항상 로그인이 되어있습니다.", Toast.LENGTH_SHORT).show()
+            LoginToken.token = null
+            var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
+            var editor = sharedPreference.edit()
+            editor.remove(LoginToken.PREF_KEY)
+            editor.commit()
+            Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.activity.applicationContext, LoginActivity::class.java)
+            startActivity(v)
 
         }
         return v
@@ -146,6 +186,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
 
+
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         if (selectedImage != null) {
             var filePath = getRealPathFromURIPath(selectedImage!!, MypageFragment@ this.activity);
@@ -156,7 +197,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
             Log.d("photoa", "1")
 
-            var photo_change = ApplicationController.instance!!.networkService!!.change_photo(fileToUpload)
+            var photo_change = ApplicationController.instance!!.networkService!!.image(file)
+//                    change_photo(fileToUpload)
             Log.d("photoa", "2")
             photo_change.enqueue(object : Callback<MyPhoto> {
 
@@ -216,7 +258,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                         Log.d("photoa", "1")
 
-                        var photo_change = ApplicationController.instance!!.networkService!!.change_photo(fileToUpload)
+                        var photo_change = ApplicationController.instance!!.networkService!!.image(file)
+//                                change_photo(fileToUpload)
                         Log.d("photoa", "2")
                         photo_change.enqueue(object : Callback<MyPhoto> {
 
@@ -282,7 +325,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 .load(myPageData!!.img)
                 .into(imageview_mypage_profile)
         textview_mypage_email.setText(myPageData!!.mail)
-        textview_mypage_nickname.setText(myPageData!!.name)
+        textview_mypage_nickname.setText(myPageData!!.nickname)
         textview_name.setText(myPageData!!.name + " / " + myPageData!!.age + "세")
     }
 }

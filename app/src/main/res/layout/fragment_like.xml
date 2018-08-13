@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3F5"
     android:layout_gravity="center_horizontal"
     tools:context=".bookmark.LikeFragment"
     android:orientation="vertical">
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
@@ -17,21 +18,34 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:fontFamily="@font/nanumsquareround_otfb"
             android:gravity="center_horizontal"
             android:text="찜한 목록"
-            android:textSize="17sp"
             android:textColor="#000000"
-            android:layout_marginRight="12dp"
-            android:fontFamily="@font/nanumsquareround_otfb"/>
+            android:textSize="17sp" />
     </android.support.v7.widget.Toolbar>
 
+    <RelativeLayout
+        android:id="@+id/no_zzim1"
+        android:background="#f3f3f5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_zzim1" />
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
-        android:layout_centerHorizontal="true"
         android:id="@+id/fragment_like_rv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center">
 
     </android.support.v7.widget.RecyclerView>
 

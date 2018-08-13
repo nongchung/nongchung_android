@@ -9,6 +9,7 @@ import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.*
+import java.io.File
 
 
 interface NetworkService {
@@ -21,9 +22,6 @@ interface NetworkService {
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
 
-//    @FormUrlEncoded
-//    @HTTP(method = "PUT", path="/api/mypage/photo", hasBody=true)
-//    fun myphoto(@Field("image") image: File): Call<PhotoData>
 
     @Multipart
     @PUT("/api/mypage/photo")
@@ -114,17 +112,28 @@ interface NetworkService {
     @POST("/api/signup")
     fun registration(@Field("email") email: String, @Field("password") password: String, @Field("nickname") nickname: String, @Field("name") name: String, @Field("sex") sex: Int, @Field("handphone") handphone: String, @Field("birth") birth: String): Call<DefaultResponseData>
 
-    @Multipart
+    //    @FormUrlEncoded
+//    @HTTP(method = "PUT", path="/api/mypage/photo", hasBody=true)
+//    fun myphoto(@Field("image") image: File): Call<PhotoData>
+
+    @FormUrlEncoded
+    @PUT("/api/mypage/photo")
+    fun image(
+            @Field("image") image : File
+            //            MultipartBody.Part?
+    ) : Call<MyPhoto>
+
+    @FormUrlEncoded
     @PUT("/api/mypage/nickname")
     fun nickname(
 //            @Part("nickname") nickname : String
-        @Part ("nickname") nickname: String
+        @Field ("nickname") nickname: String, @Field("newnickname") newnickname : String
     ): Call<NickNameResponseData>
 
-    @Multipart
+    @FormUrlEncoded
     @PUT("/api/mypage/password")
     fun password(
-            @Part("password") password : String, @Part("newpw") newpw : String
+            @Field("password") password : String, @Field("newpw") newpw : String
     ): Call<PasswordResourceData>
 
     @FormUrlEncoded
