@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#e2e2e2"
-    tools:context="com.youth.farm_volunteering.Main.SearchActivity">
+    tools:context="com.youth.farm_volunteering.main.SearchActivity">
 
     <LinearLayout
         android:id="@+id/activity_search_toolbar"

@@ -4,30 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.youth.farm_volunteering.ShowAllActivity">
+    android:background="#FFF"
+    tools:context=".ShowAllFragment">
 
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+        <TextView
+            android:id="@+id/show_all_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="제목"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/activity_show_all_title"
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/rl"
+        android:id="@+id/fragment_showall_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp">
+
+    </android.support.v7.widget.RecyclerView>
+    <ProgressBar
+        android:id="@+id/progressbar_pagination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="13dp"
-        android:text="제목이야"
-        android:textColor="#000000"
-        android:textSize="22sp" />
+        android:layout_alignBottom="@+id/fragment_showall_rv"
+        android:visibility="gone"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_show_all_rv"
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progressbar_read_fragment"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@id/activity_show_all_title" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/activity_show_all_bottomTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#FFF"></android.support.design.widget.TabLayout>
-
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 </RelativeLayout>

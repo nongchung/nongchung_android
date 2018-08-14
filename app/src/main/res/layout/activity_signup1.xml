@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/join1_background"
-    tools:context=".SignUp.SignupActivity1">
+    tools:context=".signup.SignupActivity1">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"

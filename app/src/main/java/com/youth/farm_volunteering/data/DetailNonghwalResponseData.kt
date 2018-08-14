@@ -1,6 +1,6 @@
 package com.youth.farm_volunteering.data
 
-import com.youth.farm_volunteering.Home.Schedule.DetailSchData
+import com.youth.farm_volunteering.home.Schedule.DetailSchData
 
 class DetailNonghwalResponseData {
     var message: String? = null
