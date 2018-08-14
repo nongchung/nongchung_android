@@ -4,8 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" filepath="$PROJECT_DIR$/Loopingviewpager/Loopingviewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/nongchung.iml" filepath="$PROJECT_DIR$/nongchung.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Nongchung_Android.iml" filepath="$PROJECT_DIR$/Nongchung_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nonghwal.iml" filepath="$PROJECT_DIR$/nonghwal.iml" />
     </modules>
   </component>
 </project>

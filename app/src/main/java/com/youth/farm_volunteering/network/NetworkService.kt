@@ -6,6 +6,7 @@ import com.youth.farm_volunteering.review.PostReviewResponseData
 import com.youth.farm_volunteering.review.ReviewData
 import com.youth.farm_volunteering.data.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.*
@@ -126,7 +127,7 @@ interface NetworkService {
     @Multipart
     @PUT("/api/mypage/photo")
     fun image(
-            @Part file: MultipartBody.Part, @Part("image") image :RequestBody
+            @Part file: MultipartBody.Part, @Part("image") image : RequestBody
     ) : Call<MyPhoto>
 
 

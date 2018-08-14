@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.view.View
 import com.youth.farm_volunteering.HomeFragment
+import com.youth.farm_volunteering.MyPage.MypageFragment
 import com.youth.farm_volunteering.bookmark.LikeFragment
 import com.youth.farm_volunteering.home.SearchFragment
 import com.youth.farm_volunteering.myactivity.MyActivityFragment
-import com.youth.farm_volunteering.mypage.MypageFragment
 
 class TabAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm){
 

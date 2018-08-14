@@ -28,7 +28,6 @@ import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
-import com.youth.farm_volunteering.SignUp.*
 import com.youth.farm_volunteering.data.*
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
