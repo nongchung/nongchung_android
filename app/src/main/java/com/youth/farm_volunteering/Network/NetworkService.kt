@@ -114,12 +114,19 @@ interface NetworkService {
 //    @HTTP(method = "PUT", path="/api/mypage/photo", hasBody=true)
 //    fun myphoto(@Field("image") image: File): Call<PhotoData>
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
+//    @PUT("/api/mypage/photo")
+//    fun image(
+//            @Field("image") image : File
+//            //            MultipartBody.Part?
+//    ) : Call<MyPhoto>
+
+    @Multipart
     @PUT("/api/mypage/photo")
     fun image(
-            @Field("image") image : File
-            //            MultipartBody.Part?
+            @Part file: MultipartBody.Part, @Part("image") image :RequestBody
     ) : Call<MyPhoto>
+
 
     @FormUrlEncoded
     @PUT("/api/mypage/nickname")
