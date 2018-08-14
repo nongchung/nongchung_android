@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="#F3F3F5"
-    android:orientation="vertical"
-    tools:context=".Bookmark.LikeFragment">
+    tools:context=".bookmark.LikeFragment"
+    android:orientation="vertical">
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"

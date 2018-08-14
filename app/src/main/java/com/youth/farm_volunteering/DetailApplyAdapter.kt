@@ -29,10 +29,10 @@ class DetailApplyAdapter(var items: ArrayList<DetailApplyData>) : RecyclerView.A
         holderDetail.period.text = "(" + items!![position].apply_rv_period + ")"
         holderDetail.start.text = items!![position].apply_rv_start
 //        holderDetail.attendable.text = items!![position].apply_rv_attendable
-        if(items!![position].apply_rv_attendable.equals(1)){
+        if(items!![position].apply_rv_attendable == 1){
             holderDetail.attendable.text = "모집마감"
             holderDetail.attendable.setTextColor(Color.parseColor("#8A000000"))
-        }else if(items!![position].apply_rv_attendable.equals(0)){
+        }else if(items!![position].apply_rv_attendable == 0){
             holderDetail.attendable.text = "참석가능"
         }
         holderDetail.left.text = items!![position].apply_rv_left
