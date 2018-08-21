@@ -74,7 +74,6 @@ class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapte
 
                     override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
                         if (response!!.body().message == "Success to Delete") {
-                            Toast.makeText(holder.itemView.context, "북마크에서 삭제하였습니다", Toast.LENGTH_SHORT).show()
                             holder.imageviewNewFarmBookmark.isSelected = false
                             dataList[position].isBooked = 0
                         } else if (response!!.body().message == "No nonghwal activity") {
