@@ -74,8 +74,6 @@ class FarmReviewFragment : Fragment(){
                     v.imageview_noreviews.visibility = View.VISIBLE
                 }
             }
-
-
         })
         return v
 

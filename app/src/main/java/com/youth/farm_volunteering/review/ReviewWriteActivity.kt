@@ -162,9 +162,10 @@ class ReviewWriteActivity : AppCompatActivity() {
                     }
 
                     1->{
-                        modifyMultipartBody()
-//                        makeMultipartBody()
-                        putReview(rIdx!!,contentReqBody!!, ratingBarStar)
+                        Toast.makeText(applicationContext, "준비중입니다!", Toast.LENGTH_SHORT).show()
+//                        modifyMultipartBody()
+////                        makeMultipartBody()
+//                        putReview(rIdx!!,contentReqBody!!, ratingBarStar)
                     }
                 }
             }

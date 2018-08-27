@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -93,11 +94,6 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
                 .load(DetailFarmInfoList!!.img)
                 .into(v.farminfo_image)
 
-//
-//                Glide.with(holder!!.itemView.context)
-//                        .load(dataList[position]) //String 줘서 이렇게??
-//                        .into(holder.FarmBoxReviewImg)
-
         scheduleAdapter = ScheduleAdapter(DetailScheduleList!!)
 
         v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
@@ -108,8 +104,9 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
 //            startActivity(intent)
 
         v.detail_profile_watch_btn.setOnClickListener(View.OnClickListener  {
-            var v = Intent(this.context,FarmProfileActivity::class.java)
-            startActivity(v)
+            Toast.makeText(activity.applicationContext, "준비중입니다!", Toast.LENGTH_SHORT).show()
+//            var v = Intent(this.context,FarmProfileActivity::class.java)
+//            startActivity(v)
         })
 
         return v
