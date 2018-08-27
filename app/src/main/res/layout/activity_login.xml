@@ -32,7 +32,7 @@
         android:background="@drawable/login_box"
         android:ems="10"
         android:hint="비밀번호를 입력하세요"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:paddingStart="8dp"
         android:textColor="#DE000000"
         android:textColorHint="#8A000000"

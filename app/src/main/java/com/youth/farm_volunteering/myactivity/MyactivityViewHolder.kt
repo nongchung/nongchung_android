@@ -13,7 +13,6 @@ class MyactivityViewHolder(itemView : View?) : RecyclerView.ViewHolder(itemView)
     var startDate: TextView = itemView!!.findViewById<TextView>(R.id.my_startdate) as TextView
     var endDate: TextView = itemView!!.findViewById<TextView>(R.id.my_enddate) as TextView
     var addr: TextView = itemView!!.findViewById<TextView>(R.id.my_place) as TextView
-    var period: TextView = itemView!!.findViewById<TextView>(R.id.farmer_profile_phone) as TextView
     var name: TextView = itemView!!.findViewById<TextView>(R.id.my_nonghwalname) as TextView
   //  var state: TextView = itemView!!.findViewById(R.id.my_enddate) 신청중 신청완료 버튼
     var price: TextView = itemView!!.findViewById(R.id.my_price)

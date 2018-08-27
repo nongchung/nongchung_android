@@ -4,7 +4,7 @@ class rvListInfoData {
     var uimg : String? = null
     var name : String? = null
     var startDate : String? = null
-    var star : Int? = null
+    var star : Float? = null
     var content : String? = null
     var rvImages : List<String>? = null
 }

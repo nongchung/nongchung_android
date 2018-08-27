@@ -14,14 +14,9 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
 
     override fun getItemCount(): Int = dataList.size
 
-
-
-    //private lateinit var onIntroClick: View.OnClickListener
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val mainView: View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_review, parent, false)
-        //mainView.setOnClickListener(onIntroClick)
         return ReviewViewHolder(mainView)
     }
 
@@ -31,14 +26,14 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
                 .into(holder.Reviewuimg)
         holder.Reviewname.text = dataList[position].name
         holder.Reviewdate.text = dataList[position].startDate
-
-        //ratingAdd += dataList[position].star!!.toInt()
+        holder.reviewRatingBar.rating = dataList[position].star!!
         holder.Reviewstar.text = dataList[position].star.toString()
         holder.Reviewcontent.text = dataList[position].content
-        holder.reviewImageRecyclerView.adapter = ReviewImageAdapter(dataList[position].rvImages!!)
-        holder.reviewImageRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
-
-
+        if(!(dataList[position].rvImages!![0].isEmpty()))
+        {
+            holder.reviewImageRecyclerView.adapter = ReviewImageAdapter(dataList[position].rvImages!!)
+            holder.reviewImageRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
+        }
 
     }
 

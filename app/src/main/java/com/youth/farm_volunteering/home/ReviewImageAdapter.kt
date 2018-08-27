@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 
-class ReviewImageAdapter(var dataList: List<String>) : RecyclerView.Adapter<ReviewImageViewHolder>() {
+class ReviewImageAdapter(var dataList: List<String>?) : RecyclerView.Adapter<ReviewImageViewHolder>() {
     override fun getItemCount(): Int{
         when(dataList){
-            null -> return 0
+            null -> return 1
             else -> return dataList!!.size
         }
     }
@@ -27,8 +27,14 @@ class ReviewImageAdapter(var dataList: List<String>) : RecyclerView.Adapter<Revi
 
     override fun onBindViewHolder(holder: ReviewImageViewHolder?, position: Int) {
 
-        Glide.with(holder!!.itemView.context)
-                .load(dataList[position]) //String 줘서 이렇게??
-                .into(holder.FarmBoxReviewImg)
+        if(dataList!=null) {
+            Glide.with(holder!!.itemView.context)
+                    .load(dataList!![position]) //String 줘서 이렇게??
+                    .into(holder.FarmBoxReviewImg)
+        } else{                                     //기본이미지 주기
+            Glide.with(holder!!.itemView.context)
+                    .load(R.drawable.review_default)
+                    .into(holder.FarmBoxReviewImg)
+        }
     }
 }

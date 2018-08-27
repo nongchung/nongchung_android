@@ -34,7 +34,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
