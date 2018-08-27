@@ -5,11 +5,17 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.home.NewFarmAllViewHolder
 import com.youth.farm_volunteering.data.AllNewData
+import com.youth.farm_volunteering.data.BookmarkData
 import com.youth.farm_volunteering.data.NonghwalData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NewFarmAllAdapter(var dataList: List<NonghwalData>) : RecyclerView.Adapter<NewFarmAllViewHolder>(){
     override fun getItemCount(): Int = dataList.size
@@ -44,6 +50,50 @@ class NewFarmAllAdapter(var dataList: List<NonghwalData>) : RecyclerView.Adapter
             //추천수
             //설명
             holder.itemView.context.startActivity(intent)
+        }
+
+        holder.imageviewNewFarmBookmarkall.setOnClickListener {
+            if (dataList[position].isBooked == 0) {
+                var bookMark = ApplicationController.instance!!.networkService!!.bookMark(Integer.parseInt(dataList[position].getRealId().toString()))
+                bookMark.enqueue(object : Callback<BookmarkData> {
+                    override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+                        Toast.makeText(holder.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                        if (response!!.body().message == "Success to Add") {
+                            holder.imageviewNewFarmBookmarkall.isSelected = true
+                            dataList[position].isBooked = 1
+                        } else if (response!!.body().message == "Already Exist") {
+                            Toast.makeText(holder.itemView.context, "이미 북마크에 저장하였습니다", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                })
+            }
+
+            if (dataList[position].isBooked == 1) {
+                var delete = ApplicationController.instance!!.networkService!!.delete(Integer.parseInt(dataList[position].getRealId().toString()))
+                delete.enqueue(object : Callback<BookmarkData> {
+                    override fun onFailure(call: Call<BookmarkData>?, t: Throwable?) {
+                        Toast.makeText(holder.itemView.context, "bookmark request fail", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
+                        if (response!!.body().message == "Success to Delete") {
+                            holder.imageviewNewFarmBookmarkall.isSelected = false
+                            dataList[position].isBooked = 0
+                        } else if (response!!.body().message == "No nonghwal activity") {
+                            Toast.makeText(holder.itemView.context, "에러가 발생하였습니다", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(holder.itemView.context, response!!.body().message, Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+                })
+
+
+            }
         }
 //        holder.itemView.setOnClickListener{
 //            val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
