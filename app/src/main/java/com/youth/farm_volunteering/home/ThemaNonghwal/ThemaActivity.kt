@@ -59,7 +59,7 @@ class ThemaActivity : AppCompatActivity() {
 //            }
 //
 //            override fun onResponse(call: Call<ThemaData>, response: Response<ThemaData>) {
-//                themaList = response.body().data
+//                themaList = response.body().dataMy
 //                imageviewThemeImage.setImageResource(getImage!!)
 //                imageviewThemeImage.adjustViewBounds = true
 //                imageviewThemeImage.scaleType = ImageView.ScaleType.FIT_START

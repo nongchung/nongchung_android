@@ -169,18 +169,18 @@ class ChangeNicknameActivity : AppCompatActivity() {
                             400 -> {
 //                                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE); // 잘모르고씀
 //                                var editor = sharedPreference.edit();
-//                                editor.putString("uNickname", response.body().data!!)
-//                                LoginToken.token = response.body().data
-//                                LoginData.nickname = response.body().data!![0].toString()
+//                                editor.putString("uNickname", response.body().dataMy!!)
+//                                LoginToken.token = response.body().dataMy
+//                                LoginData.nickname = response.body().dataMy!![0].toString()
                                 Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
                             500 -> {
 //                                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE); // 잘모르고씀
 //                                var editor = sharedPreference.edit();
-//                                editor.putString("uNickname", response.body().data!!)
-//                                LoginToken.token = response.body().data
-//                                LoginData.nickname = response.body().data!![0].toString()
+//                                editor.putString("uNickname", response.body().dataMy!!)
+//                                LoginToken.token = response.body().dataMy
+//                                LoginData.nickname = response.body().dataMy!![0].toString()
                                 Toast.makeText(this@ChangeNicknameActivity, response.body().message + "실패", Toast.LENGTH_SHORT).show()
                                 finish()
                             }

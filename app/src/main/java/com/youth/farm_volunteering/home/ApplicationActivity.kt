@@ -64,8 +64,18 @@ class ApplicationActivity : AppCompatActivity() {
                 val applyCall = ApplicationController.instance!!.networkService!!.applyNh(getNhIdx!! , getScheIdx!!)
                 applyCall.enqueue(object : Callback<applyResponseData> {
                     override fun onResponse(call: Call<applyResponseData>?, response: Response<applyResponseData>?) {
-                        if(response!!.code() ==400){
-                            Toast.makeText(applicationContext, "시간이 중복되었습니다!\n 내 활동목록을 확인해주세요!", Toast.LENGTH_SHORT).show()
+                        if(response!!.code() == 411){
+                            Toast.makeText(applicationContext, "로그인을 다시 해주세요!", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else if(response!!.code() == 412){
+                            Toast.makeText(applicationContext, "신청 불가능한 스케줄입니다!", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }else if(response!!.code() == 413){
+                            Toast.makeText(applicationContext, "시간이 중복되었습니다!\n내 활동목록을 확인해주세요!", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }else if(response!!.code() == 415){
+                            Toast.makeText(applicationContext, "여석이 없습니다!", Toast.LENGTH_SHORT).show()
+                            finish()
                         }
                         if (response!!.isSuccessful) {
 

@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
@@ -24,6 +26,9 @@ class FarmReviewFragment : Fragment(){
     lateinit var reviewAdapter : ReviewAdapter
     lateinit var reviewimageAdapter : ReviewImageAdapter
 
+    var totalScore : TextView? = null
+    var totalRatingBar : RatingBar? = null
+
     lateinit var reviewimgitems: ArrayList<ReviewImageData>
     var ReviewList: List<rvListInfoData>? = null
     var ReviewImageList : List<String>? = null
@@ -32,8 +37,9 @@ class FarmReviewFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_farm_review, container, false)
-        //activity!!.supportFragmentManager.beginTransaction().add()
-        val a = inflater.inflate(R.layout.item_review,container,false)
+
+        totalScore = v.findViewById(R.id.review_score)
+        totalRatingBar = v.findViewById(R.id.review_rating_bar)
 
         var nhIdx : Int = arguments.getInt("nhIdx")
 
@@ -50,12 +56,16 @@ class FarmReviewFragment : Fragment(){
                         ReviewList = response.body().rvListInfo
 
                         reviewAdapter = ReviewAdapter(ReviewList!!)
-                        // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
                         v.review_rv.layoutManager = LinearLayoutManager(context)
                         v.review_rv.adapter = reviewAdapter
 
-                        // v.review_img_rv.layoutManager = LinearLayoutManager(context)
-                        // v.review_img_rv.adapter = reviewimageAdapter
+                        var totalScoreTemp = 0f
+
+                        for(i in 0 until ReviewList!!.size) {
+                            totalScoreTemp = totalScoreTemp.plus(ReviewList!![i].star!!)
+                        }
+                        totalScore!!.text = String.format("%.1f", totalScoreTemp!!/ReviewList!!.size)
+                        totalRatingBar!!.rating = totalScoreTemp/ReviewList!!.size
                        }
                     }
                 }
@@ -65,10 +75,10 @@ class FarmReviewFragment : Fragment(){
 
 
 //        reviewitems = ArrayList()
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
+//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
+//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
+//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
+//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
 //
 //        reviewAdapter = ReviewAdapter(reviewitems)
 //        reviewAdapter.setOnItemClickListener(this.activity)

@@ -44,7 +44,7 @@
 
             <TextView
                 android:id="@+id/detail_introduce_description"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="16dp"
@@ -255,7 +255,7 @@
                 android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="언제나 여러분들을 환영합니다\n즐거운 활동을 제공하도록 노력하겠습니다 ^^"
                 android:textColor="#DE000000"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:lineSpacingExtra ="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline56"
@@ -361,16 +361,16 @@
             <TextView
                 android:id="@+id/text2"
                 android:layout_width="wrap_content"
-                android:layout_height="13dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="26dp"
                 android:layout_marginTop="14dp"
+                android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="여벌 옷, 간식"
-                android:textSize="13sp"
                 android:textColor="#DE000000"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline59"
-                app:layout_constraintTop_toBottomOf="@+id/text1"
-                android:fontFamily="@font/nanumsquareround_otfb"/>
+                app:layout_constraintTop_toBottomOf="@+id/text1" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline59"

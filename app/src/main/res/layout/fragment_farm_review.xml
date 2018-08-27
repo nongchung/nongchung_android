@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
             android:layout_marginTop="24dp"
-            android:text="4.3"
+            android:text="0"
             android:textSize="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline25"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
-            android:rating="4.5"
+            android:rating="0.0"
             android:theme="@style/RatingBar"
             app:layout_constraintStart_toEndOf="@+id/review_score"
             app:layout_constraintTop_toTopOf="@+id/review_score" />
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="130dp"></android.support.v7.widget.RecyclerView>
+        tools:layout_editor_absoluteY="130dp" />
 
 
 

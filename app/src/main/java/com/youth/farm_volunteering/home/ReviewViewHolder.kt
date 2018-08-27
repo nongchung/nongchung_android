@@ -3,6 +3,7 @@ package com.youth.farm_volunteering.home
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import com.youth.farm_volunteering.R
 
@@ -13,6 +14,7 @@ class ReviewViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     var Reviewname: TextView = itemView!!.findViewById(R.id.item_review_id)
 
     var Reviewdate: TextView = itemView!!.findViewById(R.id.item_review_date)
+    var reviewRatingBar : RatingBar = itemView!!.findViewById(R.id.item_review_rating_bar)
 
     var Reviewstar: TextView = itemView!!.findViewById(R.id.item_review_short_comment)
 

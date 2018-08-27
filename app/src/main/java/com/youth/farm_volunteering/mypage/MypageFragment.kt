@@ -76,6 +76,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                 override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
                     mypage_profile.visibility = View.VISIBLE
+
                     myPageData = response.body().data!!.get(0)
                     invalidate()
                 }
@@ -102,45 +103,11 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         //프로필 사진 변경
         v.imageview_mypage_profile.setOnClickListener(View.OnClickListener {
-            //            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
-
-//            var i = Intent(this.activity.applicationContext, ChangePhotoActivity::class.java)
-//            startActivityForResult(i,101)
-//            startActivity(v)
-//            var photoCall = ApplicationController.instance!!.networkService!!.photo(photo!!)
 
             val photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/png"
+            photoPickerIntent.type = "image/*"
             startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
 
-//            var photoCall = ApplicationController.instance!!.networkService!!.image(image!!)
-//            photoCall.enqueue(object : Callback<MyPhoto> {
-//                override fun onFailure(call: Call<MyPhoto>, t: Throwable?) {
-//                    Toast.makeText(activity.applicationContext, "home request fail", Toast.LENGTH_SHORT).show()
-//                    //Log.e("abc",t.toString())
-//                }
-//                override fun onResponse(call: Call<MyPhoto>, response: Response<MyPhoto>) {
-//                    when (response.code()) {
-//
-//
-//                        200 -> {
-//                            photostring = response.body().data
-//                            val photoPickerIntent = Intent(Intent.ACTION_PICK)
-//                            photoPickerIntent.type = "image/png"
-//                            startActivityForResult(photoPickerIntent, REQ_CODE_SELECT_IMAGE)
-////                                intent.putExtra(changeNick, editText.text.toString())
-//                            //BUNDLE_KEY_NICKNAME
-//
-//                            photostring = image.toString()
-////                            Toast.makeText(activity.applicationContext, "123242", Toast.LENGTH_SHORT).show()
-//
-//                        }
-//                        else -> {
-//                            Toast.makeText(activity.applicationContext, "실패1234", Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//                }
-//            })
         })
 
         //닉네임 변경
@@ -174,14 +141,13 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             startActivity(v)
         })
 
-
-
         v.layout_mypage_logout.setOnClickListener {
             //            Toast.makeText(activity!!, "프로토타입버전에선 항상 로그인이 되어있습니다.", Toast.LENGTH_SHORT).show()
             LoginToken.token = null
             var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
             var editor = sharedPreference.edit()
             editor.remove(LoginToken.PREF_KEY)
+            LoginToken.logined = false
             editor.commit()
             Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
             var v = Intent(this.activity.applicationContext, LoginActivity::class.java)
@@ -250,7 +216,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 try {
 
 
-//                    val input : InputStream? = null/* : InputStream = activity.contentResolver.openInputStream(data!!.getData())*/
+//                    val input : InputStream? = null/* : InputStream = activity.contentResolver.openInputStream(dataMy!!.getDataMy())*/
                     //if(ApplicationController.getInstance().is)
                     this.data = data!!.data
 //
@@ -263,25 +229,16 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                         e.printStackTrace()
                     }
 
-//
                     var bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
-
+                    input!!.close()
 //                    val bmRotated = rotateBitmap(bitmap, orientation)
 
-
                     val baos = ByteArrayOutputStream()
-
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-
-                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+                    val photoBody = RequestBody.create(MediaType.parse("image/*"), baos.toByteArray())
                     val photo = this.data.toString()
-//                    val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
+//                    val photo = File(this.dataMy.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
                     val body : MultipartBody.Part = MultipartBody.Part.createFormData("image", photo, photoBody)
-
-
-
-
-
 
 
 //                    RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
@@ -290,11 +247,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     if (EasyPermissions.hasPermissions(this.activity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                         var filePath = getRealPathFromURIPath(selectedImage!!, MypageFragment@ this.activity);
                         var file = File(filePath)
-                        val reqFile = RequestBody.create(MediaType.parse("image/*"), file)
-//                        val body = MultipartBody.Part.createFormData("upload", file.name, reqFile)
                         val name = RequestBody.create(MediaType.parse("image/*"), file.name)
                         var degree : Int = getExifOrientation(filePath)
-
 
 //                        if (degree != 0) {
 //                            Log.i(TAG, "Rotating... " + degree);
@@ -307,7 +261,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 //                        val body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
 //                        val fileToUpload = MultipartBody.Part.createFormData("file", file.name, mFile)
 //                        Glide.with(this)
-//                                .load(data!!.data)
+//                                .load(dataMy!!.dataMy)
 //                                .into(imageview_mypage_profile)
 
                         Log.d("photoa", "1")
@@ -386,7 +340,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
 //                                    imageview_mypage_profile.setImageBitmap(bitmap)
-//                                    response.body().data = bitmap.toString()
+//                                    response.body().dataMy = bitmap.toString()
 
 
                                     if (response!!.body().message == "success To change photo") {
@@ -396,7 +350,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 //                                       getRotatedBitmap(bitmap, degree) // 이미지가 회전되어 나오는거 방지하기 위해 만듬
 
 //                                        Glide.with(activity)
-//                                                .load(response.body().data)
+//                                                .load(response.body().dataMy)
 //                                                .into(
 //                                                        if(degree == 90 || degree == 180){
 //
@@ -473,11 +427,11 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, dataMy: Intent?) {
 //        if (requestCode == REQ_CODE_SELECT_IMAGE) {
 //            if (resultCode == Activity.RESULT_OK) {
 //                try {
-//                    val bitmap = MediaStore.Images.Media.getBitmap(this.activity.contentResolver, data!!.data)
+//                    val bitmap = MediaStore.Images.Media.getBitmap(this.activity.contentResolver, dataMy!!.dataMy)
 //                    imageview_mypage_profile.setImageBitmap(bitmap)
 //
 //                    //put해주기
@@ -603,7 +557,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 ////
 //        var input: InputStream? = null // here, you need to get your context.
 //        try {
-//            input = context.contentResolver.openInputStream(this.data)
+//            input = context.contentResolver.openInputStream(this.dataMy)
 //        } catch (e: FileNotFoundException) {
 //            e.printStackTrace()
 //        }

@@ -44,13 +44,15 @@
 
         <TextView
             android:id="@+id/my_nonghwalname"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nanumsquareround_otfb"
-            android:text="제주 행복 감귤 농장"
+            android:singleLine="true"
+            android:text="제주 행복 감귤 농장  1박 2일"
             android:textColor="#DE000000"
             android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
             app:layout_constraintStart_toStartOf="@+id/guideline40"
             app:layout_constraintTop_toBottomOf="@+id/my_image" />
 
@@ -175,33 +177,30 @@
             android:id="@+id/textview_apply_ing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:src="@drawable/mymy_ic_ing"
             android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
-            app:layout_constraintTop_toTopOf="@+id/farmer_profile_phone" />
+            app:layout_constraintBottom_toBottomOf="@+id/my_image"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!--신청완료,신청취소-->
         <ImageView
             android:id="@+id/mymy_cancle_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:src="@drawable/mymy_cancle_complete_selector"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
-            app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
+            app:layout_constraintBottom_toBottomOf="@+id/my_image"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!--농활확정-->
         <ImageView
             android:id="@+id/my_extention"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:src="@drawable/mymy_extention"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/farmer_profile_phone"
-            app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
+            app:layout_constraintBottom_toBottomOf="@+id/my_image"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!--입금완료 입금대기-->
         <ImageView
@@ -210,20 +209,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/mymy_deposit_selector"
             android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@+id/textview_apply_ing"
-            app:layout_constraintTop_toTopOf="@+id/textview_apply_ing" />
-
-        <TextView
-            android:id="@+id/farmer_profile_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/nanumsquareround_otfb"
-            android:text="1박2일"
-            android:textColor="#DE000000"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/my_nonghwalname"
-            app:layout_constraintTop_toTopOf="@+id/my_nonghwalname" />
+            app:layout_constraintBottom_toBottomOf="@+id/my_image"
+            app:layout_constraintStart_toEndOf="@+id/textview_apply_ing" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline63"

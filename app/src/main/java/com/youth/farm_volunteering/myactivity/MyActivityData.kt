@@ -3,21 +3,24 @@ package com.youth.farm_volunteering.myactivity
 import android.os.Parcel
 import android.os.Parcelable
 
+
 class MyActivityData() : Parcelable {
     var startDate: String? = null
     var endDate: String? = null
     var addr : String? =null
     var period : String? =null
     var name : String? =null
-    var state : Int? =null
     var price : Int? =null
-    var currentPerson : Int? =null
-    var person : Int? =null
     var personLimit : Int? =null
+    var nhIdx : Int? = null
     var idx : Int? =null
     var img : String? =null
+    var schState : Int? = null
+    var Astate : Int? = null
+    var currentPerson : Int? =null
+    var person : Int? =null
     var rState : Int? =null
-    var rIdx : Int? =null
+    var state : Int? =null
 
     constructor(parcel: Parcel) : this() {
         startDate = parcel.readString()
@@ -33,7 +36,6 @@ class MyActivityData() : Parcelable {
         idx = parcel.readValue(Int::class.java.classLoader) as? Int
         img = parcel.readString()
         rState = parcel.readValue(Int::class.java.classLoader) as? Int
-        rIdx = parcel.readValue(Int::class.java.classLoader) as? Int
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -50,7 +52,6 @@ class MyActivityData() : Parcelable {
         parcel.writeValue(idx)
         parcel.writeString(img)
         parcel.writeValue(rState)
-        parcel.writeValue(rIdx)
     }
 
     override fun describeContents(): Int {

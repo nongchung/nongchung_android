@@ -27,8 +27,8 @@ class MyActivityFragment : Fragment() {
 
         myList = ArrayList()
 
-        var homeCall = ApplicationController.instance!!.networkService!!.myactivity()
-        homeCall.enqueue(object : retrofit2.Callback<MyActivityResponseData> {
+        var getMyActivities = ApplicationController.instance!!.networkService!!.myactivity()
+        getMyActivities.enqueue(object : retrofit2.Callback<MyActivityResponseData> {
             override fun onFailure(call: retrofit2.Call<MyActivityResponseData>, t: Throwable?) {
                 Toast.makeText(activity, "home request fail", Toast.LENGTH_SHORT).show()
             }

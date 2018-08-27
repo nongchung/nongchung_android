@@ -53,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
                         editor.commit()
                         LoginToken.token = response.body().token
+                        LoginToken.logined = true
 
                         LoginData.name = response.body().data!![0].name
                         LoginData.point = response.body().data!![0].point
