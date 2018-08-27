@@ -32,6 +32,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        moveTaskToBack(true)
+        finish()
+        android.os.Process.killProcess(android.os.Process.myPid())
+    }
+
     private fun requestLogin(email: String, password: String) {
         var loginCall = ApplicationController.instance!!.networkService!!.login(email, password);
         loginCall.enqueue(object : Callback<LoginResponseData> {
