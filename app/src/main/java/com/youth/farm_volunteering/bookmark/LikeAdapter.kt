@@ -43,7 +43,7 @@ class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<L
                 .into(holder.img)
         holder.name.text = LikeItems[position].name
         holder.addr.text = LikeItems[position].addr
-        holder.price.text = (LikeItems[position].price).toString()
+        holder.price.text = (LikeItems[position].price).toString() + "원"
         holder.imageviewlikeBookmark.isSelected = true
 
 

@@ -34,8 +34,7 @@ class WeekFarmAllAdapter(var dataListWeek: List<NonghwalData>) : RecyclerView.Ad
 
         Glide.with(holderWeek.itemView.context)
                 .load(dataListWeek[position].img)
-                .apply(RequestOptions().placeholder(R.drawable.user1_temp)) //이 부분에 띄워줄 로딩화면 구하면 넣어주는게 좋을듯
-                .thumbnail(0.1f)
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image)) //이 부분에 띄워줄 로딩화면 구하면 넣어주는게 좋을듯
                 .into(holderWeek.picall)
         holderWeek.dateall.text = dataListWeek[position].period
         holderWeek.titleall.text = dataListWeek[position].name

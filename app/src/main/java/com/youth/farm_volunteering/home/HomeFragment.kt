@@ -90,13 +90,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         introThemeFarmAdapter = IntroThemeFarmAdapter(introThemeFarmList!!, fragmentManager)
                         introThemeFarmAdapter!!.setOnItemClickListener(this@HomeFragment)
                         newFarmAdapter = NewFarmAdapter(newNonghwalList!!)          //클리어
-                        populFarmAdapter = PopulFarmAdapter(popularFarmList!!)
                         vpAdapter = DemoInfiniteAdapter(activity!!.applicationContext, adDataList!!, true)
 
                         fragment_home_weeklyHotFarm_rv.adapter = weekFarmAdapter
                         fragment_home_newFarm_rv.adapter = newFarmAdapter
                         fragment_home_themeFarm_rv.adapter = introThemeFarmAdapter
-                        fragment_home_hotFarm_rv.adapter = populFarmAdapter
+//                        fragment_home_hotFarm_rv.adapter = populFarmAdapter 인기농장 뺌
                         adViewPager!!.adapter = vpAdapter
 
                     }
@@ -163,18 +162,18 @@ class HomeFragment : Fragment(), View.OnClickListener {
         fragment_home_weeklyHotFarm_rv.layoutManager = LinearLayoutManager(context)
         fragment_home_newFarm_rv.layoutManager = LinearLayoutManager(context)
         fragment_home_themeFarm_rv.layoutManager = LinearLayoutManager(context)
-        fragment_home_hotFarm_rv.layoutManager = LinearLayoutManager(context)
+//        fragment_home_hotFarm_rv.layoutManager = LinearLayoutManager(context)인기농장 뺌
 
 
         weeklyHotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         newFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         themeFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        hotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//        hotFarm_linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) 인기농장 뺌
 
         fragment_home_weeklyHotFarm_rv!!.setLayoutManager(weeklyHotFarm_linearLayoutManager)
         fragment_home_newFarm_rv!!.setLayoutManager(newFarm_linearLayoutManager)
         fragment_home_themeFarm_rv!!.setLayoutManager(themeFarm_linearLayoutManager)
-        fragment_home_hotFarm_rv!!.setLayoutManager(hotFarm_linearLayoutManager)
+//        fragment_home_hotFarm_rv!!.setLayoutManager(hotFarm_linearLayoutManager)  인기농장 뺌
 
         //RecyclerView별 horizontal로 간격띄우기
         horizontalItemDecoration = DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
@@ -184,7 +183,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         fragment_home_weeklyHotFarm_rv.addItemDecoration(horizontalItemDecoration)
         fragment_home_newFarm_rv.addItemDecoration(horizontalItemDecoration)
         fragment_home_themeFarm_rv.addItemDecoration(horizontalItemDecoration)
-        fragment_home_hotFarm_rv.addItemDecoration(horizontalItemDecoration)
+//        fragment_home_hotFarm_rv.addItemDecoration(horizontalItemDecoration)인기농장 뺌
 
     }
 

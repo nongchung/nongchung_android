@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.BookmarkData
@@ -30,6 +31,7 @@ class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: NewFarmItemViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
                 .load(dataList[position].img)
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image))
                 .into(holder.imageviewNewFarm)
         holder.textviewNewFarmAddr.setText(dataList[position].addr)
         holder.textviewNewFarmDate.setText(dataList[position].period)

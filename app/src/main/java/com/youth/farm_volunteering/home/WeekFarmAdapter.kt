@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.data.BookmarkData
 import com.youth.farm_volunteering.data.HomeNonghwalData
 import retrofit2.Call
@@ -29,7 +30,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
 
         Glide.with(holderWeek.itemView.context)
                 .load(dataListHome[position].img)
-                .thumbnail(0.1f)
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image))
                 .into(holderWeek.pic)
         holderWeek.date.text = dataListHome[position].period
         holderWeek.title.text = dataListHome[position].name

@@ -8,8 +8,10 @@
     android:background="#FFFFFF">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintlayout_avg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         android:background="#ffffff">
 
         <TextView
@@ -58,6 +60,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/review_rv"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/activity_search_toolbar_left_padding"
@@ -66,8 +69,13 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="130dp" />
 
-
-
-
+    <ImageView
+        android:id="@+id/imageview_noreviews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone"
+        android:scaleType="fitStart"
+        android:src="@drawable/no_mywrite2"/>
 
 </LinearLayout>

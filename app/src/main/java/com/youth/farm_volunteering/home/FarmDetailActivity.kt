@@ -19,6 +19,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -295,6 +296,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         Glide.with(applicationContext)
                 .load(populData.getRealImg())
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image))
                 .into(imageviewCollapse)
         imageviewCollapse.scaleType = ImageView.ScaleType.FIT_XY
         viewpagerDetailBottom.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tablayoutDetailActivity))

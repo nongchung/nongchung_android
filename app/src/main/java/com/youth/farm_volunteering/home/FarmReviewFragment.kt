@@ -51,65 +51,33 @@ class FarmReviewFragment : Fragment(){
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
-                if(response.isSuccessful){
-                    if(response.body().message == "Success to Get Review List"){
-                        ReviewList = response.body().rvListInfo
+                if (response.code() == 200) {
+                    if (response.isSuccessful) {
+                        if (response.body().message == "Success to Get Review List") {
+                            ReviewList = response.body().rvListInfo
+                            reviewAdapter = ReviewAdapter(ReviewList!!)
+                            v.review_rv.layoutManager = LinearLayoutManager(context)
+                            v.review_rv.adapter = reviewAdapter
 
-                        reviewAdapter = ReviewAdapter(ReviewList!!)
-                        v.review_rv.layoutManager = LinearLayoutManager(context)
-                        v.review_rv.adapter = reviewAdapter
+                            var totalScoreTemp = 0f
 
-                        var totalScoreTemp = 0f
-
-                        for(i in 0 until ReviewList!!.size) {
-                            totalScoreTemp = totalScoreTemp.plus(ReviewList!![i].star!!)
+                            for (i in 0 until ReviewList!!.size) {
+                                totalScoreTemp = totalScoreTemp.plus(ReviewList!![i].star!!)
+                            }
+                            totalScore!!.text = String.format("%.1f", totalScoreTemp!! / ReviewList!!.size)
+                            totalRatingBar!!.rating = totalScoreTemp / ReviewList!!.size
                         }
-                        totalScore!!.text = String.format("%.1f", totalScoreTemp!!/ReviewList!!.size)
-                        totalRatingBar!!.rating = totalScoreTemp/ReviewList!!.size
-                       }
                     }
+                }else if(response.code() == 400){
+                    v.review_rv.visibility = View.GONE
+                    v.constraintlayout_avg.visibility = View.GONE
+                    v.imageview_noreviews.visibility = View.VISIBLE
                 }
+            }
 
 
         })
-
-
-//        reviewitems = ArrayList()
-//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(MyReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//
-//        reviewAdapter = ReviewAdapter(reviewitems)
-//        reviewAdapter.setOnItemClickListener(this.activity)
-
-//        v.review_rv.layoutManager = LinearLayoutManager(this.activity!!.applicationContext)
-//        v.review_rv.adapter = reviewAdapter
-
-
-
-//RecyclerVIew안에 RecyclerView를 호출하기 위한 코드 그림 가로로 넣기 위해서...
-//        reviewimgitems = ArrayList()
-//
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//
-//        linearLayoutManager = LinearLayoutManager(activity , LinearLayoutManager.HORIZONTAL,false) // 괄호안에 activity도 변경 필요
-//
-//        reviewimgAdapter = ReviewImageAdapter(reviewimgitems)
-        //a.reviewimageView.layoutManager = linearLayoutManager // 이걸바꾸자....
-        //a.reviewimageView.adapter = reviewimgAdapter
-
         return v
-
-
-
-
-
-
-
 
     }
 
