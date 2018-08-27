@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.youth.farm_volunteering.R
@@ -24,6 +26,9 @@ class FarmReviewFragment : Fragment(){
     lateinit var reviewAdapter : ReviewAdapter
     lateinit var reviewimageAdapter : ReviewImageAdapter
 
+    var totalScore : TextView? = null
+    var totalRatingBar : RatingBar? = null
+
     lateinit var reviewimgitems: ArrayList<ReviewImageData>
     var ReviewList: List<rvListInfoData>? = null
     var ReviewImageList : List<String>? = null
@@ -32,8 +37,9 @@ class FarmReviewFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_farm_review, container, false)
-        //activity!!.supportFragmentManager.beginTransaction().add()
-        val a = inflater.inflate(R.layout.item_review,container,false)
+
+        totalScore = v.findViewById(R.id.review_score)
+        totalRatingBar = v.findViewById(R.id.review_rating_bar)
 
         var nhIdx : Int = arguments.getInt("nhIdx")
 
@@ -45,61 +51,31 @@ class FarmReviewFragment : Fragment(){
             }
             override fun onResponse(call: Call<ReviewResponseData>, response: Response<ReviewResponseData>) {
 
-                if(response.isSuccessful){
-                    if(response.body().message == "Success to Get Review List"){
-                        ReviewList = response.body().rvListInfo
+                if (response.code() == 200) {
+                    if (response.isSuccessful) {
+                        if (response.body().message == "Success to Get Review List") {
+                            ReviewList = response.body().rvListInfo
+                            reviewAdapter = ReviewAdapter(ReviewList!!)
+                            v.review_rv.layoutManager = LinearLayoutManager(context)
+                            v.review_rv.adapter = reviewAdapter
 
-                        reviewAdapter = ReviewAdapter(ReviewList!!)
-                        // reviewimageAdapter = ReviewImageAdapter(ReviewImageList!!)
-                        v.review_rv.layoutManager = LinearLayoutManager(context)
-                        v.review_rv.adapter = reviewAdapter
+                            var totalScoreTemp = 0f
 
-                        // v.review_img_rv.layoutManager = LinearLayoutManager(context)
-                        // v.review_img_rv.adapter = reviewimageAdapter
-                       }
+                            for (i in 0 until ReviewList!!.size) {
+                                totalScoreTemp = totalScoreTemp.plus(ReviewList!![i].star!!)
+                            }
+                            totalScore!!.text = String.format("%.1f", totalScoreTemp!! / ReviewList!!.size)
+                            totalRatingBar!!.rating = totalScoreTemp / ReviewList!!.size
+                        }
                     }
+                }else if(response.code() == 400){
+                    v.review_rv.visibility = View.GONE
+                    v.constraintlayout_avg.visibility = View.GONE
+                    v.imageview_noreviews.visibility = View.VISIBLE
                 }
-
-
+            }
         })
-
-
-//        reviewitems = ArrayList()
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//        reviewitems.add(ReviewData(R.drawable.image_1,R.drawable.image_1,"4.3점","승기","감사합니다."))
-//
-//        reviewAdapter = ReviewAdapter(reviewitems)
-//        reviewAdapter.setOnItemClickListener(this.activity)
-
-//        v.review_rv.layoutManager = LinearLayoutManager(this.activity!!.applicationContext)
-//        v.review_rv.adapter = reviewAdapter
-
-
-
-//RecyclerVIew안에 RecyclerView를 호출하기 위한 코드 그림 가로로 넣기 위해서...
-//        reviewimgitems = ArrayList()
-//
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//        reviewimgitems.add(ReviewImageData(R.drawable.image_1))
-//
-//        linearLayoutManager = LinearLayoutManager(activity , LinearLayoutManager.HORIZONTAL,false) // 괄호안에 activity도 변경 필요
-//
-//        reviewimgAdapter = ReviewImageAdapter(reviewimgitems)
-        //a.reviewimageView.layoutManager = linearLayoutManager // 이걸바꾸자....
-        //a.reviewimageView.adapter = reviewimgAdapter
-
         return v
-
-
-
-
-
-
-
 
     }
 

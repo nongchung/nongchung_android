@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering.myactivity
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.youth.farm_volunteering.review.ReviewWriteActivity
 
 
 class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Adapter<MyactivityViewHolder>() {
+
     override fun getItemCount(): Int = mydataList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyactivityViewHolder {
@@ -22,6 +24,11 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: MyactivityViewHolder, position: Int) {
 
+        var builderNamePeriod = StringBuilder()
+
+        builderNamePeriod.append(mydataList[position].name +"  ")
+                .append(mydataList[position].period)
+
         Glide.with(holder.itemView.context)
                 .load(mydataList[position].img)
                 .into(holder.img)
@@ -29,8 +36,7 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
         holder.startDate.text = mydataList[position].startDate
         holder.endDate.text = mydataList[position].endDate
         holder.addr.text = mydataList[position].addr
-        holder.period.text = mydataList[position].period
-        holder.name.text = mydataList[position].name
+        holder.name.text = builderNamePeriod.toString()
         holder.person.text = (mydataList[position].personLimit!! - mydataList[position].person!!).toString()
         holder.price.text = mydataList[position].price.toString()
         holder.currentPerson.text = mydataList[position].currentPerson.toString()
@@ -40,6 +46,7 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
         holder.textviewWrieteReview.setOnClickListener {
             val intent = Intent(holder.itemView.context, ReviewWriteActivity::class.java)
             intent.putExtra("MyActivityData", mydataList[position])
+
             holder.itemView.context.startActivity(intent)
         }
 
@@ -58,13 +65,16 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
                     holder.changemoney.setImageResource(R.drawable.mymy_complete)
                     holder.constraintLayoutApplyIng.visibility = View.GONE
                     holder.textviewWrieteReview.visibility = View.VISIBLE
-
+                    if(mydataList[position].rState == 1) {
+                        holder.textviewWrieteReview.text = "후기 수정"
+                    }
                 }
                 3 -> {
 
                     holder.changeimg.visibility = View.GONE
                     holder.changemoney.setImageResource(R.drawable.mymy_cancel)
                     holder.canceltext.visibility = View.VISIBLE
+                    holder.constraintLayoutApplyIng.visibility = View.GONE
                     holder.img.setColorFilter(Color.parseColor("#8A000000"))
 
                 }
@@ -80,23 +90,9 @@ class MyactivityAdapter(var mydataList: List<MyActivityData>) : RecyclerView.Ada
             holder.changeimg.visibility = View.GONE
         }
 
-//        if(dataList[position].isBooked!=null){
-//            when(dataList[position].isBooked){
-//                0-> holder.imageviewNewFarmBookmarkall.isSelected = false
-//                1-> holder.imageviewNewFarmBookmarkall.isSelected = true
-//            }
-//        }
-//
         if (mydataList[position].personLimit == mydataList[position].currentPerson) {
-        }
-//        if(mydataList[position].isBooked!=null){
-//            when(mydataList[position].isBooked){
-//                0-> holder.isBooked.isSelected = false
-//                1-> holder.isBooked.isSelected = true
-//            }
-//        }
-//        holder.starNum.text = mydataList[position].star.toString()
 
+        }
 
     }
 }

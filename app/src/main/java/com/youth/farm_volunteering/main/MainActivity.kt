@@ -21,7 +21,6 @@ import com.youth.farm_volunteering.bookmark.LikeFragment
 import com.youth.farm_volunteering.home.SearchFragment
 import com.youth.farm_volunteering.HomeFragment
 import com.youth.farm_volunteering.myactivity.MyActivityFragment
-import com.youth.farm_volunteering.mypage.MypageFragment
 import android.widget.ImageView
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.activity_main_bottomTabLayout

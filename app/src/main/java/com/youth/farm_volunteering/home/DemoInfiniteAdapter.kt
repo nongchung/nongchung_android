@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.home.LoopingPagerAdapter
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.AdData
@@ -26,6 +27,7 @@ class DemoInfiniteAdapter(context: Context, itemList: List<AdData>, isInfinite: 
     override fun bindView(convertView: View, listPosition: Int, viewType: Int) {
         Glide.with(this.context)
                 .load(itemList[listPosition].img)
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image))
                 .into(convertView.findViewById(R.id.item_slideImage))
 //        convertView.findViewById<ImageView>(R.id.item_slideImage).setBackgroundResource(itemList[listPosition].img)
         convertView.findViewById<TextView>(R.id.textviewAdCurCnt).text = itemList[listPosition].idx.toString() + " / "

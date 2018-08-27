@@ -5,7 +5,10 @@ import com.youth.farm_volunteering.myactivity.MyActivityResponseData
 import com.youth.farm_volunteering.review.PostReviewResponseData
 import com.youth.farm_volunteering.review.ReviewData
 import com.youth.farm_volunteering.data.*
+import com.youth.farm_volunteering.myactivity.GetBeforeModifyResponse
+import com.youth.farm_volunteering.review.PutReviewResponseData
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.*
@@ -77,15 +80,35 @@ interface NetworkService {
             @Query("nhIdx") nhIdx: Int
     ): Call<ReviewResponseData>
 
+    @Multipart
+    @POST("/api/review")
+    fun postReview(
+//            @Part ("rImages") rImages : RequestBody,
+            @Part parts : ArrayList<MultipartBody.Part>,
+            @Part ("content") content: RequestBody,
+            @Part ("scheIdx") schIdx: Int,
+            @Part ("star") rating : Float
+    ) : Call<PostReviewResponseData>
+
+    @Multipart
+    @PUT("api/activity/review")
+    fun putReview(
+            @Part ("rIdx") rIdx : Int,
+            @Part parts : ArrayList<MultipartBody.Part>,
+            @Part ("content") content: RequestBody,
+            @Part ("scheIdx") schIdx: Int,
+            @Part ("star") rating : Float
+    ) : Call<PutReviewResponseData>
+
+    @GET("/api/activity/review/{scheIdx}")
+    fun getBeforeModify(
+        @Path ("scheIdx") schIdx : Int
+    ) : Call<GetBeforeModifyResponse>
+
     @GET("/api/home/more/moreNew")
     fun new(
     @Query("idx") idx : Int
     ): Call<AllNewResponseData>
-
-    @POST("/api/review")
-    fun postReview(
-            @Body postReviewData : ReviewData
-    ) : Callback<PostReviewResponseData>
 
     @GET("/api/home/more/morePopul")
     fun popular(
@@ -112,16 +135,12 @@ interface NetworkService {
     @POST("/api/signup")
     fun registration(@Field("email") email: String, @Field("password") password: String, @Field("nickname") nickname: String, @Field("name") name: String, @Field("sex") sex: Int, @Field("handphone") handphone: String, @Field("birth") birth: String): Call<DefaultResponseData>
 
-    //    @FormUrlEncoded
-//    @HTTP(method = "PUT", path="/api/mypage/photo", hasBody=true)
-//    fun myphoto(@Field("image") image: File): Call<PhotoData>
-
-    @FormUrlEncoded
+    @Multipart
     @PUT("/api/mypage/photo")
     fun image(
-            @Field("image") image : File
-            //            MultipartBody.Part?
+            @Part file: MultipartBody.Part, @Part("image") image : RequestBody
     ) : Call<MyPhoto>
+
 
     @FormUrlEncoded
     @PUT("/api/mypage/nickname")

@@ -43,7 +43,7 @@ class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<L
                 .into(holder.img)
         holder.name.text = LikeItems[position].name
         holder.addr.text = LikeItems[position].addr
-        holder.price.text = (LikeItems[position].price).toString()
+        holder.price.text = (LikeItems[position].price).toString() + "원"
         holder.imageviewlikeBookmark.isSelected = true
 
 
@@ -57,7 +57,6 @@ class LikeAdapter (var LikeItems : ArrayList<LikeData>) : RecyclerView.Adapter<L
 
                 override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
                     if (response!!.body().message == "Success to Delete") {
-                        Toast.makeText(holder.itemView.context, "북마크에서 삭제하였습니다", Toast.LENGTH_SHORT).show()
                         this@LikeAdapter.LikeItems.remove(LikeItems.get(position))
                         this@LikeAdapter.notifyDataSetChanged()
 

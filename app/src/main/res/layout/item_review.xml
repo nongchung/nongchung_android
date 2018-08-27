@@ -84,6 +84,7 @@
             android:id="@+id/item_review_comment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="14dp"
             android:lineSpacingExtra="4.1dp"
             android:text="생각보다 너무 즐거웠어요. 농활이라고 해서 일만 많이 하고 지루할 줄알았는데 중간 중간에 쉬는 시간도 새참시간도 너무 즐거웠고 보람 찬 시간이였습니다. 농부님도 너무 친절하셨어요 ~ 다음에 친구랑 다시 방문하기로 했어요 ~ 여기 농활 너무 추천해요! 다들 꼭 가보세요!"
@@ -118,9 +119,10 @@
     </android.support.constraint.ConstraintLayout>
 
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp">
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline51"
@@ -131,7 +133,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/review_img_rv"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
@@ -141,7 +143,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline51"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

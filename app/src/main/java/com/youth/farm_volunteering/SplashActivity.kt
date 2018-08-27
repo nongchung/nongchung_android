@@ -22,38 +22,18 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        var prototypeEmail : String = "test@test.test"
-        var prototypePassword : String = "test"
+        var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
+        var editor = sharedPreference.edit();
 
-        var requestLogin = ApplicationController.instance!!.networkService!!.login(prototypeEmail, prototypePassword)
-        requestLogin.enqueue(object : Callback<LoginResponseData>{
-            override fun onFailure(call: Call<LoginResponseData>?, t: Throwable?) {
+        LoginToken.token = sharedPreference.getString(LoginToken.PREF_KEY, null);
 
-            }
+        LoginData.name = sharedPreference.getString("uName","")
+        LoginData.point = sharedPreference.getInt("uPoint",0)
+        LoginData.img = sharedPreference.getString("uImg","")
+        LoginData.nickname = sharedPreference.getString("uNickname","")
+        LoginData.age = sharedPreference.getInt("uAge",0)
 
-            override fun onResponse(call: Call<LoginResponseData>?, response: Response<LoginResponseData>?) {
-                var sharedPreference = getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE);
-                var editor = sharedPreference.edit();
-                editor.putString(LoginToken.PREF_KEY, response!!.body().token)
-                editor.putString("uName", response.body().data!![0].name)
-                editor.putInt("uPoint", response.body().data!![0].point!!)
-                editor.putString("uImg", response.body().data!![0].img)
-                editor.putString("uNickname", response.body().data!![0].nickname)
-                editor.putInt("uAge", response.body().data!![0].age!!)
-
-                editor.commit()
-                LoginToken.token = response.body().token
-
-                LoginData.name = response.body().data!![0].name
-                LoginData.point = response.body().data!![0].point
-                LoginData.img = response.body().data!![0].img
-                LoginData.nickname = response.body().data!![0].nickname
-                LoginData.age = response.body().data!![0].age
-
-
-            }
-
-        })
+        editor.commit()
 
         val introListener = object : Animator.AnimatorListener {
             override fun onAnimationEnd(animation: Animator?) {

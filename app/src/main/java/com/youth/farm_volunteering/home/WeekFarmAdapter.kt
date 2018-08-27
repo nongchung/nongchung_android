@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.data.BookmarkData
 import com.youth.farm_volunteering.data.HomeNonghwalData
 import retrofit2.Call
@@ -29,7 +30,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
 
         Glide.with(holderWeek.itemView.context)
                 .load(dataListHome[position].img)
-                .thumbnail(0.1f)
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image))
                 .into(holderWeek.pic)
         holderWeek.date.text = dataListHome[position].period
         holderWeek.title.text = dataListHome[position].name
@@ -53,7 +54,8 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
                     }
 
                     override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
-                        Log.d("aaa", response!!.body().message)
+                        Log.d("aaa", dataListHome[position].nhIdx.toString())
+                        Log.d("aaa", dataListHome[position].idx.toString())
                         if (response!!.body().message == "Success to Add") {
                             holderWeek.isBooked.isSelected = true
                             dataListHome[position].isBooked = 1
@@ -74,7 +76,6 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
 
                     override fun onResponse(call: Call<BookmarkData>?, response: Response<BookmarkData>?) {
                         if (response!!.body().message == "Success to Delete") {
-                            Toast.makeText(holderWeek.itemView.context, "북마크에서 삭제하였습니다", Toast.LENGTH_SHORT).show()
                             holderWeek.isBooked.isSelected = false
                             dataListHome[position].isBooked = 0
                         } else if (response!!.body().message == "No nonghwal activity") {

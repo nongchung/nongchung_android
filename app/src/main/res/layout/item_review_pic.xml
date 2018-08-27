@@ -9,10 +9,12 @@
     <LinearLayout
         android:layout_width="170dp"
         android:layout_height="170dp">
+
         <ImageView
             android:id="@+id/review_pic"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:scaleType="centerInside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:color/holo_blue_bright" />

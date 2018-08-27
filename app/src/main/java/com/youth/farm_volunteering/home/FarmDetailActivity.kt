@@ -19,6 +19,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -120,11 +121,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     if (response.body().myScheduleActivities != null) {
                         detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 sche
                     }
-
-                    if (scheIdx == null) {
-                        selectedStData = detailAllStartDate[0]
-                        scheIdx = detailAllStartDate[0].idx
-                    }
+                    scheIdx = detailAllStartDate[0].idx
+                    selectedStData = detailAllStartDate[0]
                     isApplied(selectedStData!!.idx!!, detailMyScheduleActivities!!)
 
                     var parsedStartDate : Date = dateFormat.parse(detailNearestStartDate)        //이렇게하면 SimpleDateFormat형 변수인 dateFormat으로
@@ -136,7 +134,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     var dateFormatEnd = SimpleDateFormat(" ~ dd일")
                     var firstEndDate = dateFormatEnd.format(parsedEndDate)
 
-                    if(detailNonghwalList!!.period!="당일 치기") {
+                    formatTemp = firstStartDate + firstEndDate
+
+                    if(detailNonghwalList!!.period!="당일 치기") {          //1박 이상일 때
                         var splitDay: List<String> = detailNonghwalList!!.period!!.split("박")       //ex) 1박 2일을 넣고 1과 2일로 쪼갬
                         var splitDayDay = Integer.parseInt(splitDay[0])                       //     '1'과 '2일' 중에서 1을 Int형으로 저장한 변수
                         var splitDate : List<String> = detailNearestStartDate!!.split("-")      //ex) 2018-07-21
@@ -146,9 +146,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                         var afterDate = splitDateDay!! + splitDayDay
 
                         buttonApplyDate.text = firstStartDate + firstEndDate
-                        formatTemp = firstStartDate + firstEndDate
                     }else{
-                        buttonApplyDate.text = firstStartDate
+                        buttonApplyDate.text = firstStartDate + firstEndDate
                     }
 
                     detailTabAdapter = DetailTabAdapter(supportFragmentManager, tablayoutDetailActivity.tabCount, populData.getRealId()!!,
@@ -186,6 +185,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                         if(response.body().message == "Success To Cancel"){
                             detailMyScheduleActivities = response.body().myScheduleActivities!!
                             isApplied(scheIdx!!, detailMyScheduleActivities!!)
+                            Toast.makeText(applicationContext, "취소 완료!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -253,13 +253,11 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 applicationCancelDialog!!.setOnDismissListener (object : DialogInterface.OnDismissListener{
                     override fun onDismiss(dialog: DialogInterface?) {
                         isApplied(scheIdx!!, detailMyScheduleActivities!!)
-                        Toast.makeText(applicationContext, "취소 완료!", Toast.LENGTH_SHORT).show()
                     }
                 })
             }
 
         }
-
 
         buttonApplyDate.setOnClickListener {
             bottomSheetDialog = BottomSheetDialog.instance
@@ -275,10 +273,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 } else {
                     buttonApplyDate.text = bottomSheetDialog.selectedDate
                 }
-                selectedStData = bottomSheetDialog.selectedStData
+                if(bottomSheetDialog.selectedStData!= null) {
+                    selectedStData = bottomSheetDialog.selectedStData
+                    scheIdx = bottomSheetDialog.selectedIdx
+                }
 //                checkSchState(selectedStData!!.state!!)
-                isApplied(selectedStData!!.idx!!, detailMyScheduleActivities!!)
-                scheIdx = bottomSheetDialog.selectedIdx
+                isApplied(selectedStData!!.idx!!, detailMyScheduleActivities!!)         //에러 발견
             }
 
             bottomSheetDialog!!.arguments = bundle
@@ -296,6 +296,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
         Glide.with(applicationContext)
                 .load(populData.getRealImg())
+                .apply(RequestOptions().placeholder(R.drawable.loading_big_image))
                 .into(imageviewCollapse)
         imageviewCollapse.scaleType = ImageView.ScaleType.FIT_XY
         viewpagerDetailBottom.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tablayoutDetailActivity))
@@ -319,14 +320,17 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
 
     fun isApplied(selectedSchIdx : Int, myActivities : List<Int>) {
 
-        for(i in 0 until myActivities.size){
-            if(selectedSchIdx == myActivities[i]){
-                isSchApplied = true
-                buttonApplyButton.text = "취소하기"
+        if(myActivities.size != 0)
+        {
+            for (i in 0 until myActivities.size) {
+                if (selectedSchIdx == myActivities[i]) {
+                    isSchApplied = true
+                    buttonApplyButton.text = "취소하기"
 
-            } else{
-                isSchApplied = false
-                buttonApplyButton.text = "신청하기"
+                } else {
+                    isSchApplied = false
+                    buttonApplyButton.text = "신청하기"
+                }
             }
         }
     }
@@ -379,10 +383,12 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode==applyReqCode){
-            Toast.makeText(applicationContext, "신청 완료!", Toast.LENGTH_SHORT).show()
-            detailMyScheduleActivities!!.add(scheIdx!!)         //실시간 갱신이 안되니까 전체를 다 다시 불러올 수도 없는 노릇이니 임시방편
-            isApplied(scheIdx!!, detailMyScheduleActivities!!)  //갱신된 detailMyScheduleActivities가 필요함
+        if(resultCode == RESULT_OK) {
+            if (requestCode == applyReqCode) {
+                Toast.makeText(applicationContext, "신청 완료!", Toast.LENGTH_SHORT).show()
+                detailMyScheduleActivities!!.add(scheIdx!!)         //실시간 갱신이 안되니까 전체를 다 다시 불러올 수도 없는 노릇이니 임시방편
+                isApplied(scheIdx!!, detailMyScheduleActivities!!)  //갱신된 detailMyScheduleActivities가 필요함
+            }
         }
     }
 

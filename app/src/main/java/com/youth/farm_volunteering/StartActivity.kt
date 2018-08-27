@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
-import com.youth.farm_volunteering.Main.MainActivity
 import com.youth.farm_volunteering.R.id.*
-import com.youth.farm_volunteering.SignUp.*
 import com.youth.farm_volunteering.data.DefaultResponseData
 import com.youth.farm_volunteering.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_signup1.*

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 
 class ReviewAdapter (var ReviewItems : ArrayList<Uri>) : RecyclerView.Adapter<ReviewViewHolder>() {
@@ -17,7 +18,10 @@ class ReviewAdapter (var ReviewItems : ArrayList<Uri>) : RecyclerView.Adapter<Re
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder?, position: Int) {
-        holder!!.picture.setImageURI(ReviewItems[position])
+
+        Glide.with(holder!!.itemView.context)
+                .load(ReviewItems[position])
+                .into(holder!!.picture)
     }
 
 }

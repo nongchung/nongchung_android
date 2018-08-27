@@ -79,13 +79,6 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         return v
     }
 
-//    override fun setupDialog(dialog: Dialog?, style: Int) {
-//        super.setupDialog(dialog, style)
-//
-//        var contentView : View = View.inflate(this.activity.applicationContext, R.layout.bottom_sheet_dialog, null)
-//        dialog!!.setContentView(contentView)
-//    }
-
     override fun onClick(v: View?) {
         selectedChildIdx = v!!.getTag() as Int
         selectedDate  = applyList!!.get(selectedChildIdx!!).apply_rv_schedule
