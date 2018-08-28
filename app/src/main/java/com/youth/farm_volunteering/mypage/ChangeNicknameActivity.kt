@@ -34,8 +34,9 @@ import com.youth.farm_volunteering.login.LoginToken
 import kotlinx.android.synthetic.main.activity_signup2.*
 import kotlinx.android.synthetic.main.activity_change_nickname.*
 
-const val RESULT_REQUEST_NICKNAME: Int = 3
 class ChangeNicknameActivity : AppCompatActivity() {
+
+    val RESULT_REQUEST_NICKNAME: Int = 3
 
     var changeNick: String? = null
     var newchangeNick: String? = null

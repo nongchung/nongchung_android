@@ -15,7 +15,7 @@ open class NonghwalData() : Parcelable {
     var isBooked: Int? = null
     var addrIdx: Int? = 0
     var img: String? = null
-    var star: Double? = null
+    var star: Float? = null
 
     constructor(parcel: Parcel) : this() {
         idx = parcel.readValue(Int::class.java.classLoader) as? Int
@@ -26,7 +26,7 @@ open class NonghwalData() : Parcelable {
         isBooked = parcel.readValue(Int::class.java.classLoader) as? Int
         addrIdx = parcel.readValue(Int::class.java.classLoader) as? Int
         img = parcel.readString()
-        star = parcel.readValue(Double::class.java.classLoader) as? Double
+        star = parcel.readValue(Float::class.java.classLoader) as? Float
     }
 
     open fun getRealId(): Int? {

@@ -16,13 +16,14 @@
 
             <TextView
                 android:id="@+id/detail_introduce_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/nanumsquareround_otfb"
                 android:text="제주 행복 감귤 농장 체험"
+                android:textAlignment="center"
                 android:textColor="#DE000000"
                 android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -304,12 +305,13 @@
                 android:id="@+id/textview_max_apply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="@font/nanumsquareround_otfeb"
                 android:text="/20"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="21sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline68"
+                app:layout_constraintBottom_toBottomOf="@+id/textview_cur_apply"
                 app:layout_constraintStart_toEndOf="@+id/textview_cur_apply" />
 
             <TextView
@@ -353,6 +355,7 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanumsquareround_otfeb"
                 android:text="15"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="34sp"
                 android:textStyle="bold"
@@ -369,6 +372,7 @@
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/nanumsquareround_otfeb"
                 android:text="24.5"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="34sp"
                 android:textStyle="bold"
@@ -381,6 +385,7 @@
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="14dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
@@ -398,6 +403,7 @@
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
@@ -466,7 +472,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="76dp" />
+                app:layout_constraintGuide_begin="92dp" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline69"

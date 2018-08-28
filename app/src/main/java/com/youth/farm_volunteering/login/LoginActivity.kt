@@ -32,13 +32,13 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-        moveTaskToBack(true)
-        finish()
-        android.os.Process.killProcess(android.os.Process.myPid())
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//
+//        moveTaskToBack(true)
+//        finish()
+//        android.os.Process.killProcess(android.os.Process.myPid())
+//    }
 
     private fun requestLogin(email: String, password: String) {
         var loginCall = ApplicationController.instance!!.networkService!!.login(email, password);
@@ -70,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
                         LoginData.age = response.body().data!![0].age
 
                         Toast.makeText(this@LoginActivity, response.body().data!!.get(0).name + "로그인 성공!", Toast.LENGTH_SHORT).show()
+                        setResult(102)
                         finish()
                     }
                     else ->

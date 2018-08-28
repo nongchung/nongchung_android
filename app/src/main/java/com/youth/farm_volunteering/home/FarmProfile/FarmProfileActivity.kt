@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_fram_profile.*
 
 class FarmProfileActivity : AppCompatActivity() {
 
-    var profileNonghwalList: ProfileFarmerInfoData? = null
+    var profileNonghwalList: List<ProfileFarmerInfoData>? = null
     lateinit var profileViewList: ArrayList<FarmerProfileData>
     lateinit var profileViewAdapter: FarmProfileAdapter
 

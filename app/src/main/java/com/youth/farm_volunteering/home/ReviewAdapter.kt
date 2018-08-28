@@ -26,8 +26,8 @@ class ReviewAdapter(var dataList: List<rvListInfoData>) : RecyclerView.Adapter<R
                 .into(holder.Reviewuimg)
         holder.Reviewname.text = dataList[position].name
         holder.Reviewdate.text = dataList[position].startDate
-        holder.reviewRatingBar.rating = dataList[position].star!!
-        holder.Reviewstar.text = dataList[position].star.toString()
+        holder.reviewRatingBar.rating = dataList[position].star!! / 2.0f
+        holder.Reviewstar.text = String.format("%.1f", dataList[position].star!! / 2.0f)
         holder.Reviewcontent.text = dataList[position].content
         if(!(dataList[position].rvImages!![0].isEmpty()))
         {

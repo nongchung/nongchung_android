@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.youth.farm_volunteering.home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.AllStData
 import com.youth.farm_volunteering.data.DetailApplyData
+import com.youth.farm_volunteering.data.FriendInfoData
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +29,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     var applyList: ArrayList<DetailApplyData>? = null
     var getDetailScheduleList: ArrayList<DetailSchData>? = null
     var getDetailAllStartDate: ArrayList<AllStData>? = null
+    var getDetailFriendInfoList: ArrayList<FriendInfoData>? = null
     var getDetailMyScheduleActivities: ArrayList<Int>? = null
     var getDetailNearestStartDate : String? = null
 

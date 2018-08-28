@@ -105,8 +105,12 @@ class SignupActivity1 : AppCompatActivity() {
         when (resultCode) {
             RESULT_CANCEL ->
                 finish()
-            else ->
-                requestRegistration(edittext_signup_email.text.toString(), edittext_signup_password1.text.toString(), data!!.getStringExtra(BUNDLE_KEY_NICKNAME), data!!.getStringExtra(BUNDLE_KEY_NAME), data!!.getIntExtra(BUNDLE_KEY_SEX, 0), data!!.getStringExtra(BUNDLE_KEY_PHONENUMBER), data!!.getStringExtra(BUNDLE_KEY_BIRTH))
+            else ->{
+                requestRegistration(edittext_signup_email.text.toString(), edittext_signup_password1.text.toString(),
+                        data!!.getStringExtra(BUNDLE_KEY_NICKNAME), data!!.getStringExtra(BUNDLE_KEY_NAME), data!!.getIntExtra(BUNDLE_KEY_SEX, 0),
+                        data!!.getStringExtra(BUNDLE_KEY_PHONENUMBER), data!!.getStringExtra(BUNDLE_KEY_BIRTH))
+
+            }
         }
     }
 

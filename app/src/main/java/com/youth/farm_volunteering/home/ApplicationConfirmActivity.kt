@@ -75,7 +75,7 @@ class ApplicationConfirmActivity : AppCompatActivity() {
 
         buttonFinalConfrim.setOnClickListener{
             setResult(FarmDetailActivity.applyReqCode)
-            Toast.makeText(applicationContext, "신청 완료!", Toast.LENGTH_SHORT).show()
+
             finish()
         }
     }

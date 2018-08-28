@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textview_nh_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="제주 감귤농장 1박 2일"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F3F3F5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_nh_name" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_myreview_farm_img"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="19dp"
+            android:src="#f4e7aa"
+            app:layout_constraintStart_toStartOf="@+id/guideline30"
+            app:layout_constraintTop_toBottomOf="@+id/textview_nh_name" />
+
+
+        <TextView
+            android:id="@+id/item_myreview_farm_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="농장이름"
+            android:textColor="#87000000"
+            android:textSize="13dp"
+            app:layout_constraintStart_toEndOf="@+id/item_myreview_farm_img"
+            app:layout_constraintTop_toTopOf="@+id/item_myreview_farm_img" />
+
+        <TextView
+            android:id="@+id/item_myreview_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:text="2017년 08월 24일 참여"
+            android:textColor="#95989A"
+            android:textSize="11dp"
+            app:layout_constraintStart_toEndOf="@+id/item_myreview_farm_img"
+            app:layout_constraintTop_toBottomOf="@+id/item_myreview_farm_name" />
+
+
+        <TextView
+            android:id="@+id/item_myreview_short_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="8dp"
+            android:text="추천!"
+            android:textColor="#95989A"
+            android:textSize="11dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_myreview_rating_bar"
+            app:layout_constraintStart_toEndOf="@+id/item_myreview_rating_bar" />
+
+        <RatingBar
+            android:id="@+id/item_myreview_rating_bar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp"
+            android:rating="4.5"
+            android:theme="@style/RatingBar"
+            app:layout_constraintStart_toStartOf="@+id/guideline30"
+            app:layout_constraintTop_toBottomOf="@+id/item_myreview_farm_img" />
+
+
+        <TextView
+            android:id="@+id/item_myreview_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="14dp"
+            android:lineSpacingExtra="4.1dp"
+            android:text="생각보다 너무 즐거웠어요. 농활이라고 해서 일만 많이 하고 지루할 줄알았는데 중간 중간에 쉬는 시간도 새참시간도 너무 즐거웠고 보람 찬 시간이였습니다. 농부님도 너무 친절하셨어요 ~ 다음에 친구랑 다시 방문하기로 했어요 ~ 여기 농활 너무 추천해요! 다들 꼭 가보세요!"
+            android:textColor="#87000000"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline31"
+            app:layout_constraintStart_toStartOf="@+id/guideline30"
+            app:layout_constraintTop_toBottomOf="@+id/item_myreview_rating_bar" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/item_review_images"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.044444446" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9270833" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myreview_img_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline51"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
+
+
+</LinearLayout>

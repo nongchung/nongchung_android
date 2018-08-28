@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
@@ -206,27 +207,24 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 var getUserInfo = ApplicationController.instance!!.networkService!!.getUserInfo()
                 getUserInfo.enqueue(object : Callback<UserResponseData> {
                     override fun onResponse(call: Call<UserResponseData>?, response: Response<UserResponseData>?) {
-                        if (LoginToken.token != null) {
-                            if (response!!.isSuccessful) {
-                                if (response!!.body().message == "Success To Get User Info") {
-                                    userDataList = response.body().data
-                                    val intent = Intent(applicationContext, ApplicationActivity::class.java)
-                                    intent.putParcelableArrayListExtra("userData", userDataList)
-                                    intent.putExtra("nhIdx", populData!!.getRealId())
-                                    intent.putExtra("nhName", populData!!.name)
-                                    intent.putExtra("nhAddr", populData!!.addr)
-                                    intent.putExtra("nhPrice", populData!!.price)
-                                    intent.putExtra("nhImg", populData!!.img)
-                                    intent.putExtra("scheDate", buttonApplyDate.text.toString())
-                                    intent.putExtra("scheIdx", selectedStData!!.idx)
-                                    intent.putExtra("selectedStData", selectedStData)
-                                    intent.putExtra("period", populData.period)
-                                    startActivityForResult(intent, applyReqCode)
-                                }
+                        if (response!!.isSuccessful) {
+                            if (response!!.body().message == "Success To Get User Info") {
+                                userDataList = response.body().data
+                                val intent = Intent(applicationContext, ApplicationActivity::class.java)
+                                intent.putParcelableArrayListExtra("userData", userDataList)
+                                intent.putExtra("nhIdx", populData!!.getRealId())
+                                intent.putExtra("nhName", populData!!.name)
+                                intent.putExtra("nhAddr", populData!!.addr)
+                                intent.putExtra("nhPrice", populData!!.price)
+                                intent.putExtra("nhImg", populData!!.img)
+                                intent.putExtra("scheDate", buttonApplyDate.text.toString())
+                                intent.putExtra("scheIdx", selectedStData!!.idx)
+                                intent.putExtra("selectedStData", selectedStData)
+                                intent.putExtra("period", populData.period)
+                                startActivityForResult(intent, applyReqCode)
                             }
-                        } else {
-                            Toast.makeText(applicationContext, "로그인이 필요합니다!", Toast.LENGTH_SHORT).show()
                         }
+
                     }
 
                     override fun onFailure(call: Call<UserResponseData>?, t: Throwable?) {
@@ -276,6 +274,8 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 if(bottomSheetDialog.selectedStData!= null) {
                     selectedStData = bottomSheetDialog.selectedStData
                     scheIdx = bottomSheetDialog.selectedIdx
+
+                    getChangedFriendList(scheIdx!!)
                 }
 //                checkSchState(selectedStData!!.state!!)
                 isApplied(selectedStData!!.idx!!, detailMyScheduleActivities!!)         //에러 발견
@@ -332,6 +332,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     buttonApplyButton.text = "신청하기"
                 }
             }
+        } else{
+            isSchApplied = false
+            buttonApplyButton.text = "신청하기"
         }
     }
 
@@ -383,16 +386,38 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(resultCode == RESULT_OK) {
-            if (requestCode == applyReqCode) {
+        if (requestCode == applyReqCode) {
+            if(resultCode == Activity.RESULT_OK) {
                 Toast.makeText(applicationContext, "신청 완료!", Toast.LENGTH_SHORT).show()
                 detailMyScheduleActivities!!.add(scheIdx!!)         //실시간 갱신이 안되니까 전체를 다 다시 불러올 수도 없는 노릇이니 임시방편
                 isApplied(scheIdx!!, detailMyScheduleActivities!!)  //갱신된 detailMyScheduleActivities가 필요함
             }
         }
+
     }
 
     companion object {
         val applyReqCode = 101;
+    }
+
+    fun getChangedFriendList(scheIdx : Int){
+        val getChangedFriendList = ApplicationController.instance!!.networkService!!.getChangedFriendList(scheIdx)
+        getChangedFriendList.enqueue(object : Callback<FriendInfoResponseData>{
+            override fun onFailure(call: Call<FriendInfoResponseData>?, t: Throwable?) {
+                Toast.makeText(applicationContext, "Fail to get changed FriendsList!", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<FriendInfoResponseData>?, response: Response<FriendInfoResponseData>?) {
+                if(response!!.code() == 200){
+                    if(response.isSuccessful){
+                        detailFriendInfoList = response.body().friendsInfo
+//                        detailTabAdapter.getFriendsInfo = response.body().friendsInfo
+//                        detailTabAdapter.getItem(0)
+                        detailTabAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+        })
     }
 }

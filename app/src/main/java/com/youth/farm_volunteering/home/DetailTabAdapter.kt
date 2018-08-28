@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
 import com.youth.farm_volunteering.expanded.ExpandFragment
 import com.youth.farm_volunteering.home.Schedule.DetailSchData
 import com.youth.farm_volunteering.data.FarmInfoData
@@ -44,6 +45,10 @@ class DetailTabAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
 
     fun getDetailTabDataList(position : Int) : DetailTabData {
         return detailTabDataList!!.get(position)
+    }
+
+    override fun getItemPosition(`object`: Any?): Int {
+        return PagerAdapter.POSITION_NONE
     }
 
     override fun getItem(position: Int): Fragment? {

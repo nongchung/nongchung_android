@@ -64,7 +64,6 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
 
         val v = inflater.inflate(R.layout.fragment_farm_introduce, container, false)
 
-
         DetailNonghwalList = arguments.getParcelable("nhInfo")
         DetailFriendInfoList = arguments.getParcelableArrayList("friendsInfo")
         DetailFarmInfoList = arguments.getParcelable("farmerInfo")
@@ -76,7 +75,7 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
         v.detail_introduce_addr.text = DetailNonghwalList!!.addr
         v.detail_introduce_name.text = DetailNonghwalList!!.name
 //                setText(DetailNonghwalList!!.star.toString())
-        v.detail_introduce_star.rating = DetailNonghwalList!!.star!!.toFloat() //rating에 서버에서 float값 받아와서 생성
+        v.detail_introduce_star.rating = (DetailNonghwalList!!.star!!/2.0f) //rating에 서버에서 float값 받아와서 생성
         v.detail_introduce_description.text = DetailNonghwalList!!.description
         v.detail_introduce_price.text = DetailNonghwalList!!.price.toString() + "원"
         v.detail_introduce_period.text = DetailNonghwalList!!.period.toString()
@@ -105,6 +104,14 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
 
             v.textview_woman_per.text = builderWomanPer.toString()
             v.textview_man_per.text = builderManPer.toString()
+        } else{
+            builderWomanPer.append(DetailFriendInfoList!!.get(0).womanCount!!)
+                    .append("%")
+            builderManPer.append(DetailFriendInfoList!!.get(0).manCount!!)
+                    .append("%")
+
+            v.textview_woman_per.text = builderWomanPer.toString()
+            v.textview_man_per.text = builderManPer.toString()
         }
 
         v.textview_avg_age.text = String.format("%.1f",DetailFriendInfoList!!.get(0).ageAverage)
@@ -126,14 +133,10 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
         v.scheduleView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
         v.scheduleView_rv.adapter = scheduleAdapter
 
-        //size가 6이상일때는 +이미지가 표시되게 함
-//            val intent = Intent(activity.applicationContext, FriendInfoAllActivity::class.java)
-//            startActivity(intent)
-
         v.detail_profile_watch_btn.setOnClickListener(View.OnClickListener  {
-            Toast.makeText(activity.applicationContext, "준비중입니다!", Toast.LENGTH_SHORT).show()
-//            var v = Intent(this.context,FarmProfileActivity::class.java)
-//            startActivity(v)
+//            Toast.makeText(activity.applicationContext, "준비중입니다!", Toast.LENGTH_SHORT).show()
+            var v = Intent(this.context,FarmProfileActivity::class.java)
+            startActivity(v)
         })
 
         return v

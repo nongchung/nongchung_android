@@ -6,6 +6,7 @@ import com.youth.farm_volunteering.review.PostReviewResponseData
 import com.youth.farm_volunteering.review.ReviewData
 import com.youth.farm_volunteering.data.*
 import com.youth.farm_volunteering.myactivity.GetBeforeModifyResponse
+import com.youth.farm_volunteering.myactivity.MyReviewData
 import com.youth.farm_volunteering.review.PutReviewResponseData
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -24,7 +25,6 @@ interface NetworkService {
     //더보기(마이페이지)
     @GET("/api/mypage")
     fun mypage(): Call<MyPageResponseData>
-
 
     @Multipart
     @PUT("/api/mypage/photo")
@@ -172,4 +172,12 @@ interface NetworkService {
             @Field("nhIdx") nhIdx : Int,
             @Field("schIdx") schIdx : Int
     ) : Call<requestRefundResponse>
+
+    @GET("/api/mypage/myreview")
+    fun getMyReview() : Call<MyPageMyReviewResponseData>
+
+    @GET("/api/home/request/schedule")
+    fun getChangedFriendList(
+            @Query ("idx") schIdx: Int
+    ) : Call<FriendInfoResponseData>
 }

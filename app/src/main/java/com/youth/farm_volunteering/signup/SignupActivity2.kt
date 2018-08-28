@@ -30,6 +30,7 @@ const val BUNDLE_KEY_PHONENUMBER: String = "BUNDLE_KEY_PHONENUMBER";
 
 class SignupActivity2 : AppCompatActivity() {
 
+    var gender : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,16 +67,6 @@ class SignupActivity2 : AppCompatActivity() {
         })
 
 
-        setResult(RESULT_CANCEL)
-        textview_signup_birth.setOnClickListener {
-            intent.putExtra(BUNDLE_KEY_NAME, edittext_signup_name.text.toString())
-            intent.putExtra(BUNDLE_KEY_BIRTH, textview_signup_birth.text.toString())
-            intent.putExtra(BUNDLE_KEY_NICKNAME, edittext_signup_nickname.text.toString())
-            intent.putExtra(BUNDLE_KEY_PHONENUMBER, edittext_signup_phonenumber.text.toString())
-            intent.putExtra(BUNDLE_KEY_SEX, edittext_signup_gender.text.toString())
-        }
-
-
         button_signup_submit.setOnClickListener {
             if (edittext_signup_name.text.toString() == "") {
                 Toast.makeText(this, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
@@ -91,13 +82,17 @@ class SignupActivity2 : AppCompatActivity() {
                 Toast.makeText(this, "닉네임을 확인해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 var signup = Intent(this, StartActivity::class.java)
-                startActivityForResult(signup, 0)
 
                 intent.putExtra(BUNDLE_KEY_NAME, edittext_signup_name.text.toString())
                 intent.putExtra(BUNDLE_KEY_BIRTH, textview_signup_birth.text.toString())
                 intent.putExtra(BUNDLE_KEY_NICKNAME, edittext_signup_nickname.text.toString())
                 intent.putExtra(BUNDLE_KEY_PHONENUMBER, edittext_signup_phonenumber.text.toString())
-                intent.putExtra(BUNDLE_KEY_SEX, edittext_signup_gender.text.toString())
+                if(edittext_signup_gender.text.toString() == "남"){
+                    gender =  1
+                } else{
+                    gender = 2
+                }
+                intent.putExtra(BUNDLE_KEY_SEX, gender!!)
                 setResult(RESULT_SUCCESS, intent)
 // 임시보류
 

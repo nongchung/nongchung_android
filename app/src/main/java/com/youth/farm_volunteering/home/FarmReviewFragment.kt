@@ -62,10 +62,10 @@ class FarmReviewFragment : Fragment(){
                             var totalScoreTemp = 0f
 
                             for (i in 0 until ReviewList!!.size) {
-                                totalScoreTemp = totalScoreTemp.plus(ReviewList!![i].star!!)
+                                totalScoreTemp = totalScoreTemp.plus(ReviewList!![i].star!! / 2.0f)
                             }
-                            totalScore!!.text = String.format("%.1f", totalScoreTemp!! / ReviewList!!.size)
-                            totalRatingBar!!.rating = totalScoreTemp / ReviewList!!.size
+                            totalScore!!.text = String.format("%.1f", totalScoreTemp!! / ReviewList!!.size.toFloat())
+                            totalRatingBar!!.rating = totalScoreTemp / ReviewList!!.size.toFloat()
                         }
                     }
                 }else if(response.code() == 400){

@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.R.id.*
 import com.youth.farm_volunteering.data.*
+import com.youth.farm_volunteering.home.MyReviewActivity
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginToken
 import com.youth.farm_volunteering.mypage.ChangeNicknameActivity
@@ -52,6 +53,7 @@ import kotlin.text.Typography.degree
 
 class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var REQ_CODE_SELECT_IMAGE = 100
+    var LOGIN_REQ_CODE = 102
     lateinit var data: Uri
 //    private var image: MultipartBody.Part? = null
     private var selectedImage: Uri? = null
@@ -60,7 +62,6 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     var photostring : String? = null
     var countnumber : Int = 100
     var countnumber2 : Int = 100
-
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -76,19 +77,30 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                 override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
                     mypage_profile.visibility = View.VISIBLE
-
+                    v.mypage_myinfo.visibility = View.VISIBLE
+                    v.layout_myreviews.visibility = View.VISIBLE
+                    v.layout_mypoint.visibility = View.VISIBLE
+                    v.mypage_account.visibility = View.VISIBLE
+                    v.nickname_change_button.visibility = View.VISIBLE
+                    v.password_change_button.visibility = View.VISIBLE
+                    v.layout_mypage_logout.visibility = View.VISIBLE
+                    v.button_more_login.visibility = View.GONE
                     myPageData = response.body().data!!.get(0)
                     invalidate()
                 }
             })
         } else {
-            var i = Intent(activity, LoginActivity::class.java)
-            i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-
-            startActivity(i)
+            v.mypage_profile.visibility = View.GONE
+            v.mypage_myinfo.visibility = View.GONE
+            v.layout_myreviews.visibility = View.GONE
+            v.layout_mypoint.visibility = View.GONE
+            v.mypage_account.visibility = View.GONE
+            v.nickname_change_button.visibility = View.GONE
+            v.password_change_button.visibility = View.GONE
+            v.layout_mypage_logout.visibility = View.GONE
+            v.button_more_login.visibility = View.VISIBLE
         }
+
         //내 정보 프레그먼트 밑에 있는 계정, 설정, 지원 전부 다 ImageView로 박은다음에 토글 키가 있는 설정은 RelativeLayout으로 두고 match_parent를 가지는
         //ImageView의 background를 '푸시알림'으로 두고 토글키를 오른쪽 끝에다가 alignRight해주자
 
@@ -97,8 +109,13 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         }
 
         v.layout_myreviews.setOnClickListener {
-            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(activity.applicationContext, MyReviewActivity::class.java)
+            startActivity(intent)
 
+        }
+        v.button_more_login.setOnClickListener {
+            val intent = Intent(activity.applicationContext, LoginActivity::class.java)
+            startActivityForResult(intent, LOGIN_REQ_CODE)
         }
 
         //프로필 사진 변경
@@ -150,8 +167,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             LoginToken.logined = false
             editor.commit()
             Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-            var v = Intent(this.activity.applicationContext, LoginActivity::class.java)
-            startActivity(v)
+            checkLogin()
 
         }
         return v
@@ -215,9 +231,6 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             if (resultCode == Activity.RESULT_OK) {
                 try {
 
-
-//                    val input : InputStream? = null/* : InputStream = activity.contentResolver.openInputStream(dataMy!!.getDataMy())*/
-                    //if(ApplicationController.getInstance().is)
                     this.data = data!!.data
 //
                     val options = BitmapFactory.Options()
@@ -240,29 +253,12 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 //                    val photo = File(this.dataMy.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
                     val body : MultipartBody.Part = MultipartBody.Part.createFormData("image", photo, photoBody)
 
-
-//                    RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
-//                     MultipartBody.Part 실제 파일의 이름을 보내기 위해 사용!!
                     selectedImage = data!!.data;
                     if (EasyPermissions.hasPermissions(this.activity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                         var filePath = getRealPathFromURIPath(selectedImage!!, MypageFragment@ this.activity);
                         var file = File(filePath)
                         val name = RequestBody.create(MediaType.parse("image/*"), file.name)
                         var degree : Int = getExifOrientation(filePath)
-
-//                        if (degree != 0) {
-//                            Log.i(TAG, "Rotating... " + degree);
-//                            bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-//                            val matrix = Matrix()
-//                            matrix.postRotate(-degree.toFloat());
-//                            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
-//                                    bitmap.getHeight(), matrix, true);
-//                        }
-//                        val body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
-//                        val fileToUpload = MultipartBody.Part.createFormData("file", file.name, mFile)
-//                        Glide.with(this)
-//                                .load(dataMy!!.dataMy)
-//                                .into(imageview_mypage_profile)
 
                         Log.d("photoa", "1")
 
@@ -280,16 +276,6 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                                 Log.d("aaa", response!!.code().toString())
                                 Log.d("aaa", response!!.message())
                                 if (response!!.isSuccessful) {
-
-
-//                                    bitmap = rotate(bitmap, degree)
-
-
-                                    // 변환된 이미지 사용
-
-//                                    if(countnumber==100){
-//                                        imageview_mypage_profile.setImageBitmap(bitmap)
-//                                    }
 
                                     if(degree == 90 && countnumber == 50 && countnumber2==20){
                                         imageview_mypage_profile.setImageBitmap(bitmap)
@@ -338,46 +324,9 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                                     imageview_mypage_profile.setImageBitmap(bitmap)
 
-
-//                                    imageview_mypage_profile.setImageBitmap(bitmap)
-//                                    response.body().dataMy = bitmap.toString()
-
-
                                     if (response!!.body().message == "success To change photo") {
 
-//                                        Toast.makeText(activity, "성공일거야", Toast.LENGTH_SHORT).show()
 
-//                                       getRotatedBitmap(bitmap, degree) // 이미지가 회전되어 나오는거 방지하기 위해 만듬
-
-//                                        Glide.with(activity)
-//                                                .load(response.body().dataMy)
-//                                                .into(
-//                                                        if(degree == 90 || degree == 180){
-//
-//
-//                                                            // 이미지가 회전되어 나오는거 방지하기 위해 만듬
-////                                                            rotateBitmap(bitmap, orientation) // 1번째방법
-////                                                              bitmap = rotateBitmap(bitmap, degree) // 2번째방법 이게 왜안될까? 진짜.....
-//                                                            bitmap = rotateImage(bitmap,90)
-//                                                            imageview_mypage_profile.setImageBitmap(bitmap)
-//
-//
-//
-////                                                            imageview_mypage_profile.rotation = 90f
-////                                                            imageview_mypage_profile.setRotationX(-90.toFloat()) // 3번째방법
-////                                                            imageview_mypage_profile.setRotationY(-90.toFloat()) // 4번째방법
-////                                                            imageview_mypage_profile.setImageBitmap(rotateBitmap(bitmap,degree)) // 5번째방법
-////                                                            getRotatedBitmap(bitmap, degree) // 6번째방법
-//
-//                                                            imageview_mypage_profile
-//
-//                                                        }
-//                                                        else{
-//                                                            imageview_mypage_profile
-//                                                        }
-//                                                )
-//                                        bitmap = rotateBitmap(bitmap,degree)
-//                                        imageview_mypage_profile.setImageBitmap(bitmap)
                                     }
                                 }
                             }
@@ -389,6 +338,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     e.printStackTrace()
                 }
             }
+        } else if(requestCode == LOGIN_REQ_CODE){
+            checkLogin()
         }
 
     }
@@ -424,37 +375,6 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 matrix, true)
     }
 
-
-
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, dataMy: Intent?) {
-//        if (requestCode == REQ_CODE_SELECT_IMAGE) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                try {
-//                    val bitmap = MediaStore.Images.Media.getBitmap(this.activity.contentResolver, dataMy!!.dataMy)
-//                    imageview_mypage_profile.setImageBitmap(bitmap)
-//
-//                    //put해주기
-//                    var photo = ApplicationController.instance!!.networkService!!.myphoto(bitmap)
-//                    photo.enqueue(object : Callback<PhotoData> {
-//                        override fun onFailure(call: Call<PhotoData>, t: Throwable?) {
-//                            Toast.makeText(activity, "photo request fail", Toast.LENGTH_SHORT).show()
-//                        }
-//                        override fun onResponse(call: Call<PhotoData>, response: Response<PhotoData>) {
-//                            if(response!!.isSuccessful){
-//                                if(response!!.body().message == "success To change photo"){
-//                                    Toast.makeText(activity, "성공일거야", Toast.LENGTH_SHORT).show()
-//                                }
-//                            }
-//                        }
-//                    })
-//
-//                } catch (e: Exception) {
-//                    Log.e("test", e.message)
-//                }
-//            }
-//        }
-//    }
 
     // 이미지를 특정 각도로 회전하는 함수입니다
 
@@ -588,7 +508,40 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         textview_name.setText(myPageData!!.name + " / " + myPageData!!.age + "세")
     }
 
+    fun checkLogin(){
+        if (LoginToken.logined) {
 
+            var mypageCall = ApplicationController.instance!!.networkService!!.mypage();
+            mypageCall.enqueue(object : Callback<MyPageResponseData> {
+                override fun onFailure(call: Call<MyPageResponseData>, t: Throwable?) {
+                    Toast.makeText(activity!!, "통신상태를 점검해주세요!", Toast.LENGTH_SHORT).show()
+                }
 
+                override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
+                    mypage_profile.visibility = View.VISIBLE
+                    mypage_myinfo.visibility = View.VISIBLE
+                    layout_myreviews.visibility = View.VISIBLE
+                    layout_mypoint.visibility = View.VISIBLE
+                    mypage_account.visibility = View.VISIBLE
+                    nickname_change_button.visibility = View.VISIBLE
+                    password_change_button.visibility = View.VISIBLE
+                    layout_mypage_logout.visibility = View.VISIBLE
+                    button_more_login.visibility = View.GONE
+                    myPageData = response.body().data!!.get(0)
+                    invalidate()
+                }
+            })
+        } else {
+            mypage_profile.visibility = View.GONE
+            mypage_myinfo.visibility = View.GONE
+            layout_myreviews.visibility = View.GONE
+            layout_mypoint.visibility = View.GONE
+            mypage_account.visibility = View.GONE
+            nickname_change_button.visibility = View.GONE
+            password_change_button.visibility = View.GONE
+            layout_mypage_logout.visibility = View.GONE
+            button_more_login.visibility = View.VISIBLE
+        }
+    }
 
 }

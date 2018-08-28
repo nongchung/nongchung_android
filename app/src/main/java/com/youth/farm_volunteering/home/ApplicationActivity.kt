@@ -93,20 +93,6 @@ class ApplicationActivity : AppCompatActivity() {
                                 intent.putExtra("start_date", textViewDate.text.toString())
                                 intent.putExtra("selectedStData",getStData)
                                 startActivityForResult(intent, FarmDetailActivity.applyReqCode)
-                            } else if (response.body().message == "Duplicate to Time") {
-                                Toast.makeText(applicationContext, "시간 중복 불가!", Toast.LENGTH_SHORT).show()
-                            } else if (response.body().message == "No token") {
-                                Toast.makeText(applicationContext, "토큰 에러!", Toast.LENGTH_SHORT).show()
-                            } else if (response.body().message == "Null Value") {
-                                Toast.makeText(applicationContext, "값이 비어있습니다!", Toast.LENGTH_SHORT).show()
-                            } else if (response.body().message == "Invalid schIdx") {
-                                Toast.makeText(applicationContext, "신청 불가능한 스케줄 입니다!", Toast.LENGTH_SHORT).show()
-                            } else if (response.body().message == "Fail To Request For Application, No Available Person Number") {
-                                Toast.makeText(applicationContext, "여석이 없습니다!", Toast.LENGTH_SHORT).show()
-                            } else if (response.body().message == "Invalid nhIdx and schIdx") {
-                                Toast.makeText(applicationContext, "해당하는 농활이나 스케줄이 없습니다!", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(applicationContext, "에바참치", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

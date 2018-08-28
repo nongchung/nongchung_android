@@ -9,7 +9,7 @@ open class HomeNonghwalData() : NonghwalData(), Parcelable {
     constructor(parcel: Parcel) : this() {
         nhIdx = parcel.readValue(Int::class.java.classLoader) as? Int
         idx = parcel.readValue(Int::class.java.classLoader) as? Int
-        star = parcel.readValue(Double::class.java.classLoader) as? Double
+        star = parcel.readValue(Float::class.java.classLoader) as? Float
         price = parcel.readValue(Int::class.java.classLoader) as? Int
         name = parcel.readString()
         period = parcel.readString()
