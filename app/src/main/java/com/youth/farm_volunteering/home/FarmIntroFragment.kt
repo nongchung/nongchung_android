@@ -2,9 +2,11 @@ package com.youth.farm_volunteering.home
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.home.FarmProfile.FarmProfileActivity
 import com.youth.farm_volunteering.home.Schedule.DetailSchData
 import com.youth.farm_volunteering.home.Schedule.ScheduleAdapter
@@ -26,6 +29,7 @@ import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.NhInfoData
+import com.youth.farm_volunteering.data.NonghwalData
 import kotlinx.android.synthetic.main.fragment_farm_introduce.view.*
 
 
@@ -136,11 +140,14 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
         v.detail_profile_watch_btn.setOnClickListener(View.OnClickListener  {
 //            Toast.makeText(activity.applicationContext, "준비중입니다!", Toast.LENGTH_SHORT).show()
             var v = Intent(this.context,FarmProfileActivity::class.java)
-            startActivity(v)
+
+            v.putExtra("farmIdx", DetailFarmInfoList!!.farmIdx)
+//            activity.intent.putExtra("populData", nhIdx as Parcelable)
+
+            activity.startActivity(v)
         })
 
         return v
-
 
     }
     @RequiresApi(Build.VERSION_CODES.CUPCAKE)

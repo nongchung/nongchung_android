@@ -12,18 +12,27 @@ import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.data.BookmarkData
+import com.youth.farm_volunteering.data.DetailNonghwalResponseData
+import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.HomeNonghwalData
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginDialog
 import com.youth.farm_volunteering.login.LoginToken
 import com.youth.farm_volunteering.signup.SignupActivity
 import com.youth.farm_volunteering.signup.SignupActivity1
+import com.youth.farm_volunteering.home.DetailTabAdapter
+import com.youth.farm_volunteering.main.MainActivity
+import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
     var loginDialog : LoginDialog? = null
+
+    var detailFarmInfoList: FarmInfoData? = null
 
     override fun getItemCount(): Int = dataListHome.size
 
@@ -122,14 +131,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
             intent.putExtra("populData", dataListHome[position] as Parcelable)
-
-
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
-            //추천수
-            //설명
+            
             holderWeek.itemView.context.startActivity(intent)
         }
     }

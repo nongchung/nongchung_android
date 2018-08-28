@@ -14,6 +14,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.BookmarkData
+import com.youth.farm_volunteering.data.DetailNonghwalResponseData
+import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.HomeNonghwalData
 import com.youth.farm_volunteering.login.LoginActivity
 import com.youth.farm_volunteering.login.LoginDialog
@@ -25,6 +27,8 @@ import retrofit2.Response
 
 class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>() {
     var loginDialog : LoginDialog? = null
+
+    var detailFarmInfoList: FarmInfoData? = null
 
     override fun getItemCount(): Int = dataList.size
 
