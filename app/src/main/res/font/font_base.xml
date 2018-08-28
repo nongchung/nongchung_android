@@ -4,5 +4,6 @@
 
     <font
         android:font="@font/nanumsquareround_otfb"
-        app:font="@font/nanumsquareround_otfb"/>
+        android:fontStyle="normal"
+        android:fontWeight="7000"/>
 </font-family>

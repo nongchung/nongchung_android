@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.airbnb.lottie.parser.IntegerParser
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,7 +33,6 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClint: FusedLocationProviderClient
-    lateinit var friendinfoAdapter: FriendInfoAdapter
     lateinit var scheduleAdapter: ScheduleAdapter
 
     var DetailNonghwalList: NhInfoData? = null
@@ -70,6 +70,8 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
         DetailFarmInfoList = arguments.getParcelable("farmerInfo")
         DetailScheduleList = arguments.getParcelableArrayList("scheduleInfo")
 
+        var builderWomanPer = StringBuilder()
+        var builderManPer = StringBuilder()
 
         v.detail_introduce_addr.text = DetailNonghwalList!!.addr
         v.detail_introduce_name.text = DetailNonghwalList!!.name
@@ -79,14 +81,39 @@ class FarmIntroFragment : Fragment(), OnMapReadyCallback {
         v.detail_introduce_price.text = DetailNonghwalList!!.price.toString() + "원"
         v.detail_introduce_period.text = DetailNonghwalList!!.period.toString()
 
-        friendinfoAdapter = FriendInfoAdapter(DetailFriendInfoList!!)
+//        String.format("%.1f", totalScoreTemp!! / ReviewList!!.size)
+        if(DetailFriendInfoList!!.get(0).attendCount!=0) {
 
-        v.friendinfoView_rv.layoutManager = LinearLayoutManager(activity.applicationContext)
-        v.friendinfoView_rv.adapter = friendinfoAdapter
+            if(DetailFriendInfoList!!.get(0).womanCount ==0) {
+                builderWomanPer.append(DetailFriendInfoList!!.get(0).womanCount!!)
+                        .append("%")
 
-        introduceImage_linearLayoutManager = LinearLayoutManager(activity.applicationContext, LinearLayoutManager.HORIZONTAL, false)
+                builderManPer.append(String.format("%.0f", ((DetailFriendInfoList!!.get(0).manCount!!).toFloat() / DetailFriendInfoList!!.get(0).attendCount!!.toFloat())*100))
+                        .append("%")
+            } else if(DetailFriendInfoList!!.get(0).manCount == 0){
+                builderWomanPer.append(String.format("%.0f", ((DetailFriendInfoList!!.get(0).womanCount!!).toFloat()) / (DetailFriendInfoList!!.get(0).attendCount!!.toFloat()) * 100))
+                        .append("%")
 
-        v.friendinfoView_rv!!.layoutManager = introduceImage_linearLayoutManager
+                builderManPer.append(DetailFriendInfoList!!.get(0).manCount!!)
+                        .append("%")
+            }else{
+                builderWomanPer.append(String.format("%.0f", ((DetailFriendInfoList!!.get(0).womanCount!!).toFloat() / DetailFriendInfoList!!.get(0).attendCount!!.toFloat())*100))
+                        .append("%")
+                builderManPer.append(String.format("%.0f", ((DetailFriendInfoList!!.get(0).manCount!!).toFloat() / DetailFriendInfoList!!.get(0).attendCount!!.toFloat())*100))
+                        .append("%")
+            }
+
+            v.textview_woman_per.text = builderWomanPer.toString()
+            v.textview_man_per.text = builderManPer.toString()
+        }
+
+        v.textview_avg_age.text = String.format("%.1f",DetailFriendInfoList!!.get(0).ageAverage)
+        v.textview_cur_apply.text = DetailFriendInfoList!!.get(0).attendCount.toString()
+        v.textview_max_apply.text = "/" + DetailFriendInfoList!!.get(0).personLimit.toString()
+
+        var progress : List<String> = builderWomanPer.toString().split("%")
+
+        v.progressbar_gender_per.progress = progress[0].toInt()
 
         v.farminfo_name.text = DetailFarmInfoList!!.name
         v.farminfo_comment.text = DetailFarmInfoList!!.comment
