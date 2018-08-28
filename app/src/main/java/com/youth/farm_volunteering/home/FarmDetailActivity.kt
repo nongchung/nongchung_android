@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -100,6 +101,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         else {
             populData = intent.getParcelableExtra<HomeNonghwalData>("populData")
         }
+
         tabtextArray = arrayListOf("농활소개", "Q & A", "후기")
         fragment_Array = arrayListOf(FarmIntroFragment(), ExpandFragment(), FarmReviewFragment())
 
@@ -118,6 +120,7 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                     detailNearestStartDate = response.body().nearestStartDate!!   //BottomSheetDialog 신청하기
                     detailNearestEndDate = response.body().nearestEndDate!!        //BottomSheetDialog 신청하기
                     detailAllStartDate = response.body().allStartDate!!            //BottomSheetDialog 신청하기
+
                     if (response.body().myScheduleActivities != null) {
                         detailMyScheduleActivities = response.body().myScheduleActivities!!       //BottomSheetDialog 취소 만들기위한 sche
                     }

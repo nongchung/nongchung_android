@@ -14,12 +14,17 @@ import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.FarmDetailActivity
 import com.youth.farm_volunteering.R
 import com.youth.farm_volunteering.data.BookmarkData
+import com.youth.farm_volunteering.data.DetailNonghwalResponseData
+import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.HomeNonghwalData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapter<NewFarmItemViewHolder>() {
+
+    var detailFarmInfoList: FarmInfoData? = null
+
     override fun getItemCount(): Int = dataList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewFarmItemViewHolder {
@@ -106,11 +111,34 @@ class NewFarmAdapter(var dataList: List<HomeNonghwalData>) : RecyclerView.Adapte
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataList[position] as Parcelable)
+
+
+
+            var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(dataList[position].getRealId()!!)
+            getDetail.enqueue(object : Callback<DetailNonghwalResponseData> {
+                override fun onResponse(call: Call<DetailNonghwalResponseData>?, response: Response<DetailNonghwalResponseData>?) {
+                    if (response!!.isSuccessful) {
+                        detailFarmInfoList = response.body().farmerInfo        //농활소개
+
+//                        Log.d("maeuniyee",detailFarmInfoList.toString())
+
+
+                        intent.putExtra("farmIdx",detailFarmInfoList!!.farmIdx)
+                        intent.putExtra("populData", dataList[position] as Parcelable)
+                        Log.d("maeuniyee",detailFarmInfoList!!.farmIdx.toString())
+                        holder.itemView.context.startActivity(intent)
+                    }}
+
+                override fun onFailure(call: Call<DetailNonghwalResponseData>?, t: Throwable?) {
+                    Toast.makeText(holder.itemView.context, "통신상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+
 
             //추천수
             //설명
-            holder.itemView.context.startActivity(intent)
+
         }
     }
 }

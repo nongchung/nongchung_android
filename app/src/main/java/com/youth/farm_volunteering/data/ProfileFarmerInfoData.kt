@@ -1,6 +1,6 @@
 package com.youth.farm_volunteering.data
 
-class ProfileFarmerInfoData {
+class   ProfileFarmerInfoData {
     var idx : Int? = null
     var farmName : String? = null
     var farmAddr : String? = null

@@ -12,12 +12,22 @@ import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.youth.farm_volunteering.data.BookmarkData
+import com.youth.farm_volunteering.data.DetailNonghwalResponseData
+import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.HomeNonghwalData
+import com.youth.farm_volunteering.home.DetailTabAdapter
+import com.youth.farm_volunteering.main.MainActivity
+import kotlinx.android.synthetic.main.activity_farm_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.Adapter<WeekFarmItemViewHolder>() {
+
+    var detailFarmInfoList: FarmInfoData? = null
+
     override fun getItemCount(): Int = dataListHome.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekFarmItemViewHolder {
@@ -93,16 +103,35 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
 
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
-            intent.putExtra("populData", dataListHome[position] as Parcelable)
+
+            var getDetail = ApplicationController.instance!!.networkService!!.detailnonghwal(dataListHome[position].getRealId()!!)
+            getDetail.enqueue(object : Callback<DetailNonghwalResponseData> {
+                override fun onResponse(call: Call<DetailNonghwalResponseData>?, response: Response<DetailNonghwalResponseData>?) {
+                    if (response!!.isSuccessful) {
+                        detailFarmInfoList = response.body().farmerInfo        //농활소개
+
+//                        Log.d("maeuniyee",detailFarmInfoList.toString())
+                        Log.d("maeuniyee",detailFarmInfoList!!.farmIdx.toString())
+
+                        intent.putExtra("farmIdx",detailFarmInfoList!!.farmIdx)
+                        intent.putExtra("populData", dataListHome[position] as Parcelable)
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
+                        //추천수
+                        //설명
+                        holderWeek.itemView.context.startActivity(intent)
+
+                }}
+
+                override fun onFailure(call: Call<DetailNonghwalResponseData>?, t: Throwable?) {
+                    Toast.makeText(holderWeek.itemView.context, "통신상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                }
+            })
 
 
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
-            //추천수
-            //설명
-            holderWeek.itemView.context.startActivity(intent)
         }
     }
 

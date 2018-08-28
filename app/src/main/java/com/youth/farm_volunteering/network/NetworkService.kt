@@ -37,6 +37,7 @@ interface NetworkService {
 
     ): Call<MyActivityResponseData>
 
+
     @GET("api/home/detail/farm")
     fun farmprofile(
             @Query("idx") idx: Int
@@ -66,6 +67,7 @@ interface NetworkService {
     fun detailnonghwal(
             @Query("idx") nhIdx: Int
     ): Call<DetailNonghwalResponseData>
+
 
     @GET("/api/search")
     fun search(

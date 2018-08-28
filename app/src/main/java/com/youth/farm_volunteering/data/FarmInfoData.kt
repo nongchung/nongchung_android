@@ -7,17 +7,20 @@ class FarmInfoData() : Parcelable {
     var name : String ? = null
     var comment : String ? = null
     var img : String ? = null
+    var farmIdx : Int ? = null
 
     constructor(parcel: Parcel) : this() {
         name = parcel.readString()
         comment = parcel.readString()
         img = parcel.readString()
+        farmIdx = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(comment)
         parcel.writeString(img)
+        parcel.writeInt(farmIdx!!)
     }
 
     override fun describeContents(): Int {
