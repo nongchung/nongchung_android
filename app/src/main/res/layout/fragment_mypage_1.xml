@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/nanumsquareround_otfb"
-                android:text="이유리"
+                android:text="Nickname"
                 android:textColor="#DE000000"
                 android:textSize="13sp" />
 
@@ -68,7 +68,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="9dp"
                 android:fontFamily="@font/nanumsquareround_otfb"
-                android:text="이유리"
+                android:text="Email"
                 android:textColor="#8A000000"
                 android:textSize="11sp" />
 
@@ -79,7 +79,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:textColor="#8A000000"
-                android:text="이유리 / 22세"
+                android:text="Name / Age"
                 android:textSize="11sp"
                 android:fontFamily="@font/nanumsquareround_otfb"/>
 

@@ -131,7 +131,7 @@ class WeekFarmAdapter(var dataListHome: List<HomeNonghwalData>) : RecyclerView.A
         holderWeek.itemView.setOnClickListener {
             val intent = Intent(holderWeek.itemView.context, FarmDetailActivity::class.java)
             intent.putExtra("populData", dataListHome[position] as Parcelable)
-            
+
             holderWeek.itemView.context.startActivity(intent)
         }
     }

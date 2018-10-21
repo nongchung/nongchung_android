@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         activity_main_tabViewPager.adapter = tabAdapter
+
         mainTabLayout!!.setupWithViewPager(activity_main_tabViewPager)
 
         activity_main_tabViewPager.currentItem = 0

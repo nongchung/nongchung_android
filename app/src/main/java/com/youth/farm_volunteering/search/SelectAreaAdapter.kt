@@ -27,6 +27,7 @@ class SelectAreaAdapter(var items: HashMap<Int, Boolean>) : RecyclerView.Adapter
             notifyDataSetChanged()
         }
         var area = enumValues<Area>()[position]
+
         if (items.get(position)!!) {
             holder.itemView.setBackgroundColor(0xFF3470FF.toInt())
             holder.itemView.textview_area_name.setText(area.regionName)

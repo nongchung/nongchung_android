@@ -17,6 +17,7 @@ class AreaSelectActivity : AppCompatActivity() {
         enumValues<Area>().forEach { area ->
             map.put(area.code, false)
         }
+
         recyclerview_selectarea_area.adapter = SelectAreaAdapter(map)
         recyclerview_selectarea_area.layoutManager = GridLayoutManager(this, 4)
         button_selectarea_select.setOnClickListener {

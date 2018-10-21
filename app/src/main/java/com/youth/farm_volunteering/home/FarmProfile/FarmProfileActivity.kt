@@ -31,8 +31,6 @@ class FarmProfileActivity : AppCompatActivity() {
 
         var farmIdx = intent.getIntExtra("farmIdx", 0)
 //
-
-
         var profileCall = ApplicationController.instance!!.networkService!!.farmprofile(farmIdx)
         profileCall.enqueue(object : Callback<FarmProfileResponseData> {
 

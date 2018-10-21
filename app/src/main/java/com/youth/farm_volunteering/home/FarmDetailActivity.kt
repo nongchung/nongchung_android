@@ -285,7 +285,9 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
             }
 
             bottomSheetDialog!!.arguments = bundle
-            bottomSheetDialog!!.show(supportFragmentManager, "bottomSheet")
+            if(!bottomSheetDialog.isAdded) {
+                bottomSheetDialog!!.show(supportFragmentManager, "bottomSheet")
+            }
         }
 
         //탭레이아웃 색상 선택
@@ -414,9 +416,6 @@ class FarmDetailActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
                 if(response!!.code() == 200){
                     if(response.isSuccessful){
                         detailFriendInfoList = response.body().friendsInfo
-//                        detailTabAdapter.getFriendsInfo = response.body().friendsInfo
-//                        detailTabAdapter.getItem(0)
-                        detailTabAdapter.notifyDataSetChanged()
                     }
                 }
             }

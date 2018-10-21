@@ -1,5 +1,6 @@
 package com.youth.farm_volunteering
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -20,6 +21,8 @@ import com.youth.farm_volunteering.home.IntroThemeFarmAdapter
 import com.youth.farm_volunteering.home.NewFarmAdapter
 import com.youth.farm_volunteering.home.PopulFarmAdapter
 import com.youth.farm_volunteering.data.*
+import com.youth.farm_volunteering.login.LoginToken
+import com.youth.farm_volunteering.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,7 +67,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
-//        val v_ = inflater!!.inflate(R.layout.fragment_showall, container, false)
 
         adViewPager = v.findViewById(R.id.fragment_home_adViewPager)
 
@@ -78,8 +80,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onResponse(call: Call<HomeResponseData>, response: Response<HomeResponseData>) {
-                if(response.isSuccessful){
-                    if(response.body().message.equals("Success To Get Information")){
+                if(response.code()==200) {
+                    if (response.body().message.equals("Success To Get Information")) {
                         Log.v("Tababab", response.body().populNh!![0].toString())
                         adDataList = response.body().ads
                         popularHomeNonghwalList = response.body().populNh
@@ -99,9 +101,20 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         adViewPager!!.adapter = vpAdapter
 
                     }
+                }else if(response.code() == 500){       //토큰이 만료되었을 경우 Local storage에 있는 로그인 정보를 초기화 시켜줌
+                    Toast.makeText(activity.applicationContext, "토큰이 만료됨. 다시 로그인해주세요!", Toast.LENGTH_SHORT).show()
+                    LoginToken.token = null
+                    var sharedPreference = activity.getSharedPreferences(LoginToken.PREF_KEY, Context.MODE_PRIVATE)
+                    var editor = sharedPreference.edit()
+                    editor.remove(LoginToken.PREF_KEY)
+                    LoginToken.logined = false
+                    editor.commit()
+
+                    val intent = Intent(activity.applicationContext, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+
                 }
-
-
             }
         })
 
@@ -186,7 +199,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 //        fragment_home_hotFarm_rv.addItemDecoration(horizontalItemDecoration)인기농장 뺌
 
     }
-
     fun replaceFragment(fragment: Fragment) {
         //FragmentManager는 액티비티만 가질 수 있음, 따라서 MainTab과 같은 Fragment에서는 activity!!.supportFragmentManager 이렇게 호출해줘야 함
         val fm = activity!!.supportFragmentManager

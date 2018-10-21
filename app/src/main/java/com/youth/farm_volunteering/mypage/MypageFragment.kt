@@ -23,6 +23,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import com.asksira.loopingviewpagerdemo.ApplicationController
 import com.bumptech.glide.Glide
@@ -59,6 +60,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var selectedImage: Uri? = null
     var myPageData: MyPageData? = null
     var image: File? = null
+    var imageviewProfile : ImageView? = null
     var photostring : String? = null
     var countnumber : Int = 100
     var countnumber2 : Int = 100
@@ -66,6 +68,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_mypage_1, container, false)
+
+        imageviewProfile = v.findViewById(R.id.imageview_mypage_profile)
 
         if (LoginToken.logined) {
 
@@ -76,7 +80,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 }
 
                 override fun onResponse(call: Call<MyPageResponseData>, response: Response<MyPageResponseData>) {
-                    mypage_profile.visibility = View.VISIBLE
+                    v.mypage_profile.visibility = View.VISIBLE
                     v.mypage_myinfo.visibility = View.VISIBLE
                     v.layout_myreviews.visibility = View.VISIBLE
                     v.layout_mypoint.visibility = View.VISIBLE
@@ -134,8 +138,6 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             startActivityForResult(v,101)
         })
 
-
-
         //비밀번호 변경
         v.password_change_button.setOnClickListener(View.OnClickListener {
 //            Toast.makeText(this.activity.applicationContext, "구현 예정입니다!", Toast.LENGTH_SHORT).show()
@@ -168,7 +170,6 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             editor.commit()
             Toast.makeText(activity!!, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
             checkLogin()
-
         }
         return v
     }
@@ -278,7 +279,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                                 if (response!!.isSuccessful) {
 
                                     if(degree == 90 && countnumber == 50 && countnumber2==20){
-                                        imageview_mypage_profile.setImageBitmap(bitmap)
+                                        imageviewProfile!!.setImageBitmap(bitmap)
                                     }
                                     else{
 
@@ -292,7 +293,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                                             bitmap = rotate(bitmap, degree)
                                         }
                                        else if(countnumber2==20){
-                                            imageview_mypage_profile.setImageBitmap(bitmap)
+                                            imageviewProfile!!.setImageBitmap(bitmap)
                                         }
                                         else{
 
@@ -305,7 +306,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                                     if(degree == 0){
                                         if(countnumber2==20) {
                                             bitmap = rotate(bitmap, 270)
-                                            imageview_mypage_profile.setImageBitmap(bitmap)
+                                            imageviewProfile!!.setImageBitmap(bitmap)
                                             countnumber2 = 100
                                         }
                                             else if(countnumber2==30){
@@ -322,7 +323,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                                     }
 
-                                    imageview_mypage_profile.setImageBitmap(bitmap)
+                                    imageviewProfile!!.setImageBitmap(bitmap)
 
                                     if (response!!.body().message == "success To change photo") {
 
@@ -461,7 +462,7 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     bitmap.recycle()
                     bitmap = tmpBitmap
                 }
-                imageview_mypage_profile.setImageBitmap(tmpBitmap)
+                imageviewProfile!!.setImageBitmap(tmpBitmap)
             } catch (e: OutOfMemoryError) {
                 e.printStackTrace()
             }
@@ -502,7 +503,8 @@ class MypageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         Glide.with(activity)
                 .load(myPageData!!.img)
-                .into(imageview_mypage_profile)
+                .thumbnail(0.1f)
+                .into(imageviewProfile!!)
         textview_mypage_email.setText(myPageData!!.mail)
         textview_mypage_nickname.setText(myPageData!!.nickname)
         textview_name.setText(myPageData!!.name + " / " + myPageData!!.age + "세")

@@ -3,6 +3,7 @@ package com.youth.farm_volunteering.home
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
 import com.youth.farm_volunteering.expanded.ExpandFragment
@@ -11,7 +12,7 @@ import com.youth.farm_volunteering.data.FarmInfoData
 import com.youth.farm_volunteering.data.FriendInfoData
 import com.youth.farm_volunteering.data.NhInfoData
 
-class DetailTabAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
+class DetailTabAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm){
 
     var introTab : FarmIntroFragment? = null
     var expandTab : ExpandFragment? = null
